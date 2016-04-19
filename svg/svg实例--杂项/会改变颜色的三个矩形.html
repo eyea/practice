@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>会改变颜色的三个矩形</title>
+</head>
+<body>
+<p><b>Note:</b> This example only works in Google Chrome.</p>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <rect x="10" y="20" width="90" height="60">
+    <animateColor id="a1" attributeName="fill" from="red" to="blue" dur="3s" />
+  </rect>
+  <rect x="10" y="120" width="90" height="60">
+    <animateColor id="a2" attributeName="fill" from="blue" to="yellow" begin="a1.end" dur="3s" />
+  </rect>
+  <rect x="10" y="220" width="90" height="60">
+    <animateColor id="a3" attributeName="fill" from="yellow" to="green" begin="a2.end" dur="3s" />
+  </rect>
+</svg>
+</body>
+</html>
