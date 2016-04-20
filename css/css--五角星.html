@@ -14,7 +14,7 @@
 		border-left: 100px solid transparent;
 		border-right: 100px solid transparent;
 		border-bottom: 70px solid red;
-		-moz-transfrom:rotate(35deg);
+		-moz-transform:rotate(35deg);
 		-webkit-transform:rotate(35deg);
 		-ms-transform:rotate(35deg);
 		-o-transform:rotate(35deg);
@@ -60,10 +60,45 @@
 		width: 100px;
 		height: 0px;
 		}
+		#test{
+			width: 0;
+			height: 0;
+			color: green;
+			margin: 100px 0;
+			position: relative;
+			display: block;
+			border-left: 100px solid transparent;
+			border-right: 100px solid transparent;
+			border-bottom: 70px solid green;
+			-moz-transform:rotate(35deg);
+			-webkit-transform:rotate(35deg);
+			-ms-transform:rotate(35deg);
+			-o-transform:rotate(35deg);
+		}
+		#test:before{
+			width: 0;height: 0;
+			border-left: 30px solid transparent;
+			border-right: 30px solid transparent;
+			/*注意的是left和right得是transparent，可以用不同的颜色来实验*/
+			border-bottom: 80px solid green;
+			position: absolute;
+			top: -45px; left: -65px; display: block; color: red; display:block;
+			content: "";
+			-moz-transform:rotate(-35deg);-webkit-transform:rotate(-35deg);-ms-transform:rotate(-35deg);-o-transform:rotate(-35deg);
+		}
+		#test:after{
+			width: 0; height: 0;position: absolute;top: 3px;left: -105px;color: red;display: block;
+			border-left: 100px solid transparent;border-right: 100px solid transparent;border-bottom: 70px solid green;
+			/*/*注意的是left和right得是transparent，可以用不同的颜色来实验*/
+			content: "";
+			-moz-transform:rotate(-70deg);-webkit-transform:rotate(-70deg);-ms-transform:rotate(-70deg);-o-transform:rotate(-70deg);
+
+
+		}
 	</style>
-</head>
-<body>
+</head><body>
   <div id="star-five"></div>
-  <div id="trapezoid"></div>
+  <!-- <div id="trapezoid"></div> -->
+  <div id="test"></div>
 </body>
 </html>
