@@ -63,14 +63,12 @@
 		cx.fillStyle=ld;
 		cx.fillRect(0,400,150,100);
 
-		// Create  gradient 有问题这部分
-		var cd = cx.createRadialGradient(75,50,5,90,60,100);
-		cd.addColorStop(0,"red");
-		cd.addColorStop(0.5,"yellow");
-		cd.addColorStop(1,"white");
-		// Fill with gradient
-		cx.fillStyle=cd;
-		cx.fillRect(0,550,550,400);
+		var grd=cx.createRadialGradient(75,50,5,90,60,100);
+		grd.addColorStop(0,"red");
+		grd.addColorStop(0.5,"yellow");
+		grd.addColorStop(1,"white");
+		cx.fillStyle=grd;
+		cx.fillRect(10,10,150,100);
 
 		// 把一幅图像放置到画布上  drawImage(image,x,y)
 		var img = document.getElementById("scream");
