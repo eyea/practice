@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航</title>
+	<style>
+		ul.pag{
+			display: inline-block;
+			padding: 0;
+			margin: 0
+		}
+		ul li{
+			display: inline;
+		}
+		ul li a{
+			color: black;
+			float: left;
+			padding: 8px 16px;
+			border:1px solid #ddd;
+			font-size: 18px;
+			text-decoration: none;
+			transition:background-color .3s;
+		}
+		ul li a.active{
+			background-color: #eee;
+			color: black;
+			border:1px solid #ddd;
+		}
+		ul li a:hover:not(.active){
+			background-color: #ddd
+		}
+	</style>
+</head>
+
+<body>
+	<p>上一页，下一页按钮:</p>
+	<ul class="pag">
+	  <li><a href="#">❮</a></li>
+	  <li><a href="#">❯</a></li>
+	</ul>
+
+	<p>分页导航:</p>
+	<ul class="pag">
+	  <li><a href="#" class="active">Home</a></li>
+	  <li><a href="#">Link 1</a></li>
+	  <li><a href="#">Link 2</a></li>
+	  <li><a href="#">Link 3</a></li>
+	</ul>	
+</body>
+</html>
