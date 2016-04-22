@@ -44,3 +44,12 @@
 * 在 HTML 中, 全局变量是 window 对象: 所有数据变量都属于 window 对象。
 * 全局变量，或者函数，可以覆盖 window 对象的变量或者函数。
 * 局部变量，包括 window 对象可以覆盖全局变量和函数。
+* 下面是一些常见的HTML事件的列表:
+    - 事件    描述
+    - onchange  	HTML 元素改变
+    - onclick	用户点击 HTML 元素
+    - onmouseover	用户在一个HTML元素上移动鼠标
+    - onmouseout	用户从一个HTML元素上移开鼠标
+    - onkeydown	用户按下键盘按键
+    - onload	浏览器已完成页面的加载
+* ### 不要创建 String 对象。它会拖慢执行速度，并可能产生其他副作用：
