@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 Canvas</title>
+</head>
+<body>
+<img id="scream" src="1.jpg" alt="">
+	<canvas id="canvas" width="1000" height="1000" style="border:1px solid #d3d3d3;">
+		不支持canvas的浏览器就会显示
+	</canvas>
+</body>
+<script>
+	// document.onload = function(){
+
+		// 找到 <canvas> 元素:  然后，创建 context 对象：
+		var c = document.getElementById("canvas");
+		var cx = c.getContext("2d");
+	//beginPath()写的时候可能会出错，所以确保beginPath和closePath都相对应
+		cx.beginPath();
+
+		// 设置fillStyle属性可以是CSS颜色，渐变，或图案。fillStyle 默认设置是#000000（黑色）。
+		// 红色矩形
+		cx.fillStyle = "red";
+		cx.fillRect(0,0,150,75);
+		// canvas 是一个二维网格。canvas 的左上角坐标为 (0,0)意思是：在画布上绘制 150x75 的矩形，从左上角开始 (0,0)。
+
+		// 路径   
+			 // moveTo(x,y) 定义线条开始坐标 
+			 // lineTo(x,y) 定义线条结束坐标
+		cx.moveTo(0,80);
+		cx.lineTo(150,150);
+		cx.stroke();
+
+		// 圆形  arc(x,y,r,start,stop)   我们在绘制圆形时使用了 "ink" 的方法, 比如 stroke() 或者 fill().
+		cx.beginPath();
+		cx.arc(75,200,40,0,2*Math.PI,false);
+		cx.stroke();
+
+		// 文本 
+			// font - 定义字体
+			// fillText(text,x,y) - 在 canvas 上绘制实心的文本
+			// strokeText(text,x,y) - 在 canvas 上绘制空心的文本
+		cx.font="30px Arial";
+		cx.fillText("实心文本",30,300);
+		cx.strokeText("空心文本",30,350);
+
+		// 渐变
+			// 渐变可以填充在矩形, 圆形, 线条, 文本等等, 各种形状可以自己定义不同的颜色。
+
+			// createLinearGradient(x,y,x1,y1) - 创建线条渐变
+			// createRadialGradient(x,y,r,x1,y1,r1) - 创建一个径向/圆渐变
+
+			//当我们使用渐变对象，必须使用两种或两种以上的停止颜色
+			// addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1.
+			// 使用渐变，设置fillStyle或strokeStyle的值为 渐变，然后绘制形状，如矩形，文本，或一条线
+
+		// Create  gradient
+		var ld = cx.createLinearGradient(0,0,150,0);
+		ld.addColorStop(0,"red");
+		ld.addColorStop(1,"white");
+		// Fill with gradient
+		cx.fillStyle=ld;
+		cx.fillRect(0,400,150,100);
+
+		var grd=cx.createRadialGradient(75,50,5,90,60,100);
+		grd.addColorStop(0,"red");
+		grd.addColorStop(0.5,"yellow");
+		grd.addColorStop(1,"white");
+		cx.fillStyle=grd;
+		cx.fillRect(10,10,150,100);
+
+		// 把一幅图像放置到画布上  drawImage(image,x,y)
+		var img = document.getElementById("scream");
+		img.onload = function(){
+			cx.drawImage(img,20,520);
+		}
+
+		cx.closePath(); 
+
+
+	// }
+</script>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css--五角星</title>
+	<style type="text/css">
+		#star-five{
+		width: 0;
+		height: 0;
+		color: red;
+		margin: 50px 0;
+		position: relative;
+		display: block;
+		border-left: 100px solid transparent;
+		border-right: 100px solid transparent;
+		border-bottom: 70px solid red;
+		-moz-transform:rotate(35deg);
+		-webkit-transform:rotate(35deg);
+		-ms-transform:rotate(35deg);
+		-o-transform:rotate(35deg);
+		}
+		#star-five:before{
+		width: 0;
+		height: 0;
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		border-bottom: 80px solid red;
+		position: absolute;
+		top: -45px;
+		left: -65px;
+		color: white;
+		display: block;
+		content: "";
+		-moz-transform:rotate(-35deg);
+		-webkit-transform:rotate(-35deg);
+		-ms-transform:rotate(-35deg);
+		-o-transform:rotate(-35deg);
+		}
+		#star-five:after{
+		width: 0;
+		height: 0;
+		display: block;
+		position: absolute;
+		color: red;
+		top: 3px;
+		left: -105px;
+		border-left: 100px solid transparent;
+		border-right: 100px solid transparent;
+		border-bottom: 70px solid red;
+		content: "";
+		-moz-transform:rotate(-70deg);
+		-webkit-transform:rotate(-70deg);
+		-ms-transform:rotate(-70deg);
+		-o-transform:rotate(-70deg);
+		}
+		#trapezoid{
+		border-bottom: 100px solid red;
+		border-left: 50px solid transparent;
+		border-right: 50px solid transparent;
+		width: 100px;
+		height: 0px;
+		}
+
+
+		
+		#test{
+			width: 0;
+			height: 0;
+			color: green;
+			margin: 100px 0;
+			position: relative;
+			display: block;
+			border-left: 100px solid transparent;
+			border-right: 100px solid transparent;
+			border-bottom: 70px solid green;
+			-moz-transform:rotate(35deg);
+			-webkit-transform:rotate(35deg);
+			-ms-transform:rotate(35deg);
+			-o-transform:rotate(35deg);
+		}
+		#test:before{
+			width: 0;height: 0;
+			border-left: 30px solid transparent;
+			border-right: 30px solid transparent;
+			/*注意的是left和right得是transparent，可以用不同的颜色来实验*/
+			border-bottom: 80px solid green;
+			position: absolute;
+			top: -45px; left: -65px; display: block; color: red; display:block;
+			content: "";
+			-moz-transform:rotate(-35deg);-webkit-transform:rotate(-35deg);-ms-transform:rotate(-35deg);-o-transform:rotate(-35deg);
+		}
+		#test:after{
+			width: 0; height: 0;position: absolute;top: 3px;left: -105px;color: red;display: block;
+			border-left: 100px solid transparent;border-right: 100px solid transparent;border-bottom: 70px solid green;
+			/*/*注意的是left和right得是transparent，可以用不同的颜色来实验*/
+			content: "";
+			-moz-transform:rotate(-70deg);-webkit-transform:rotate(-70deg);-ms-transform:rotate(-70deg);-o-transform:rotate(-70deg);
+
+
+		}
+	</style>
+</head><body>
+  <div id="star-five"></div>
+  <div id="trapezoid"></div>
+  <div id="test"></div>
+</body>
+</html>

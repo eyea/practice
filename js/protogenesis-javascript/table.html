@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style>
+		td{
+ 			border:1px solid ;
+ 			width:100px;
+ 			height:20px;
+ 			color:white;
+ 			text-align:center;
+ 			background-color: gray;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		// 表格
+		document.write('<table >');
+			for(var i=0;i<10;i++){
+				document.write("<tr>");
+				var bgc="yellow";
+				if(i%2==0){
+					bgc="green";
+				}else{
+					bgc="";
+				}
+				for(var j=0;j<10;j++){
+					document.write("<td style='background-color:bgc'>"+(i*10+j)+"</td>");
+				}
+				document.write("</tr>");
+			}
+
+		document.write("</table>");	
+		document.write("<div style='height:20px'>");
+		// 九九乘法表
+		document.write('<table>');
+			for(var i=1;i<10;i++){
+				document.write('<tr>');
+				for(j=1;j<10;j++){
+					if(j<=i){
+						document.write('<td>'+j+"×"+i+"="+(j*i));
+					}
+				}
+				document.write('<\/<tr>')
+			}
+		document.write('<\/table>')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

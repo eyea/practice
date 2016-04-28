@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG 模糊效果</title>
+</head>
+<body>
+	<h3><feGaussianBlur> 元素是用于创建模糊效果</h3>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+    </filter>
+  </defs>
+  <rect width="90" height="90" stroke="green" stroke-width="3"
+  fill="yellow" filter="url(#f1)" />
+</svg>
+<h5>
+	filter元素id属性定义一个滤镜的唯一名称
+feGaussianBlur元素定义模糊效果
+in="SourceGraphic"这个部分定义了由整个图像创建效果
+stdDeviation属性定义模糊量
+rect元素的滤镜属性用来把元素链接到"f1"滤镜
+</h5>
+
+</body>
+</html>

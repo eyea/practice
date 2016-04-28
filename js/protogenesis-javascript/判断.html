@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件判断</title>
+</head>
+<body>
+	<p>点击按钮监测年龄</p>
+	年龄：<input type="text"><br/>
+	<button onclick="btn()">是否达到投票年龄？</button>
+
+</body>
+<script>
+	function btn(){
+		var age = document.getElementsByTagName("input").value;
+		var vote = (age<18)?"too young":"yes";
+		document.write(vote);
+		
+	}
+</script>
+</html>
