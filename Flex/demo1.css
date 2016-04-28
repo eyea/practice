@@ -73,6 +73,44 @@
   display: flex;
   justify-content:space-between;
 }
+
+/*第二次九个*/
+.box-face {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*四个*/
+.box4-face{
+  display: flex;
+  flex-wrap: wrap;
+  /*默认在左边的*/
+  /*justify-content:flex-end;*/
+  align-content:space-between;
+}
+/*6横排*/
+.box6-face{
+  display: flex;
+  flex-wrap:wrap;
+  align-content:space-between;
+}
+/*6---2*/
+.box61-face{
+  display: flex;
+  flex-wrap:wrap;
+}
+.row{
+  /*第一行很重要 试试*/
+  flex-basis: 100%;
+  display: flex;
+}
+.row:nth-child(2){
+  justify-content:center;
+}
+.row:nth-child(3){
+  justify-content:space-between;
+}
+
 /* OTHER STYLES */
 
 * {
@@ -123,3 +161,5 @@ body {
   background-color: #333;
   box-shadow: inset 0 3px #111, inset 0 -3px #555;
 }
+
+/*二、网格布局*/
