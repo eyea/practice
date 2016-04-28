@@ -1,6 +1,44 @@
 
-/*二、网格布局*/
+/*六、固定的底栏*/
+.Site {
+  display: flex;
+  min-width: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
 
+.Site-content {
+  flex: 1;
+}
+
+
+/*四、输入框的布局*/
+.InputAddOn {
+  display: flex;
+}
+
+.InputAddOn-field {
+  flex: 1;
+}
+
+/*五、悬挂式布局*/
+.Media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Media-figure {
+  margin-right: 1em;
+}
+
+.Media-body {
+  flex: 1;
+}
+
+
+
+
+/*二、网格布局*/
 .grid{
   display: flex;
   border:1px solid gray;
@@ -80,19 +118,11 @@ footer {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*第一部分*/
+div{
+  border:1px solid gray;
+}
+
 .first-face {
   display: flex;
   justify-content: center;
