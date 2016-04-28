@@ -1,6 +1,7 @@
 .first-face {
   display: flex;
   justify-content: center;
+  /*内容居中*/
   align-items: center;
 }
 
@@ -52,6 +53,26 @@
   justify-content: center;
 }
 
+.seven-face{
+  display: flex;
+  justify-content:space-between;
+}
+.seven-face .column:nth-of-type(2){
+  align-self:center;
+}
+
+.eight-face{
+  display: flex;
+  justify-content:space-between;
+}
+/*下面一行不齐起作用*/
+.eight-face .column:nth-of-type(2) .pip:nth-of-type(2){
+  align-self: flex-end;
+}
+.ninth-face{
+  display: flex;
+  justify-content:space-between;
+}
 /* OTHER STYLES */
 
 * {
