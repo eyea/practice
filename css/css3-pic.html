@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3-pic</title>
+	<style>
+		img{display: block;width: 100px;height: 100px;margin-bottom: 20px;}
+		#one{
+			tuoyuan
+			border-radius: 50%; 
+		}
+		#two{
+			/*border 属性来创建缩略图。*/
+			border:1px solid #ddd;
+			border-radius: 4px;
+			padding: 5px;
+		}
+		#three{
+			border:1px solid #ddd;
+			border-radius: 4px;
+			padding: 5px;
+			transition:0.3s;
+			cursor: pointer;
+		}
+		#three:hover{
+			box-shadow: 0 0 2px 1px rgba(0,140,186,0.5);
+			transform:rotateX(180deg);
+		}
+		#four{
+			max-width: 100%;
+			height: auto;
+			/*你需要自由缩放图片，且图片放大的尺寸不大于其原始的最大值，则可使用以shang代码：*/
+		}
+		#five{
+			/*卡片式图片*/
+			border-radius: 4px;
+			border:1px solid #ddd;
+			padding: 5px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+/*滤镜*/
+		.blur {-webkit-filter: blur(4px);filter: blur(4px);}
+		.brightness {-webkit-filter: brightness(250%);filter: brightness(250%);}
+		.contrast {-webkit-filter: contrast(180%);filter: contrast(180%);}
+		.grayscale {-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+		.huerotate {-webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg);}
+		.invert {-webkit-filter: invert(100%);filter: invert(100%);}
+		.opacity {-webkit-filter: opacity(50%);filter: opacity(50%);}
+		.saturate {-webkit-filter: saturate(7); filter: saturate(7);}
+		.sepia {-webkit-filter: sepia(100%);filter: sepia(100%);}
+		.shadow {-webkit-filter: drop-shadow(8px 8px 10px green);filter: drop-shadow(8px 8px 10px green);}
+/*滤镜*/
+
+	</style>
+</head>
+<body>
+	<img id="one" src="../canvas/2.jpg" alt="">
+	<img id="two" src="../canvas/2.jpg" alt="">
+	<img id="three" src="../canvas/2.jpg" alt="">
+	<img id="four" src="../canvas/2.jpg" alt="">
+	<img id="five" src="../canvas/2.jpg" alt="">
+<div>
+	<img src="../canvas/2.jpg">
+	<img class="blur" src="../canvas/2.jpg">
+	<img class="brightness" src="../canvas/2.jpg">
+	<img class="contrast" src="../canvas/2.jpg">
+	<img class="grayscale" src="../canvas/2.jpg">
+	<img class="huerotate" src="../canvas/2.jpg">
+	<img class="invert" src="../canvas/2.jpg">
+	<img class="opacity" src="../canvas/2.jpg">
+	<img class="saturate" src="../canvas/2.jpg">
+	<img class="sepia" src="../canvas/2.jpg">
+	<img class="shadow" src="../canvas/2.jpg">
+</div>
+<p><strong>注意:</strong> Internet Explorer <span lang="no-bok">或 Safari 5.1 (及更早版本)</span> 不支持filter属性。</p>
+<!-- 响应式图片相册 父级div.responsive 
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+ -->
+
+图片 Modal(模态)
+本实例演示了如何结合 CSS 和 JavaScript 来一起渲染图片。
+首先，我们使用 CSS 来创建 modal 窗口 (对话框), 默认是隐藏的。
+然后，我们使用 JavaScript 来显示模态窗口，当我们点击图片时，图片会在弹出的窗口中显示：
+
+具体在 css3-pic-modal.html 单独展示
+</body>
+</html>

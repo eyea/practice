@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>canvas笑脸</title>
+
+<style type="text/css">
+</style>
+</head>
+
+<body>
+	<div class="canvasContainer">
+		<canvas id="canvas" width="400" height="400"></canvas>
+	</div>
+
+<script type="text/javascript">
+	function draw(){
+		var oc = document.getElementById('canvas');
+		var content = oc.getContext('2d');
+		content.beginPath();
+		content.arc(75,75,50,0,Math.PI*2,true);//脸
+		content.moveTo(110,75);
+		content.arc(75,75,35,0,Math.PI,false); //嘴巴
+		content.moveTo(65,65);
+		content.arc(60,65,5,0,Math.PI*2,true); //左眼
+		content.moveTo(95,65);
+		content.arc(90,65,5,0,Math.PI*2,true);//右眼
+		content.stroke();
+
+		content.beginPath();
+		content.arc(210,205,50,0,Math.PI*2);//脸
+		content.moveTo(196,190);
+		content.arc(190,190,6,0,Math.PI*2,false);//左眼
+		content.moveTo(236,190);
+		content.arc(230,190,6,0,Math.PI*2);//右眼
+		content.moveTo(240,205);
+		content.arc(210,205,30,0,Math.PI);
+
+		content.stroke();
+	}
+	draw();
+</script>
+</body>
+</html>

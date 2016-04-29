@@ -1,0 +1,150 @@
+//
+// Grid Functions
+// --------------------------------------------------
+
+// Checks if gutter is set
+// Returns default gutter value if gutter is not set
+@function get-gutter($gutter, $default-gutter){
+	
+	@if ($gutter == null) {
+		@return $default-gutter;
+	} @else {
+		@return	$gutter;
+	}
+}
+
+// Checks if columns should be set to default columns
+@function get-columns($columns, $default-container-columns, $offset) {
+	
+	@if (($columns + $offset) > $default-container-columns) {
+		@return $default-container-columns;
+	} @else {
+		@return $columns;
+	}
+}
+
+@function get-offset($columns, $default-container-columns, $offset) {
+
+	@if (($columns + $offset) > $default-container-columns) {
+		@return 0;
+	} @else if ($offset >= $columns) {
+		@return 0;
+	} @else {
+		@return $offset;
+	}
+}
+
+
+//
+// Grid
+// --------------------------------------------------
+
+$base-container-columns: map-get(map-get($grid-settings, base), container-columns);
+$base-gutter:            map-get(map-get($grid-settings, base), gutter);
+$base-max-width:         map-get(map-get($grid-settings, base), max-width);
+
+@mixin container($max-width: $base-max-width) {
+	
+	// Build default base container
+	max-width: $max-width;
+	margin: {
+		left: auto;
+		right: auto;
+  	}
+  	@include clearfix();
+
+	// Loop through grid settings and build breakpoint container
+	@each $breakpoint, $breakpoint-settings in $grid-settings {
+			
+		@if ($breakpoint != 'base') {
+			$max-width: map-get($breakpoint-settings, max-width);
+
+			@include respond-to($breakpoint) {
+
+				@if ($max-width) {
+					max-width: $max-width;
+				} @else {
+					// If max-width not specified use 100%;
+					max-width: 100%;
+				}
+			}
+		}
+	}
+}
+
+// Builds columns
+@mixin build-column($columns, $container-columns, $offset, $gutter) {
+
+		display: block;
+		float: left;
+
+	@if ($gutter == 0) {
+		width: percentage($columns / $container-columns);
+		margin-left: percentage($offset / $container-columns);
+		margin-right: 0;
+	}
+	@else {
+		width: percentage($columns / $container-columns) - $gutter * 2;
+		margin-left: percentage($offset / $container-columns) + $gutter;
+		margin-right: $gutter;
+	}
+}
+
+
+@mixin columns($columns: $base-container-columns, $offset: 0, $gutter: null) {
+	
+	// Build default base columns
+	$c-gutter: get-gutter($gutter, $base-gutter);
+	@include build-column($columns, $base-container-columns, $offset, $c-gutter);
+	
+	
+	// Build other breakpoint columns
+
+	// Loop through grid settings and build breakpoint columns
+	@each $breakpoint, $breakpoint-settings in $grid-settings {
+		
+		@if ($breakpoint != 'base') {
+			
+			$default-container-columns: map-get($breakpoint-settings, container-columns);
+			$default-gutter:  map-get($breakpoint-settings, gutter);
+
+			$c-gutter:  get-gutter($gutter, $default-gutter);
+			$c-columns: get-columns($columns, $default-container-columns, $offset);
+			$c-offset:  get-offset($c-columns, $default-container-columns, $offset);
+
+			@include respond-to($breakpoint) {
+
+				@include build-column($c-columns, $default-container-columns, $c-offset, $c-gutter);
+			}
+		}
+	}
+}
+
+
+@mixin responsive-columns($breakpoint, $columns, $offset: 0, $gutter: null) {
+	
+	$default-container-columns: map-get(map-get($grid-settings, $breakpoint), container-columns);
+	$default-gutter:            map-get(map-get($grid-settings, $breakpoint), gutter);
+
+	@include respond-to($breakpoint) {
+		
+		$c-gutter:  get-gutter($gutter, $default-gutter);
+		@include build-column($columns, $default-container-columns, $offset, $c-gutter);
+	}
+}
+
+// Breakpoints
+// --------------------------------------------------
+
+@mixin respond-to($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media #{inspect(map-get($breakpoints, $breakpoint))} {
+			@content;
+		}
+	}
+
+	@else {
+		@error 'No value found for `#{$breakpoint}`. '
+				+ 'Please make sure it is defined in `$breakpoints` map.';
+	}
+}

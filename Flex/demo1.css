@@ -1,0 +1,306 @@
+
+/*七，流式布局*/
+.parent {
+  width: 200px;
+  height: 150px;
+  background-color: black;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+.child {
+  box-sizing: border-box;
+  background-color: white;
+  flex: 0 0 25%;
+  height: 50px;
+  border: 1px solid red;
+}
+
+/*六、固定的底栏*/
+.Site {
+  display: flex;
+  min-width: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Site-content {
+  flex: 1;
+}
+
+
+/*四、输入框的布局*/
+.InputAddOn {
+  display: flex;
+}
+
+.InputAddOn-field {
+  flex: 1;
+}
+
+/*五、悬挂式布局*/
+.Media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Media-figure {
+  margin-right: 1em;
+}
+
+.Media-body {
+  flex: 1;
+}
+
+
+
+
+/*二、网格布局*/
+.grid{
+  display: flex;
+  border:1px solid gray;
+  border-radius: 4px;
+  padding: 20px 10px;
+}
+.grid-cell{
+  flex:1;
+  border:1px dotted green;
+  padding: 10px;
+}
+.cell1{
+  flex: 0 0 100%;
+}
+.cell2{
+  flex: 0 0 50%;
+}
+.cell3{
+  flex: 0 0 33.3%;
+}
+.cell4{
+  flex: 0 0 25%;
+}
+
+
+/*三、圣杯布局*/
+
+.HolyGrail {
+  display: flex;
+  min-width: 100vh;
+  flex-direction: column;
+    border:1px solid gray;
+    text-align: center;
+    /*justify-content: center;*/
+
+}
+
+header,
+footer {
+  flex: 1;
+    border:1px solid gray;
+}
+
+.HolyGrail-body {
+  display: flex;
+  flex: 1;
+    border:1px solid gray;
+}
+
+.HolyGrail-content {
+  flex: 1;
+    border:1px solid gray;
+}
+
+.HolyGrail-nav, .HolyGrail-ads {
+  /* 两个边栏的宽度设为12em */
+  flex: 0 0 12em;
+    border:1px solid gray;
+}
+
+.HolyGrail-nav {
+  /* 导航放到最左边 */
+  order: -1;
+    border:1px solid gray;
+}
+/*如果是小屏幕，躯干的三栏自动变为垂直叠加。*/
+@media (max-width: 768px) {
+  .HolyGrail-body {
+    flex-direction: column;
+    flex: 1;
+  }
+  .HolyGrail-nav,
+  .HolyGrail-ads,
+  .HolyGrail-content {
+    flex: auto;
+  }
+}
+
+
+/*第一部分*/
+div{
+  border:1px solid gray;
+}
+
+.first-face {
+  display: flex;
+  justify-content: center;
+  /*内容居中???*/
+  align-items: center;
+}
+
+.second-face {
+  display: flex;
+  justify-content: space-between;
+}
+
+.second-face .pip:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.third-face {
+  display: flex;
+  justify-content: space-between;
+}
+  
+.third-face .pip:nth-of-type(2) {
+  align-self: center;
+}
+
+.third-face .pip:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.fourth-face, .sixth-face {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fourth-face .column, .sixth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fifth-face {
+  display: flex;
+  justify-content: space-between;
+}
+  
+.fifth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+  
+.fifth-face .column:nth-of-type(2) {
+  justify-content: center;
+}
+
+.seven-face{
+  display: flex;
+  justify-content:space-between;
+}
+.seven-face .column:nth-of-type(2){
+  align-self:center;
+}
+
+.eight-face{
+  display: flex;
+  justify-content:space-between;
+}
+/*下面一行不起作用*/
+.eight-face .column:nth-of-type(2) .pip:nth-of-type(2){
+  align-self: flex-end;
+}
+.ninth-face{
+  display: flex;
+  justify-content:space-between;
+}
+
+/*第二次九个*/
+.box-face {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*四个*/
+.box4-face{
+  display: flex;
+  flex-wrap: wrap;
+  /*默认在左边的*/
+  /*justify-content:flex-end;*/
+  align-content:space-between;
+}
+/*6横排*/
+.box6-face{
+  display: flex;
+  flex-wrap:wrap;
+  align-content:space-between;
+}
+/*6---2*/
+.box61-face{
+  display: flex;
+  flex-wrap:wrap;
+}
+.row{
+  /*第一行很重要 试试*/
+  flex-basis: 100%;
+  display: flex;
+}
+.row:nth-child(2){
+  justify-content:center;
+}
+.row:nth-child(3){
+  justify-content:space-between;
+}
+
+/* OTHER STYLES */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
+  flex-wrap: wrap;
+  align-content: center;
+  font-family: 'Open Sans', sans-serif;
+  
+  background: linear-gradient(top, #222, #333);
+}
+
+[class$="face"] {
+  margin: 16px;
+  padding: 4px;
+  
+  background-color: #e7e7e7;
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  
+  box-shadow:
+    inset 0 5px white, 
+    inset 0 -5px #bbb,
+    inset 5px 0 #d7d7d7, 
+    inset -5px 0 #d7d7d7;
+  
+  border-radius: 10%;
+}
+
+.pip {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 4px;
+
+  background-color: #333;
+  box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}

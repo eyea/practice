@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>沿一个运动路径移动的文本</title>
+</head>
+<body>
+
+<p><b>Note:</b> This example only works in Firefox and Google Chrome.</p>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <g transform="translate(100,100)">
+    <text id="TextElement" x="0" y="0" style="font-family:Verdana;font-size:24"> It's SVG!
+      <animateMotion path="M 0 0 L 100 100" dur="5s" fill="freeze" />
+    </text>
+  </g>
+</svg>
+</body>
+</html>
