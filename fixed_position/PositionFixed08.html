@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- <script src="jquery1.83.js"></script>-->
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+                var target=$('div.fix').css('position','absolute');
+                var relative = target.parents().filter(function(){
+                    return $(this).css('position')=='relative'
+                });
+                //对PositionFixed01进行改进,一下子取得所有相对定位的祖先,并且不是每找一个就移动一次
+                //为了防止回流,使用last API只做最后一次改动
+                var s = relative.length;
+                if( s  > 0)
+                    relative.last().after(target)
+                var base={
+                    top : target.offset().top,
+                    left : target.offset().left
+                }
+                var win = $(window).scroll(function(){
+                    target.css({
+                        'top':base.top + win.scrollTop(),
+                        'left':base.left + win.scrollLeft()
+                    })
+                })
+
+            })
+        </script>
+        <style>
+            body{
+                height:1000px;
+            }
+            div.fix{
+                right:100px;
+                bottom:100px;
+                background:#555;
+                color:#fff;
+                width:50px;
+                height:50px;
+            }
+            div.relative{
+                position:relative;
+                left:200px;
+                border:solid 4px #aaccff;
+                width:100px;
+                height:100px;
+            }
+
+
+
+        </style>
+
+
+    </head>
+    <body>
+       <p>resize对应版。</p>
+        <div class="relative">relative
+            <div class="fix">fix</div>
+        </div>
+
+
+    </body>
+</html>

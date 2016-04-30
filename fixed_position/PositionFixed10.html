@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- <script src="jquery1.83.js"></script>-->
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+
+                $.positionFixed = function(el){
+                    $(el).each(function(){
+                        new fixed(this)
+                    })
+                    return el;
+                }
+                $.fn.positionFixed = function(){
+                    return $.positionFixed(this)
+                }
+                var fixed = $.positionFixed.impl = function(el){
+                    var o=this;
+                    o.sts={
+                        target : $(el).css('position','fixed'),
+                        container : $(window)
+                    }
+                    o.sts.currentCss = {
+                        top : o.sts.target.css('top'),
+                        right : o.sts.target.css('right'),
+                        bottom : o.sts.target.css('bottom'),
+                        left : o.sts.target.css('left')
+                    }
+                    if(!o.ie6)return;
+                    o.bindEvent();
+                }
+                $.mix(fixed.prototype,{
+                    ie6 : !window.XMLHttpRequest,
+                    bindEvent : function(){
+                        var o=this;
+                        o.sts.target.css('position','absolute')
+                        o.overRelative().initBasePos();
+                        o.sts.target.css(o.sts.basePos)
+                        o.sts.container.scroll(o.scrollEvent()).resize(o.resizeEvent());
+                        o.setPos();
+                    },
+                    overRelative : function(){//移动位置
+                        var o=this;
+                        var relative = o.sts.target.parents().filter(function(){
+                            var pos=$(this).css('position');
+                            if(pos=='relative' || pos=='absolute')return this;
+                        })
+                    
+                        if(relative.size()>0){
+                            relative.after(o.sts.target)
+                        }
+                        return o;
+                    },
+                    initBasePos : function(){//getPos
+                        var o=this;
+                        o.sts.basePos = {
+                            top: o.sts.target.offset().top - (o.sts.currentCss.top=='auto'?o.sts.container.scrollTop():0),
+                            left: o.sts.target.offset().left - (o.sts.currentCss.left=='auto'?o.sts.container.scrollLeft():0)
+                        }
+                        return o;
+                    },
+                    setPos : function(){
+                        var o=this;
+                        o.sts.target.css({
+                            top: o.sts.container.scrollTop() + o.sts.basePos.top,
+                            left: o.sts.container.scrollLeft() + o.sts.basePos.left
+                        })
+                    },
+                    scrollEvent : function(){
+                        var o=this;
+                        return function(){
+                            o.setPos();
+                        }
+                    },
+                    resizeEvent : function(){
+                        var o=this;
+                        return function(){
+                            setTimeout(function(){
+                                o.sts.target.css(o.sts.currentCss)
+                                o.initBasePos();
+                                o.setPos()
+                            },1)
+                        }
+                    }
+                })
+                
+                $('div.fixed').css('opacity',.9).positionFixed()
+
+
+            })
+        </script>
+        <style>
+            div.fixed {
+                position: fixed;
+                width: 150px;
+                height: 150px;
+            }
+
+            #fix1 {
+                bottom: 100px;
+                right: 100px;
+                background: #aaccff;
+            }
+
+            #fix2 {
+                left: 100px;
+                top: 100px;
+                background: #ccaaff;
+            }
+
+            #fix3 {
+                right: 100px;
+                top: 100px;
+                background: #aaffcc;
+            }
+
+            #fix4 {
+                left: 100px;
+                bottom: 100px;
+                background: #ffccaa;
+            }
+            body {
+                width: 2000px;
+                height: 2000px;
+            }
+
+            div.box {
+                position: relative;
+                overflow: scroll;
+                border: solid 4px #eee;
+                width: 400px;
+                height: 400px;
+                margin: 0 200px;
+                left:0;
+                top:0;
+            }
+            .dummy{
+                width:2000px;
+                height:2000px;
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+        <p>resize对应版。</p>
+        <div id="fix1" class="fixed">
+			right : 100px<br/>bottom : 100px
+        </div>
+        <div class="box">
+            position : relative; overflow : scroll;
+            <div id="fix2" class="fixed">
+				left : 100px<br/>top : 100px
+            </div>
+            <div id="fix3" class="fixed">
+				right : 100px<br/>top : 100px
+            </div>
+            <div id="fix4" class="fixed">
+				left : 100px<br/>bottom : 100px
+            </div>
+            <div class="dummy"></div>
+        </div>
+
+    </body>
+</html>

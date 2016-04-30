@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+                var baseBottom = parseInt($('div.bottom').css('bottom'),10)||0
+                var win = $(window).scroll(function(){
+                    var bottom=baseBottom-win.scrollTop();
+                    $('div.bottom').css('bottom',bottom).html('baseBottom:'+baseBottom+' bottom:'+bottom)
+
+                })
+            })
+        </script>
+        <style>
+            body{
+                height:1000px;
+            }
+            div.bottom{
+                background:#eee;
+                position:absolute;
+                bottom:100px;
+            }
+        </style>
+
+
+    </head>
+    <body>
+        <p>处理底部对齐。</p>
+        <div class="bottom">bottom</div>
+
+
+    </body>
+</html>

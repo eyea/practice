@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            div.fixed {
+                position: absolute;;
+                width: 150px;
+                height: 150px;
+                text-align: center;
+            }
+
+            #fix1 {
+                left: 100px;
+                top: 100px;
+                background: #aaccff;
+            }
+
+            #fix2 {
+                left: 150px;
+                top: 150px;
+                background: #ccaaff;
+            }
+
+            body {
+                width: 2000px;
+                height: 2000px;
+            }
+
+            div.box {
+                position: relative;
+                overflow: scroll;
+                border: solid 4px #eee;
+                width: 400px;
+                height: 400px;
+                margin: 0 200px;
+            }
+
+        </style>
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+                new function(){
+                    $.positionFixed = function(el){
+                        el.each(function(){
+                            new fixed(this)
+                        })
+                        return el;
+                    }
+                    $.fn.positionFixed = function(){
+                        return $.positionFixed(this)
+                    }
+                    var fixed = $.positionFixed.impl = function(el){
+                        this.target = $(el).css('position','fixed')
+                        if(!this.ie6)return;
+                        this.bindEvent();
+                    }
+                    $.mix(fixed.prototype,{
+                        ie6 : typeof document.documentElement.style.maxWidth == "undefined",
+                        bindEvent : function(){
+                            var target=this.target;
+                            target
+                            .css('position','absolute')
+                            .basePos = {
+                                top: parseInt(target.css('top')) || 0,
+                                left: parseInt(target.css('left')) || 0
+                            }
+                            target.parents().each(function(){
+                                var o = $(this);
+                                if (o.css('position') == 'relative')
+                                    o.after(target)
+                            })
+                            $(window).scroll(this.scrollEvent());
+                        },
+                        scrollEvent : function(){
+                            var target=this.target;
+                            return function(){
+                                target.css({
+                                    top: $(document).scrollTop() + target.basePos.top,
+                                    left: $(document).scrollLeft() + target.basePos.left
+                                })
+                            }
+                        }
+                    })
+                };
+                new function(){
+                    $.delayFixed = function(that,opt){
+                        that.each(function(){
+                            new delayFixed(this,opt)
+                        })
+                        return that;
+                    }
+                    $.fn.delayFixed = function(opt){
+                        return $.delayFixed(this,opt)
+                    }
+                    var delayFixed = $.delayFixed.impl = function(el,opt){
+                        this.opt= $.mix({delay:100},opt);
+                        this.target = $(el)
+                        this.bindEvent();
+                    }
+                    $.mix(delayFixed.prototype,$.positionFixed.impl.prototype,{
+                        scrollEvent : function(){
+                            var o=this;//重写scrollEvent
+                            var target=o.target;
+                            return function(){
+                                target.nextPos = {
+                                    top : $(document).scrollTop()+target.basePos.top,
+                                    left : $(document).scrollLeft()+target.basePos.left
+                                }
+                                if(target.timer)clearTimeout(target.timer)
+                                target.timer = setTimeout(function(){
+                                    target.animate(target.nextPos)
+                                },o.opt.delay)
+                            }
+                        }
+                    })
+                };
+
+                $("#fix1,#fix2").delayFixed();
+
+
+            })
+
+
+        </script>
+
+    </head>
+    <body>
+        <p>将PositionFixed02的逻辑封装起来，但要依赖于Position03的插件。</p>
+        <div id="fix1" class="fixed">
+            fix1
+        </div>
+        <div class="box">
+            box  position : relative; overflow : scroll;
+            <div id="fix2" class="fixed">
+                fix2
+            </div>
+        </div>
+
+    </body>
+</html>
