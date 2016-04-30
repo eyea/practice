@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ejs by 司徒正美</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <script src="mass_merge.js">  </script>
+        <script>
+            require("fixZIndex,ready", function($){
+                $('.menu').fixZIndex()
+            })
+        </script>
+        <style>
+            .container {
+                width: 300px; 
+                height: 50px; 
+                position: relative; 
+                background: yellow; 
+                border: 1px solid red; 
+                margin:1px;
+            }
+            .menu {width: 50px; height: 200px; background: pink;}​
+
+       
+        </style>
+    </head>
+    <body>
+        <div class="container"></div>
+        <div class="container"><div class="menu"></div></div>
+        <div class="container"></div>​
+        <br/>
+       
+
+    </body>
+</html>
