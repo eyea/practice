@@ -1,0 +1,89 @@
+﻿
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=8" http-equiv="X-UA-Compatible"/>
+    <title>radar chart</title>
+    <script src="javascripts/raphael.js" type="text/javascript" ></script>
+    <script type="text/javascript">
+      window.onload = function(){
+        var paper = Raphael("holder", 400, 300),
+        //半径
+        radii = 120,
+        //圆心
+        cc = [200,150],
+        //标签里面的文字
+        ability = ["认真","聪明","人气","人品","运气"],
+        //数据
+        data=[78,90,67,100,80],
+        //所有颜色都集中在这里定义
+        color = {keynote:"#586F85",circle:"#B3E2D5",bg:"#EEFFEE",edge:"#474747",
+          shadow:"#ABD7CB",light:"#fff",dark:"#000"},
+        //同心圆的样式
+        circleStyle = {fill:color.circle,stroke:color.edge,"stroke-dasharray":"- "},
+        //内标签的样式
+        labelStyle = {fill:color.dark,font:"12px 'Microsoft YaHei',Arial"},
+        //内标签的边框的样式
+        outterLabelStyle = {stroke:color.shadow, "stroke-opacity":0.5,"stroke-linecap":"round","stroke-width":"20px" },
+        frameStyle = {fill:color.light,stroke:color.dark,"stroke-width": 1},
+        //点的坐标，是个二维数组
+        coords = [],
+        outers = [];
+        //计算五个点的坐标, 72为360/5得出
+        paper.rect(0, 0, 398, 298, 10).attr({fill:color.bg,stroke:color.edge,"stroke-width":"1px"});
+        for(var i=0,n=data.length;i<n;i++){
+          var x = +(cc[0]+ data[i]/100*radii * Math.cos(-(18+72*i) *Math.PI/180)).toFixed(2),
+          y = +(cc[1]+ data[i]/100*radii * Math.sin(-(18+72*i) *Math.PI/180)).toFixed(2),
+          el = [x,y],
+          lineX = +(cc[0]+ (radii-2) * Math.cos(-(18+72*i) *Math.PI/180)).toFixed(2),
+          lineY = +(cc[1]+ (radii-2) * Math.sin(-(18+72*i) *Math.PI/180)).toFixed(2),
+          line = ["M",cc[0],cc[1], "L", lineX,lineY,"z"],
+          //计算外标签的坐标
+          outX = cc[0]+ (radii +20) * Math.cos(-(18+72*i) *Math.PI/180),
+          outY = cc[1]+ (radii +20) * Math.sin(-(18+72*i) *Math.PI/180);
+          outers.push([outX,outY]);
+          //绘制同心圆
+          paper.circle(cc[0], cc[1], radii*(100-20*i)/100).attr(circleStyle);
+          //把五个点的坐标放进数组中
+          coords.push(el);
+          //绘制那五条阴影线
+          paper.path(outterLabelStyle,line.join(" "));
+        }
+        //绘制外标签
+        paper.text(outers[0][0], outers[0][1], ability[0]).attr({"font-size":"14px","font-weight":700}).rotate(72)
+        paper.text(outers[1][0], outers[1][1], ability[1]).attr({"font-size":"14px","font-weight":700})
+        paper.text(outers[2][0], outers[2][1], ability[2]).attr({"font-size":"14px","font-weight":700}).rotate(-72)
+        paper.text(outers[3][0], outers[3][1], ability[3]).attr({"font-size":"14px","font-weight":700}).rotate(36)
+        paper.text(outers[4][0], outers[4][1], ability[4]).attr({"font-size":"14px","font-weight":700}).rotate(-36)
+        //绘制五边形
+        var path = ["M", coords[0], "L",coords[1], "L", coords[2],"L",coords[3],"L",coords[4],"z"],
+        frame = paper.rect(10, 10, 55,20,5).attr(frameStyle).hide(),
+        label = paper.text(5, 5, " ").attr(labelStyle).hide();
+        path = path.join(" ");
+        paper.path({fill:color.keynote,opacity:0.75,stroke:"none"},path);
+        for(var i=0,n=coords.length;i<n;i++){
+          var dot = paper.circle(coords[i][0],coords[i][1], 5).attr({fill:color.keynote,opacity:0.95,stroke:"none"});
+          (function(dot,i){
+            dot.mouseover(function(){
+              this.animate({r: 10}, 200);
+              frame.show().animate({x: coords[i][0], y: coords[i][1]}, 1);
+              label.attr({text:ability[i]+" "+data[i]}).show().animate({x: coords[i][0]+25, y: coords[i][1]+10},1);
+            });
+            dot.mouseout(function(){
+              this.animate({r: 5}, 200);
+              frame.hide();
+              label.hide();
+            });
+          })(dot,i);
+        }
+        frame.toFront();
+        label.toFront();
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="holder"></div>
+  </body>
+</html>
