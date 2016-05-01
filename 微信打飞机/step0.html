@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微信打飞机</title>
+    <style>
+.all {
+  width: 320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border:1px solid skyblue;
+}
+
+#bg {
+  z-index: 1;
+}
+
+#game {
+  z-index: 2;
+}
+    </style>
+</head>
+<body>
+    <div class="all">
+        <canvas id="game" width="320" height="568"></canvas>
+    </div>
+    <button onclick="start();">开始</button>
+    <button onclick="start2();">开始2</button>
+    <script src="js/requestAnimationFrame.js"></script>
+    <script>
+    var imgs = ['loading0@2x.png','loading1@2x.png','loading2@2x.png','loading3@2x.png'];
+    var imgObjs = [];
+    for(var i = 0;i<imgs.length;i++){
+        var img = new Image();
+        img.src = 'img/'+imgs[i];
+        imgObjs.push(img);
+    }
+    var canvas = document.getElementById('game');
+    var ctx = canvas.getContext('2d');
+    var index = 0;
+    function start(){
+        if(index==imgObjs.length){
+            index =0;
+        }
+        requestAnimationFrame(start);
+        ctx.clearRect(0,0,320,568);
+
+        ctx.drawImage(imgObjs[index],0,0);
+        index++;
+    }
+    var durtion = 150;
+    var lastTime = 0;
+    function start2(){
+        requestAnimationFrame(start2);
+        var now = Date.now();
+        if(now-lastTime<durtion){
+            return;
+        }
+        lastTime = now;
+        if(index==imgObjs.length){
+            index =0;
+        }
+        
+        ctx.clearRect(0,0,320,568);
+
+        ctx.drawImage(imgObjs[index],0,0);
+        index++;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微信打飞机</title>
+    <style>
+.all {
+  width: 320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#bg {
+  z-index: 1;
+}
+
+#game {
+  z-index: 2;
+}
+    </style>
+</head>
+<body>
+    <div class="all">
+        <canvas id="bg" width="320" height="568"></canvas>
+        <canvas id="game" width="320" height="568"></canvas>
+    </div>
+    <script src="js/requestAnimationFrame.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+ * [fe init](green)：将当前目录初始化为前端项目文件夹，需要输入项目名称等内容
+ * [fe task -l](green)：列出支持的grunt task
+ * [fe template -h](green)：获取template使用帮助
+ * [fe plugin new-plugin](green)：创建new-plugin的task
+ * 任务相关命令，每个task都有不同的参数，但是都提供一个help命令，如
+     > [fe concat --help](green): 查看concat的帮助

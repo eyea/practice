@@ -1,0 +1,49 @@
+{
+    "files": {
+        "Sass": [
+            "config.rb",
+            "src/sass/_base.scss"
+        ],
+        "index": [
+            "src/index.html"
+        ],
+        "jQuery": [
+            "src/js/jquery.1.8.2.js"
+        ],
+        "Zepto": [
+            "src/js/zepto.js"
+        ]
+    },
+    "build_in_templates": {
+        "webapp": {
+            "name": "webapp",
+            "directory": "webapp",
+            "description": "A webapp template.",
+            "withGrunt": true,
+            "withCompass": true
+        },
+        "js-framework": {
+            "name": "js-framework",
+            "directory": "js-framework",
+            "description": "A js-framework template.",
+            "withGrunt": true,
+            "withCompass": false
+        },
+        "node-module": {
+            "name": "node-module",
+            "directory": "node-module",
+            "description": "A node-module template.",
+            "withGrunt": true,
+            "withCompass": false
+        }
+    },
+    "templates": {
+        "demo": {
+            "name": "demo",
+            "directory": "E:\\www\\github\\FEinit\\test",
+            "description": "A another template.",
+            "withGrunt": true,
+            "withCompass": false
+        }
+    }
+}

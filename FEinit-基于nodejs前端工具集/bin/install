@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var child_process = require('child_process');
+var execFile = child_process.execFile;
+var exec = child_process.exec;
+var join = require('path').join;
+var root = join(__dirname, '../');
+var read = require('read');
+var colors = require('colors');
+read({
+    prompt: '[' + '?'.bold.green + '] 添加FEinit到鼠标右键 (windows用户支持)[Y/n]',
+    default: 'n',
+    timeout: 100000
+}, function(err, value) {
+    if (/^y$/i.test(value)) {
+        var exe = execFile(root + '/install.cmd', [])
+        exe.stdout.on('data', function(data) {
+            console.log('NOTE'.green + ': ' + data);
+        });
+        exe.stderr.on('data', function(data) {
+            console.log('ERROR'.red + ': ' + data);
+        });
+        exe.on('exit', function() {
+            console.log('Done, 右键安装成功!'.bold.green);
+            installInitModules();
+        })
+    }else{
+        installInitModules();
+    }
+});
+
+function installInitModules(){
+    console.log('开始安装init默认的grunt插件...'.bold.green);
+    var child = exec('cd ' + root + '/init && npm install', []);
+    child.stdout.on('data', function(data) {
+        process.stdout.write('NOTE'.green + ': ' + data);
+    });
+    child.stderr.on('data', function(data) {
+        // process.stdout.write('ERROR'.red + ': ' + data);
+    });
+    child.on('exit', function(){
+        console.log('Done, Install Success!'.bold.green);
+    })
+}

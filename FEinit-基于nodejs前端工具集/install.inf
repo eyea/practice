@@ -1,0 +1,41 @@
+[Version]
+Signature="$CHICAGO$"
+Provider=ksky521@gmail.com, 2013
+
+[DefaultInstall]
+AddReg=Install_AddReg
+
+[DefaultUnInstall]
+DelReg=Uninstall_DelReg
+
+[Uninstall_DelReg]
+hkcr,"*\Shell\FEinit"
+hkcr,"*\ContextMenus\FEinit\Shell\compressor"
+hkcr,"*\ContextMenus\FEinit\Shell\img-smushit"
+hkcr,"*\ContextMenus\FEinit\Shell\image-min
+hkcr,"*\ContextMenus\FEinit\Shell\beautify"
+hkcr,"*\ContextMenus\FEinit\Shell\BuildHtml"
+hkcr,"*\ContextMenus\FEinit\Shell\img-base64"
+hkcr,"*\ContextMenus\FEinit\Shell"
+hkcr,"*\Shell\ContextMenus\FEinit"
+
+[Install_AddReg]
+hkcr,"*\Shell\FEinit","MUIVerb",,"FEinit«∞∂Àπ§æﬂ"
+hkcr,"*\Shell\FEinit","ExtendedSubCommandsKey",,"*\ContextMenus\FEinit"
+
+hkcr,"*\ContextMenus\FEinit\Shell\compressor",,,"js css—πÀı"
+hkcr,"*\ContextMenus\FEinit\Shell\compressor\command",,,"""%01%\bin\compressor.cmd"" ""%%1"""
+hkcr,"*\ContextMenus\FEinit\Shell\beautify",,,"js css∏Ò ΩªØ"
+hkcr,"*\ContextMenus\FEinit\Shell\beautify\command",,,"""%01%\bin\beautify.cmd"" ""%%1"""
+
+hkcr,"*\ContextMenus\FEinit\Shell\img-smushit",,,"Õº∆¨—πÀısmushit"
+hkcr,"*\ContextMenus\FEinit\Shell\img-smushit\command",,,"""%01%\bin\img-smushit.cmd"" ""%%1"""
+
+hkcr,"*\ContextMenus\FEinit\Shell\image-min",,,"Õº∆¨—πÀıimagemin"
+hkcr,"*\ContextMenus\FEinit\Shell\image-min\command",,,"""%01%\bin\image-min.cmd"" ""%%1"""
+
+hkcr,"*\ContextMenus\FEinit\Shell\BuildHtml",,,"Html±‡“Î"
+hkcr,"*\ContextMenus\FEinit\Shell\BuildHtml\command",,,"""%01%\bin\html-build.cmd"" ""%%1"""
+
+hkcr,"*\ContextMenus\FEinit\Shell\img-base64",,,"Õº∆¨base64(÷ß≥÷css)"
+hkcr,"*\ContextMenus\FEinit\Shell\img-base64\command",,,"""%01%\bin\img-base64.cmd"" ""%%1"""
