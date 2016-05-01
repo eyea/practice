@@ -1,0 +1,49 @@
+<%- include('tpl/header', {
+   title:'搜索',
+   css:['options','query'],
+   js:['query']
+}); %>
+
+<%- include('tpl/navbar', {activeNav:'query'})%>
+
+<div class="body-wrapper">
+    <div class="row">
+      <div id="J-keyword-form" class="input-append control-group success span5" >
+          <input id="J-keyword" class="span3" type="text" placeholder="输入关键词搜索三天内全网特价商品">
+          <button id="J-keyword-submit" class="btn btn-success" type="submit">搜索</button>
+      </div>
+    </div>
+
+    <div id="J-query-q" class="query-list nav nav-pills">
+    </div>
+    <div id="J-content">
+
+    </div>
+    <div id="J-loadmore" class="loadmore clearfix" style="diplay:none;">
+        <button class="btn">加载更多30条...</button>
+    </div>
+    <div id="J-loading" class="loading">
+        <div class="loadingicon progress progress-indeterminate">
+            <div class="win-ring small"></div>
+        </div>
+        <span class="loadingmoreword">加载中，请稍候...</span>
+    </div>
+</div>
+<div id="J-info">
+</div>
+<div id="J-empty-info" class="listview-item big bg-color-green" style="display:none;">
+  <div class="pull-left">
+     <div class="listview-item-object icon-point-right"></div>
+  </div>
+  <div class="listview-item-body">
+     <h4 class="listview-item-heading">空空如也~</h4>
+     <p class="two-lines">额，您好像还没添加要关注的关键词哦~<br/>
+        快去【<a class="orange" href="options.html">设置页面</a>】填写吧！
+     </p>
+ </div>
+</div>
+
+<%- include('tpl/item') %>
+<%- include('tpl/totop') %>
+<%- include('tpl/footer')%>
+

@@ -1,0 +1,52 @@
+<div id="J-about" class="modal hide fade in" >
+  <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal"></button>
+     <h3 id="myModalLabel">感谢使用本插件！</h3>
+  </div>
+  <div class="modal-body">
+     <ul class="nav nav-tabs" id="J-model-tab">
+         <li class="active"><a href="#J-ver-box">当前版本</a></li>
+         <li><a href="#J-bug">报告问题</a></li>
+       </ul>
+
+       <div class="tab-content">
+         <div id="J-ver-box" class="tab-pane active">
+             <p id="J-version"></p>
+             <div>
+                <button class="btn btn-success" id="J-update-btn" data-loading-text="检查中...">检查更新</button>
+                <span id="J-update-info"></span>
+             </div>
+             <div id="J-changelog"></div>
+         </div>
+         <div class="tab-pane" id="J-bug">
+             <div class="form-horizontal">
+                  <div class="control-group">
+                     <label class="control-label" for="J-mybug">问题描述</label>
+                     <div class="controls">
+                        <textarea rows="3" id="J-mybug"></textarea>
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="J-email">Email</label>
+                     <div class="controls">
+                        <input type="text" id="J-email" placeholder="您的Email地址">
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <div class="controls">
+                        <button id="J-send-mail" type="submit" class="btn" data-loading-text="发送中...">发送</button>
+                     </div>
+                  </div>
+               </div>
+         </div>
+       </div>
+
+  </div>
+  <div class="modal-footer">
+     <button class="btn" data-dismiss="modal">关闭</button>
+     <button id="J-like" class="btn btn-success" data-link="https://chrome.google.com/webstore/detail/fencnigkojiegaifcngopoenckcgbcoo">我喜欢这个插件，我要去Chrome商店给好评</button>
+  </div>
+</div>
+<script src="js/common.js"></script>
+</body>
+</html>

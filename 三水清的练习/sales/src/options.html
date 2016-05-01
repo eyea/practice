@@ -1,0 +1,118 @@
+<%- include('tpl/header', {
+   title:'设置',
+   css:['options'],
+   js:['options']
+}); %>
+
+<%- include('tpl/navbar', {activeNav:'options'})%>
+
+<div class="body-wrapper">
+    <div class="setting-box">
+        <h1 class="title" style="margin-bottom:40px;"><span>消息设置</span><i class=" icon-volume"></i></h1>
+        <div class="row box">
+            <div class="span3" style="position:relative">
+                <h4>是否开启桌面提醒</h4>
+                <div class="popover top">
+                     <div class="arrow"></div>
+                     <div class="popover-content">
+                        <p>开启弹窗是为了更好方便快捷的抢到折扣宝贝，手慢了宝贝就没有啦！</p>
+                     </div>
+                  </div>
+                <div class="row">
+                    <div class="span1"><input data-lsid="openNotice" id="J-notice-btn" type="checkbox" class="J-switch" checked /></div>
+                    <div class="span2">
+                    <button id="J-desktop-test" class="btn-success btn"><i class="icon-comment-2"></i>观看提醒样式</button></div>
+                </div>
+            </div>
+            <div class="span3">
+                <h4>设置安静时间段<i class="icon-question-3" data-toggle="tooltip" title="设置的时间段不会收到桌面提醒"></i></h4>
+                <div class="row">
+                    <div class="span1"><input data-lsid="beQuiet" id="J-quiet-btn" type="checkbox" class="J-switch" checked /></div>
+                    <div class="span1">
+                        <select data-index="0" id="J-quiet-time1" class="J-timer-select"><option value="0">0:00</option><option value="1">1:00</option><option value="2">2:00</option><option value="3">3:00</option><option value="4">4:00</option><option value="5">5:00</option><option value="6">6:00</option><option value="7">7:00</option><option value="8">8:00</option><option value="9">9:00</option><option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option><option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option><option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option><option value="24">24:00</option></select>
+                    </div>
+                    <div class="span1"><select data-index="1" id="J-quiet-time2" class="J-timer-select"><option value="0">0:00</option><option value="1">1:00</option><option value="2">2:00</option><option value="3">3:00</option><option value="4">4:00</option><option value="5">5:00</option><option value="6">6:00</option><option value="7">7:00</option><option value="8">8:00</option><option value="9">9:00</option><option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option><option value="13">13:00</option><option value="14">14:00</option><option value="15">15:00</option><option value="16">16:00</option><option value="17">17:00</option><option value="18">18:00</option><option value="19">19:00</option><option value="20">20:00</option><option value="21">21:00</option><option value="22">22:00</option><option value="23">23:00</option><option value="24">24:00</option></select></div>
+                </div>
+            </div>
+            <div class="span3">
+                <h4>是否开启声音提醒</h4>
+                <div class="row">
+                    <div class="span1"><input data-lsid="openMusic" id="J-music-btn" type="checkbox" class="J-switch" checked /></div>
+                    <div class="span2">
+                    <button id="J-sound-test" data-loading-text="播放中..." class="btn-success btn"><i class="icon-music-2"></i>试听</button></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row box" style="margin-top:10px;">
+            <div class="span3" style="position:relative">
+                <h4>显示海淘桌面提醒</h4>
+                <div class="row">
+                    <div class="span1"><input data-lsid="hitaoNotice" id="J-hitao-btn" type="checkbox" class="J-switch" checked /></div>
+                </div>
+            </div>
+            <div class="span3">
+                <h4>设置最大弹窗数量<i class="icon-question-3" data-toggle="tooltip" title="弹窗数不会超过所设数量"></i></h4>
+                <select id="J-max-notify">
+                    <option value="ALL">全部</option>
+                    <option value="1">最多1个</option>
+                    <option value="2">最多2个</option>
+                    <option value="3" selected="selected">最多3个[默认]</option>
+                    <option value="4">最多4个</option>
+                    <option value="5">最多5个</option>
+                    <option value="6" >最多6个</option>
+                    <option value="7">最多7个</option>
+                    <option value="8">最多8个</option>
+                    <option value="9">最多9个</option>
+                    <option value="10">最多10个</option>
+                </select>
+            </div>
+            <div class="span3">
+                <h4>设置刷新间隔<i class="icon-question-3" data-toggle="tooltip" title="隔多少时间获取最新数据"></i></h4>
+                <select id="J-notify-interval">
+                    <option value="5" selected="selected">5分钟[默认]</option>
+                    <option value="10">10分钟</option>
+                    <option value="15">15分钟</option>
+                    <option value="30">半小时</option>
+                    <option value="60">1小时</option>
+                    <option value="0">关闭</option>
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="setting-box">
+        <h1 class="title"><span>订阅打折商品关键字</span><i class="icon-heart"></i></h1>
+        <div class="add-kw row">
+            <div id="J-keyword-form" class="input-append control-group success span3" >
+                <input id="J-keyword" class="span2" type="text">
+                <button id="J-keyword-submit" class="btn btn-success" type="submit">添加</button>
+            </div>
+            <div class="span4">
+                <span class="bold">开启关键字商品桌面提醒 (<span class="ktips" data-toggle="tooltip" title="此开关不受[消息设置]开关控制">查看帮助</span>) ：</span>
+                <input data-lsid="openKeyword" type="checkbox" class="J-switch" checked />
+            </div>
+        </div>
+        <div id="J-hot-keyword" class="row">
+            <div class="span9 clearfix">
+                <span id="J-hot">热门关键字：</span>
+            </div>
+        </div>
+        <div class="kw-box">
+            <div class="kw-title">已添加的关键词</div>
+            <div id="J-kw-con" class="kw-con">
+                <p>竟然还是空的，添加订阅关键字会帮你监控你想要的优惠信息哦</p>
+            </div>
+        </div>
+        <p class="tips"><span class="label label-info">Hands up!</span>
+            <ol>
+                <li>订阅的关键字会优先提示</li>
+                <li>点击顶部导航条的 &nbsp; [<a href="./query.html">查看订阅消息</a>] &nbsp; 会打开所有订阅的关键字折扣商品页面</li>
+            </ol>
+        </p>
+    </div>
+</div>
+
+<%- include('tpl/footer')%>
+

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%>-特价商品实时推送</title>
+    <link rel="stylesheet" type="text/css" href="css/bootmetro.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootmetro-responsive.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootmetro-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootmetro-ui-light.min.css">
+    <link rel="stylesheet" type="text/css" href="css/switchery.min.css">
+    <%if (hasOwnProperty('css')) {%>
+        <%if(Array.isArray(css)){%>
+        <% css.forEach(function(file){ %>
+            <link rel="stylesheet" href="css/<%=file%>.css">
+        <% }); %>
+        <%}else{%>
+            <link rel="stylesheet" href="css/<%=css%>.css">
+        <%}%>
+    <%}%>
+
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootmetro-panorama.min.js"></script>
+    <script type="text/javascript" src="js/bootmetro-pivot.min.js"></script>
+    <script type="text/javascript" src="js/bootmetro-charms.min.js"></script>
+    <script src="js/switchery.min.js"></script>
+    <%if (hasOwnProperty('js')) {%>
+        <%if(Array.isArray(js)){%>
+        <% js.forEach(function(file){ %>
+            <script src="js/<%=file%>.js"></script>
+        <% }); %>
+        <%}else{%>
+            <script src="js/<%=css%>.js"></script>
+        <%}%>
+    <%}%>
+</head>
+<body>
