@@ -1,0 +1,86 @@
+
+.main{
+  width: 990px;
+  margin: 20px auto;
+}
+
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  
+background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC'), -webkit-gradient(linear, 0 0, 0 100%, from(#EDEDED), color-stop(0.38, #EDEDED), to(#DEDEDE));
+background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC'), -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC'), -moz-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC'), -o-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC'), linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+  
+  background-position: right center;
+  background-repeat: no-repeat;
+  
+  
+  
+  border: 1px solid rgba(0, 0, 0, .36);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1), inset 0 1px 2px rgba(255, 255, 255, .5);
+  color: #333;
+ 
+  margin: 0; 
+  padding:5px 32px 5px 5px;
+  -moz-padding-end: 16px;
+  
+  min-width: 4em;
+  cursor:pointer;
+  font-size: 16px;
+
+  -webkit-webkit-transition: border-color .3s;
+  -moz-webkit-transition: border-color .3s;
+  -ms-webkit-transition: border-color .3s;
+  -o-webkit-transition: border-color .3s;
+  webkit-transition: border-color .3s;    
+}
+
+select:focus{
+  border-color: #5993F3;
+  outline:0 none;
+}
+
+
+/* IE10+ 用伪元素隐藏下拉箭头 */
+select::-ms-expand {
+  display: none;
+}
+
+
+.menulist{
+  /* background-color: lightblue; */
+  position: relative;
+  display: inline-block;
+}
+
+/* 生成一个背景色相同的元素遮盖 Firefox 下拉箭头 */
+@-moz-document url-prefix() { 
+.menulist:after{
+  content: '';
+  position: absolute;
+  width:17px;
+  right: 17px;
+  top: 1px;
+  bottom: 1px;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  pointer-events: none;  
+  
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EDEDED), color-stop(0.38, #EDEDED), to(#DEDEDE));
+  background-image: -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+  background-image: -moz-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+  background-image: -o-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+  background-image: linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+}
+}

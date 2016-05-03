@@ -1,0 +1,34 @@
+<%- include('tpl/header', {
+   title:'全部特价信息',
+   css:['options','aio'],
+   js:[ 'aio']
+}); %>
+
+
+<%- include('tpl/navbar', {activeNav:'aio'})%>
+<div class="body-wrapper">
+    <div id="J-nav">
+
+    </div>
+    <div id="J-content">
+
+    </div>
+    <div id="J-loadmore" class="loadmore clearfix" style="diplay:none;">
+        <button class="btn">加载更多30条...</button>
+    </div>
+    <div id="J-loading" class="loading">
+        <div class="loadingicon progress progress-indeterminate">
+            <div class="win-ring small"></div>
+        </div>
+        <span class="loadingmoreword">加载中，请稍候...</span>
+    </div>
+</div>
+
+<div id="J-info">
+</div>
+<%- include('tpl/item') %>
+<%- include('tpl/totop') %>
+<%- include('tpl/footer') %>
+
+
+

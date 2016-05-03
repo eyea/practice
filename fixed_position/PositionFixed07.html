@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+                var abs= $('div.absolute')
+                var page = abs.offset();
+                abs.html('left : '+page.left + "  top: "+ page.top) //left : 320
+
+            })
+        </script>
+        <style>
+            body{
+                margin:100px;
+                border:solid 10px red;
+                padding:100px;
+            }
+            div.relative{
+                position:relative;
+                left:50px;
+                border:solid 10px blue;
+                height:100px;
+            }
+            div.absolute{
+                position:absolute;
+                left:50px;
+                background:#aaccff;
+            }
+
+
+        </style>
+
+
+    </head>
+    <body>
+        <p>处理底部对齐。</p>
+        <div class="relative">
+            <div>
+                <div class="absolute">absolute</div>
+            </div>
+        </div>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,88 @@
+.query-list{
+    button{
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+}
+.loadmore{
+    text-align: center;
+    display: none;
+    margin-bottom: 20px;
+}
+.loading{
+    width: 120px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    .loadingicon{
+        margin-left: 30px;
+        margin-bottom: 0;
+    }
+
+}
+
+.item:nth-child(odd){
+    background-color: #f7f7f7;
+}
+
+.item{
+    margin-bottom: 20px;
+    padding: 10px;
+
+    .key{
+        color:#F48C12;
+    }
+    .thumbnail{
+        margin-right: 10px;
+        overflow: hidden;
+        float:left;
+        width: 120px;
+        min-height: 100px;
+    }
+    .footer{
+        margin-left: 0;
+    }
+    .footer.span7{
+        width: 600px;
+    }
+    .buy{
+        float: right;
+    }
+    .mallname{
+        color:#5db95b;
+        margin: 0 20px 0 0;
+    }
+    .source{
+        margin: 0 5px;
+    }
+    .links button{
+        width: 90px;
+    }
+}
+.listview-item{
+    position: absolute;
+    left: 50%;
+    margin-left: -190px;
+    margin-top: 70px;
+    .listview-item-heading{
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 20px;
+        margin-top: 6px;
+    }
+    .listview-item-body p.two-lines{
+        line-height: 24px;
+        height: 52px;
+    }
+    .orange{
+        color:#F0960D;
+        font-weight: bold;
+    }
+}
+#J-info{
+    text-align: center;
+    font-weight: bold;
+    display: none;
+    .keyword{
+        color:#F48C12
+    }
+}

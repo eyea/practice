@@ -15,12 +15,26 @@
 	</style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
 <div style="background-color:red;height:30px" onclick="cf(20,100);"></div>
 <div style="background-color:green;height:30px" onclick="table(20,100);"></div>
+>>>>>>> 9372945d35da43f75855ffbae8b62bb4e4fa82e8
 	<script>
 		// 表格
 		document.write('<table >');
 			for(var i=0;i<10;i++){
+<<<<<<< HEAD
+				document.write("<tr>");
+				var bgc="yellow";
+				if(i%2==0){
+					bgc="green";
+				}else{
+					bgc="";
+				}
+				for(var j=0;j<10;j++){
+					document.write("<td style='background-color:bgc'>"+(i*10+j)+"</td>");
+=======
 
 				if(i%2==0){
 					var bgc="green";
@@ -30,12 +44,17 @@
 				document.write('<tr style="background-color:bgc;">');
 				for(var j=0;j<10;j++){
 					document.write("<td>"+(i*10+j)+"</td>");
+>>>>>>> 9372945d35da43f75855ffbae8b62bb4e4fa82e8
 				}
 				document.write("</tr>");
 			}
 
 		document.write("</table>");	
+<<<<<<< HEAD
+		document.write("<div style='height:20px'>");
+=======
 
+>>>>>>> 9372945d35da43f75855ffbae8b62bb4e4fa82e8
 		// 九九乘法表
 		document.write('<table>');
 			for(var i=1;i<10;i++){
@@ -49,6 +68,8 @@
 			}
 		document.write('<\/table>')
 
+<<<<<<< HEAD
+=======
 		// 9*9-函数
 		function cf(row,col){
 			document.write('<table>');
@@ -78,6 +99,7 @@
 		}
 		table(20,20);
 
+>>>>>>> 9372945d35da43f75855ffbae8b62bb4e4fa82e8
 
 
 

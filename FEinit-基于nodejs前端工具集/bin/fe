@@ -1,0 +1,89 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var optimist = require('optimist')
+    .alias({
+        'R': 'remove',
+        'h': 'help',
+        'o': 'output',
+        'l': 'list',
+        'c': 'create',
+        'e': 'edit',
+        's': 'size',
+        'v': 'version'
+    }).boolean(['v', 'h']);
+
+var path = require('path');
+var join = path.join;
+var config = join(__dirname, '../', 'config.json'); //默认配置文件
+var grunt = require('grunt');
+
+
+var root = join(__dirname, '../');
+var feEvent = new(require(root + '/lib/feEvent'))();
+var log = require(root + '/lib/feLog');
+
+// var cli = require('../lib/node_modules/grunt/lib/grunt/cli');
+// var cmds = cli.tasks,
+//     route = cmds.join(' ').trim('');
+
+var cmds = optimist.argv;
+
+var firstCmd = cmds._.splice(0, 1).toString();
+if (!firstCmd) {
+    //显示帮助
+    if (cmds.h) {
+        log.help();
+        return;
+    }
+    //显示版本
+    if (cmds.v) {
+        return log.logo();
+    }
+}
+
+
+
+switch (firstCmd) {
+    case 'template':
+        //模板皮肤相关的直接扔给 feTemplate
+        //-c 创建
+        //-rm 删除
+        //-l 列表
+        //-e 编辑
+        require(root + '/lib/feTemplate')(cmds, process.cwd());
+        break;
+    case 'plugin':
+        //自动生成二次开发插件
+        require(root + '/lib/fePlugin')(cmds, process.cwd());
+        break;
+    case 'config':
+        //config 列表
+        log.note('config.json: ');
+        fs.createReadStream(config).pipe(process.stdout);
+        break;
+    case 'task':
+        //task列表
+        feEvent.taskList();
+        break;
+    case 'init':
+    case 'create':
+        var FE = require(root + '/lib/FEinit');
+        FE.init(process.cwd()).start(cmds._.splice(0, 1).toString());
+        break;
+    default:
+        var Task = require(root + '/lib/task');
+        var task = new Task(process.cwd(), cmds);
+        task.run();
+}
+
+
+function getValue(a) {
+    switch (a) {
+        case 'true':
+            return true;
+        case 'false':
+            return false;
+    }
+    return a;
+}

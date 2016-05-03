@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- <script src="jquery1.83.js"></script>-->
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+               // alert("fixed~!")
+                var target=$('div.fix').css('position','absolute');
+                var relative = target.parents().filter(function(){
+                    var pos = $(this).css('position')
+                    return pos =='relative'|| pos == "absolute";
+                });
+                //对PositionFixed08进行改进,一下子取得所有定位的祖先,并且不是每找一个就移动一次
+                //为了防止回流,使用last API只做最后一次改动
+                //能处理窗口改动的情况
+                var s = relative.length;
+                if( s  > 0)
+                    relative.last().after(target)
+                var css = {
+                    top:target.css('top'),
+                    left:target.css('left'),
+                    right:target.css('right'),
+                    bottom:target.css('bottom')
+                }
+                var base,win;
+                var getPos = function(){
+                    base = {//参见PositionFixed06
+                        top : target.offset().top - (css.top=='auto'? win.scrollTop():0),
+                        left : target.offset().left - (css.left=='auto'?win.scrollLeft():0)
+                    }
+                }
+                var setPos = function(){
+                    target.css({
+                        'top':base.top + win.scrollTop(),
+                        'left':base.left + win.scrollLeft()
+                    })
+                }
+             
+                win = $(window).scroll(function(){
+                    setPos()
+                }).resize(function(){
+                    setTimeout(function(){
+                        target.css(css)
+                        getPos();
+                        setPos();
+                    },1)
+                })
+                getPos();
+                setPos();
+
+            
+
+            })
+        </script>
+        <style>
+            body{
+                height:1000px;
+            }
+            div.fix{
+                right:100px;
+                bottom:100px;
+                background:#555;
+                color:#fff;
+                width:50px;
+                height:50px;
+            }
+            div.relative{
+                position:relative;
+                left:200px;
+                border:solid 4px #aaccff;
+                width:100px;
+                height:100px;
+            }
+
+
+
+        </style>
+
+
+    </head>
+    <body>
+        <p>resize对应版。</p>
+        <div class="relative">relative
+            <div class="fix">fix</div>
+        </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微信打飞机</title>
+    <style>
+.all {
+  width: 320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#bg {
+  z-index: 1;
+}
+
+#game {
+  z-index: 2;
+}
+    </style>
+</head>
+<body>
+    <div class="all">
+        <canvas id="bg" width="320" height="568"></canvas>
+        <canvas id="game" width="320" height="568"></canvas>
+    </div>
+    <button onclick="update()">开始</button>
+    <script src="js/requestAnimationFrame.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/bg.js"></script>
+    <script>
+    var img = './img/gameArts.png';
+    var imgObj = new Image();
+    imgObj.src = img;
+    var frames = [
+                  [82, 657, 34, 24]
+                ];
+    var canvas = document.getElementById('game');
+    var ctx = canvas.getContext('2d');
+    var index=0;
+    var y = 0;
+    function update(){
+      requestAnimationFrame(update);
+        if(index==frames.length){
+          index = 0;
+        }
+        y += 2;
+        var curFrame = frames[index];
+        ctx.clearRect(0,0,320,568);
+        ctx.drawImage(imgObj, curFrame[0], curFrame[1], curFrame[2], curFrame[3], 150, y, curFrame[2], curFrame[3]);
+        index++;
+    }
+    </script>
+</body>
+</html>

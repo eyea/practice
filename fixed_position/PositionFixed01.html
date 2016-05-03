@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            div.fixed {
+                position: absolute;;
+                width: 150px;
+                height: 150px;
+                text-align: center;
+            }
+
+            #fix1 {
+                left: 100px;
+                top: 100px;
+                background: #aaccff;
+            }
+
+            #fix2 {
+                left: 150px;
+                top: 150px;
+                background: #ccaaff;
+            }
+
+            body {
+                width: 2000px;
+                height: 2000px;
+            }
+
+            div.box {
+                position: relative;
+                overflow: scroll;
+                border: solid 4px #eee;
+                width: 400px;
+                height: 400px;
+                margin: 0 200px;
+            }
+        </style>
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event,css,ready",function($){
+                var fixed = function(fix){
+                    fix.basePos = {
+                        top: parseInt(fix.css('top')) || 0,
+                        left: parseInt(fix.css('left')) || 0
+                    }
+                    fix.parents().each(function(){
+                        var o = $(this);
+                        if (o.css('position') == 'relative')
+                            o.after(fix)
+                    })
+                    $(window).scroll(function(){
+                        fix.css({
+                            top: $(document).scrollTop() + fix.basePos.top,
+                            left: $(document).scrollLeft() + fix.basePos.left
+                        })
+                    })
+                }
+                if(typeof document.documentElement.style.maxWidth != "undefined"){
+                    $('#fix1,#fix2').css("position","fixed");
+                }else{
+                    $('#fix1,#fix2').each(function(){
+                        fixed($(this));
+                    });
+                }
+             
+            })
+         
+
+        </script>
+
+    </head>
+    <body>
+        <p>fix1是相对于窗口定位，fix2是相对于box定位</p>
+        <p>此法是先取得元素的top, left，这是相对于包含块的位置，那么只要是包含块就可以。为了消除包含块的滚动条的作用，并只让它受窗口滚动条的作用，我们把它放到其最外层的被相对定位的祖先之后。</p>
+        <p>最后是监听滚动条移动，将移动距离加在top, left之上。</p>
+        <div id="fix1" class="fixed">
+            fix1
+        </div>
+        <div class="box">
+            box  position : relative; overflow : scroll;
+            <div id="fix2" class="fixed">
+                fix2
+            </div>
+        </div>
+
+    </body>
+</html>

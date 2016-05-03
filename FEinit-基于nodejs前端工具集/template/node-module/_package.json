@@ -1,0 +1,12 @@
+{
+    "name": "<%= name %>",
+    "version": "0.1.0",
+    "description": "<%= description %>",
+    "author": {
+        "name": "<%= userName %>",
+        "email": "<%= userEmail %>"
+    },
+    "dependencies": {
+        "optimist": ">=0.6.0"
+    }
+}

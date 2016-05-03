@@ -1,0 +1,38 @@
+@import 'item';
+
+#J-nav{
+    span.fl{
+        padding: 3px 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .btn{
+        border: none;
+        background-color: white;
+        color: #5bb75b;
+        font-weight: normal;
+        padding: 4px 8px;
+
+        &:hover{
+            background-color: #eee;
+        }
+    }
+    .btn.btn-success{
+        font-weight: bold;
+        background-color: #5bb75b;
+        border-color: #5bb75b;
+        color: white;
+    }
+    .tnav button{
+        margin-bottom: 10px;
+    }
+}
+.tooltip.top .tooltip-arrow{
+    border-top-color: #000
+}
+.tooltip-inner{
+    background-color: #000
+}
+p.desc{
+    word-break: break-all;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PositionFixed17的统合版</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- <script src="jquery1.83.js"></script>-->
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event, css, ready ",function($){
+                $.fn.delayFixed = function(){
+                    return this.each(function(){
+                        var o=$(this);
+                        var pos=o.position();
+                        var container=$(window).scroll(function(){
+                            o.delayEfect(function(){
+                                return {
+                                    top:Math.max(container.scrollTop(),pos.top),
+                                    left:Math.max(container.scrollLeft(),pos.left)
+                                }
+                            })
+                        })
+                    })
+                }
+                $.fn.delayEfect = function(curry,config){
+                    var o = this;
+                    var c = $.mix((o.data('delayEfectCfg')||{
+                        delay:100,
+                        speed:300
+                    }),config);
+                    o.data('delayEfectCfg',c);
+                    if(c.timer)clearTimeout(c.timer);
+                    c.timer=setTimeout(function(){
+                        o.stop(true, true).animate(curry(),c.speed);
+                    },c.delay);
+                }
+                $('div.absolute').delayFixed()
+
+            })
+        </script>
+        <style>
+            div.absolute{
+                background:#eee;
+                position:absolute;
+                width:100px;
+                height:100px;
+                top:50px;
+                left:50px;
+            }
+            div.contents{
+                width:2000px;
+                height:2000px;
+            }
+            div.relative{
+                background:#aaccff;
+                position:relative;
+                top:50px;
+                left:50px;
+                width:250px;
+                height:250px;
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <p>.absolute元素拥有相对定位的祖先</p>
+        <div>
+            <div class="relative">
+                <div class="absolute">absolute</div>
+            </div>
+        </div>
+
+        <div class="contents"></div>
+
+
+    </body>
+</html>

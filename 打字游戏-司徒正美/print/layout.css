@@ -1,0 +1,79 @@
+/* the home page layout stylesheet */
+html, body {
+  font-size: 10pt;
+  font-family: Verdana;
+  background: #eee;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+a {
+  color: brown;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+  font-family: Georgia;
+  font-weight: normal;  
+  color: #88AA8A;
+  margin-top: 0;
+}
+
+#body {
+  height: 100%;
+  border: 1px solid #DDD;
+  border-top: none;
+  border-bottom: none;
+  background: #FFF;
+  width: 60em;
+  margin: auto auto;
+  -moz-box-shadow: grey 0 -1em 1em;
+  -webkit-box-shadow: grey 0 -1em 1em;
+  position: relative;
+  min-height: 50em;
+}
+#head, #main, #foot {
+  padding: 1.5em;
+}
+
+#head {
+  background: #efe;
+  position: relative;
+}
+
+#foot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 57em;
+  text-align: right;
+  color: #888;
+}
+
+#logo {
+  text-decoration: none;
+  font-size: 4em;
+  font-family: Georgia;
+  font-weight: bold;
+}
+
+#main-menu {
+  position: absolute;
+  right: 1.5em;
+  bottom: .5em;
+  list-style: none;
+}
+#main-menu li {
+  float: left;
+  padding: 0 .5em;
+}
+#main-menu li a {
+  
+}
+#main-menu li.current a {
+  font-weight: bold; 
+}

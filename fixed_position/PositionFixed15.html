@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>fixed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- <script src="jquery1.83.js"></script>-->
+        <script src="mass_merge.js"></script>
+        <script>
+            require("event, css, ready ",function($){
+
+            })
+        </script>
+        <style>
+            html{
+                background:#88aacc;
+            }
+            body{
+                border:solid 10px #99bbdd;
+                width:700px;
+                height:1000px;
+                margin:10px auto;
+                background:#aaccff;
+            }
+            pre{
+                margin:150px;
+                border:solid 1px #fff;
+                padding:10px;
+            }
+            .fixed{
+                position:absolute;
+                width:150px;
+                height:150px;
+            }
+            #fixed1{
+                top:0;
+                left:0;
+                background: #bbeeff;
+            }
+            #fixed2{
+                bottom:0;
+                left:0;
+                background: #ccaaff;
+            }
+            #fixed3{
+                top:0;
+                right:0;
+                background: #aaffcc;
+            }
+            #fixed4{
+                bottom:0;
+                right:0;
+                background: #ffccaa;
+            }
+            .relative{
+                position:relative;
+                width:200px;
+                border:solid 1px red;
+                top:200px;
+                left:100px;
+            }
+            .absolute{
+                position:absolute;
+                width:200px;
+                border:solid 1px blue;
+                top:300px;
+                left:400px;
+            }
+
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <p>放到最外围的绝对定位元素如果没有滚动条,可以模拟fixed的效果</p>
+        <<div class="relative">relative</div>
+        <div class="absolute">absolute</div>
+        <div id="fixed1" class="fixed">
+			fixed1<br/>
+			top : 0<br/>
+			left : 0
+        </div>
+        <div id="fixed2" class="fixed">
+			fixed2<br/>
+			bottom : 0<br/>
+			left : 0
+        </div>
+        <div id="fixed3" class="fixed">
+			fixed3<br/>
+			top : 0<br/>
+			right : 0
+        </div>
+        <div id="fixed4" class="fixed">
+			fixed4<br/>
+			bottom : 0<br/>
+			right : 0
+        </div>
+
+
+
+    </body>
+</html>

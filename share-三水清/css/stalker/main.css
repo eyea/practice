@@ -1,0 +1,13 @@
+ol {
+    list-style-type: decimal;
+    display: inline-block;
+    text-align: left;
+    margin: 0 0 0 1em;
+}
+ol  li{
+    line-height: 1.5em;
+}
+
+.flyup article{
+    display: none;
+}

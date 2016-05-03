@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>特价商品推荐</title>
+    <link rel="stylesheet" type="text/css" href="css/bootmetro.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootmetro-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootmetro-ui-light.min.css">
+    <link rel="stylesheet" type="text/css" href="css/switchery.min.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <script src="js/switchery.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+<div id="J-topbar" class="topbar clearfix ">
+    <div class="rt icons row">
+        <div id="J-refresh" title="刷新" class="fl refresh "><span class="icon-refresh-3"></span></div>
+        <a title="选项" href="options.html" target="_blank" class="fl option "><span class="icon-cog-3"></span></a>
+         <a title="查看帮助" href="help.html" target="_blank" class="fl option "><span class=" icon-question-2"></span></a>
+        <div title="关闭" href="###" id="J-close" class="fl"><span class=" icon-cancel-circle"></span></div>
+    </div>
+    <div class="box">
+        <ul class="nav nav-pills">
+             <li class="active">最新特价</li>
+             <li><a href="aio.html" target="_blank">查看全部</a></li>
+             <li><a href="query.html" target="_blank">定制特价</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div id="J-all" class="container">
+        <div class="wrapper">
+            <div class="items">
+                <div class="content" id="J-content">
+                </div>
+                <div id="J-loadmore" class="loadmore clearfix" style="diplay:none;">
+                    <a href="aio.html" class="btn btn-info" target="_blank">查看全部特价</a>
+                    <button id="J-loadBtn" class="btn btn-success">加载更多30条...</button>
+                </div>
+                <div id="J-loading" class="loading">
+                    <div class="loadingicon progress progress-indeterminate">
+                        <div class="win-ring small"></div>
+                    </div>
+                    <span class="loadingmoreword">加载中，请稍候...</span>
+                </div>
+            </div>
+            <footer>
+                <div class="row">
+                  <div class="fl" id="J-total">今天共发现 <span class="J-text text-error">0</span> 个优惠信息</div>
+                  <div class="fr"><span class="label label-info mr5" data-toggle="tooltip" data-original-title="打开后不会出现弹窗">勿扰模式</span><input data-lsid="openNotice" id="J-notice-btn" type="checkbox" class="J-switch" checked /></div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+<script id="J-template" style="display:none" type="text/template">
+    <div class="item">
+        <h4>{{ title }}</h4>
+        <div class="thumbnail">
+            <img src="{{ img }}" alt="{{ title }}">
+        </div>
+        <div class="info">
+            <p class="J-desc desc clearfix" title="点击查看更多">{{ detail }}<span class="J-more">{{ more }}</span></p>
+            <div class="links row">
+                <p class="footer col-md-9 fl"><span class="mallname">{{ mallname }}</span><span class="source-box">{{time}}前从<span class="source">{{ source }}</span>同步</span></p>
+                <button data-link="{{ url }}" class="col-md-3 fl btn buy btn-success">立即购买</button>
+                <!--a href="{{ url }}" class="col-md-6 fl btn more btn-success">查看详情</a-->
+            </div>
+        </div>
+    </div>
+</script>
+</body>
+</html>

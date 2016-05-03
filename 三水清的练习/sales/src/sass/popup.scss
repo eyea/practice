@@ -1,0 +1,231 @@
+@import 'base';
+$width: 400px;
+
+body{
+    width: $width;
+    padding: 0 !important;
+}
+.container{
+    padding: 0;
+    margin:0 auto;
+}
+
+.fl{
+    float:left;
+}
+.rt,.fr{
+    float:right;
+}
+.hide{
+    display: none;
+}
+.topbar{
+    width: 100%;
+    background-color: #fff;
+    z-index: 100;
+    position: relative;
+    @include box-shadow(0 4px 6px -4px rgba(0,0,0,0.5));
+    .nav-pills>li>a{
+        padding:0;
+        margin:0;
+        line-height: 20px;
+        color:#333;
+        &:hover{
+            background-color: transparent;
+            color:#000;
+            @include text-shadow(0 1px 0 #ccc);
+        }
+    }
+    .box{
+        padding: 0 10px;
+        .nav{
+            width: 100%;
+            height: 30px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+            li{
+                padding: 4px 8px;
+                margin-right: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+    .nav .active{
+        background-color: #5db95b;
+        color: #fff;
+        -webkit-text-shadow:0 1px 0 #000;
+        text-shadow:0 1px 0 #000;
+    }
+    .icons{
+        width: 102px;
+        height: 24px;
+    }
+    .icon-refresh{
+        font-size: 19px;
+    }
+    .icons>a,.icons>div{
+        display: inline-block;
+        font-size: 16px;
+        padding: 4px;
+        color: #888;
+        width: 16px;
+        height: 16px;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover{
+            color:#000;
+        }
+    }
+}
+
+#J-total{
+    display: none;
+}
+
+#J-all{
+    display: table;
+    width: 100%;
+}
+.wrapper{
+    position: relative;
+    .items{
+        height: 500px;
+        min-height: 450px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+.content{
+    padding:0 5px 5px;
+    margin-bottom: 0;
+
+    .thumbnail{
+        width: 92px;
+        border: 0 none;
+        overflow: hidden;
+        float: left;
+        margin-bottom: 0;
+        padding: 4px 4px 0 0;
+    }
+    .item{
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px #eaeaea solid;
+    }
+
+    .item h4{
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.5em;
+        margin: 0;
+    }
+    .info p{
+        font-size: 12px;
+        margin:5px 0;
+    }
+    .info .footer{
+        display: block;
+        width: 70%;
+    }
+    .info .footer .mallname{
+        text-align: left;
+        color:#5db95b;
+        width: 68px;
+        display: inline-block;
+    }
+    .info .footer .source-box{
+        color:#888;
+    }
+    .info .footer .source{
+        color:#5db95b;
+        margin: 0 3px;
+    }
+    .J-more{
+        display:none;
+    }
+    .J-desc{
+        cursor: pointer;
+    }
+}
+
+footer{
+    height: 30px;
+    width: 100%;
+    z-index: 100;
+    position: relative;
+    @include box-shadow(0 -2px 9px -3px rgba(66,66,66,0.5));
+    label{
+        font-weight: normal;
+        font-size: 12px;
+    }
+    .row{
+        margin: 0 8px;
+        padding: 5px 3px;
+        font-size: 12px;
+        .span8{
+            width: 66.67%;
+            margin: 0;
+        }
+        .span4{
+            margin: 0;
+            width: 33.33%;
+        }
+    }
+}
+
+.row{
+    margin:0 ;
+}
+.btn{
+    display: block;
+    float: right;
+    background-color: #77CF75;
+    border-radius:0;
+    color: #fff;
+    margin: 0 5px;
+    border: 0 none;
+}
+
+.loadmore{
+    margin: 0 50px 10px;
+
+    .btn{
+        width: 126px;
+        float: left;
+        background-color: #bbb;
+        padding: 5px 10px;
+        &:hover{
+            background-color: #888;
+        }
+    }
+    .btn.btn-info{
+        background-color: #49afcd;
+    }
+}
+
+.loading {
+    display: block;
+    width: 200px;
+    float: left;
+    margin-right: 50%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.loadingicon.progress.progress-indeterminate {
+    display: inline-block;
+    float: left;
+    clear: both;
+    margin-left: 146px;
+    width: 44px;
+    height: 30px;
+    margin-bottom: 0;
+}
+.loadingmoreword {
+    display: inline-block;
+    float: left;
+    color: #777;
+    font-size: 14px;
+    margin-left: 118px;
+    width: 124px;
+    margin-top: 5px;
+}

@@ -1,0 +1,57 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ejs by 司徒正美</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <style>
+
+
+            #test {
+                position: relative;
+            }
+            #box1 {
+                position: absolute;
+                top: 100px;
+                left: 210px;
+                width: 200px;
+                height: 200px;
+                background-color: yellow;
+                z-index: 20;
+            }
+            #box2 {
+                position: absolute;
+                top: 50px;
+                left: 160px;
+                width: 200px;
+                height: 200px;
+                background-color: green;
+                z-index: 10;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="test">
+            <div id="box1">这个box应该在上面</div>
+        </div>
+        <div id="box2">这个box应该在下面，IE浏览器会对定位元素产生一个新的stacking context ，甚至当元素 z-index的为“auto”。</div>
+
+
+			<p>z-index 属性简介</p>
+<blockquote><p>z-index : auto | number<br>
+auto: 默认值。<br>
+number: 无单位的整数值，可为负数 。</p></blockquote>
+<p>z-index 值较大的元素将叠加在 z-index 值较小的元素之上。对于未指定此属性的定位对象，z-index 值为正数的对象会在其之上，而 z-index 值为负数的对象在其之下。</p>
+<p><strong>注意：</strong>这个属性不会作用于窗口控件，如 select 对象。在IE5.5+中， iframe 对象开始支持此属性。而在之前的浏览器版本中， iframe 对象是窗口控件，会忽略此属性。</p>
+<p>z-index 属性适用于定位元素（position 属性值为 relative 或 absolute 或 fixed的对象），用来确定定位元素在垂直于显示屏方向（称为Z 轴）上的层叠顺序（stack order）。</p>
+<p>每一个定位元素都归属于一个stacking context。根元素形成 root stacking context，而其他的 stacking context 则由定位元素产生（此定位元素的 z-index 被定义一个非 auto 的 z-index 值），定位子元素会以这个 local stacking context 为参考，用相同的规则来决定层叠顺序。并且 stacking context 和 containing block 之间并没有必然联系。</p>
+<p>当 stacking context 一样的时候，就用 z-index 的值来决定怎样显示，如果 z-index 也相同（即 stack level 相同），则按照档中后来者居上的原则（back-to-front ）的顺序来层叠。</p>
+<p>当任何一个元素层叠另一个包含在不同 stacking context 元素时，则会以 stacking context 的层叠级别（stack level）来决定显示的先后情况。也就是说，在相同的 stacking context 下才会用 z-index 来决定先后，不同时则由 stacking context 的 z-index 来决定。例如：</p>
+<p>定位元素 A（z-index:100）里面有定位元素 A1（z-index:300），而定位元素 B 和元素 A 兄弟关系（z-index:200）。你会发现无论 A1 的 z-index 是多大，也会被 z-index 是 200 的 B 所覆盖，因为 A 的 z-index 只有 100。</p>
+<p>阅读更详细的内容：<a href="http://www.w3.org/TR/CSS21/visuren.html#z-index" target="_blank" title="CSS21 z-index">http://www.w3.org/TR/CSS21/visuren.html#z-index</a></p>
+<script type="text/javascript">AKPC_IDS += "29,";</script>
+					
+    </body>
+</html>
