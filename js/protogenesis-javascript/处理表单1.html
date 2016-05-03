@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单处理1</title>
+</head>
+<body>
+	<form action="" method="post" onsubmit="return eg.regCheck();">
+		<input type="hidden" name="" id="errnum" value="">
+		账户：<input type="text" name="" id="userid"><br/><br/>
+		密码：<input type="password" name="" id="userpwd"><br/><br/>
+		确认：<input type="password" name="" id="userpwd2"><br/><br/>
+		简介：<textarea name="" id="about" cols="4" rows="10"></textarea><br><br>
+		<input type="submit" value="注 册" id="regBtn">
+		<input type="button" value="解 锁" onclick="eg.unlock()" style="display: none" id="regUnlock">
+	</form>
+
+	<script>
+		var eg = {};
+		// 声明一个对象，当做明明空间来使用，方便管理
+		// 定义一个公共函数来获取指定id元素，减少代码量，提高代码复用率
+		eg.$ = function(id){
+			return document.getElementById(id);
+		};
+		// 主要验证方法
+		eg.regCheck = function(){
+			var uid = eg.$("userid");
+			var upwd = eg.$("userpwd");
+			var upwd2 = eg.$("userpwd2");
+			if(uid.value == ''){
+				alert("账户不能为空！");
+				eg.err();
+				return false;
+			}
+			if(userpwd.value == ''){
+				alert("密码不能为空！");
+				eg.err();
+				return false;
+			}
+			if(upwd.value != upwd2.value){
+				alert('两次密码不一致');
+				eg.err();
+				return false;
+			}
+
+			var about = eg.$("about");
+			if(about.value.length>60){
+				alert("简介太长啦");
+				eg.err();
+				return false;
+			}
+
+			return true;
+		};
+
+		// 出错时记录错误
+		eg.err = function(){
+			var el = eg.$("errnum");
+			var old = el.value;
+			el.value = parseInt(old)+1;
+			// 把字符串转化成整数+1，保存起来
+			eg.lock();
+			// 检查是否锁定
+		};
+
+		// 通过次数判断是否要锁定注册
+		eg.lock = function(){
+			var err = eg.$("errnum");
+			if(parseInt(err.value>2)){
+				eg.$("regBtn").disabled = true;
+				// 输错3次就锁定
+				eg.$("regUnlock").style.display = "block";
+				// 同时显示解锁按钮
+			}
+		};
+
+		// 解锁
+		eg.unlock = function(){
+			eg.$("regBtn").disabled = false;
+			// 解锁就是可以重新注册
+			eg.$("regUnlock").style.display="none";
+		};
+	</script>
+</body>
+</html>
