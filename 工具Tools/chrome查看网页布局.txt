@@ -1,0 +1,11 @@
+Chrome中，F12(Win) 或 Option+Cmd+i （Mac）打开调试窗口，切换到console页，输入下面的代码：
+
+[].forEach.call($$("*"), function(a) {
+    var randColor = (~~(Math.random()*(1<<24))).toString(16);
+    a.style.outline="1px solid #" + randColor;
+ });
+
+注意：
+
+$$ 是Chrome中独有的selector缩写，等价于document.querySelectorAll
+outline不占box空间，所以线宽设置为1不会把页面布局打乱。不妨改一下，outline变成border，打开taobao.com看看效果 — 布局全乱套了！
