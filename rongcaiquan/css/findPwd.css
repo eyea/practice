@@ -29,16 +29,19 @@ body{
 	color: #674611;
 }
 .head .sign_out{
-	width: 0.98rem;
-	height:0.3rem ;
+	width: 0.8rem;
+	height:0.25rem ;
 	background: #b89256;
 	text-align: center;
-	line-height: 0.3rem;
+	line-height: 0.25rem;
 	color: #fff;
 	margin: 0.1rem auto 0;
 }
 
 /*密码输入框*/
+.password{
+	padding-bottom:.7rem;
+}
 .new_pwd{
 	width: 2.75rem;
 	margin: 0.5rem auto 0.2rem;
@@ -47,6 +50,11 @@ body{
 	width: 1.85rem;
 	height: 0.22rem;
 	outline: none;
+	border: 1px solid #bdbdbd;
+	-webkit-appearance:none;
+	text-indent: .05rem;
+	padding-bottom: .03rem;
+	padding-top: .03rem;
 }
 .confirm_pwd{
 	width: 2.75rem;
@@ -54,10 +62,10 @@ body{
 }
 .save_btn{
 	width: 0.75rem;
-	height: 0.2rem;
+	height: 0.3rem;
 	background: #af1f24;
 	text-align: center;
-	line-height: 0.2rem;
+	line-height: 0.3rem;
 	color: #fefeea;
 	margin: 0.2rem auto 0;
 }
@@ -72,6 +80,7 @@ body{
 	border-top: 1px solid #333;
 	z-index: 1111111;
 	background: #fefeea;
+	padding-bottom:.08rem;
 }
 .footer ul{
 	list-style: none;
