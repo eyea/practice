@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>设置密码</title>
+	<title>系统设置</title>
 	<meta name="keywords" content="关键字">
     <meta name="description" content="页面描述">
 	<meta charset="utf-8">
@@ -19,26 +19,56 @@
     <meta content="320" name="MobileOptimized">
 
     <link rel="stylesheet" type="text/css" href="./css/findPwd.css">
+    <style>
+    	#wrapper{
+    		padding-top: .15rem;
+    	}
+    	.wrapper a{
+			display: block;
+			text-decoration: none;
+			overflow: hidden;
+			width: 93%;
+			margin: 0 auto;
+			border: 2px solid #dad7d1;
+			border-bottom: none;
+    	}
+    	#a_first{
+    		border-top-left-radius: 4px;
+    		border-top-right-radius: 4px;
+    	}
+    	#a_last{
+    		margin-bottom: .7rem;
+    		border-bottom: 2px solid #dad7d1;
+    		border-bottom-left-radius: 4px;
+    		border-bottom-right-radius: 4px;
+    	}
+    	p{
+    		padding: .09rem .2rem;
+    		color: #000;
+    	}
+    	.arrow_img{
+    		width: .11rem;
+    		height: .17rem;
+    		float: right;
+    		display: inline-block;
+    	}
+    </style>
 
 </head>
 <body>
 	<div class="wrapper" id="wrapper">
-		<div class="head">
-			<div class="photo">
-				<img src="./imgs/person.png" alt="人物头像">
-			</div>
-			<div class="name">xiaowei</div>
-			<div class="sign_out">安全退出</div>
-		</div>
-		<div class="password">
-			<div class="new_pwd">
-				<span>输入新密码：</span><input type="text" class="new_input" placeholder="请输入6-20位字符" maxlength="20" minlength="6">
-			</div>
-			<div class="confirm_pwd">
-				<span>确认新密码：</span><input type="text" class="confirm_input">
-			</div>
-			<div class="save_btn">保存</div>
-		</div>
+		<a id="a_first" href="">
+			<p>密码修改 <img class="arrow_img" src="./imgs/箭头.png" alt=""></p>
+		</a>
+		<a href="">
+			<p>关于我们 <img class="arrow_img" src="./imgs/箭头.png" alt=""></p>
+		</a>
+		<a href="">
+			<p>平台申明 <img class="arrow_img" src="./imgs/箭头.png" alt=""></p>
+		</a>
+		<a id="a_last" href="">
+			<p>联系我们 <img class="arrow_img" src="./imgs/箭头.png" alt=""></p>
+		</a>
 	</div>
 	<div class="footer">
 		<ul>
