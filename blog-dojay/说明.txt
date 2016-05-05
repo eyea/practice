@@ -5,3 +5,5 @@
 更新本地存储--
 
 实际操作在 git@github.com:dojay/blog.git分支eyea下
+
+实际也是在practice下 只不过有 .git 
