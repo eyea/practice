@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink='http://www.w3.org/1999/xlink'>
+<rect x="20" y="20" width="250" height="250" style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+<circle cx="400" cy="120" r="100" style="stroke:black;stroke-width:1;fill:red;"></circle>
+
+<ellipse cx="200" cy="450" rx="200" ry="80" style="fill:rgb(200,100,50);stroke:rgb(0,0,100);stroke-width:2"/>
+
+ <path id='path4' d='M0,20 a300,20 0 1,1 0,1 z' fill='none' stroke='blue' stroke-width='2' />
+
+ <path id='path3' d='M1000,300 h 0 a259,101 30 1,0 1,1 z' fill='none' stroke='black' stroke-width='1' />
+ <image xlink:href="sun.gif" x="0" y="0" height="30px" width="30px">
+	<animateMotion dur='20s' fill='freeze' repeatCount='indefinite' >
+		<mpath xlink:href='#path3' />
+	</animateMotion >
+ </image>
+
+ <ellipse transform="matrix(1.0000,0.0000,0.0000,1.0000,359.0000,161.5000)" cx="0" cy="0" rx="248.8232" ry="43.3232"  style="fill:none;stroke-opacity:1.0000;stroke-width:0.7177;stroke:#000000 "/>
+</svg>

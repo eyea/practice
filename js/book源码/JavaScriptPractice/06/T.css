@@ -1,0 +1,18 @@
+ul,li{ list-style: none;}/*去掉自带的样式*/
+.T .root{
+    background: url("img/base.gif") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;/*把图标用背景的方式显示，不重复，然后内容向右位移*/
+}
+.T .open{
+    background: url("img/folderopen.gif") no-repeat scroll 0 0 transparent;
+}
+.T .page{
+    background: url("img/page.gif") no-repeat scroll 0 0 transparent;	padding-left: 20px;
+}
+.T .open span{display:inline-block; width:20px;height:20px;}
+.T .page span{display:none;}
+.T .close{
+    background: url("img/folder.gif") no-repeat scroll 0 0 transparent;
+}
+.T .close span{display:inline-block; width:20px;height:20px;}
+.T .close ul{display:none;}/*当父节点切换到关闭状态时，其子节点自动隐藏*/

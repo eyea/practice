@@ -1,0 +1,26 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="lineto" width="600" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#lineto").getContext("2d");
+		dw.font="20px Verdana";
+		dw.fillText("Hello HTML5,Javascript,Z3F",10,50);
+		dw.strokeText("Hello HTML5,Javascript,Z3F",10,90);
+		// // 创建渐变
+		// var gradient=dw.createLinearGradient(0,0,200,0);
+		// gradient.addColorStop("0","magenta");
+		// gradient.addColorStop("0.5","blue");
+		// gradient.addColorStop("1.0","red");
+		// // 用渐变填色
+		// dw.fillStyle=gradient;
+		dw.strokeText("Hello HTML5,Javascript,Z3F",10,90);
+	</script>
+ </body>
+</html>

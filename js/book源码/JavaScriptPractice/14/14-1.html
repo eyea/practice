@@ -1,0 +1,33 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="lineto" width="400" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#lineto").getContext("2d");
+		//移动到起点
+		dw.moveTo(50, 50);
+		//绘制到终点
+		dw.lineTo(420, 200);
+		//绘制完成
+        dw.stroke();
+		//新画一条
+		dw.beginPath();
+		//设置线条宽度
+		dw.lineWidth=10;
+		//设置填充颜色
+		dw.strokeStyle = "#ccc";
+		//移动到起点
+		dw.moveTo(450, 50);
+		//绘制到终点
+		dw.lineTo(100, 250);
+		//绘制完成
+        dw.stroke();
+	</script>
+ </body>
+</html>

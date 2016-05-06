@@ -1,0 +1,25 @@
+<html>
+ <head>
+  <title>hello ajax xml</title>
+ </head>
+ <body>
+	<div id="myajax">hello world!</div>
+	<button type="button" id="ajaxBtn">通过 AJAX 获取xml内容</button>
+	<script src="eg.lib.js"></script>
+ </body>
+</html>
+<script>
+(function(){//避免全局污染,将操作放在闭包里
+	var ajaxBtn = eg.$("ajaxBtn");//取得username的DOM对象，eg.$方法定义在eg.lib.js，详见第2章范例
+	//给userName对象绑定一个onkeyup事件，eg.addListener方法定义在eg.lib.js，详见第2章范例
+	eg.addListener(ajaxBtn,"click",function(){
+		eg.AJAX({TYPE:"GET",//AJAX请求类型
+			URL:"4-6.xml",//AJAX请求的URL，该文件就是范例4-2的代码
+			ISASYN:true//是否异步
+		},function(txt,xml){//定义AJAX请求成功后的callback回调函数
+            var root = xml.getElementsByTagName("name");
+			eg.$("myajax").innerHTML =  root[0].childNodes[0].nodeValue;
+		});
+	});
+})();
+</script>

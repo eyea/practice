@@ -1,0 +1,181 @@
+<!doctype html>
+<html manifest="12.manifest">
+ <head>
+  <meta charset="UTF-8" />
+  <title>简易内容管理系统</title>
+	<style>
+	body{ margin: 0;padding: 0;background: #454545;}
+	.nav{background:#282828; height:30px; padding: 20px 30px;}
+	.nav button{border:0; height: 30px; width:100px; background: #00bcf2; font-size: 14px; font-weight: bold; color:#fff; margin-right: 10px;}
+	.box{padding: 20px 30px;}
+	.box input,
+	#key{border:0; height: 30px; width:600px;background: #dadada;}
+	.box textarea{border:0;background: #dadada; height:200px; width:600px;}
+	.box button{border:0; height: 30px; width:100px; background: #282828; font-size: 14px; font-weight: bold; color:#00bcf2; margin-right: 10px;}
+	#list ul{width:600px;}
+	#list li{ color: #00bcf2; height:50px; line-height: 50px; border-bottom: 1px dashed #00bcf2;}
+	#key{width:60px;}
+	</style>
+	<script src="jquery.min.js"></script>
+ </head>
+ <body>
+  <script>
+  var data	={};
+  	data.dbName = 'cms';
+  	data.tbName = 'article';
+	data.conn=function(callback){
+		var rs = this,openDB;
+			if(rs.result){callback(rs.result);return;}
+			rs.db = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+			openDB = rs.db.open(rs.dbName);
+			//无数据库表 则 创建
+			openDB.onupgradeneeded = function(e){
+				var rsDB = e.target.result;
+					if(!rsDB.objectStoreNames.contains(rs.tbName)){
+					console.log("create objectStore(as table)");
+					var oStore = rsDB.createObjectStore(rs.tbName,{keyPath: "id", autoIncrement:true });
+						oStore.createIndex("idx_title","title",{unique:false});
+				}
+			};
+			//打开成功，则执行相关操作
+			openDB.onsuccess = function(e){
+				var rsDB = e.target.result;
+					rs.result = rsDB;
+					callback(rsDB);
+			}
+	};
+	data.list = function(callback){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readonly");
+			    var oStore = tr.objectStore(rs.tbName);
+			    	oStore.openCursor().onsuccess = function(e){
+			    		var rsDL = e.target.result;
+			    			if(rsDL){//无结果时为undefined
+			    				callback(rsDL.value);
+			    				rsDL.continue();
+			    			}
+			    	};
+			});
+	}
+	data.add = function(obj){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.add(obj);
+			});
+	};
+	data.del = function(id){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.delete(id);
+			});
+	};
+	data.get = function(id,callback){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.get(id).onsuccess = function(event) {
+						callback(event.target.result);
+					};
+			});
+	};
+	data.edit = function(obj){
+		if(!obj.id){
+			console.log('没有指定key id,无法定位修改数据');return;
+		}
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.put(obj);
+			});
+	};
+	data.search = function(key,callback){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readonly");
+			    var oStore = tr.objectStore(rs.tbName);
+				    oStore = oStore.index("idx_title");//获取索引对象存储集合
+		    	oStore.openCursor().onsuccess = function(e){
+		    		var rsDL = e.target.result;
+		    			if(rsDL){//无结果时为undefined
+		    				if(key){
+		    					if(new RegExp(key).test(rsDL.key)) callback(rsDL.value);
+		    				}else{
+			    				callback(rsDL.value);
+		    				}
+		    				rsDL.continue();
+		    			}
+		    	}
+			});
+	};
+	//显示数据
+	$(function(){
+		var listData = function(data){
+			$("#list ul").append('<li>['+data.id+'] '+data.title+'  <a href="javascript:;" class="edit" data-id="'+data.id+'">编辑</a> <a href="javascript:;" class="del" data-id="'+data.id+'">删除</a></li>')
+		};
+		data.list(listData);
+		//清空编辑框
+		$("#add").click(function(){
+			$("#title").val('');
+			$("#info").val('');
+			$("#save").attr("data-type",0);
+		});
+		//保存数据
+		$("#save").click(function(){
+			var id = $(this).attr("data-type") >> 0;//编辑时需要确保数据类型一致
+			var inf = {"id":id,title:$("#title").val(),info:$("#info").val(),time:new Date()};
+			if(id!==0){
+				data.edit(inf);
+			}else{
+				delete inf.id;
+				data.add(inf);
+			}
+			$("#list ul").empty();
+			$("#title").val('');
+			$("#info").val('');
+			$(this).attr("data-type",0);
+			data.list(listData);
+		});
+		//删除数据
+		$(".del").live("click",function(){
+			var id = $(this).attr("data-id");
+			data.del(id>>0);		//注意数据类型
+			$(this).parent().remove();
+		});
+		//修改数据
+		$(".edit").live("click",function(){
+			var id = $(this).attr("data-id");
+			data.get(id>>0,function(rs){
+				$("#title").val(rs.title);
+				$("#info").val(rs.info);
+				$("#save").attr("data-type",id);
+			});
+		});
+		//搜索数据
+		$("#search").click(function(){
+			$("#list ul").empty();
+			data.search($("#key").val(),listData);
+		});
+	});
+  </script>
+  <div id="content"></div>
+  <div class="nav">
+  	<button id="add">添 加</button> <input id="key" /> <button id="search">搜索</button>
+  </div>
+  <div class="box">
+  	<input id="title"/><br /><br />
+  	<textarea id="info"></textarea><br /><br />
+  	<button id="save" data-type="0">保 存</button>
+  </div>
+  <div id="list">
+  	<ul>
+  	</ul>
+  </div>
+ </body>
+</html>

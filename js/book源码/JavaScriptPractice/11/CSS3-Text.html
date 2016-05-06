@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>CSS3 旋转文字</title>
+<style>
+.fly{position:relative;}
+.fly{
+	-moz-animation:anim 6s ease-out infinite;
+	-webkit-animation:anim 6s ease-out infinite;
+	position:absolute;
+}
+@-moz-keyframes anim{
+	0%{left:0;transform:rotate(0deg) scale(1,1);}
+	50%{left:50%;transform:rotate(360deg) scale(2,2);color:red;}
+	100%{left:0;transform:rotate(0deg) scale(1,1);}
+}
+@-webkit-keyframes anim{
+	0%{left:0;-webkit-transform:rotate(0deg) scale(1,1);}
+	50%{left:50%;-webkit-transform:rotate(360deg) scale(2,2);color:red;}
+	100%{left:0;-webkit-transform:rotate(0deg) scale(1,1);}
+}
+.txt{text-align:center;font-size:28px;}
+.txt a{
+	transition:transform 1s ease-in-out 0s;
+	-webkit-transition:-webkit-transform 1s ease-in-out 0s;
+	display:inline-block;width:180px;height:200px; background:#c3c3c3;
+}
+.txt a:hover{
+	transform:rotate(360deg) scale(2,2);
+	-webkit-transform:rotate(360deg) scale(2,2);
+}
+
+
+a{color:blue;font-size:12px;border-bottom:0;}
+a:hover{
+   color: red;font-size:14px;border-bottom:1px solid;
+   transition:all .25s ease-in-out;
+}
+</style>
+</head>
+<body>
+<br /><br /><br /><br />
+<div class="fly">飞行文字！</div>
+<br /><br /><br /><br />
+<br /><br /><br /><br />
+<br /><br /><br /><br />
+<div class="txt"><a href="">旋转的文字！旋转的文字！旋转的文字！旋转的文字！</a></div>
+<br /><br /><br /><br />
+<div class=""><a href="">旋转的文字！旋转的文字！旋转的文字！旋转的文字！</a></div>
+<br /><br /><br /><br />
+</body>
+</html>
+			

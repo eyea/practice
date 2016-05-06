@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>懒加载</title>
+<style>
+div{float:left; min-width:150px; min-height:150px;}
+</style>
+</head>
+<body>
+<div><img src="loading.gif" lzay-src="1.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="2.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="3.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="4.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="5.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="6.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="7.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="8.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="9.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="10.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="11.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="12.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="13.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="14.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="15.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="16.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="17.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="18.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="19.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="20.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="21.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="22.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="23.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="24.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="25.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="26.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="27.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="28.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="29.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="30.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="31.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="32.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="33.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="34.jpg" alt=""></div>
+<div><img src="loading.gif" lzay-src="35.jpg" alt=""></div>
+</body>
+</html>
+<script src="base.js"></script>
+<script src="eg5.js"></script>
+<script>
+eg.lazy();//判断页面打开时的第一屏是否有需要加载的图
+window.onscroll = function(){//onscroll,onload,onresize只能这样添加
+	eg.lazy();
+}
+</script>

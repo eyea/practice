@@ -1,0 +1,10 @@
+body{ margin: 0;padding: 0;background: #454545;}
+.nav{background:#282828; height:30px; padding: 20px 30px;}
+.nav button{border:0; height: 30px; width:100px; background: #00bcf2; font-size: 14px; font-weight: bold; color:#fff; margin-right: 10px;}
+.edit{padding: 20px 30px;}
+.edit input{border:0; height: 30px; width:600px;background: #dadada;}
+.edit textarea{border:0;background: #dadada; height:200px; width:600px;}
+.edit button{border:0; height: 30px; width:100px; background: #282828; font-size: 14px; font-weight: bold; color:#00bcf2; margin-right: 10px;}
+.list ol{width:600px;}
+.list li{ color: #00bcf2; height:50px; line-height: 50px; border-bottom: 1px dashed #00bcf2;}
+.list li a{color:blue;cursor: pointer;}

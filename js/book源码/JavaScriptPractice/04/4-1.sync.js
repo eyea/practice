@@ -1,0 +1,1 @@
+document.getElementById("msg").innerHTML+="sync<br/>";

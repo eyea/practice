@@ -1,0 +1,55 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="lineto" width="600" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#lineto").getContext("2d");
+		//设置线条宽度
+		dw.lineWidth=2;
+		//设置填充颜色
+		dw.strokeStyle = "#ccc";
+		dw.beginPath();
+		//绘制直线
+		dw.moveTo(20,20);
+		dw.lineTo(100,20);
+		//绘制圆弧
+		dw.arcTo(150,20,150,70,30);
+		dw.lineTo(150,120);         // 创建垂直线
+		//绘制完成
+		dw.stroke();
+		dw.beginPath();
+		dw.strokeStyle = "#ddd";
+		dw.lineWidth=1;
+		dw.moveTo(100,20);
+		dw.lineTo(150,20);         // 创建垂直线
+		dw.lineTo(150,70);         // 创建垂直线
+		dw.stroke();
+
+		// //设置线条宽度
+		// dw.lineWidth=2;
+		// //设置填充颜色
+		// dw.strokeStyle = "#ccc";
+		// dw.beginPath();
+		// //绘制直线
+		// dw.moveTo(20,20);
+		// dw.lineTo(100,20);
+		// //绘制圆弧
+		// dw.arcTo(250,20,150,70,30);
+		// //绘制完成
+		// dw.stroke();
+		// dw.beginPath();
+		// dw.strokeStyle = "#ddd";
+		// dw.lineWidth=1;
+		// dw.moveTo(100,20);
+		// dw.lineTo(250,20);         // 创建垂直线
+		// dw.lineTo(150,70);         // 创建垂直线
+		// dw.stroke();
+	</script>
+ </body>
+</html>

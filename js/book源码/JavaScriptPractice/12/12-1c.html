@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <title>CMS</title>
+ </head>
+ <body>
+ <pre>
+ </pre>
+  <script>
+  var data	={};
+  	data.dbName = 'cms';
+  	data.tbName = 'article';
+	data.conn=function(callback){
+		var rs = this,openDB;
+			if(rs.result){
+				callback(rs.result);
+				return;
+			}
+			//conn to db or create db table
+			rs.db = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+
+			openDB = rs.db.open(rs.dbName);
+			//无数据库表 则 创建
+			openDB.onupgradeneeded = function(e){
+				var rsDB = e.target.result;
+					if(!rsDB.objectStoreNames.contains(rs.tbName)){
+					console.log("create objectStore(as table)");
+					var oStore = rsDB.createObjectStore(rs.tbName,{ keyPath: "id", autoIncrement:true });
+						oStore.createIndex("idx_title","title",{unique:false});
+				}
+			};
+			openDB.onsuccess = function(e){
+				var rsDB = e.target.result;
+					rs.result = rsDB;
+					callback(rsDB);
+			}
+	};
+	data.list = function(callback){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readonly");
+			    var oStore = tr.objectStore(rs.tbName);
+			    	oStore.openCursor().onsuccess = function(e){
+			    		var rsDL = e.target.result;
+			    			if(rsDL){//无结果时为undefined
+			    				console.log(rsDL.value);
+			    				rsDL.continue();
+			    			}
+			    	};
+			});
+	}
+	data.add = function(obj){
+		//add to db
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.add(obj);
+			});
+	};
+	data.del = function(id){
+		//del of id in db
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.delete(id);
+			});
+	};
+	data.edit = function(obj){
+		if(!obj.id){
+			console.log('没有指定key id,无法定位修改数据')
+			return;
+		}
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readwrite");
+				var oStore = tr.objectStore(rs.tbName);
+					oStore.put(obj);
+			});
+	};
+	data.search = function(key,callback){
+		var rs = this;
+			rs.conn(function(result){
+				var tr = result.transaction([rs.tbName],"readonly");
+			    var oStore = tr.objectStore(rs.tbName);
+				    oStore = oStore.index("idx_title");//获取索引对象存储集合
+		    	oStore.openCursor().onsuccess = function(e){
+		    		var rsDL = e.target.result;
+		    			if(rsDL){//无结果时为undefined
+		    				if(key){
+		    					if(new RegExp(key).test(rsDL.key)){
+				    				console.log(rsDL.value);
+		    					}
+		    				}else{
+			    				console.log(rsDL.value);
+		    				}
+		    				rsDL.continue();
+		    			}
+		    	}
+			});
+	};
+
+ /*
+  var ui	={};
+	ui.list=function(){
+		//get data.list()  for list to page
+		data.list();
+	};
+
+	ui.update = function(id,type,callback){
+		//show id of db
+	}
+
+	ui.edit = function(id){
+		this.update(id,"edit",function(){
+
+		});
+	}
+	ui.del = function(id){
+		this.update(id,"del",function(){
+
+		});
+	}
+	ui.add = function(){
+		this.update(0,"add",function(){
+
+		});
+	}
+*/
+///............................
+//	ui.list();
+
+  </script>
+  <div id="content"></div>
+<style>
+body{ margin: 0;padding: 0;background: #454545;}
+.nav{background:#282828; height:30px; padding: 20px 30px;}
+.nav button{border:0; height: 30px; width:100px; background: #00bcf2; font-size: 14px; font-weight: bold; color:#fff; margin-right: 10px;}
+.box{padding: 20px 30px;}
+.box input{border:0; height: 30px; width:600px;background: #dadada;}
+.box textarea{border:0;background: #dadada; height:200px; width:600px;}
+.box button{border:0; height: 30px; width:100px; background: #282828; font-size: 14px; font-weight: bold; color:#00bcf2; margin-right: 10px;}
+.list ol{width:600px;}
+.list li{ color: #00bcf2; height:50px; line-height: 50px; border-bottom: 1px dashed #00bcf2;}
+</style>
+  <div class="nav">
+  	<button>首 页</button> <button>添 加</button>
+  </div>
+  <div class="box">
+  	<input /><br /><br />
+  	<textarea></textarea><br /><br />
+  	<button>保 存</button>
+  </div>
+  <div class="list">
+  	<ol>
+  		<li>[2013-10-08] 测试HTML5</li>
+  		<li>[2013-10-08] 测试HTML5</li>
+  		<li>[2013-10-08] 测试HTML5</li>
+  		<li>[2013-10-08] 测试HTML5</li>
+  		<li></li>
+  		<li></li>
+  	</ol>
+  </div>
+ </body>
+</html>

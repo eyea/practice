@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS3</title>
+<style>
+#jiqimao1{margin:50px;}
+/*让元素可自由定位*/
+.doraemon{position:relative;}
+.doraemon .head{
+	width:320px;height:300px;/*扁扁的头，非正圆*/
+	border-radius:150px;/*圆脸，让方形角变成圆角*/
+	background:#07bbee;/*脸颜色，兼容所有的浏览器*/
+	/*这个放射渐变使头右上角有白色高光，头的左下角有黑色阴影*/
+	background:-webkit-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+	background:-moz-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+	background:-ms-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+	border:#555 2px solid;
+	box-shadow:-5px 10px 15px rgba(0,0,0,0.45);
+	position:relative;
+}
+/*让所有脸部元素可自由定位*/
+.doraemon .face{ position:relative;z-index:2;}
+/*白色脸底*/
+.doraemon .face .white{
+	border:#000 2px solid;
+	width:265px;height:195px;
+	border-radius: 150px 150px;
+	position:absolute;
+	top:75px;left:25px;
+	background:#fff;
+	/*此放射渐变也是使脸的左下角暗一些，看上去更真实*/
+	background: -webkit-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+	background: -moz-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+	background: -ms-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+}
+/*鼻子*/
+.doraemon .face .nose{
+	background:#C93300;
+	width:30px;height:30px;
+	border:2px solid #000;
+	border-radius:30px;
+	position:absolute;
+	top:110px;left:140px;
+	z-index:3;
+}
+/*鼻子上的高光*/
+.doraemon .face .nose .light{
+	border-radius: 5px;box-shadow: 19px 8px 5px #FFF;
+	height:10px;width:10px;
+}
+/*鼻子下的线*/
+.doraemon .face .nose_line{
+	background:#333;
+	width:3px;height:100px;
+	top:143px;left:155px;
+	position:absolute;
+	z-index:3;
+}
+/*嘴巴*/
+.doraemon .face .mouth{
+	width:220px;height:400px;
+	border-bottom:3px solid #333;
+	border-radius:120px;
+	position:absolute;
+	top:-160px;left:45px;
+}
+/*眼睛*/
+.doraemon .eyes{position:relative; z-index:3;}
+.doraemon .eyes .eye{
+	position:absolute;top:40px;
+	width:72px;height:82px;
+	background:#fff;
+	border:2px solid #000;
+	border-radius: 35px 35px;
+}
+.doraemon .eyes .eye .black {
+    width:14px;height:14px;
+    background: #000;
+    border-radius: 14px;
+    position:relative;top:40px;
+	-webkit-animation-name: eyemove;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: 20000;
+	-moz-animation-name: eyemove;
+	-moz-animation-duration: 5s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: 20000;
+	-ms-animation-name: eyemove;
+	-ms-animation-duration: 5s;
+	-ms-animation-timing-function: linear;
+	-ms-animation-iteration-count: 20000;
+}
+.doraemon .eyes .left{left: 82px;}
+.doraemon .eyes .right{left: 156px;}
+.doraemon .eyes .eye .bleft{left: 50px;}
+.doraemon .eyes .eye .bright{left: 7px;}
+/*胡须背景，主要用于挡住嘴巴的一部分，不要显得太长*/
+.doraemon .whiskers{
+	background:#fff;
+	width:220px;height:80px;
+	position:relative;
+	top:120px;left:45px;
+	border-radius:15px;
+	z-index:2;
+}
+/*所有胡子的公用样式*/
+.doraemon .whiskers .whisker{
+	background:#333;
+    height: 2px;width: 60px;
+    position: absolute;z-index:2;
+}
+/*右上胡子*/
+.doraemon .whiskers .rTop{
+	left:165px;top:25px;
+}
+.doraemon .whiskers .rt{
+	left: 167px;top:45px;
+}
+.doraemon .whiskers .rBottom{
+	left:165px;top:65px;
+}
+/*左上胡子*/
+.doraemon .whiskers .lTop{
+	left:0;top:25px;
+}
+.doraemon .whiskers .lt{
+	left:-2px;top:45px;
+}
+.doraemon .whiskers .lBottom{
+	left:0;top:65px;
+}
+/*胡子旋转角度*/
+.doraemon .whiskers .r160{
+	transform:rotate(160deg);-webkit-transform:rotate(160deg);
+}
+.doraemon .whiskers .r20{
+	transform: rotate(20deg);-webkit-transform:rotate(20deg);
+}
+/*围脖*/
+.doraemon .choker{
+    position: relative;z-index:4;
+    top: -40px;left: 45px;
+	background:#C40;
+	/*线性渐变 让围巾看上去更自然*/
+	background: -webkit-gradient(linear,left top,left bottom,from(#C40),to(#800400));
+	background: -moz-linear-gradient(center top,#C40,#800400);
+	background: -ms-linear-gradient(center top,#C40,#800400);
+    border: 2px solid #000000;
+    border-radius: 10px 10px 10px 10px;
+    height: 20px;width: 230px;
+}
+/*铃铛*/
+.doraemon .choker .bell{
+	width:40px;height:40px; _overflow:hidden;/*IE6 hack*/
+	border-radius:50px;
+	border:2px solid #000;
+	background:#f9f12a;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f9f12a),color-stop(0.5, #e9e11a), to(#a9a100));	
+	background: -moz-linear-gradient(top, #f9f12a, #e9e11a 75%,#a9a100); 
+	background: -ms-linear-gradient(top, #f9f12a, #e9e11a 75%,#a9a100);
+	box-shadow:-5px 5px 10px rgba(0,0,0,0.25);
+	position:relative;
+	top:5px;left:90px;
+}
+/*双横线*/
+.doraemon .choker .bell_line{
+    background:#F9F12A;
+    border-radius: 3px 3px 0px 0px;
+    border: 2px solid #333333;
+    height: 2px;width: 36px;
+    position: relative;top: 10px;
+}
+/*黑点*/
+.doraemon .choker .bell_circle {
+    background:#000;
+    border-radius: 5px;
+    height: 10px;
+    width: 12px;
+    position: relative;
+    top: 14px; left: 14px;
+}
+/*黑点下的线*/
+.doraemon .choker .bell_under {
+    background:#000;
+    height: 15px;width: 3px;
+    left: 18px;top: 10px;
+    position: relative;    
+}
+/*高光*/
+.doraemon .choker .bell_light {
+    border-radius: 10px;
+    box-shadow: 19px 8px 5px #FFF;
+    height:12px;width:12px;
+    left: 5px;top: -35px;
+    position: relative;
+    opacity: 0.7;
+}
+.doraemon .bodys{position: relative;top:-310px;}
+/*肚子*/
+.doraemon .bodys .body{
+	background:#07BEEA;
+	background: -webkit-gradient(linear,right top,left top,from(#07beea),color-stop(0.5, #0073b3),color-stop(0.75,#00b0e0), to(#0096be));
+	background: -moz-linear-gradient(right center,#07beea,#0073b3 50%,#00b0e0 75%,#0096be 100%);
+	background: -ms-linear-gradient(right center,#07beea,#0073b3 50%,#00b0e0 75%,#0096be 100%);
+    border: 2px solid #333;
+    height: 165px;width: 220px;
+    position: absolute;
+    left: 50px;top:265px;
+}
+/*白色肚兜*/
+.doraemon .bodys .wraps{
+	background:#FFF;
+	background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.83,#eee),color-stop(0.90,#999),color-stop(0.95,#444), to(#000));
+	background: -moz-linear-gradient(right top,#FFF,#FFF 75%,#EEE 83%,#999 90%,#444 95%,#000);
+	background: -ms-linear-gradient(right top,#FFF,#FFF 75%,#EEE 83%,#999 90%,#444 95%,#000);
+    border: 2px solid #000;
+    border-radius: 85px;
+    position: absolute;
+    height:170px;width:170px;
+	left:72px;top:230px;
+}
+/*口袋*/
+.doraemon .bodys .pocket{
+	position:relative;
+	width:130px;height:130px;
+	border-radius:65px;
+	background:#fff;
+	background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.70,#fff),color-stop(0.75,#f8f8f8),color-stop(0.80,#eee),color-stop(0.88,#ddd), to(#fff));
+	background: -moz-linear-gradient(right top, #fff, #fff 70%,#f8f8f8 75%,#eee 80%,#ddd 88% , #fff);
+	background: -ms-linear-gradient(right top, #fff, #fff 70%,#f8f8f8 75%,#eee 80%,#ddd 88% , #fff);
+	border:2px solid #000;
+	top:250px;left:92px;
+}
+/*挡住口袋一半*/
+.doraemon .bodys .pocket_mask{
+	position:relative;
+	width:134px;height:60px;
+	background:#fff;
+	border-bottom:2px solid #000;
+	top:125px;left:92px;
+}
+/*右手*/
+.doraemon .hand_right{
+    height: 100px;width: 100px;
+    position: absolute;
+    top: 272px;left: 248px;
+}
+/*左手*/
+.doraemon .hand_left{
+    height: 100px;width: 100px;
+    position: absolute;
+    top: 272px;left:-10px;
+}
+/*手臂公共部分*/
+.doraemon .arm {
+	background:#07BEEA;
+	background: -webkit-gradient(linear, left top, left bottom, from(#07beea),color-stop(0.85,#07beea), to(#555));
+	background: -moz-linear-gradient(center top , #07BEEA, #07BEEA 85%, #555);
+	background: -ms-linear-gradient(center top , #07BEEA, #07BEEA 85%, #555);
+    border: 1px solid #000000;
+    box-shadow: -10px 7px 10px rgba(0, 0, 0, 0.35);
+    height: 50px;width: 80px;
+	z-index:-1;position: relative;
+}
+/*右手手臂*/
+.doraemon .hand_right .arm {
+    top: 17px;
+    transform: rotate(35deg);-webkit-transform:rotate(35deg);
+}
+/*左手手臂*/
+.doraemon .hand_left .arm {
+    top: 17px;background:#0096BE;box-shadow: 5px -7px 10px rgba(0, 0, 0, 0.25);
+    transform: rotate(145deg);-webkit-transform:rotate(145deg);
+}
+/*圆形手掌公共部分*/
+.doraemon .circle{
+	position:absolute;
+	width:60px;height:60px;
+	border-radius:30px;
+	border:2px solid #000;
+	background:#fff;
+	background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.5,#fff),color-stop(0.70,#eee),color-stop(0.8,#ddd), to(#999));	
+	background: -moz-linear-gradient(right top, #fff, #fff 50%, #eee 70%, #ddd 80%,#999); 
+}
+/*右手手掌*/
+.doraemon .hand_right .circle{
+	left:40px;top:32px;
+}
+/*左手手掌*/
+.doraemon .hand_left .circle{
+	left:-20px;top:32px;
+}
+/*手臂和身体结合处*/
+.doraemon .arm_rewrite{
+    background:#07BEEA;
+    height: 45px;width:5px;
+    position: relative;
+}
+/*右手结合处*/
+.doraemon .hand_right .arm_rewrite{
+    top: -45px;left:22px;
+}
+/*左手结合处*/
+.doraemon .hand_left .arm_rewrite{
+	top: -45px;left:60px;background:#0096be
+}
+/*脚*/
+.doraemon .foot {
+    height: 40px;
+    left: 20px;
+    position: relative;
+    top: -141px;
+    width: 280px;
+}
+/*左脚*/
+.doraemon .foot .left {
+	background:#fff;
+	background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.85,#eee), to(#999));	
+    background: -moz-linear-gradient(right top , #fff, #fff 75%, #EEE 85%, #999);	
+    background: -ms-linear-gradient(right top , #fff, #fff 75%, #EEE 85%, #999);
+    border: 2px solid #333;
+    border-radius: 80px 60px 60px 40px;
+    box-shadow: -6px 0 10px rgba(0, 0, 0, 0.35);
+    height: 30px;
+    left: 8px;
+    position: relative;
+    top:65px;
+    width: 125px;
+}
+/*右脚*/
+.doraemon .foot .right {
+	background:#fff;
+	background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.85,#eee), to(#999));	
+    background: -moz-linear-gradient(right top , #fff, #fff 75%, #EEE 85%, #999);	
+    background: -ms-linear-gradient(right top , #fff, #fff 75%, #EEE 85%, #999);
+    border: 2px solid #333;
+    border-radius: 80px 60px 60px 40px;
+    box-shadow:-6px 0px 10px rgba(0,0,0,0.35);
+    height: 30px;width: 125px;
+	top:31px;left:141px;
+    position: relative;
+}
+.doraemon .foot .foot_rewrite{
+	position:relative;top:-11px;left:130px;_left:127px;
+	width:20px;height:10px;
+	background:#fff;
+	background: -webkit-gradient(linear, right top, left bottom, from(#666),color-stop(0.83,#fff), to(#fff));
+	background: -moz-linear-gradient(right top, #666, #fff 83%, #fff); 
+	background: -ms-linear-gradient(right top, #666, #fff 83%, #fff); 
+	border-top:2px solid #000;
+	border-right:2px solid #000;
+	border-left:2px solid #000;
+	border-top-right-radius:40px;
+	border-top-left-radius:40px;
+}
+/*让眼睛动起来*/
+@-webkit-keyframes eyemove{
+	80%{margin:0;}
+	85%{margin:-20px 0 0 0;}
+	90%{margin:0 0 0 0;}
+	93%{margin:0 0 0 7px;}
+	96%{margin:0 0 0 0;}
+}
+@-moz-keyframes eyemove{
+	80%{margin:0;}
+	85%{margin:-20px 0 0 0;}
+	90%{margin:0 0 0 0;}
+	93%{margin:0 0 0 7px;}
+	96%{margin:0 0 0 0;}
+}
+@-ms-keyframes eyemove{
+	80%{margin:0;}
+	85%{margin:-20px 0 0 0;}
+	90%{margin:0 0 0 0;}
+	93%{margin:0 0 0 7px;}
+	96%{margin:0 0 0 0;}
+}
+</style>
+</head>
+<body>
+<div id="jiqimao1">
+	<div class="doraemon">
+		<div class="head">
+			<div class="eyes">
+				<div class="eye left"><div class="black bleft"></div></div>
+				<div class="eye right"><div class="black bright"></div></div>
+			</div>
+			<div class="face">
+				<div class="white"></div>
+				<div class="nose"><div class="light"></div></div>
+				<div class="nose_line"></div>
+				<div class="mouth"></div>
+				<div class="whiskers">
+					<div class="whisker rTop r160"></div>
+					<div class="whisker rt"></div>
+					<div class="whisker rBottom r20"></div>
+					<div class="whisker lTop r20"></div>
+					<div class="whisker lt"></div>
+					<div class="whisker lBottom r160"></div>
+				</div>
+			</div>
+		</div>
+		<div class="choker">
+			<div class="bell">
+				<div class="bell_line"></div>
+				<div class="bell_circle"></div>
+				<div class="bell_under"></div>
+				<div class="bell_light"></div>
+			</div>
+		</div>
+		<div class="bodys">
+			<div class="body"></div>
+			<div class="wraps"></div>
+			<div class="pocket"></div>
+			<div class="pocket_mask"></div>
+		</div>
+		<div class="hand_right">
+			<div class="arm"></div>
+			<div class="circle"></div>
+			<div class="arm_rewrite"></div>
+		</div>
+		<div class="hand_left">
+			<div class="arm"></div>
+			<div class="circle"></div>
+			<div class="arm_rewrite"></div>
+		</div>
+		<div class="foot">
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="foot_rewrite"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

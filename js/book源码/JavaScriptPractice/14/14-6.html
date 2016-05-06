@@ -1,0 +1,24 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="lineto" width="600" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#lineto").getContext("2d");
+	var grd=dw.createLinearGradient(0,60,120,0);
+		grd.addColorStop(0,"black");
+		grd.addColorStop("0.3","magenta");
+		grd.addColorStop("0.5","blue");
+		grd.addColorStop("0.6","green");
+		grd.addColorStop("0.8","yellow");
+		grd.addColorStop(1,"white");
+		dw.fillStyle=grd;
+		dw.fillRect(20,20,150,100);
+	</script>
+ </body>
+</html>

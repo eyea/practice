@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>CSS3 旋转文字</title>
+<style>
+.fly{
+	animation:anim 6s ease-out infinite;
+	-webkit-animation:anim 6s ease-out infinite;
+	position:absolute;/*用absolute或relative使对象脱离文档流，便于动画控制*/
+}
+@-moz-keyframes anim{
+	0%{left:0;}
+	50%{left:50%;transform:rotate(3600deg) scale(2,2);color:red;}
+	100%{left:0;}
+}
+@-webkit-keyframes anim{
+	0%{left:0;-webkit-transform:rotate(0deg) scale(1,1);}
+	/*时间刚过一半的那个“关键”点*/
+	50%{
+		left:50%;/*控制其位置向右移动50%的距离，本例为页面中央*/
+		-webkit-transform:rotate(3600deg) scale(2,2);/*在此时旋转了10圈也就是3600度，并且渐变放大1倍*/
+		color:red;/*颜色渐变为红色*/
+	}
+	100%{
+		left:0;/*恢复到原来位置，本例为向左飞*/
+	}
+}
+</style>
+</head>
+<body>
+<br /><br /><br /><br /><br /><br />
+<a href="" class="fly">飞行旋转的CSS3</a>
+</body>
+</html>

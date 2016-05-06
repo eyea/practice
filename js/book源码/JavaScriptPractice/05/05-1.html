@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>简单固定列宽瀑布流</title>
+  <link rel="stylesheet" href="eg5.css" />
+ </head>
+ <body>
+	<div class="main">
+		<div class="col"><img src="1.jpg" alt="" /><p>[1.jpg]</p></div>
+		<div class="col"><img src="2.jpg" alt="" /><p>[2.jpg]</p></div>
+		<div class="col"><img src="3.jpg" alt="" /><p>[3.jpg]</p></div>
+		<div class="col"><img src="4.jpg" alt="" /><p>[4.jpg]</p></div>
+	</div>
+	<script src="base.js"></script>
+	<script src="eg5.js"></script>
+	<script>
+	eg.getColMin();//计算第一批数据的高度
+var dl = eg.getDataList(5,35);//初始化一些数据
+	eg.add(dl);//补充剩下的数据
+	eg.scroll();//启动滚动条监听
+	</script>
+ </body>
+</html>

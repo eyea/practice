@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>改善用户体验的表单</title>
+  <style>
+  #pwdLvSpan{display:inline-block;width:100px;height:5px;background:#c3c3c3;}
+  #pwdLvSpan i{display:block;background:green;height:5px;width:0;}
+  </style>
+ </head>
+ <body>
+	<form method="POST" onSubmit="return eg.regCheck();">
+		<input type="hidden" name="" id="errnum" value="0"/>
+		账户：<input type="text" name="" id="userid" /><br /><br />
+		密码：<input type="password" name="" id="userpwd" /> 密码强度 <span id="pwdLvSpan"><i id="pwdLv"></i></span><br /><br />
+		确认：<input type="password" name="" id="userpwd2" /><br /><br />
+		性别：<input type="radio" name="sex" value="1" checked="checked" />男 <input type="radio" name="sex" value="0"/>女 <br /><br />
+		年龄：<select name="" id="age">
+			<option value="0"  selected="selected">请选择年龄段</option>
+			<option value="1">18岁以下</option>
+			<option value="2">18-24岁</option>
+			<option value="3">24-30岁</option>
+			<option value="4">20-35岁</option>
+			<option value="5">35岁以上</option>
+		</select><br /><br />
+		爱好：<input type="checkbox" name="like" value="1" class="like"/>上网 <input type="checkbox" name="like" value="2" class="like"/>逛街  <input type="checkbox" name="like" value="3" class="like"/>看电影  <input type="checkbox" name="like" value="4" class="like"/>其他 <br /><br />
+		简介：<textarea name="" rows="4" cols="18" id="about"></textarea> <br /><br />
+		邮箱：<input type="text" name="" id="email" /><br /><br />
+		<input type="submit" value="注册" id="regBtn" /> <input type="button" value="解锁" onclick="eg.unlock()" style="display:none;" id="regUnlock" />
+	</form>
+	<script>
+		var eg = {};//声明一个对象，当做命名空间来使用，本书默认的范例都会以此来方便管理
+			//定义一个公共函数来获取指定id元素，减少代码量，提高代码复用率
+			eg.$ = function(id){
+				return document.getElementById(id);
+			};
+			//定义一个公共函数来获取指定class名称的元素集合，能兼容各浏览器
+			eg.getElementsByClassName = function(className, element) {
+				if(document.getElementsByClassName){
+					return (element || document).getElementsByClassName(className)
+				}
+				var children = (element || document).getElementsByTagName('*');
+				var elements = new Array();
+			 
+				for (var i = 0; i < children.length; i++) {
+					var child = children[i];
+					var classNames = child.className.split(' ');
+					for (var j = 0; j < classNames.length; j++) {
+						if (classNames[j] == className) {
+							elements.push(child);
+							break;
+						}
+					}
+				}
+				return elements;
+			};
+			//定义一个公共函数来解决事件监听的兼容问题
+			eg.addListener = function(target,type,handler){
+				if(target.addEventListener){
+					target.addEventListener(type,handler,false);
+				}else if(target.attachEvent){
+					target.attachEvent("on"+type,handler);
+				}else{
+					target["on"+type]=handler;
+				}
+			};
+			//主要的验证方法
+			eg.regCheck = function(){
+				var uid = eg.$("userid");
+				var upwd = eg.$("userpwd");
+				var upwd2 = eg.$("userpwd2");
+				if(uid.value == ''){
+					alert('账户不能为空!');
+					uid.focus();
+					eg.err();
+					return false;
+				}
+				if(upwd.value == ''){
+					alert('密码不能为空!');
+					upwd.focus();
+					eg.err();
+					return false;
+				}
+				if(upwd.value != upwd2.value){
+					alert('两次密码输入不相同!');
+					upwd.focus();
+					eg.err();
+					return false;
+				}
+				//新增的部分
+				var about = eg.$("about");
+				if(about.value.length>60){
+					alert('简介太长!');
+					about.focus();
+					eg.err();
+					return false;
+				}
+				//2次新增
+				var age = eg.$("age");
+				if(age.value == "0"){
+					alert('请选择年龄段!');
+					age.focus();
+					eg.err();
+					return false;
+				}
+				
+				var likes = eg.getElementsByClassName("like");
+				var likeNum = 0;
+					for(var n=0;n<likes.length;n++){
+						console.log(likes[n].checked)
+						if(likes[n].checked){
+							likeNum++;
+						}
+					}
+				if(likeNum==0){
+					alert('请至少选择一个爱好!');
+					eg.err();
+					return false;
+				}
+				//邮箱验证
+				var email =  eg.$("email");
+				//if(!new RegExp("^[a-z\\d]+[\\w\\-\.]*@([a-z\\d]+[a-z\\d\\-]*\.)+[a-z]{2,4}$","i").test(email.value)){
+				if(!/^[A-Za-z\d]+[A-Za-z\d\-_\.]*@([A-Za-z\d]+[A-Za-z\d\-]*\.)+[A-Za-z]{2,4}$/.test(email.value)){
+					alert('请输入正确的邮箱!');
+					email.focus();
+					eg.err();
+					return false;
+				}
+				return true;
+			};
+			//添加一些交互事件
+			eg.addEvent = function(){
+				var pwd = eg.$("userpwd");
+				eg.addListener(pwd,"keyup",function(){
+					var lv=0;
+					if(/^\d{4,}$/.test(pwd.value)){
+						lv = 10;
+					}else if(/^\w{4,}$/.test(pwd.value)){
+						lv = 25;
+					}else if (/^[\d\w]{4,}$/.test(pwd.value)){
+						lv = 50;
+					}else if (/^[\d\w~!@#$%\^&*\(\)\-{}\[\]=<>,\.\?\/]{4,}$/.test(pwd.value)){
+						lv = 100;
+					}else if(pwd.value.length<6 && pwd.value.length>3){
+						lv = 60;
+					}else if(pwd.value.length<4){
+						lv = 0;
+					}
+					eg.$("pwdLv").style.width = lv+"px";
+				});
+			}
+			//在用户单击注册按钮前就要运行起来,所以定义好就立刻调用
+			eg.addEvent();
+			//出错时记录错误次数。
+			eg.err = function(){
+				var el = eg.$("errnum");
+				var old = el.value;
+				el.value = parseInt(old)+1;//把字符串转换为整数+1，并保存起来
+				eg.lock();//用来检查是否应该锁定。
+			};
+			//通过次数判断是否要锁定注册
+			eg.lock = function(){
+				var err = eg.$("errnum");
+				if(parseInt(err.value)>2){
+					eg.$("regBtn").disabled = true;//根据业务需求，输错3次就锁定
+					eg.$("regUnlock").style.display="block";//同时显示解锁按钮
+				}
+			};
+			//解锁
+			eg.unlock = function(){
+				eg.$("regBtn").disabled = false;//根据业务需求，解锁就是让用户可以重新注册
+				eg.$("regUnlock").style.display="none";
+			}
+	</script>
+ </body>
+</html>

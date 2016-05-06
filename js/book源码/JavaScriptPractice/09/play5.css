@@ -1,0 +1,35 @@
+.zPlayer{background:#000;position:relative;}
+.zPlayer .playTxt{
+    background: none repeat scroll 0 0 #CCC;border-radius:2px;float: left;
+    height: 30px;line-height: 30px;margin-top: 8px;width: 70%;
+	text-shadow: 0 0 4px #fff, 0 0 5px #fff;text-align:center;
+}
+.zPlayer .line {height:12px;border: 1px solid #303030;border-radius:2px;float:left;margin:4px 2px auto 2px;cursor:pointer;}
+.zPlayer .proLines{ color:#D0D0D0; padding-left:1px;padding-right:1px; height:18px;}
+.zPlayer .arial{font-size: 12px; font-weight: 500; font-family: arial;line-height:18px; float:left;}
+.zPlayer .isPlayLine{width:0px;height:12px;background-color:#399CCF;}
+.zPlayer .currentCircle{width:12px;height:12px;cursor:pointer;background-color:#fff;position:absolute;z-index: 99;margin-left: 1px;}
+.zPlayer .playBars{ height:46px;background:url('images/bars.jpg') repeat-x; margin-top: -2px; clear:both;}
+.zPlayer .startBar{ width:34px; height: 33px; padding-top:5px; margin-left: 6px;float:left; cursor: pointer;}
+.zPlayer .fullBtn{float: right;height: 20px;width: 20px;margin-top: 14px;margin-right: 10px;}
+.zPlayer .fullBtn:hover img{cursor: pointer; height:17px; width:19px; margin-top:-1px; margin-left:-1px;}
+.zPlayer .voiceContent{ width:80px;height:15px;padding-top:15px; margin-left: 28px;float:left ;color:#fff}
+.zPlayer .voice{ float:left;}
+.zPlayer .voiceline{float:left;width:45px;height:13px;margin-top: -1px;margin-left:3px;background: url("images/voiceline.jpg") no-repeat;}
+.zPlayer .voicekuai{width:6px;height:12px;border-radius:2px;background-color: #fff;position:absolute; margin-top: 3px;cursor:pointer}
+.zPlayer .ui-play{
+    background: none repeat scroll 0 0 #333;
+    border: 3px solid #333;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 3px 3px 3px #111;
+    height: 100px;
+    padding: 10px 20px 10px 10px;
+    width: 100px;
+	position:absolute;
+	cursor:pointer;
+}
+.zPlayer .ui-play span{
+    border-bottom: 50px solid transparent; border-left: 60px solid #FFFFFF;
+	border-top: 50px solid transparent;display: inline-block;
+    height: 0; width: 0;margin-left: 41px;
+}

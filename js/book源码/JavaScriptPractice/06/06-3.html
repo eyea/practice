@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>javascript tree</title>
+<link rel="stylesheet" href="T.css" type="text/css" />
+</head>
+<body>
+<div id="mytree" class="T"></div>
+<div id="mytree2" class="T"></div>
+<a id='a' href="#">a</a>
+</body>
+</html>
+<script src="base.js"></script>
+<script src="z3fTree.js"></script>
+<script>
+T.addListener(document.getElementById('a'),"click",function(){
+	alert(this.text)
+});
+var dic = {
+		"0" : {pid:-1,cn:'本书目录',url:'#'}
+		,"1" : {pid:0,cn:'第1章 JavaScript概述',url:'/01'}
+		,"2" : {pid:0,cn:'第2章 用JavaScript验证表单',url:'/02'}
+		,"11" : {pid:1,cn:'1.1 认识JavaScript',url:'javascript:;'}
+		,"12" : {pid:1,cn:'1.2 配置JavaScript开发环境',url:'javascript:;'}
+		,"3" : {pid:0,cn:'第3章 JavaScript实现的照片展示',url:'/03'}
+		,"21" : {pid:2,cn:'2.1  最简单的表单验证 – 禁止空白的必填项目',url:'javascript:;'}
+		,"22" : {pid:2,cn:'2.2  处理各种类型的表单元素',url:'javascript:;'}
+		,"23" : {pid:2,cn:'2.3  输入的邮箱地址正确吗？用正则来校验复杂的格式要求',url:'javascript:;'}
+		,"24" : {pid:2,cn:'2.4  改善用户体验',url:'javascript:;'}
+		,"31" : {pid:3,cn:'3.1  功能设计',url:'javascript:;'}
+		,"32" : {pid:3,cn:'3.2  照片加载与定位',url:'javascript:;'}
+		,"33" : {pid:3,cn:'3.3  响应鼠标动作',url:'javascript:;'}
+	};
+var dic2 = {
+		"0" : {pid:-1,cn:'控件说明',url:'/'}
+		,"1" : {pid:0,cn:'构造器',url:'/01'}
+		,"11" : {pid:1,cn:'参数：cfg',url:'javascript:;'}
+		,"2" : {pid:0,cn:'静态方法',url:'/02'}
+		,"21" : {pid:2,cn:'extend(obj[,obj]...[,obj])',url:'javascript:;'}
+		,"22" : {pid:2,cn:'$(id)',url:'javascript:;'}
+		,"23" : {pid:2,cn:'hasClass(el,cls)',url:'javascript:;'}
+		,"24" : {pid:2,cn:'addClass(el,cls)',url:'javascript:;'}
+		,"25" : {pid:2,cn:'removeClass(el,cls)',url:'javascript:;'}
+		,"26" : {pid:2,cn:'addListener(target,type,handler)',url:'javascript:;'}
+		,"3" : {pid:0,cn:'动态方法',url:'/03'}
+		,"31" : {pid:3,cn:'init()',url:'javascript:;'}
+		,"32" : {pid:3,cn:'addNode(el,pid)',url:'javascript:;'}
+		,"33" : {pid:3,cn:'setNodeClass(el,pid,child)',url:'javascript:;'}
+		,"34" : {pid:3,cn:'setNodeEvent(el)',url:'javascript:;'}
+	};
+var myTree = T({id:"mytree",data:dic
+		,onclick:function(node){
+			alert(node.innerText||node.text);//输出文字（兼容IE和其他浏览器）
+		}
+	});
+myTree.init();
+var myTree2 = T({id:"mytree2",data:dic2});
+myTree2.init();
+</script>

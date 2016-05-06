@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>javascript base tree</title>
+</head>
+<body>
+<div id="mytree"></div>
+</body>
+</html>
+<script src="base.js"></script>
+<script>
+var dic = {
+		"0" : {pid:-1,cn:'本书目录',url:'/'}
+		,"1" : {pid:0,cn:'第1章 JavaScript概述',url:'/01'}
+		,"2" : {pid:0,cn:'第2章 用JavaScript验证表单',url:'/02'}
+		,"11" : {pid:1,cn:'1.1 认识JavaScript',url:'#'}
+		,"12" : {pid:1,cn:'1.2 配置JavaScript开发环境',url:'#'}
+		,"3" : {pid:0,cn:'第3章 JavaScript实现的照片展示',url:'/03'}
+		,"21" : {pid:2,cn:'2.1  最简单的表单验证 – 禁止空白的必填项目',url:'#'}
+		,"22" : {pid:2,cn:'2.2  处理各种类型的表单元素',url:'#'}
+		,"23" : {pid:2,cn:'2.3  输入的邮箱地址正确吗？用正则来校验复杂的格式要求',url:'#'}
+		,"24" : {pid:2,cn:'2.4  改善用户体验',url:'#'}
+		,"31" : {pid:3,cn:'3.1  功能设计',url:'#'}
+		,"32" : {pid:3,cn:'3.2  照片加载与定位',url:'#'}
+		,"33" : {pid:3,cn:'3.3  响应鼠标动作',url:'#'}
+	};//因为无序排列，下面必须做依赖关系处理
+	//这种依赖也可以由提供数据的后端来处理
+	for(var i in dic){			//用来处理所属关系
+		if(dic[i].pid !==undefined){//判断指定pid的才处理
+			var pid = dic[i].pid;
+			if(dic[pid]){//判断父类是否存在
+				dic[pid].child || (dic[pid].child = []);//判断父类有无child，无则初始化
+				dic[pid].child.push(i);//登记到父类child中
+			}
+		}
+	}
+var z3fTree = function(el,pid){
+	var ul = document.createElement("ul");//创建一个ul元素
+		for(var i in dic){//遍历数据
+			if(dic[i].pid == pid){//判断节点是否都是同一个父节点，即是否是当前需要显示的节点
+				var dl = dic[i]//取得一个节点的信息
+				var li = document.createElement("li");//创建一个li元素
+					li.innerHTML = '<a href="'+dl.url+'">'+dl.cn+'</a>';//拼接html
+					if(dl.child && dl.child.length>0){//判断是否还有子类
+						z3fTree(li,i.toString());//递归下去
+					}
+				ul.appendChild(li);//把拼装好的li追加到ul中去
+			}else{
+				continue;//继续下一个循环
+			}
+		}
+		el.appendChild(ul);//插入到给定的元素中
+	};
+z3fTree(eg.$("mytree"),-1);
+</script>

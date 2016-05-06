@@ -1,0 +1,113 @@
+<!doctype HTML>
+<html>
+<head>
+<title>HTML5 Forms</title>
+<meta charset="utf-8" />
+<link href="08.css" rel="stylesheet" type="text/css">
+</head>
+<body><form name="form1" method="post" action="">
+  <p>&nbsp;</p>
+  <p>URL：
+    <input type="url"/>
+    最基本</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p></p>
+  <p></p>
+  <p>Email：
+    <input type="email"/>
+    最基本</p>
+  <p>&nbsp;</p>
+<p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>Email： 
+    <input type="email" value="test@z3f.me"/> 设置默认值</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>Email：
+    <input type="email" placeholder="请输入Email，如：xx@qq.com"/>
+    设置placeholder</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>Email：
+    <input type="text" />
+    普通input</p>
+  <p>Email：
+    <input type="email" autofocus="autofocus" placeholder="请输入Email，如：xx@qq.com"/>
+    设置autofocus</p>
+  <p>&nbsp;</p>
+  <p>Email：
+    <input type="email" value="test@z3f.me" autofocus="autofocus"/>
+设置autofocus</p>
+  <p></p>
+<p>&nbsp;</p>
+<p>Email：
+  <input type="email" value="" required="required" />
+  设置required</p>
+<p></p>
+<p>&nbsp;</p>
+<p>Email：
+  <input type="email" value="" pattern=".+z3f\.me$" />
+  设置pattern</p>
+<p></p>
+<p>&nbsp;</p>
+  <p><br>
+    Email：<input type="email" pattern="^a.+" autocomplete="on" autofocus="autofocus" placeholder="请输入Email，如：xx@qq.com" list="o"/>
+    <datalist id="o">
+      <option value="">t</option>
+    </datalist> 设置默认值
+    <input name="button" type="submit" id="button" value="提交">
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>Number类型：  
+    <input type="number" value="50" min="10" step="5" max="100"/>
+  </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  <p>
+    Date类型：
+    <input type="date"  />
+  </p>
+  <p>&nbsp;</p>
+  <p> datetime类型：
+    <input type="datetime"  />
+  </p>
+  <p>
+    <input name="button2" type="submit" id="button2" value="提交">
+  </p>
+  <p> datetime-local类型：
+    <input type="datetime-local"  />
+  </p>
+<p>&nbsp;</p>
+<p> month类型：
+  <input type="month"  />
+</p>
+<p></p>
+<p>&nbsp;</p>
+  <p> time类型：
+    <input type="time"  />
+  </p>
+  <p></p>
+<p>&nbsp;</p>
+<p> week类型：
+  <input type="week"  />
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>
+    <input name="button3" type="submit" id="button3" formnovalidate="formnovalidate" value="不验证提交">
+  </p>
+</form>
+</body>
+</html>

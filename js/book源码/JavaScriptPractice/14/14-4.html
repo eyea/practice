@@ -1,0 +1,18 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="lineto" width="600" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#lineto").getContext("2d");
+		dw.moveTo(20,20);
+		dw.quadraticCurveTo(20,100,200,20);
+		dw.stroke();
+	</script>
+ </body>
+</html>

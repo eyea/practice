@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML>
+<html>
+<title>HTML5视频</title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="zPlayer.js"></script>
+    <link href="play5.css" rel="stylesheet" type="text/css">
+    <script>
+        $(function(){
+			new zPlayer(700,".zPlayer");
+		});
+    </script>
+</head>
+<body>
+    <div id="myVideo" class="zPlayer">
+		<video poster="movie.jpg">
+			<source src="movie5.mp4">
+			<source src="movie5.ogv">
+		</video>
+		<div class="ui-play"><span></span></div>
+        <div class="proLines">
+            <div class="arial currentTime">00:00:00</div>
+            <div class="line">
+                <div class="isPlayLine">
+                    <div class="currentCircle"></div>
+                </div>
+            </div>
+            <div class="arial allTime"></div>
+        </div>
+        <div class="playBars">
+            <div class="startBar"><img src="Images/stop.jpg" border="0"></div>
+            <div class="voiceContent">
+                <div class="voice">
+                    <img src="Images/voice.jpg" id="voiceImg" border="0">
+                </div>
+                <div class="voiceline">
+                    <div class="voicekuai"></div>
+                </div>
+            </div>
+			<div class="playTxt">我的播放器，我做主</div>
+			<div class="fullBtn"><img src="Images/full.png" width="17" height="15" border="0"></div>
+        </div>
+    </div>
+</body>
+</html>

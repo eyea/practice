@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <title>localStorage</title>
+ </head>
+ <body>
+  <script>
+  //如果k——siteCount存在则表示曾经访问过本网页
+ if(localStorage.siteCount){
+	 localStorage.siteCount++;//计数+1
+ }else{
+	localStorage.visitTime = new Date();//第一次访问记录日期
+	localStorage.siteCount = 1;//初始化计数器
+ }
+var cmd = window.indexedDB;
+var req = cmd.open("cms");
+var db = null;
+	req.onsuccess=function(e){
+		db = e.target.result;
+		//or
+		db = req.result;
+	};
+
+  </script>
+  <div id="content"></div>
+ </body>
+</html>

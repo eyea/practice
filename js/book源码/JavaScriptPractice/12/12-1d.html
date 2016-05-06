@@ -1,0 +1,18 @@
+<!doctype html>
+<html manifest="12.manifest">
+ <head>
+  <meta charset="UTF-8" />
+  <title>应用程序缓存</title>
+ </head>
+ <body>
+  <script>
+  //如果k——siteCount存在则表示曾经访问过本网页
+ if(localStorage.siteCount){
+	 localStorage.siteCount++;//计数+1
+ }else{
+	localStorage.visitTime = new Date();//第一次访问记录日期
+	localStorage.siteCount = 1;//初始化计数器
+ }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+ <head>
+  <title>hello ajax JSON</title>
+ </head>
+ <body>
+ <div id="myajax">hello world!</div>
+<button type="button" onclick="ajaxLoadTxt('4.1.user.json.txt')">通过 AJAX 获取JSON内容</button>
+ </body>
+</html>
+<script>
+function ajaxLoadTxt(url){
+	var xmlhttp;
+	//非IE浏览器创建XmlHttpRequest对象
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    //IE浏览器创建XmlHttpRequest对象
+    if (window.ActiveXObject) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e){
+            try {
+                xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+            }
+            catch (x){
+            }
+        }
+    }
+	//当对象有响应时的处理
+    xmlhttp.onreadystatechange = function(){
+    	if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			//简单的JSON字符串转换为JS对象
+            var json = new Function("return "+xmlhttp.responseText)();
+    		document.getElementById("myajax").innerHTML = json.name;
+    	}
+    }
+    xmlhttp.open("POST",url,true);
+    xmlhttp.send();
+}
+</script>

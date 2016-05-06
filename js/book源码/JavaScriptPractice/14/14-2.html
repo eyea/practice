@@ -1,0 +1,25 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="lineto" width="400" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#lineto").getContext("2d");
+		//设置线条宽度
+		dw.lineWidth=10;
+		//设置填充颜色
+		dw.strokeStyle = "#ccc";
+		//绘制矩形
+		//dw.rect(50,50,300,300);
+		//绘制完成
+        dw.stroke();
+		dw.beginPath();
+		dw.strokeRect(10,10,100,100);
+	</script>
+ </body>
+</html>

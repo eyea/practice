@@ -1,0 +1,27 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>svg </title>
+ </head>
+ <body>
+  <svg width="100%" height="1000">
+		<rect x="20" y="20" width="250" height="250" style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+		<circle cx="400" cy="120" r="100" style="stroke:black;stroke-width:1;fill:red;"></circle>
+
+		<ellipse cx="200" cy="450" rx="200" ry="80" style="fill:rgb(200,100,50);stroke:rgb(0,0,100);stroke-width:2"/>
+
+		 <image xlink:href="http://images.missyuan.com/attachments/day_080112/20080112_ee8ef8a2e684066c899eGpM14GR4Gwoe.gif" x="0" y="400" height="30px" width="30px">
+		 <animateMotion path="M 0 0 L 0 -5 L 5 -10" begin="1s" dur="5s" fill="freeze"/>
+		 </image>
+<!--<path id='path3' d='M700,300 h 0 a900,200 0 1,0 1,1 z' fill='none' stroke='black' stroke-width='1' />-->
+
+<path id='path3' d='M1000,300 h 0 a259,101 30 1,0 1,1 z' fill='none' stroke='black' stroke-width='1' />
+ <image xlink:href="sun.gif" x="0" y="0" height="30px" width="30px">
+	<animateMotion dur='20s' fill='freeze' repeatCount='indefinite' >
+		<mpath xlink:href='#path3' />
+	</animateMotion >
+ </image>
+
+  </svg>
+ </body>
+</html>

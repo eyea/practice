@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <script>
+    // https://developer.mozilla.org/en/IndexedDB/Using_IndexedDB
+    var db;
+    var arrayKey=[]
+    var openRequest;
+    var lastCursor;
+
+	//对象接口
+    var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+
+	//初始化
+    function init() 
+    {
+	     openRequest = indexedDB.open("persons");
+		//handle setup
+		openRequest.onupgradeneeded = function(e) 
+        {
+			console.log("running onupgradeneeded");
+			var thisDb = e.target.result;
+			if(!thisDb.objectStoreNames.contains("person")) 
+            {
+				console.log("I need to create the objectstore");
+				var objectStore = thisDb.createObjectStore("person", { keyPath: "id", autoIncrement:true });  
+				objectStore.createIndex("name", "name", { unique: false });
+			}
+		}
+
+		openRequest.onsuccess = function(e) 
+        {
+			db = e.target.result;
+			db.onerror = function(event) 
+            {
+			  // Generic error handler for all errors targeted at this database's
+			  alert("Database error: " + event.target.errorCode);
+			  console.dir(event.target);
+			};
+            if(db.objectStoreNames.contains("person")) 
+            {
+                console.log("contains person");
+                var transaction = db.transaction(["person"],"readwrite");  
+			    transaction.oncomplete = function(event) 
+                {
+	  			  //  console.log("All done!");
+			    };
+                var content= document.querySelector("#content");
+			    transaction.onerror = function(event) 
+                {
+			        // Don't forget to handle errors!
+			        console.dir(event);
+			    };
+
+			    var objectStore = transaction.objectStore("person"); //得到person的objectStore对象
+
+			    objectStore.openCursor().onsuccess = function(event) 
+                {  
+			        var cursor = event.target.result;  
+                    var flag=0;
+			        if (cursor) 
+                    {  
+			  	        console.log(cursor.key);
+			  	        console.dir(cursor.value);
+                        var div=document.createElement("div");
+                        div.id=cursor.key;
+                        var div1=document.createElement("div");
+                        var div2=document.createElement("div");
+                        var div3=document.createElement("div");
+                        div1.innerHTML=cursor.value[flag]["name"];
+                        div2.innerHTML=cursor.value[flag]["phone"];
+                        div3.innerHTML=cursor.value[flag]["address"];
+                        div.appendChild(div1);
+                        div.appendChild(div2);
+                        div.appendChild(div3);
+                        content.appendChild(div);
+                        arrayKey.push(cursor.key);
+                        flag++;
+                        lastCursor=cursor.key;
+                        cursor.continue();  
+			        }  
+			        else 
+                    {  
+			  	        console.log("Done with cursor");
+			        }  
+			    }; 
+			        objectStore.openCursor().onerror=function(event){
+			        console.dir(event);
+			    };
+			}
+		};
+		
+		openRequest.onerror = function (event) {
+            // 对request.error做一些需要的处理！
+            console.log("your web may not support IndexedDB,please check.");
+        };
+
+		//add new record
+		document.querySelector("#add").addEventListener("click", function() 
+        {
+			var name=document.querySelector("#name").value;
+            var phone=document.querySelector("#phone").value;
+            var address=document.querySelector("#address").value;
+            var person=[{"name":name,"phone":phone,"address":address}]
+
+            var transaction = db.transaction(["person"], "readwrite"); 
+            transaction.oncomplete = function(event) 
+            {
+		       // console.log("transaction complete");
+	        };
+	        transaction.onerror = function(event) 
+            {
+	            console.dir(event);
+	        };
+            var objectStore = transaction.objectStore("person"); //得到person的objectStore对象
+            objectStore.add(person);
+            objectStore.openCursor().onsuccess = function(event) 
+            {  
+		        cursor = event.target.result; 
+                var key;
+                if(lastCursor==null)
+                {
+                    key=cursor.key;
+                    lastCursor=key;
+                }
+                else
+                {
+                    key=++lastCursor;
+                }
+                var content= document.querySelector("#content");
+                var div=document.createElement("div");
+                div.id=key
+                var div1=document.createElement("div");
+                var div2=document.createElement("div");
+                var div3=document.createElement("div");
+                div1.innerHTML=name;
+                div2.innerHTML=phone;
+                div3.innerHTML=address;
+                div.appendChild(div1);
+                div.appendChild(div2);
+                div.appendChild(div3);
+                content.appendChild(div);
+                arrayKey.push(key);
+                console.log("success add new record!key:"+key);
+                console.dir(person);
+            }
+		});
+        document.querySelector("#delete").addEventListener("click", function() 
+        {
+            if(arrayKey.length==0){ console.log("no data to delete!"); }
+            else
+            {
+                var transaction = db.transaction(["person"], "readwrite"); 
+                transaction.oncomplete = function(event) 
+                {
+  	        //		console.log("transaction complete!");
+		        };
+
+		        transaction.onerror = function(event) 
+                {
+		          console.dir(event);
+		        };
+                var objectStore = transaction.objectStore("person"); //得到person的objectStore对象
+                var removeKey=arrayKey.shift();
+                var getRequest=objectStore.get(removeKey);
+                getRequest.onsuccess=function(e)
+                {
+                    var result =getRequest.result;
+                    console.dir(result);
+                }
+                var request=objectStore.delete(removeKey);
+                request.onsuccess = function(e) 
+                {
+                  console.log("success delete record!");
+                };
+                request.onerror = function(e) 
+                {
+                  console.log("Error delete record:", e);
+                };
+                //隐藏要删除的元素
+                document.getElementById(removeKey).style.display="none";
+            }
+		});
+
+//        该功能存在问题，暂时无法解决
+//        document.querySelector("#deleteDB").addEventListener("click", function() 
+//        {
+//            var deleteDB=indexedDB.deleteDatabase("persons");
+//            var content= document.querySelector("#content");
+//            while(content.firstChild) 
+//            {
+//                content.removeChild(content.firstChild);
+//            }
+
+//            deleteDB.onsuccess=function(event){
+//                console.log("success delete database!");
+//            };
+//            
+//            deleteDB.onerror=function(event){
+//                console.dir(event.target)
+//            };
+//		});
+    }
+    window.addEventListener("DOMContentLoaded", init, false);
+    </script>
+
+    <style type="text/css">
+        div#head div
+        {
+            width: 150px;
+            padding: 0;
+            margin: 1px;
+            background-color: Yellow;
+            text-align: center;
+            font-family: @微软雅黑;
+            font-size: larger;
+            float: left;
+        }
+        #content
+        {
+            width: 460px;
+        }
+        #content div
+        {
+            width: 460px;
+            text-align: center;
+            background-color: Aqua;
+            margin: 1px;
+            float: left;
+        }
+        #content div div
+        {
+            width: 150px;
+            text-align: center;
+            background-color: Aqua;
+            margin: 1px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <span>姓名：</span><input id="name" type="text" maxlength="5" />
+    <span>电话：</span><input id="phone" type="text" maxlength="12" />
+    <span>地址：</span><input id="address" type="text" maxlength="30" />
+    <button id="add" accesskey="Enter">
+        添加</button>
+    <button id="delete">
+        删除</button>
+    <!--<button id="deleteDB">
+        删除数据库</button>-->
+    <div id="head">
+        <div>
+            姓名</div>
+        <div>
+            电话</div>
+        <div>
+            地址</div>
+    </div>
+    <br />
+    <div id="content">
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>CSS3 旋转文字</title>
+<style>
+body{margin:0}
+.css3d{
+	width:200px;height:200px;
+	margin:100px auto;
+	position:relative;
+	transform-style:preserve-3d;
+	-moz-transform:rotateX(0) rotateY(0);
+	-moz-transition:-moz-transform 2s linear;
+	-moz-animation:animations 5s linear infinite;
+	-webkit-transform-style:preserve-3d;
+	-webkit-transform:rotateX(0) rotateY(0);
+	-webkit-transition:-webkit-transform 2s linear;
+	-webkit-animation:animations 5s linear infinite;
+}
+.css3d div{
+	width:200px;height:200px;
+	background:rgba(0,0,0,0.6);
+	position:absolute;
+	line-height:200px;text-align:center;color:#fff;font-size:30px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+}
+.css3d .div2{-moz-transform:rotate(0) translateZ(100px);-webkit-transform:rotateY(0) translateZ(100px);}
+.css3d .div3{-moz-transform:rotate(90deg) translateZ(100px);-webkit-transform:rotateY(90deg) translateZ(100px);}
+.css3d .div4{-moz-transform:rotate(-90deg) translateZ(100px);-webkit-transform:rotateY(-90deg) translateZ(100px);}
+.css3d .div5{-moz-transform:rotate(180deg) translateZ(100px);-webkit-transform:rotateY(180deg) translateZ(100px);}
+.css3d .div6{-moz-transform:rotate(-90deg) translateZ(100px);-webkit-transform:rotateX(-90deg) translateZ(100px);}
+.css3d .div7{-moz-transform:rotate(90deg) translateZ(100px);-webkit-transform:rotateX(90deg) translateZ(100px);}
+@-moz-keyframes animations{
+	0%{-moz-transform:rotateX(0) rotateY(0);}
+	25%{-moz-transform:rotateX(90deg) rotateY(90deg);}
+	50%{-moz-transform:rotateX(180deg) rotateY(180deg);}
+	75%{-moz-transform:rotateX(270deg) rotateY(270deg);}
+	100%{-moz-transform:rotateX(360deg) rotateY(360deg);}
+}
+@-webkit-keyframes animations{
+	0%{-webkit-transform:rotateX(0) rotateY(0);}
+	25%{-webkit-transform:rotateX(90deg) rotateY(90deg);}
+	50%{-webkit-transform:rotateX(180deg) rotateY(180deg);}
+	75%{-webkit-transform:rotateX(270deg) rotateY(270deg);}
+	100%{-webkit-transform:rotateX(360deg) rotateY(360deg);}
+}
+
+
+
+.css3d2_box{
+	width:200px;height:200px;
+	margin:0 auto;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-moz-animation:anima 5s linear infinite;
+}
+.css3d2{
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	position: relative;
+	width:200px;height:200px;
+	-webkit-transform: rotateY(55deg);
+	-moz-transform: rotateY(30deg);
+}
+.css3d2_box .outer{transform: rotateX(55deg);-moz-transform-style: preserve-3d;}
+.css3d2 div{height: 10em; width: 10em;position:absolute;}
+.css3d2 .div1{background:rgba(127,127,255,0.3);right:-2.5em;transform: rotateY(90deg);}
+.css3d2 .div2{background:rgba(127,255,127,0.3);left: -5em;transform: rotateY(90deg);}
+.css3d2 .div3{background:rgba(127,255,255,0.3);transform: translateZ(5em);}
+.css3d2 .div4{background:rgba(0,255,255,0.3);transform: translateZ(-5em);}
+.css3d2 .div5{background:rgba(0,255,127,0.3);bottom:-2.5em;transform: rotateX(-90deg);}
+.css3d2 .div6{background:rgba(127,127,127,0.3);top: -5em;transform: rotateX(-90deg);}
+
+.txt{
+	text-align:center;font-size:28px;
+}
+.txt a{transition:transform 1s ease-out 0s; display:inline-block; background:#fff;}
+.txt a:hover{
+	transform:rotate(360deg);
+}
+@-moz-keyframes anima{
+	0%{-moz-transform:rotate(0);}
+	100%{-moz-transform:rotate(360deg);}
+}
+@-webkit-keyframes anima{
+	0%{-webkit-transform:rotate(0)}
+	100%{-webkit-transform:rotate(360deg)}
+}
+</style>
+</head>
+<body>
+<br /><br /><br /><br /><br /><br /><br /><br />
+<div class="txt">
+<a href="">旋转的文字！</a></div>
+
+
+
+</body>
+</html>
+			

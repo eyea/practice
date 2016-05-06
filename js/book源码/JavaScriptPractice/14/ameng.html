@@ -1,0 +1,99 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>doraemon</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<div id="doraemon">
+		<canvas class="face" width="600" height="800">您的浏览器不支持canvas。</canvas>
+	</div>
+	<script>
+	var face = document.querySelector("#doraemon .face").getContext("2d");
+		//绘制圆形大脑袋
+		face.arc(252, 252, 250, 0, 360 * Math.PI / 180);//画圆
+		face.fillStyle = "#07BEEA";//填充色
+		face.fill();//填充
+		face.lineWidth = 2;
+		face.strokeStyle = "#333";//画笔色
+		face.stroke();//画轮廓线
+
+		//绘制白色大脸
+		face.beginPath();//重置当前绘画路径
+		face.moveTo(160, 450);//画笔移动
+		face.bezierCurveTo(0, 400, 0, 110, 210, 115);//三次方贝塞尔曲线（左边）
+        face.lineTo(290, 115);//上边
+        face.bezierCurveTo(500, 110, 500, 400, 340, 450);//三次方贝塞尔曲线（右边）
+        face.bezierCurveTo(280, 470, 220, 470, 160, 450);//三次方贝塞尔曲线（下颚）
+        face.fillStyle = "#FFF";//填充色
+        face.fill();//填充
+        face.stroke();//画
+
+		//绘制眼睛
+		face.beginPath();//重置当前绘画路径
+        face.moveTo(150, 150);//画笔移动
+        face.lineTo(150, 100);//左眼左竖线
+        face.bezierCurveTo(160, 50, 240, 50, 250, 100);//左下眼睑
+        face.lineTo(250, 150);//左眼右竖线
+        face.bezierCurveTo(240, 200, 160, 200, 150, 150);//左上眼睑
+        face.moveTo(250, 150);//画笔移动
+        face.lineTo(250, 100);//右眼左竖线
+        face.bezierCurveTo(260, 50, 340, 50, 350, 100);//右上眼睑
+        face.lineTo(350, 150);//右眼右竖线
+        face.bezierCurveTo(340, 200, 260, 200, 250, 150);//右下眼睑
+		face.fillStyle = "#FFF";//填充色
+        face.fill();//填充
+        face.stroke();//画
+
+		//绘制瞳孔
+		face.beginPath();//重置当前绘画路径
+        face.arc(225, 155, 10, 0, 360 * Math.PI / 180);
+        face.arc(275, 155, 10, 0, 360 * Math.PI / 180);
+        face.fillStyle = "#333";//填充色
+        face.fill();//填充
+		
+		//绘制鼻子
+		face.beginPath();//重置当前绘画路径
+        face.arc(250, 197, 25, 0, 360 * Math.PI / 180);
+        face.fillStyle = "#C93E00";//填充色
+        face.fill();//填充
+        face.stroke();
+
+		//绘制鼻子高光
+		face.beginPath();//重置当前绘画路径
+        face.arc(260, 190, 10, 0, 360 * Math.PI / 180);
+	var grd = face.createRadialGradient(260,190,2,260,190,10);//创建一个放射渐变样式
+		grd.addColorStop(0,"#FFF");//由内到外的颜色
+		grd.addColorStop(1,"#C93E00");//由内到外的颜色
+        face.fillStyle = grd;
+        face.fill();//填充
+        //绘制嘴巴
+        face.beginPath();//重置当前绘画路径
+        face.moveTo(250, 222);
+        face.lineTo(250, 395);
+        face.moveTo(100, 320);
+        face.bezierCurveTo(180, 420, 320, 420, 400, 320);
+        face.lineWidth = 3;
+        face.stroke();
+        //绘制胡子
+        face.beginPath();//重置当前绘画路径
+        face.moveTo(80, 200);
+        face.lineTo(180, 220);
+        face.moveTo(80, 245);
+        face.lineTo(180, 245);
+        face.moveTo(80, 290);
+        face.lineTo(180, 270);
+        face.moveTo(320, 220);
+        face.lineTo(420, 200);
+        face.moveTo(320, 245);
+        face.lineTo(420, 245);
+        face.moveTo(320, 270);
+        face.lineTo(420, 290);
+        face.stroke();
+		
+
+	</script>
+ </body>
+</html>

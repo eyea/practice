@@ -1,0 +1,24 @@
+<html>
+ <head>
+  <title>hello ajax sync</title>
+ </head>
+ <body>
+	<div id="myajax">hello world!</div>
+	<button type="button" id="ajaxBtn">通过 AJAX 同步改变内容</button>
+	<script src="eg.lib.js"></script>
+ </body>
+</html>
+<script>
+(function(){//避免全局污染,将操作放在闭包里
+	var ajaxBtn = eg.$("ajaxBtn");//取得username的DOM对象，eg.$方法定义在eg.lib.js，详见第2章范例
+	//给userName对象绑定一个onkeyup事件，eg.addListener方法定义在eg.lib.js，详见第2章范例
+	eg.addListener(ajaxBtn,"click",function(){
+		eg.AJAX({TYPE:"GET",//AJAX请求类型
+			URL:"4-4.txt",//AJAX请求的URL，该文件只有“hello ajax”字符串的纯文本
+			ISASYN:false//是否异步
+		},function(data){//定义AJAX请求成功后的callback回调函数
+			eg.$("myajax").innerHTML = data;//在元素myajax原本的hello world!会变成hello ajax
+		});
+	});
+})();
+</script>

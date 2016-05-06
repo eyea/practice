@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>最简单表单的HTML结构</title>
+ </head>
+ <body>
+	<form method="post" action="" onsubmit="return eg.regCheck();">
+		账户：<input type="text" name="" id="userid" /><br /><br />
+		密码：<input type="password" name="" id="userpwd" /><br /><br />
+		确认：<input type="password" name="" id="userpwd2" /><br /><br />
+		<input type="submit" value="注册" />
+	</form>
+	<script>
+		var eg = {};//声明一个对象，当做命名空间来使用，本书默认的范例都会以此来方便管理
+			//定义一个公共函数来获取指定id元素的值，减少代码量，提高代码复用率
+			eg.$ = function(id){
+				return document.getElementById(id);
+			};
+			eg.regCheck = function(){
+				var uid = eg.$("userid");
+				var upwd = eg.$("userpwd");
+				var upwd2 = eg.$("userpwd2");
+				if(uid.value == ''){
+					alert('账户不能为空!');
+					return false;
+				}
+				if(upwd.value == ''){
+					alert('密码不能为空!');
+					return false;
+				}
+				if(upwd.value != upwd2.value){
+					alert('两次密码输入不相同!');
+					return false;
+				}
+				return true;
+			};
+	</script>
+ </body>
+</html>

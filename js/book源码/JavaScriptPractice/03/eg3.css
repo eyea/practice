@@ -1,0 +1,30 @@
+ul,li{
+	list-style: none;
+}
+#smallPhotos{width:620px; margin: 10px 0;}
+#smallPhotosList{ margin: 0 auto; width:580px; float:left;padding: 0;}
+#smallPhotosList li{
+	float:left;					/*左浮动*/
+	margin-left: 10px;			/*左外边距10像素*/
+	_margin-left:8px;			/*这是专门正对IE6 间隙太大而设置的*/
+}
+#smallPhotosList img{
+	border:2px solid #000;
+	cursor:pointer;				/*鼠标样式*/
+}
+#prve{
+	 background: url(icon_prve.jpg);
+	 height: 40px;
+	 width:20px;
+	 display: inline-block;		/*让span标签变成块级元素*/
+	 float: left;
+	 cursor:pointer;
+}
+#next{
+	 background: url(icon_next.jpg);
+	 height:40px;
+	 width:20px;
+	 display: inline-block;
+	 float: right;
+	 cursor:pointer;
+}

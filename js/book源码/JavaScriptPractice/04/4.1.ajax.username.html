@@ -1,0 +1,43 @@
+<html>
+ <head>
+  <title>ajax check username</title>
+ </head>
+ <body>
+	<input type="text" id="username" />
+	<button type="button" onclick="usernameCheck()">检查用户名</button> <span id="usernameTip"></span>
+ </body>
+</html>
+<script>
+function usernameCheck(){
+	var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    if (window.ActiveXObject) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e){
+            try {
+                xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+            }
+            catch (x){
+            }
+        }
+    }
+    xmlhttp.onreadystatechange = function(){
+    	if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			var json = new Function("return "+xmlhttp.responseText)();
+			var tip = "";
+			if(json.success){
+				tip = "√ 该用户名可以注册"
+			}else{
+				tip = "× 该用户名已存在"
+			}
+    		document.getElementById("usernameTip").innerHTML = tip;
+    	}
+    }
+    xmlhttp.open("GET",'4.1.username.asp?key='+document.getElementById("username").value,true);
+    xmlhttp.send();
+}
+</script>

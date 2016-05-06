@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>transform</title>
+<style>
+body{margin:0}
+.css3d{
+	width:200px;height:200px;
+	margin:100px auto;
+	position:relative;
+	transform-style:preserve-3d;
+	-moz-transform:rotateX(0) rotateY(0);
+	-moz-transition:-moz-transform 2s linear;
+	-moz-animation:animations 5s linear infinite;
+	-webkit-transform-style:preserve-3d;
+	-webkit-transform:rotateX(0) rotateY(0);
+	-webkit-transition:-webkit-transform 2s linear;
+	-webkit-animation:animations 5s linear infinite;
+}
+.css3d div{
+	width:200px;height:200px;
+	background:rgba(0,0,0,0.6);
+	position:absolute;
+	line-height:200px;text-align:center;color:#fff;font-size:30px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+}
+.css3d .div2{-moz-transform:rotate(0) translateZ(100px);-webkit-transform:rotateY(0) translateZ(100px);}
+.css3d .div3{-moz-transform:rotate(90deg) translateZ(100px);-webkit-transform:rotateY(90deg) translateZ(100px);}
+.css3d .div4{-moz-transform:rotate(-90deg) translateZ(100px);-webkit-transform:rotateY(-90deg) translateZ(100px);}
+.css3d .div5{-moz-transform:rotate(180deg) translateZ(100px);-webkit-transform:rotateY(180deg) translateZ(100px);}
+.css3d .div6{-moz-transform:rotate(-90deg) translateZ(100px);-webkit-transform:rotateX(-90deg) translateZ(100px);}
+.css3d .div7{-moz-transform:rotate(90deg) translateZ(100px);-webkit-transform:rotateX(90deg) translateZ(100px);}
+@-moz-keyframes animations{
+	0%{-moz-transform:rotateX(0) rotateY(0);}
+	25%{-moz-transform:rotateX(90deg) rotateY(90deg);}
+	50%{-moz-transform:rotateX(180deg) rotateY(180deg);}
+	75%{-moz-transform:rotateX(270deg) rotateY(270deg);}
+	100%{-moz-transform:rotateX(360deg) rotateY(360deg);}
+}
+@-webkit-keyframes animations{
+	0%{-webkit-transform:rotateX(0) rotateY(0);}
+	25%{-webkit-transform:rotateX(90deg) rotateY(90deg);}
+	50%{-webkit-transform:rotateX(180deg) rotateY(180deg);}
+	75%{-webkit-transform:rotateX(270deg) rotateY(270deg);}
+	100%{-webkit-transform:rotateX(360deg) rotateY(360deg);}
+}
+
+
+
+.css3d2_box{
+	width:200px;height:200px;
+	margin:0 auto;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-moz-animation:anima 5s linear infinite;
+}
+.css3d2{
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	position: relative;
+	width:200px;height:200px;
+	-webkit-transform: rotateY(55deg);
+	-moz-transform: rotateY(30deg);
+}
+.css3d2_box .outer{transform: rotateX(55deg);-moz-transform-style: preserve-3d;}
+.css3d2 div{height: 10em; width: 10em;position:absolute;}
+.css3d2 .div1{background:rgba(127,127,255,0.3);right:-2.5em;transform: rotateY(90deg);}
+.css3d2 .div2{background:rgba(127,255,127,0.3);left: -5em;transform: rotateY(90deg);}
+.css3d2 .div3{background:rgba(127,255,255,0.3);transform: translateZ(5em);}
+.css3d2 .div4{background:rgba(0,255,255,0.3);transform: translateZ(-5em);}
+.css3d2 .div5{background:rgba(0,255,127,0.3);bottom:-2.5em;transform: rotateX(-90deg);}
+.css3d2 .div6{background:rgba(127,127,127,0.3);top: -5em;transform: rotateX(-90deg);}
+@-moz-keyframes anima{
+	0%{-moz-transform:rotateY(0);}
+	100%{-moz-transform:rotateY(360deg);}
+}
+@-webkit-keyframes anima{
+	0%{-webkit-transform:rotateX(0)}
+	100%{-webkit-transform:rotateX(360deg)}
+}
+</style>
+</head>
+<body style="height:1800px;">
+<div class="css3d">
+	<div class="div2">张</div>
+	<div class="div3">三</div>
+	<div class="div4">封</div>
+	<div class="div5">@</div>
+	<div class="div6">前</div>
+	<div class="div7">端</div>
+</div>
+<div class="css3d2_box">
+<div class="outer">
+	<div class="css3d2">
+		<div class="div1">后1张</div>
+		<div class="div2">左2三</div>
+		<div class="div3">下3封</div>
+		<div class="div4">上4@</div>
+		<div class="div5">右5前</div>
+		<div class="div6">前6端</div>
+	</div>
+</div>
+</div>
+
+<br />
+<br />
+<br />
+<style>
+.css3d-box,
+.css3d-box .outer,
+.css3d-box .inner,
+.css3d-box .inner div{
+	height: 160px;width: 160px;
+}
+.css3d-box {
+	margin:0 auto;
+    animation: fly 4s linear infinite alternate;
+    transform-style: preserve-3d;
+}
+@-moz-keyframes fly{
+	0%{-moz-transform:rotateY(0);}
+	100%{-moz-transform:rotateY(360deg);}
+}
+.css3d-box .outer{
+    transform: rotateX(55deg);transform-style: preserve-3d;
+}
+.css3d-box .inner{
+    transform: rotateY(45deg);transform-style: preserve-3d;position: relative;
+}
+.css3d-box .inner div{
+    transform-style:preserve-3d;position:absolute;
+}
+.css3d-box .plane-1 {
+    background:rgba(127,127,255,0.3);right:-80px;transform:rotateY(90deg);
+}
+.css3d-box .plane-2 {
+    background:rgba(127,255,127,0.3);left:-80px;transform:rotateY(90deg);
+}
+.css3d-box .plane-3 {
+    background:rgba(127,255,255,0.3);transform:translateZ(80px);
+}
+.css3d-box .plane-4 {
+    background:rgba(0,255,255,0.3);transform:translateZ(-80px);
+}
+.css3d-box .plane-5 {
+    background:rgba(0,255,127,0.3);transform:rotateX(-90deg);bottom:-80px;
+}
+.css3d-box .plane-6 {
+    background:rgba(127,127,127,0.3);transform:rotateX(-90deg);top:-80px;
+}
+</style>
+<div class="css3d-box">
+  <div class="outer">
+    <div class="inner">
+
+		<div class="plane-1"></div>
+		<div class="plane-2"></div>
+		<div class="plane-3"></div>
+		<div class="plane-4"></div>
+		<div class="plane-5"></div>
+		<div class="plane-6"></div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
+			

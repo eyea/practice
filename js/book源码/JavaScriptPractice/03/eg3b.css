@@ -1,0 +1,26 @@
+ul,li{
+	list-style: none;
+}
+#bigPhoto{width:620px;float:left;}
+#smallPhotos{width:100px; float:left;}
+#smallPhotosList{ margin: 0 auto; width:100px; padding: 0;}
+#smallPhotosList li{
+	margin-left: 10px;
+	margin-top: 10px;
+}
+#smallPhotosList img{
+	border:5px solid #000;
+	cursor:pointer;
+}
+#prve{
+	 background: url(icon_prve2.jpg);
+	 height: 20px;width:40px;margin-left:30px;
+	 display: inline-block;
+	 cursor:pointer;
+}
+#next{
+	 background: url(icon_next2.jpg);
+	 height:20px;width:40px;margin-left:30px;
+	 display: inline-block;
+	 cursor:pointer;
+}

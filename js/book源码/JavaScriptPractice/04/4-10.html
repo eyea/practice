@@ -1,0 +1,35 @@
+<html>
+ <head>
+  <title>AJAX 检查用户名</title>
+ </head>
+ <body>
+用户名：<input type="text" id="username" /><span id="usernameTip"></span>
+<script src="eg.lib.js"></script>
+ </body>
+</html>
+<script>
+//eg对象已经在eg.lib.js中定义
+(function(){//避免全局污染,将操作放在闭包里
+	var userName = eg.$("username");//取得username的DOM对象，eg.$方法定义在eg.lib.js，详见第2章范例
+	var delay;//存储延迟执行的函数
+	var delay2ajax = function(){//AJAX操作部分
+		eg.AJAX({TYPE:"GET",//AJAX请求类型
+			URL:"4-11.asp?username="+userName.value,//获取用户输入的值并构建AJAX请求的URL
+			ISASYN:true//是否异步
+		},function(data){//定义AJAX请求成功后的callback回调函数
+			var json = new Function("return "+data)();//使用简单的方式把JSON格式的字符串文本转换成JavaScript对象。
+			var tip = "";//存储提示信息
+			if(json.success){//根据服务端定义的成功标志判断
+				tip = "√ 该用户名可以注册";
+			}else{
+				tip = "× 该用户名已存在";
+			}
+			eg.$("usernameTip").innerHTML = tip;//在输入框旁边的标签输出服务端返回的信息
+		});
+	};
+	eg.addListener(userName,"keyup",function(){//给userName对象绑定一个onkeyup事件，eg.addListener方法定义在eg.lib.js，详见第2章范例
+		clearTimeout(delay);//如果用户在短时间内还输入，则清除要AJAX的操作。
+		delay = setTimeout(delay2ajax,800);//重新等待用户输入，如果延迟了0.8秒都还没有输入，则认为可以自动发起AJAX检查
+	});
+})();
+</script>

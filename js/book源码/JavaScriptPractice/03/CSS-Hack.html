@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ <head>
+	<title>CSS Hack</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+	<style>
+	div{ display:none; margin:10px;}/*隐藏div 通过不同的hack 将其显示*/
+	.IE{display:block\9;}		/*IE6 IE7 IE8 IE9 IE10识别*/
+	.IE6{_display:block;}		/*IE6识别*/
+	.IE6{-color:blue;}			/*IE6识别*/
+	.IE7{*display:block;}		/*IE6 IE7识别*/
+	.IE7{+color:blue;}			/*IE6 IE7识别*/
+	.IE7{#color:red;}			/*IE6 IE7识别*/
+	.IE8910{display:block\0;}	/*IE8910识别*/
+	:root .IE910{display:block\9;}/*IE9 IE10识别*/
+	.other{[display:block;display:block;]}/*safari Chrome等识别*/
+	</style>
+ </head>
+ <body>
+<style>
+	div{ display:none; margin:10px;}/*隐藏div 通过不同的hack 将其显示*/
+	.IE{display:block\9;}		/*IE6 IE7 IE8 IE9 IE10识别*/
+	.IE6{_display:block;}		/*IE6识别*/
+	.IE6{-color:blue;}			/*IE6识别*/
+	.IE7{*display:block;}		/*IE6 IE7识别*/
+	.IE7{+color:blue;}			/*IE6 IE7识别*/
+	.IE7{#color:red;}			/*IE6 IE7识别*/
+	.IE8910{display:block\0;}	/*IE8910识别*/
+	:root .IE910{display:block\9;}/*IE9 IE10识别*/
+	.other{[display:block;display:block;]}/*safari Chrome等识别*/
+@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){  
+	.IE10{display:block;}
+}
+</style>
+<div class="IE">所有IE识别</div>
+<div class="IE8910">IE8910 识别</div>
+<div class="IE910">IE910识别</div>
+<div class="IE6">IE6识别</div>
+<div class="IE7">IE7识别</div>
+<div class="IE8">IE8识别</div>
+<div class="IE10">IE10识别</div>
+<div class="other">标准浏览器识别</div>
+ </body>
+</html>

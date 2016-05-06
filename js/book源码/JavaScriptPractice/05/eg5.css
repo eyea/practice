@@ -1,0 +1,5 @@
+@import url("base.css");
+.main{ width:880px; margin: 0 auto;}
+.main .col{ width:216px; float: left; margin: 2px; _margin:1px;}
+.main .col img{width:210px; border:1px solid #c3c3c3; padding: 2px; margin: 2px 0;}
+.main .col p{text-align: center; margin: 0;padding: 0;}
