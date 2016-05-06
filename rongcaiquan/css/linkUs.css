@@ -1,0 +1,135 @@
+*{padding: 0;margin: 0;font-size: 0.14rem;}
+body{
+	background: #fefeea;
+}
+
+/*标题*/
+.biaoti{
+	background-color: #d9a33b;
+}
+.biaoti h3 {
+    font: 24px '微软雅黑';
+    color: #fff;
+    text-align: center;
+    padding: 13px 12.5px;
+    font-weight: bold;
+}
+.biaoti h3 a {
+    float: left;
+    color: #000;
+    text-decoration: none;
+}
+/*客服，电话*/
+.kefu{
+	margin: 0.4rem auto 0;
+}
+.tel{
+	margin: 0.2rem auto;
+}
+.kefu,.tel{
+	width: 2.75rem;
+	text-align: center;
+}
+.kefu_icon{
+	background: url(../imgs/kefu.png) no-repeat;
+	width: 0.2rem;
+	height: 0.2rem;
+	display: inline-block;
+	background-size: 100%;
+	vertical-align: middle;
+}
+.tel_icon{
+	background: url(../imgs/tel.png) no-repeat;
+	width: 0.2rem;
+	height: 0.2rem;
+	display: inline-block;
+	background-size: 100%;
+	vertical-align: middle;
+}
+.qr_img{
+	background: url(../imgs/erweima.jpg) no-repeat;
+	background-size: 100%;
+	width: 1.6rem;
+	height: 1.6rem;
+	margin: 0.2rem auto;
+	margin-bottom: .7rem;
+}
+
+/*底部信息*/
+.footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0.5rem;
+	border-top: 1px solid #333;
+	z-index: 1111111;
+	background: #fefeea;
+	padding-bottom:.08rem;
+}
+.footer ul{
+	list-style: none;
+}
+
+.footer li{
+	float: left;
+	width: 25%;
+}
+.footer li div{
+	text-align: center;
+	font-size: 0.12rem;
+}
+.footer li .icon{
+	margin: 0.05rem 0.3rem;
+}
+.footer li .icon_home{
+	background: url(../imgs/home.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .home_active{
+	background: url(../imgs/home_active.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .icon_company{
+	background: url(../imgs/company.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .company_active{
+	background: url(../imgs/company_active.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .icon_lecture{
+	background: url(../imgs/lecture.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .lecture_active{
+	background: url(../imgs/lecture_active.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .icon_center{
+	background: url(../imgs/center.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.footer li .center_active{
+	background: url(../imgs/center_active.png) no-repeat;
+	width: 0.25rem;
+	height: 0.25rem;
+	background-size: 100%;
+}
+.home_text,.company_text,.lecture_text,.center_text{
+	color: #f77c14;
+}
