@@ -1,0 +1,26 @@
+﻿body{font-size:11px;font-family:Verdana,Arial,sans-serif;font-size:11px}
+/*图片样式设置*/
+#photo {float:left;width:55%; min-height:12em;padding:0;margin:0px;list-style-type:none}
+.photo li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align:center}
+.photo li h5 { margin: 0 0 0.4em; cursor: move}
+.photo li span { float:left}
+.photo li a { float: right; }
+.photo li img { width: 98%;cursor:move;border:solid 1px #eee;margin-bottom:3px}
+/*图片外框样式设置*/
+.phframe {width:660px}
+.photoframecontent {border: 1px solid #ccc;color:#666}
+.photoframecontent a {color:#666}
+.photoframeheader {border: 1px solid #ccc;background:#ccc;color:#666;font-weight:bold}
+.photoframeheader a {color: #666}
+.photoframetr {-moz-border-radius-topright:4px; -webkit-border-top-right-radius:4px}
+/*特殊样式设置*/
+.active {background:#eee;}
+.highlight {border:1px solid #fcefa1;background: #fbf9ee }
+.reset {margin:0;padding:0; border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%; list-style:none}
+.phtrash, .phrefresh{color:#666}
+/*回收站样式设置*/
+#trash {float:right;width:42%;min-height:18em;padding:1%}
+#trash h4 {line-height: 16px; margin: 0 0 0.4em;padding:4px 0px 0px 4px}
+#trash .photo h5, #trash span { display:none;}
+
+

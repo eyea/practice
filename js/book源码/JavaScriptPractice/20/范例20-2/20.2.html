@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>弹出和确认信息对话框</title>
+
+    <script type="text/javascript" 
+            src="jquery-1.10.2.js">
+    </script>
+    <link rel="stylesheet" type="text/css" 
+            href="css/jquery.ui.all.css" />
+	<script type="text/javascript" 
+	        src="jquery.ui.core.js">
+	</script>
+	<script type="text/javascript" 
+	        src="jquery.ui.widget.js">
+	</script>
+	<script type="text/javascript" 
+	        src="jquery.ui.mouse.js">
+	</script>
+	<script type="text/javascript" 
+	        src="jquery.ui.draggable.js">
+	</script>
+	<script type="text/javascript" 
+	        src="jquery.ui.position.js">
+	</script>
+	<script type="text/javascript" 
+	        src="jquery.ui.dialog.js">
+	</script>
+    <link rel="stylesheet" type="text/css" 
+            href="css/demos.css" />
+    <style type="text/css">
+           div{line-height:1.8em}
+           .txt{border:#666 1px solid;padding:2px;width:180px;margin-right:3px}
+           button,.btn {border:#666 1px solid;padding:2px;width:60px;
+           filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#ffffff, EndColorStr=#ECE9D8);}
+    </style>
+	<script type="text/javascript">
+	    $(function() {
+	        $("#btnSubmit").bind("click", function() { //检测按钮事件
+	            if ($("#txtName").val() == "") { //如果文本框为空
+	                sys_Alert("姓名不能为空！请输入姓名");
+	            }
+	        });
+
+	        $("#btnDelete").bind("click", function() { //询问按钮事件
+	            if ($("#spnName").html() !=null) { //如果对象不为空
+	                sys_Confirm("您真的要删除该条记录吗？");
+	                return false;
+	            }
+	        });
+	    });
+
+	    function sys_Alert(content) { //弹出提示信息窗口
+	        $("#dialog-modal").dialog({
+	            height: 140,
+	            modal: true,
+	            title: '系统提示',
+	            hide: 'slide',
+	            buttons: {
+	                Cancel: function() {
+	                    $(this).dialog("close");
+	                }
+	            },
+	            open: function(event, ui) {
+	                $(this).html("");
+	                $(this).append("<p>" + content + "</p>");
+	            }
+	        });
+	    }
+
+	    function sys_Confirm(content) { //弹出询问信息窗口
+	        $("#dialog-modal").dialog({
+	            height: 140,
+	            modal: true,
+	            title: '系统提示',
+	            hide: 'slide',
+	            buttons: {
+	                '确定': function() {
+	                    $("#spnName").remove();
+	                    $(this).dialog("close");
+	                },
+	                '取消': function() {
+	                    $(this).dialog("close");
+	                }
+	            },
+	            open: function(event, ui) {
+	                $(this).html("");
+	                $(this).append("<p>" + content + "</p>");
+	            }
+	        });
+	    }
+	</script>
+</head>
+<body>
+<div class="demo-description">
+    <div style="background-color:#eee;padding:5px;width:260px">
+        <input id="txtName" type="text" class="txt" />
+        <input id="btnSubmit" type="button" value="提交" class="btn" />
+    </div>
+    <div style="padding:5px;width:260px">
+        <span id="spnName">cjgong</span>
+        <input id="btnDelete" type="button" value="删除" class="btn" />
+    </div>
+    <div id='dialog-modal'></div>
+</div>
+</body>
+</html>

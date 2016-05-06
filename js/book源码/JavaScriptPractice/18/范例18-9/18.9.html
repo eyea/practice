@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>淡入淡出效果</title>
+    <script type="text/javascript" 
+            src="jquery-1.10.2.js">
+    </script>
+
+    <style type="text/css">
+           .divFrame{border:solid 1px #666;width:188px;text-align:center;}
+           .divFrame .divTitle{background-color:#eee;padding:5px 0px 5px 0px}
+           .divFrame .divContent{padding:5px 0px 5px 0px}
+           .divFrame .divContent img{border:solid 1px #eee;padding:2px}
+           .divFrame .divTip{position:absolute;padding:90px 0px 0px 60px;font-size:13px;font-weight:bold}
+           .btn {border:#666 1px solid;padding:2px;width:80px;
+           filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#ffffff, EndColorStr=#ECE9D8);}
+    </style>
+    <script type="text/javascript">
+        $(function() {
+            $img = $("img"); //获取图片元素对象
+            $tip = $(".divTip"); //获取提示元素对象
+            $("input:eq(0)").click(function() { //第一个按钮单击事件
+                $tip.html(""); //清空提示内容
+                //在3000毫秒中淡入图片，并执行一个回调函数
+                $img.fadeIn(3000, function() {
+                    $tip.html("淡入成功！");
+                })
+            })
+            $("input:eq(1)").click(function() { //第二个按钮单击事件
+                $tip.html(""); //清空提示内容
+                //在3000毫秒中淡出图片，并执行一个回调函数
+                $img.fadeOut(3000, function() {
+                    $tip.html("淡出成功！");
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+      <div class="divFrame">
+	  		<!--两个操作按钮-->
+           <div class="divTitle">
+               <input id="Button1" type="button" value="淡入按钮" class="btn" />
+               <input id="Button2" type="button" value="淡出按钮" class="btn" />
+           </div>
+		   <!--显示图片-->
+           <div class="divContent">
+               <div class="divTip"></div>
+               <img src="Images/img05.jpg" alt="" title="设备图片" />
+           </div>
+      </div>
+</body>
+</html>

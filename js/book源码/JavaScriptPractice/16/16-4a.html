@@ -1,0 +1,56 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa; margin-left:10px}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="710" height="400">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var img = new Image();
+		img.src = "caodi.jpg";
+		//加载完毕之后
+		img.onload = function(){
+			dw.drawImage(img,0,0,355,200);
+			var imgData = dw.getImageData(0,0,355,200);
+			  dw.putImageData(Opt(imgData,"left"),0,0);
+			  dw.putImageData(Opt(imgData,"right"),355,0);
+			  dw.putImageData(Opt(imgData,"up"),0,200);
+			  dw.putImageData(Opt(imgData,"down"),355,200);
+		}
+		function Opt(imgData,type){
+			for(var y=0;y<imgData.height;y++){
+				for(var x=0;x<imgData.width;x++){
+					var idx = y*imgData.width + x;
+					var p = idx*4;
+					var o = 255;
+					switch(type){
+						case "left":
+							//从右往左透明
+							o = 255*(x/imgData.width);
+							break;
+						case "right":
+							//从左往右透明
+							o = 255*(1-x/imgData.width);
+							break;
+						case "up":
+							//从下往上透明
+							o = 255*(y/imgData.height);
+							break;
+						case "down":
+							//从上往下透明
+							o = 255*(1-y/imgData.height);
+							break;
+					}
+					imgData.data[p+3] = o
+				}
+			}
+			return imgData;
+		}
+	</script>
+ </body>
+</html>

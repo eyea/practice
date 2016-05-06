@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>数据管理</title>
+<script type="text/javascript" 
+            src="jquery-1.10.2.js">
+    </script>
+
+<style type="text/css">
+           body{font-size:12px} 
+           table{width:360px;border-collapse:collapse}
+           table tr th,td{border:solid 1px #666;text-align:center}
+           table tr td img{border:solid 1px #ccc;padding:3px;width:42px;height:60px;cursor:hand}
+           table tr td span{float:left;padding-left:12px;}
+           table tr th{background-color:#ccc;height:32px}
+           .clsImg{position:absolute;border:solid 1px #ccc;padding:3px;width:85px;height:120px; background-color:#eee;display:none}
+           .btn {border:#666 1px solid;padding:2px;width:50px;
+                 filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#ffffff, EndColorStr=#ECE9D8);}
+</style>
+<script type="text/javascript" >
+        $(function() {
+        $("table tr:nth-child(odd)").css("background-color", "#eee"); //隔行变色
+        
+            /**全选复选框单击事件**/
+            $("#chkAll").click(function() {
+                if (this.checked) {//如果自己被选中
+                    $("table tr td input[type=checkbox]").attr("checked", true);
+                }
+                else {//如果自己没有被选中
+                    $("table tr td input[type=checkbox]").attr("checked", false);
+                }
+            })
+            
+            
+
+        })
+    </script>
+</head>
+<body>
+<table>
+  <tr>
+    <th>选项</th>
+    <th>编号</th>
+    <th>姓名</th>
+    <th>性别</th>
+    <th>薪资</th>
+  </tr>
+  <tr id="0">
+    <td><input id="Checkbox1" type="checkbox" value="0"/></td>
+    <td>1001</td>
+    <td>李小明</td>
+    <td>男</td>
+    <td>3560 元</td>
+  </tr>
+  <tr id="1">
+    <td><input id="Checkbox2" type="checkbox" value="1"/></td>
+    <td>1002</td>
+    <td>刘明明</td>
+    <td>女</td>
+    <td>3780 元</td>
+  </tr>
+  <tr id="2">
+    <td><input id="Checkbox3" type="checkbox" value="2"/></td>
+    <td>1003</td>
+    <td>张小星</td>
+    <td>女</td>
+    <td>4560 元</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td style="text-align:left;height:28px"><span>
+      <input id="chkAll" type="checkbox" />
+      全选</span> </td>
+  </tr>
+</table>
+</body>
+</html>

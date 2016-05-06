@@ -1,0 +1,35 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa; float:left;margin-right:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="445" height="250">您的浏览器不支持canvas。</canvas>
+	<input type="button" value="Convert to JPG" onclick="tojpg()">
+	<input type="button" value="Save to JPG" onclick="savejpg()">
+	<div id="to"></div>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var img = new Image();
+		img.src = "16-6.bmp";
+		//加载完毕之后
+		img.onload = function(){
+			dw.drawImage(img,0,0);
+		}
+	function tojpg(){
+		var data = document.getElementById("canvas").toDataURL("image/jpeg");
+		var el = document.createElement("img");
+			el.src = data;
+			 document.getElementById("to").appendChild(el)
+	}
+	function savejpg(){
+		var data = document.getElementById("canvas").toDataURL("image/jpeg");
+		document.location.href = data.replace("image/jpeg","image/octet-stream");
+	}
+	</script>
+ </body>
+</html>

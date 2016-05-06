@@ -1,0 +1,26 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="400" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+		//原大小
+		dw.strokeRect(10,10,40,20);
+		//放大
+		dw.scale(2,2);
+		//放大之后再画
+		//dw.strokeRect(10,10,40,20);
+		//和前面缩放代码相乘=1
+		//dw.scale(0.5,0.5);
+		//无效
+		//dw.scale(1,1);
+		dw.strokeRect(20,20,80,40);
+	</script>
+ </body>
+</html>

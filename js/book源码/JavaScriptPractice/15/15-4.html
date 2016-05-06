@@ -1,0 +1,20 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="620" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var ctx = document.querySelector("#canvas").getContext("2d");
+		ctx.strokeRect(20,20,500,20);
+		ctx.strokeStyle="#ccc";
+		ctx.rotate(30*Math.PI/180);
+		ctx.strokeRect(20,20,500,20);
+	</script>
+ </body>
+</html>

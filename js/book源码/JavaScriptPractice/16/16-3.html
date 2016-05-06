@@ -1,0 +1,31 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa; margin-left:10px}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="710" height="200">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var img = new Image();
+		img.src = "mm.jpg";
+		//加载完毕之后
+		img.onload = function(){
+			dw.drawImage(img,0,0,355,200);
+			var imgData = dw.getImageData(0,0,355,200);
+			for(var i=0,n=imgData.data.length;i<n;i+=4)
+			  {
+				  imgData.data[i]=255-imgData.data[i];
+				  imgData.data[i+1]=255-imgData.data[i+1];
+				  imgData.data[i+2]=255-imgData.data[i+2];
+				  imgData.data[i+3]=255;
+			  }
+			  dw.putImageData(imgData,355,0);
+		}
+	</script>
+ </body>
+</html>

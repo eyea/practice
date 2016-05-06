@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>以拖动方式管理相册</title>
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="jquery.ui.core.js"></script>
+<script type="text/javascript" src="jquery.ui.widget.js"></script>
+<script type="text/javascript" src="jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="jquery.ui.droppable.js"></script>
+<link rel="stylesheet" type="text/css" 
+            href="Css/PhotoManage.css" />
+<script type="text/javascript">
+	    $(function() {
+	        //使用变量缓存DOM对象
+	        var $photo = $("#photo");
+	        var $trash = $("#trash");
+
+	        //可以拖动包含图片的表项标记
+	        $("li", $photo).draggable({
+	            revert: "invalid", // 在拖动过程中，停止时将返回原来位置
+	            helper: "clone", //以复制的方式拖动
+	            cursor: "move"
+	        });
+
+	        //将相册中的图片拖动到回收站
+	        $trash.droppable({
+	            accept: "#photo li",
+	            activeClass: "highlight",
+	            drop: function(event, ui) {
+	                deleteImage(ui.draggable);
+	            }
+	        });
+
+	        //将回收站中的图片还原至相册
+	        $photo.droppable({
+	            accept: "#trash li",
+	            activeClass: "active",
+	            drop: function(event, ui) {
+	                recycleImage(ui.draggable);
+	            }
+	        });
+
+	        //自定义图片从相册中删除到回收站的函数
+	        var recyclelink = "<a href='#' title='从回收站还原' class='phrefresh'>还原</a>";
+	        function deleteImage($item) {
+	            $item.fadeOut(function() {
+	                var $list = $("<ul class='photo reset'/>").appendTo($trash);
+	                $item.find("a.phtrash").remove();
+	                $item.append(recyclelink).appendTo($list).fadeIn(function() {
+	                    $item
+						.animate({ width: "61px" })
+						.find("img")
+						.animate({ height: "86px" });
+	                });
+	            });
+	        }
+
+	        //自定义图片从回收站还原至相册时的函数
+	        var trashlink = "<a href='#' title='放入回收站' class='phtrash'>删除</a>";
+	        function recycleImage($item) {
+	            $item.fadeOut(function() {
+	                $item
+					.find("a.phrefresh")
+					.remove()
+					.end()
+					.css("width", "85px")
+					.append(trashlink)
+					.find("img")
+					.css("height", "120px")
+					.end()
+					.appendTo($photo)
+					.fadeIn();
+	            });
+	        }
+
+	        //根据图片所在位置绑定删除或还原事件
+	        $("ul.photo li").click(function(event) {
+	            var $item = $(this),
+				$target = $(event.target);
+	            if ($target.is("a.phtrash")) {
+	                deleteImage($item);
+	            } else if ($target.is("a.phrefresh")) {
+	                recycleImage($item);
+	            }
+	            return false;
+	        });
+	    });
+</script>
+</head>
+<body>
+<div class="phframe">
+  <!--图片列表-->
+  <ul id="photo" class="photo">
+    <li class="photoframecontent photoframetr">
+      <h5 class="photoframeheader">java</h5>
+      <!--图片标题-->
+      <img src="Images/img01.jpg" alt="2006年图书作品" width="85" height="120" />
+      <!--加载图片-->
+      <span>2006年</span>
+      <!--显示图片信息-->
+      <a href="#" title="放入回收站" class="phtrash">删除</a>
+      <!--删除链接-->
+    </li>
+    <li class="photoframecontent photoframetr">
+      <h5 class="photoframeheader">java web</h5>
+      <img src="Images/img02.jpg" alt="2008年图书作品"  width="85" height="120" /> <span>2008年</span> <a href="#" title="放入回收站" class="phtrash">删除</a> </li>
+    <li class="photoframecontent photoframetr">
+      <h5 class="photoframeheader">java web模块</h5>
+      <img src="Images/img03.jpg" alt="2010年图书作品"  width="85" height="120" /> <span>2010年</span> <a href="#" title="放入回收站" class="phtrash">删除</a> </li>
+  </ul>
+  <!--回收站-->
+  <div id="trash" class="photoframecontent">
+    <h4 class="photoframeheader">回收站</h4>
+  </div>
+</div>
+</body>
+</html>

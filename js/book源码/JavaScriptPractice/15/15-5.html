@@ -1,0 +1,28 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="620" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var ctx = document.querySelector("#canvas").getContext("2d");
+
+		ctx.fillStyle="red";
+		ctx.fillRect(20,20,75,50);
+		ctx.globalCompositeOperation="source-over";
+		ctx.fillStyle="blue";
+		ctx.fillRect(50,50,75,50);
+
+		ctx.fillStyle="red";
+		ctx.fillRect(150,20,75,50);
+		ctx.globalCompositeOperation="destination-over";
+		ctx.fillStyle="blue";
+		ctx.fillRect(180,50,75,50);
+	</script>
+ </body>
+</html>

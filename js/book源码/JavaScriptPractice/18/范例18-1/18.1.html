@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>页面中经典导航条</title>
+<script language="javascript" type="text/javascript" 
+            src="jquery-1.10.2.js"></script>
+<style>
+         body{font-size:13px}
+         #divFrame{border:solid 1px #666;width:301px;overflow:hidden}
+         #divFrame .clsHead{background-color:#eee;padding:8px;height:18px;cursor:hand}
+         #divFrame .clsHead h3{padding:0px;margin:0px;float:left}
+         #divFrame .clsHead span{float:right;margin-top:3px}
+         #divFrame .clsContent{padding:8px}
+         #divFrame .clsContent ul {list-style-type:none;margin:0px;padding:0px}
+         #divFrame .clsContent ul li{ float:left;width:95px;height:23px;line-height:23px}
+         #divFrame .clsBot{float:right;padding-top:5px;padding-bottom:5px}
+         .GetFocus{background-color:#eee}
+    </style>
+<script type="text/javascript">
+            $(function(){ //页面加载事件
+              $(".clsHead").click(function(){ //图片点击事件
+                if($(".clsContent").is(":visible")){ //如果内容可见
+                   $(".clsHead span img").attr("src","Images/a1.gif"); //改变图片
+                   $(".clsContent").css("display","none"); //隐藏内容 
+                }else{
+                   $(".clsHead span img").attr("src","Images/a2.gif"); //改变图片
+                   $(".clsContent").css("display","block");//显示内容
+                }
+              });
+                
+              $(".clsBot > a").click(function(){ //热点链接点击事件
+                if($(".clsBot > a").text()=="精简显示品牌"){ //如果内容为'简化'字样
+                   $("ul li:gt(5):not(:last)").hide(); //隐藏index号大于4且不是最后一项的元素
+                   $(".clsBot > a").text("显示全部品牌"); //将字符内容更改为"更多"
+                }else{
+                   $("ul li:gt(5):not(:last)").show().addClass("GetFocus"); //显示所选元素且增加样式
+                   $(".clsBot > a").text("精简显示品牌"); //将字符内容更改为"简化"
+                }
+              });  
+            });
+    </script>
+</head>
+<body>
+<div id="divFrame">
+  <div class="clsHead">
+    <h3>品牌分类</h3>
+    <!--标题名称-->
+    <span><img src="Images/a2.gif" alt=""/></span> </div>
+  <!--标题提示图片-->
+  <div class="clsContent">
+    <!--品牌列表-->
+    <ul>
+      <li ><a href="#">佳能</a><i>(30440) </i></li>
+      <li ><a href="#">索尼</a><i>(27220) </i></li>
+      <li ><a href="#">三星</a><i>(20808) </i></li>
+      <li ><a href="#">尼康</a><i>(17821) </i></li>
+      <li ><a href="#">松下</a><i>(12289) </i></li>
+      <li ><a href="#">卡西欧</a><i>(8242) </i></li>
+      <li ><a href="#">富士</a><i>(14894) </i></li>
+      <li ><a href="#">柯达</a><i>(9520) </i></li>
+      <li ><a href="#">宾得</a><i>(2195) </i></li>
+      <li ><a href="#">理光</a><i>(4114) </i></li>
+      <li ><a href="#">奥林</a><i>(12205) </i></li>
+      <li ><a href="#">明基</a><i>(1466) </i></li>
+      <li ><a href="#">爱国者</a><i>(3091) </i></li>
+      <li ><a href="#">其它</a><i>(7275) </i></li>
+    </ul>
+    <div class="clsBot"><a href="#">精简显示品牌</a><img src="Images/a5.gif" alt=""/></div>
+    <!--显示/隐藏内容-->
+  </div>
+</div>
+</body>
+</html>

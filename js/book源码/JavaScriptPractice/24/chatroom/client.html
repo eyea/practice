@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>简易聊天室</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="/socket.io/socket.io.js"></script>
+<script>
+(function(){
+	var socket = io.connect('http://127.0.0.1:86');//端口与服务器一致
+		socket.on('chat message',function(msg){
+			msgbox(msg.msg);//显示服务器推送信息到聊天窗口
+		});
+	window.sendMsg = function(){
+		var inpt = document.getElementById('put');
+		var str = inpt.value;
+		msgbox(str);//显示自己发送的信息到聊天窗口
+		socket.emit('msg',{msg:str});//发送到服务器
+		inpt.value = "";//清空发送消息窗口
+		inpt.focus();//让焦点定位到发送消息窗口
+	}
+	function msgbox(str){
+		document.getElementById('box').innerHTML += str + '<br />';
+	}
+})();
+</script>
+<style type="text/css">
+#box{overflow: auto;width:500px;height:100px;border:1px solid #dcdcdc;}
+#put{width:430px;}
+</style>
+</head>
+ <body>
+	<h2>简易聊天室</h2>
+	<div id="box"></div>
+	<input type="text" id="put" />
+	<input type="button" value="发送消息" onclick="sendMsg();">
+ </body>
+</html>

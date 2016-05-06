@@ -1,0 +1,34 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa; margin-left:10px}
+  </style>
+ </head>
+ <body>
+ <video width="300" controls="" id="vd" style="float:left">
+  <source src="../09/iceage4.ogv"></source>
+</video>	
+	<canvas id="canvas" width="300" height="128">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var v=document.getElementById("vd");
+	var Timer=null;
+		v.addEventListener('play', function() {
+			Timer = window.setInterval(function(){
+				dw.drawImage(v,0,0,300,128);
+				dw.font="30px Verdana";
+				dw.fillText("三封字幕组",10,50);
+			},125);
+		},false);
+		v.addEventListener('pause',function() {
+			window.clearInterval(Timer);
+		},false);
+		v.addEventListener('ended',function() {
+			clearInterval(Timer);
+		},false);
+	</script>
+ </body>
+</html>

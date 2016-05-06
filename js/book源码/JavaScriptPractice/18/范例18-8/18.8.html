@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>可折叠的列表</title>
+
+    <script type="text/javascript"
+            src="jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('li:has(ul)')
+          .click(function(event){
+            if (this == event.target) {
+              if ($(this).children().is(':hidden')) {
+                $(this)
+                  .css('list-style-image','url(Images/minus.gif)')
+                  .children().show();
+              }
+              else {
+                $(this)
+                  .css('list-style-image','url(Images/plus.gif)')
+                  .children().hide();
+              }
+            }
+            return false;
+          })
+          .css('cursor','pointer')
+          .click();
+        $('li:not(:has(ul))').css({
+          cursor: 'default',
+          'list-style-image':'none'
+        });
+      });
+    </script>
+    <style>
+      fieldset { width: 320px }
+    </style>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>可折叠的列表</legend>                                        <!--标题-->
+      <ul>                                                                 <!--列表信息-->
+        <li>列表 1</li>
+        <li>列表 2</li>
+        <li>
+          列表 3
+          <ul>
+            <li>列表 3.1</li>
+            <li>
+              列表 3.2
+              <ul>
+                <li>列表 3.2.1</li>
+                <li>列表 3.2.2</li>
+                <li>列表 3.2.3</li>
+              </ul>
+            </li>
+            <li>列表 3.3</li>
+          </ul>
+        </li>
+        <li>
+          列表 4
+          <ul>
+            <li>列表 4.1</li>
+            <li>
+              列表 4.2
+              <ul>
+                <li>列表 4.2.1</li>
+                <li>列表 4.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>列表 5</li>
+      </ul>
+    </fieldset>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="600" height="800">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var img = new Image();
+		img.src = "sanguo.jpg";
+		//加载完毕之后
+		img.onload = function(){
+			dw.drawImage(img,0,0);
+			dw.scale(-1,1);
+			dw.drawImage(img,-540,0);
+		}
+	</script>
+ </body>
+</html>

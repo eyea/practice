@@ -1,0 +1,19 @@
+/* page */
+#clear { clear:both; }
+#container { border:1px solid #4e82b4; width:601px; }
+#navCol { width:230px; height:287px; float:left; background-color:#a1d2f6; }
+#contentCol { width:310px; height:227px; float:left; background-color:#ffffff; padding:30px; border-left:1px solid #4e82b4; }
+h1 { margin:0px; font:bold 14px Verdana; }
+#contentCol p { margin:20px 0 0 0; font:normal 11px Verdana; }
+
+/* accordion  */
+#navAccordion { list-style-type:none; padding-left:0; text-align:right; margin:20px 0 0 0; width:231px; position:relative; left:0; }
+#navAccordion a { display:block; text-decoration:none; font:bold 11px Verdana; color:#000000; padding:0 40px 0 0; padding-bottom:5px; }
+#navAccordion a:hover { text-decoration:underline; }
+#navAccordion a.heading { font:bold 24px Verdana; color:#ffffff; border-bottom:1px dashed #4e82b4; padding:0 30px 10px 0; }
+#navAccordion a.heading:hover { text-decoration:none; }
+.selected, #navAccordion .selected a.heading { background-color:#ffffff; color:#000000; border-top:0; border-bottom:1px solid #4e82b4; border-right:1px solid #ffffff; border-left:1px solid #ffffff; }
+#navAccordion .selected a.heading { border:0; }
+#navAccordion li { margin:0; }
+#navAccordion li span, #navAccordion li a { background-image:none; }
+#navAccordion li span { display:none; }

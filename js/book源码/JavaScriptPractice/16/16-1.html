@@ -1,0 +1,27 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa;}
+  </style>
+ </head>
+ <body>
+	<img src="caodi.jpg" id="tu" width="275" align="left"/>
+	<canvas id="canvas" width="300" height="420">您的浏览器不支持canvas。</canvas>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var img=document.getElementById("tu");
+		//原图绘制，drawImage(img,x,y)
+		dw.drawImage(img,5,5);
+		//变形绘制，drawImage(img,x,y,width,height)
+		dw.drawImage(img,5,165,200,112);
+		dw.drawImage(img,210,165,70,40);
+		dw.drawImage(img,210,210,70,80);
+		//剪切绘制，drawImage(img,sx,sy,swidth,sheight,x,y,width,height)
+		dw.drawImage(img,100,0,150,100,5,300,150,100);
+		dw.drawImage(img,200,0,75,100,205,300,75,100);
+	</script>
+ </body>
+</html>

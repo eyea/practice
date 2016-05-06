@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>实现日期输入框</title>
+	<script type="text/javascript" 
+            src="jquery-1.10.2.js">
+    </script>
+
+    <link rel="stylesheet" type="text/css" 
+            href="css/jquery.ui.all.css" />
+	<script type="text/javascript" 
+	        src="jquery.ui.core.js">
+	</script>
+	<script type="text/javascript" 
+	        src="jquery.ui.widget.js">
+	</script>
+		<script type="text/javascript" 
+	        src="jquery.ui.datepicker.js">
+	</script>
+	
+    <link rel="stylesheet" type="text/css" 
+            href="css/demos.css" />
+    <style type="text/css">
+           .txt{border:#666 1px solid;padding:2px;width:100px;margin-right:3px}
+    </style>
+	<script type="text/javascript">
+	    $(function() {
+	        $("#txtDate").datepicker(
+		{ changeMonth: true, //显示下拉列表月份
+		    changeYear: true, //显示下拉列表年份
+		    showWeek: true, //显示日期对应的星期
+		    showButtonPanel: true, //显示“关闭”按钮面板
+		    closeText: 'Close'//设置关闭按钮的文本
+		});
+	    })
+	</script>
+</head>
+<body>
+<div class="demo-description">
+     <div>
+         输入日期：<input name="txtDate" id="txtDate" class="txt" />
+     </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa; float:left;margin-right:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="200" height="200">您的浏览器不支持canvas。</canvas>
+	<input type="button" value="Convert to PNG" onclick="topng()">
+	<input type="button" value="Convert to JPG" onclick="tojpg()">
+	<div id="to"></div>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+		dw.fillStyle = "rgb(255,255,255)";
+		dw.fillRect(0,0,200,200);
+
+		dw.fillStyle = "rgb(255,0,0)";
+		dw.fillRect(20,20,30,30);
+
+		dw.fillStyle = "rgb(0,255,0)";
+		dw.fillRect(60,60,30,30);
+
+		dw.fillStyle = "rgb(0,0,255)";
+		dw.fillRect(100,100,30,30);
+	function topng(){
+		var data = document.getElementById("canvas").toDataURL("image/png");
+		var el = document.createElement("img");
+			el.src = data;
+			 document.getElementById("to").appendChild(el)
+	}
+	function tojpg(){
+		var data = document.getElementById("canvas").toDataURL("image/jpeg");
+		var el = document.createElement("img");
+			el.src = data;
+			 document.getElementById("to").appendChild(el)
+	}
+	</script>
+ </body>
+</html>

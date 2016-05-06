@@ -1,0 +1,25 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="620" height="500">您的浏览器不支持canvas。</canvas>
+	<script>
+	var ctx = document.querySelector("#canvas").getContext("2d");
+		ctx.strokeRect(0,0,620,20);
+		ctx.translate(70,70);
+	var img = new Image();
+		img.src = "sanguo.jpg";
+		img.onload = function(){
+			ctx.drawImage(img,0,0);
+			ctx.scale(-1,1);
+			ctx.drawImage(img,-540,0);
+		}
+	</script>
+ </body>
+</html>

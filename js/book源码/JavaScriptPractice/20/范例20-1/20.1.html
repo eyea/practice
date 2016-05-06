@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="styles/jquery.ui.all.css">
+<link rel="stylesheet" type="text/css" href="styles/navAccordionTheme.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>手风琴样式导航菜单</title>
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="jquery.ui.core.js"></script>
+<script type="text/javascript" src="jquery.ui.widget.js"></script>
+<script type="text/javascript" src="jquery.ui.accordion.js"></script>
+<script type="text/javascript">
+	  //function to execute when doc ready
+	  $(function() {
+	  	    
+			//turn specified element into an accordion
+	    $("#navAccordion").accordion({
+				header: ".heading",
+				event: "mouseover",
+				autoHeight: false,
+				alwaysOpen: false,
+				active:false,
+				navigation: true  
+			});
+	  });
+	</script>
+</head>
+<body>
+<div id="container">
+  <div id="navCol">                                                       <!--设计导航菜单-->
+    <ul id="navAccordion">
+      <li> <a class="heading" href="#me" title="菜单一">菜单一</a>
+        <div> <a href="bio.html#me" title="菜单1_1">菜单1_1</a> <a href="contact.html#me" title="菜单1_2">菜单1_2</a> <a href="contact.html#me" title="菜单1_3">菜单1_3</a><a href="resume.html#me" title="Resume"></a> </div>
+      </li>
+      <li> <a class="heading" href="#js" title="菜单二">菜单二</a>
+        <div> <a href="tutorials.html#js" title="菜单2_1">菜单2_1</a> <a href="ajax.html#js" title="菜单2_2">菜单2_2</a> <a href="apps.html#js" title="菜单2_3">菜单2_3</a> </div>
+      </li>
+      <li> <a class="heading" href="#css" title="菜单三">菜单三</a>
+        <div> <a href="layouts.html#css" title="菜单3_1">菜单3_1</a> <a href="themes.html#css" title="菜单3_2">菜单3_2</a> <a href="hacks.html#css" title="菜单3_3">菜单3_3</a> </div>
+      </li>
+    </ul>
+  </div>
+  <div id="contentCol">                                                 <!--设置内容区域-->
+    <h1>
+      <center>
+        手风琴样式导航菜单
+      </center>
+    </h1>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras lacus. Duis ac nisi et turpis posuere ultrices. Sed tincidunt nunc consectetuer felis. Nulla tempor nibh sed lorem. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut consectetuer mattis nibh. Pellentesque rhoncus ipsum vitae purus. Phasellus nisl enim, ultricies vel, venenatis sit amet, tincidunt vitae, sapien. Suspendisse massa nunc, vehicula eget, facilisis a, sagittis ut, sapien. Sed ultricies accumsan orci. Maecenas bibendum lorem nec nulla. Phasellus odio. Morbi aliquam lobortis nibh. Phasellus et justo faucibus sem volutpat mattis.</p>
+  </div>
+  <div id="clear"></div>
+</div>
+</body>
+</html>

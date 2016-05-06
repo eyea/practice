@@ -1,0 +1,30 @@
+<!DOCTYPE html5>
+<html>
+ <head>
+  <title>Canvas</title>
+  <style>
+  body{padding:10px;}
+  canvas{border:1px solid #aaa; float:left;margin-right:10px;}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas" width="445" height="250">您的浏览器不支持canvas。</canvas>
+	<input type="button" value="Convert to PNG" id="convertpngbtn" onclick="topng()">
+	<div id="to"></div>
+	<script>
+	var dw = document.querySelector("#canvas").getContext("2d");
+	var img = new Image();
+		img.src = "sizzle.js";
+		//加载完毕之后
+		img.onload = function(){
+			dw.drawImage(img,0,0);
+		}
+	function topng(){
+		var data = document.getElementById("canvas").toDataURL("image/png");
+		var el = document.createElement("img");
+			el.src = data;
+			 document.getElementById("to").appendChild(el)
+	}
+	</script>
+ </body>
+</html>

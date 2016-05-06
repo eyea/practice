@@ -1,0 +1,6 @@
+exports.root = "webroot/"
+exports.index = "index.html"
+exports.expires = {
+	"ext" : /^(gif|png|jpg|js|css)$/ig,
+	"max" : 60*60*24*30
+}

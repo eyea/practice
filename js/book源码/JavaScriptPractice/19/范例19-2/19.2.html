@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>进度条效果</title>
+	<link rel="stylesheet" href="css/jquery.ui.all.css">
+	<script src="jquery-1.10.2.js"></script>
+	<script src="jquery.ui.core.js"></script>
+	<script src="jquery.ui.widget.js"></script>
+	<script src="jquery.ui.progressbar.js"></script>
+	<link rel="stylesheet" href="css/demos.css">
+	<style>
+	.ui-progressbar {
+		position: relative;
+	}
+	.progress-label {
+		position: absolute;
+		left: 100px;
+		top: 4px;
+		font-weight: bold;
+		text-shadow: 1px 1px 0 #fff;
+	}
+	</style>
+	<script>
+	$(function() {
+	    //获取进度条对象和
+		var progressbar = $( "#progressbar" ),
+			progressLabel = $( ".progress-label" );
+
+		progressbar.progressbar({
+			value: false,                             //禁用滑动条的值
+			change: function() {                      //当进度条的值改变后触发的事件
+				progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+			},
+			complete: function() {                    //当进度条执行完后触发的事件
+				progressLabel.text( "Complete!" );
+			}
+		});
+
+		function progress() {                          //实现改变进度条值的方法
+		    //初始化进度的值
+			var val = progressbar.progressbar( "value" ) || 0;
+            //设置进度度的值增加1
+			progressbar.progressbar( "value", val + 1 );
+
+			if ( val < 99 ) {
+				setTimeout( progress, 100 );           //每隔0.1秒执行方法progress
+			}
+		}
+		setTimeout( progress, 3000 );                  //3秒后执行方法progress
+	});
+	</script>
+</head>
+<body>
+<div id="progressbar" style="width: 37%;" >                      <!--进度条-->
+  <div class="progress-label">Loading...</div>                   <!--显示进度条信息-->
+</div>
+</body>
+</html>
