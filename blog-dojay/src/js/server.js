@@ -1,5 +1,5 @@
 var header = require('./header/header.js'),
-	list = require('./list/list.js');
+	server = require('./server/server.js');
 
 header.init();
-list.init();
+server.init();
