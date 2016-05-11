@@ -1,0 +1,8 @@
+# package #
+node_modules
+
+# dir
+build
+
+#os files
+*.DS_Store
