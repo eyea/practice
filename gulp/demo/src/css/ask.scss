@@ -1,0 +1,21 @@
+/*头部样式*/
+@import "pcStyle/header/header";
+/*底部样式*/
+@import "pcStyle/footer/footer";
+/*问答ask表样式*/
+@import "pcStyle/ask/ask";
+/*登录样式*/
+@import "pcStyle/login/login";
+
+
+/*手机样式*/
+@media screen and(max-width: 800px){
+	/*头部样式*/
+	@import "mobileStyle/header/header";
+	/*底部样式*/
+	@import "mobileStyle/footer/footer";
+	/*问答ask表样式*/
+	@import "mobileStyle/ask/ask";
+	/*登录样式*/
+	@import "mobileStyle/login/login";
+};

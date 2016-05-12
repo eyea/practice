@@ -1,0 +1,211 @@
+.wrapper{
+	overflow: hidden;
+	width: 1170px;
+	margin: 88px auto 0;
+	.sideNav{
+		float: left;
+		width: 265px;
+		margin-left: 10px;
+		ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li{
+				height: 60px;
+				text-align: center;
+				line-height: 60px;
+				background: #fff;
+				margin: 4px 0;
+				color: #989898;
+				a{
+					text-decoration: none;
+					color: #989898;
+				}
+				&.mt{
+					margin-top: 0;
+					display: block;
+				}
+				&:hover{
+					background: #F8F8F8;
+				}
+				&.focus{
+					background: #f8f8f8;
+					border-left: 5px solid #00caa9;
+				}
+			}
+		}
+		.find-report{
+			height: 60px;
+		    text-align: center;
+		    line-height: 60px;
+		    background: #fff;
+		    margin: 4px 0;
+		    color: #989898;
+		    a{
+		    	color: #989898;
+		    	text-decoration: none;
+		    }
+		}
+	}
+	.content{
+		margin: 0 0 20px;
+		float: left;
+		width: 890px;
+		background: #fff;
+		.item{
+			&.item-on{
+				display: block;
+			}
+		}
+		.title{
+			height: 40px;
+			margin: 10px 40px 0 40px;
+			border-bottom: 2px solid #00caa9;
+			line-height: 40px;
+			padding-left: 4px;
+			&.service-title{
+				text-align: center;
+			}
+		}
+		strong{
+			font-weight: 500;
+		}
+		.detail{
+			margin: 20px 40px;
+			color: #696969;
+			p{
+				line-height: 24px;
+				margin: 0;
+				text-indent: 2em;
+			}
+			ul{
+				margin-left: 2em;
+			}
+			h3{
+				font-weight: 500;
+			}
+			&.about-det{
+				margin: 0;
+				color: #696969;
+				.about-bg{
+					width: 100%;
+					height: 426px;
+					background: url(../images/about-bg.png) no-repeat;
+					background-size: 100% 100%;
+					position: relative;
+					span{
+						position: absolute;
+						width: 700px;
+						top: 320px;
+						left: 50%;
+						margin-left: -350px;
+						color: #2D080C;
+					}
+					.line{
+						width: 730px;
+						position: absolute;
+						top: 300px;
+						left: 50%;
+						margin-left: -365px;
+						height: 1px;
+						border-top: 1px solid #fff;
+					}
+					.about-logo{
+						width: 152px;
+						height: 174px;
+						background: url(../images/about-logo.png) no-repeat;
+						background-size: 100% 100%;
+						position: absolute;
+						top: 100px;
+						left: 50%;
+						margin-left: -76px;
+					}
+				}
+				span{
+					display: block;
+					width: 100%;
+					text-align: center;
+					line-height: 20px;
+					font-size: 13px;
+					&.text-left{
+						text-align: left;
+					}
+				}
+				.rocket{
+					background: url(../images/about-icon.png) no-repeat;
+					width: 17px;
+					height: 30px;
+					background-size: 2000%;
+					background-position: 0 -16px;
+					margin: 30px auto;
+				}
+				.media{
+					background: url(../images/about-icon.png) no-repeat;
+					width: 94px;
+					height: 49px;
+					background-size: 400%;
+					margin: 30px auto;
+					background-position: -42px -6px;
+				}
+				.chuang-class{
+					background: url(../images/about-icon.png) no-repeat;
+					width: 95px;
+					height: 49px;
+					margin: 30px auto;
+					background-position: -168px -6px;
+					background-size: 395%;
+				}
+				.rong{
+					background: url(../images/about-icon.png) no-repeat;
+					width: 94px;
+					height: 49px;
+					margin: 30px auto;
+					background-position: -282px -6px;
+					background-size: 400%;
+				}
+				.about-bottom{
+					background: url(../images/about-bottom.png) no-repeat;
+					width: 100%;
+					height: 163px;
+					background-size: 100%;
+				}
+				.shu-line{
+					text-align: center;
+					color: #c9c9c9;
+					font-size: 20px;
+				}
+				.mrt{
+					margin-top: 60px;
+				}
+				.mrb{
+					margin-bottom: 40px;
+				}
+				.about-list{
+					width: 685px;
+					margin: auto;
+					p{
+						&.mr{
+							margin: 10px;
+							text-indent: 0;
+						}
+					}
+
+					&.top-border{
+						padding-top: 30px;
+						border-top: 1px solid #c9c9c9;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+

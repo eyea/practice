@@ -1,0 +1,48 @@
+<ul>
+	<%if(listData.length > 0){%>
+		<%for(var i=0,len=listData.length;i<len;i++) {%>
+            <li>
+                <a class="goDetail" href="/event/<%=listData[i].uid%>.html" target="_blank">
+                    <div class="brief-intro">
+                        <div class="img">
+                            <img src="<%=listData[i].photo%>-website.active.list">
+                            <div class="info">
+                                <span class="class-icon" style="background: url(<%=listData[i].type.icon%>) no-repeat;background-size:100% 100%;"></span>
+                                <span class="class-name"><%=listData[i].type.name%></span>
+                                <span class="class-address"><%=listData[i].location%></span>
+                                <span class="class-time"><%=listData[i].begin_time[1]%></span>
+                            </div>
+                        </div>
+                    	<div class="intro"><%=listData[i].title%></div>
+                        <%if(listData[i].begin_time[0] == "1") {%>
+                        	<div class="enter-state">报名中</div>
+                        <%}else{%>
+                        	<div class="enter-state end">已结束</div>
+                        <%}%>
+                    </div>
+                    <div class="detail-intro">
+                        <span class="title">课程介绍</span>
+                        <div class="process">
+                        	<%if(listData[i].timeline.length && listData[i].timeline.length > 0) {%> 
+                            	<%for(var j=0,processLen=listData[i].timeline.length;j<processLen;j++) {var item =listData[i].timeline; %>
+	                                <span class="process-circle"></span>
+	                                <span class="process-line">
+	                                    <i><%=item[j].title%></i>
+	                                    <i><%=item[j].author%></i>
+	                                </span>
+	                            <%}%>
+                            <%}else{%>
+	                        <%}%>
+                            <span class="process-line font-yellow">更多课程尽在详情页</span>
+                        </div>
+                        <%if(listData[i].begin_time[0] == "1"){%>
+                        <button class="button" data-go="<%=listData[i].apply_url%>">立即报名</button>
+                        <%}else{%>
+                        <button class="button end" data-go="<%=listData[i].apply_url%>">报名结束</button>
+                        <%}%>
+                    </div>
+                </a>
+            </li>
+        <%}%>
+    <%}%>
+</ul>

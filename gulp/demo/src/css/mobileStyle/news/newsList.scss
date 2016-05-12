@@ -1,0 +1,209 @@
+.page-newsList{
+	overflow: hidden;
+	width: 100%;
+	margin: auto;
+	.list{
+		min-width: 100%;
+		min-height: 0;
+		.content{
+			width: 100%;
+			ul{
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				animation:mymove 1s ease;
+				-webkit-animation:mymove 1s ease; /*Safari and Chrome*/
+
+				@keyframes mymove{
+					from {opacity: 0}
+					to {opacity: 1}
+				}
+
+				@-webkit-keyframes mymove {
+					from {left:0px;}
+					to {left:200px;}
+				}
+				li{
+					margin: 10px 0;
+					width: 100%;
+					.news-container{
+						display: block;
+						height: auto;
+						overflow: hidden;
+						background: #fff;
+						&:hover{
+							box-shadow: none;
+							cursor: pointer;
+						};
+						.news-img{
+							float: left;
+							width: 1.19rem;
+							height: 0.85rem;
+							margin: 0.05rem;
+							background: #ccc;
+							img{
+								display: block;
+								width: 100%;
+								height:100%;
+							}
+						}
+						.news-content{
+							float: left;
+							width: 60%;
+							margin: 0.05rem;
+							height: 0.85rem;
+							.news-title{
+								color: #565656;
+								font-size: 0.14rem;
+								margin-bottom: 0.1rem;
+								line-height: 0.2rem;
+								height: 0.6rem;
+							}
+							.news-detail{
+								display: none;
+							}
+							.news-other{
+								height: 0.16rem;
+								overflow: hidden;
+								color: #999;
+								margin-top: 0;
+								.news-author{
+									float: left;
+									height: 0.16rem;
+									overflow: hidden;
+									.news-author-photo{
+										width: 0.16rem;
+										height: 0.16rem;
+										display: inline-block;
+										vertical-align: top;
+										border-radius: 0.08rem;
+										float: left;
+									}
+									.news-author-name{
+										line-height: 0.16rem;
+										font-size: 0.12rem;
+										margin-left: 0.06rem;
+										color: #999;
+										vertical-align: top;
+										float: left;
+									}
+								}
+								.news-time{
+									float: right;
+									line-height: 0.16rem;
+									height: 0.16rem;
+									font-size: 0.12rem;
+									color: #c9c9c9;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.more-news{
+			width: 90%;
+			height: .45rem;
+			margin: 0 auto 0.1rem;
+			background: #D2DCEA;
+			font-size: 0.15rem;
+			text-decoration: none;
+			height: 0.45rem;
+			display: block;
+			text-align: center;
+			line-height: 0.45rem;
+			color: #6D85AC;
+		}
+	}
+	.newsList-banner{
+		margin-top: 10px;
+		width: 100%;
+		position: relative;
+		.banners{
+			width: 100%;
+			height: 1.2rem;
+			.bgUl{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				overflow: hidden;
+				height: 100%;
+				position: relative;
+				li{
+					height: 1.2rem;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					&.nonDraggableImage{
+					    -webkit-user-drag: none;
+					}
+					a{
+						height: 100%;
+						width: 100%;
+						display: block;
+						img{
+							height: 100%;
+							display: block;
+							margin: auto;
+						}
+					}
+				}
+			}
+		}
+		.arrow{
+			position: absolute;
+			z-index: 1002;
+			display: none;
+			top: 50%;
+		    cursor: pointer;
+		    color: #fff;
+		    font-size: 70px;
+		    outline: none;
+		    font-weight: 100;
+		    margin-top: -40px;
+		    opacity: 1;
+		    text-align: center;
+		    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		    transition: 0.5s linear all;
+			&.next{
+				right: 30px;
+			}
+			&.prev{
+				left: 30px;
+			}
+		}
+		.slideNum{
+			position: absolute;
+		    bottom: 0;
+		    width: 100%;
+		    text-align: center;
+		    z-index: 999;
+		    ul{
+		    	padding: 0;
+		    	margin: 0;
+		    	list-style: none;
+		    	font-size: 12px;
+		    	li{
+		    		display: inline-block;
+		    		width: 6px;
+		    		height: 6px;
+		    		border-radius: 5px;
+		    		border: 1px solid #fff;
+		    		display: inline-block;
+		    		position: relative;
+		    		margin: 0 4px;
+		    		&.activeI {
+		    			background: #fff;
+		    		}
+		    	}
+		    }
+		}
+	}
+}
+.loading{
+	width: 100%;
+	height: 50px;
+	background:url(../images/loading.gif) center center no-repeat;
+	background-size: 10%;
+}

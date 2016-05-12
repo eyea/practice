@@ -1,0 +1,42 @@
+{
+  "name": "xfz-web",
+  "version": "1.0.0",
+  "description": "xfz web 1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.coding.net/dongjie/xfz-web.git"
+  },
+  "keywords": [
+    "angularjs",
+    "xfz"
+  ],
+  "author": "xfz",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.4",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^3.2.2",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^7.0.0",
+    "gulp-rev-collector": "^1.0.3",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-webpack": "^1.5.0",
+    "html-loader": "^0.4.3",
+    "jquery": "^2.2.3",
+    "jshint": "^2.9.1",
+    "jsx-loader": "^0.13.2",
+    "vinyl-named": "^1.1.0"
+  }
+}

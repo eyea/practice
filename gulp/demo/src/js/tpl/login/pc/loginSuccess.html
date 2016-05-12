@@ -1,0 +1,10 @@
+<div class="login-success-wrapper">
+	<div class="photo">
+		<%if(loginSuccessData.photo) {%>
+        	<img src="<%=loginSuccessData.photo%>">
+        <%}else{%>
+        	<img src="http://www.xfz.cn/static/build/images/topic_photo.png">
+        <%}%>
+    </div>
+    <div class="name"><%=loginName%></div>
+</div>

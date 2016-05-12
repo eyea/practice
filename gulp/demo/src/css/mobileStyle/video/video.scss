@@ -1,0 +1,395 @@
+.page-video{
+	margin: 0.1rem auto 0;
+	width: 100%;
+	.video{
+		height: auto;
+		margin-bottom: 0.1rem;
+		padding: .1rem;
+		background: #fff;
+		.icon{
+			background: url(../images/video-icon.png) no-repeat;
+		}
+		.video-title{
+			height: auto;
+			line-height: 0.24rem;
+			font-size: 0.2rem;
+			color: #34495E;
+			margin-bottom: 15px;
+			margin-top: 2.2rem;
+		}
+		.video-info{
+			height: 0.3rem;
+			font-size: 0.13rem;
+			color: #c9c9c9;
+			.person{
+				float: left;
+				span{
+					margin-right: 0.2rem;
+					i{
+						font-style: normal;
+						&:first-child{
+							margin-right:0.1rem;
+						}
+						&.icon-person{
+							display: inline-block;
+							width: 15px;
+							height: 11px;
+							background-size: 400%;
+						}
+						&.watched{
+							background-position: 0px -39px;
+						}
+						&.comm{
+							background-position: -23px -39px;
+						}
+						&.good{
+							background-position: -44px -39px;
+						}
+					}
+				}
+			}
+			.share{
+				float: right;
+				display: none;
+				i{
+					float: left;
+				    font-style: normal;
+				    line-height: 30px;
+				    color: #696969;
+				    margin-left: 5px;
+				    font-size: 14px;
+				}
+				.share_bg{
+					float: left;
+					background: url(../images/share.png) no-repeat;
+					display: block;
+					width: 30px;
+				    height: 30px;
+				    background-size: 220%;
+				    cursor: pointer;
+				}
+				.sina{
+					background-position: -37px 1px;
+				}
+				.weixin{
+					background-position: 1px 1px;
+					margin-right: 10px;
+				}
+				.panel-weixin{
+					position: absolute;
+				    top: 30px;
+				    left: 500px;
+				    padding: 0;
+				    border: 1px solid rgb(204, 204, 204);
+				    display: none;
+				    background: rgb(255, 255, 255);
+				    overflow: hidden;
+				    .weixin-section{
+				    	float: left;
+				    	p{
+				    		width: 70px;
+							height: 70px;
+							margin: 10px;
+							img{
+								width: 100%;
+							}
+				    	}
+				    }
+				    h3{
+			    	    float: left;
+					    width: 150px;
+					    font-size: 14px;
+					    font-weight: normal;
+					    color: #696969;
+				    }
+				}
+			}
+		}
+		.video-detail{
+			height: auto;
+			margin: 0;
+			position: absolute;
+			top: 1rem;
+			left: 0;
+			width: 100%;
+			font-size: 0.12rem!important;
+			.player{
+				height: 100%;
+				#id_video_container{
+					height: 100%!important;
+				}
+				/*抵消腾讯云的自带样式*/
+				.trump-setting{
+					font-size: 0.12rem!important;
+				}
+			}
+		}
+		.guide-img{
+			background-position: 0 0;
+			background-size: 100%;
+			width: 0.6rem;
+			height: 0.35rem;
+			margin-top: 0.1rem;
+		}
+		.guide-person{
+			overflow: hidden;
+			margin-top: 0;
+			.photo{
+				float: left;
+				width: 0.60rem;
+				height: 0.60rem;
+				font-size: 20px;
+				img{
+					border-radius:0.3rem;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.person-info{
+				float: left;
+				line-height:0.3rem;
+				margin-left: 10px;
+				span{
+					display: block;
+					&:first-child{
+						color:#555;
+						font-size: 20px;
+					}
+					&:last-child{
+						color: #696969;
+						font-size: 13px;
+					};
+				}
+			}
+		}
+	}
+	.class-info{
+	    background: #fff;
+	    margin-bottom: 0.1rem;
+	    padding: 0.1rem;
+	    .class-title{
+	    	font-size: 18px;
+	    	margin-bottom: 0.1rem;
+	    	padding-left: 25px;
+	    	background: url(../images/video-course-icon.png) 0px 2px no-repeat;
+	    	background-size: 20px 20px;
+	    }
+	    .class-detail{
+	    	color: #555;
+	    	font-size: 14px;
+	    	line-height: 0.24rem;
+	    	img{
+	    		max-width: 100%;
+	    	}
+	    }
+	}
+	.page-comment{
+		background: #fff;
+		padding: 0 0 10px 0;
+		margin-top: 0.1rem;
+		.write-comm{
+			h2{
+				font-size: 0.15rem;
+				padding: 20px 20px 0;
+				font-weight: normal;
+				color: #9b9b9b;
+			}
+			.touch-no-login{
+			    width: 3rem;
+			    height: 0.5rem;
+			    font-size: 0.16rem;
+			    text-align: center;
+			    line-height: 0.5rem;
+			    background: #00caa9;
+			    margin: 0.3rem auto;
+			    color: #fff;
+			    border-radius: 5px;
+			}
+			.open-comm{
+				textarea{
+					width: 90%;
+				    margin: auto;
+				    height: 1rem;
+				    border: none;
+				    background: #F4F6F7;
+				    border-radius: 5px;
+				    -wekit-apprearance: none;
+				    outline: none;
+				    display: block;
+				}
+				.photo-name-submit{
+					margin: 0.1rem auto 0;
+					width: 90%;
+					overflow: hidden;
+					.photo-name{
+						float: left;
+						height: 30px;
+						display: none;
+						.photo{
+						    display: block;
+						    background: url(../images/topic_photo.png) no-repeat;
+						    width: 30px;
+						    height: 30px;
+						    background-size: 100%;
+						    float: left;
+						    img{
+						    	width: 100%;
+						    	height: 100%;
+						    	border-radius: 50%;
+						    	display: block;
+						    }
+						}
+						.name{
+							float: left;
+						}
+					}
+					.tips{
+						width: 1.2rem;
+						height: 0.25rem;
+						background: #e4ecf3;
+						border-radius: 2px;
+						text-align: center;
+						line-height: 0.25rem;
+						font-size: 0.15rem;
+						color: #696969;
+						position: absolute;
+						right: 0.7rem;
+						display: none;
+						top: 0.0.2rem;
+					}
+					.btn{
+						float: right;
+						width: 0.57rem;
+						height: 0.25rem;
+						border: none;
+						border-radius: 0.03rem;
+						background: #00ca99;
+						color: #fff;
+						font-size: 0.15rem;
+						text-align: center;
+						line-height: 0.25rem;
+						margin-top: 0.02rem;
+					}
+				}
+			}
+			.close-comm{
+				.sofa{
+				    background: url(../images/comm-sofa.png) no-repeat;
+				    width: 0.73rem;
+				    height: 0.54rem;
+				    background-size: 100%;
+				    margin: 0.2rem auto;
+				}
+				.now-comm{
+					overflow: hidden;
+					font-size: 0.14rem;
+					.text{
+					    float: left;
+					    font-size: 16px;
+					    color: #9b9b9b;
+					    height: 30px;
+					    line-height: 30px;
+					    margin-right: 10px;
+					    margin-left: 0.5rem;
+					}
+					.btn{
+					    float: left;
+					    background: #00caa9;
+					    width: 1rem;
+					    height: 0.3rem;
+					    text-align: center;
+					    line-height: 0.3rem;
+					    color: #fff;
+					    border-radius: 5px;
+					}
+				}
+			}
+		}
+		.comm-list{
+			ul{
+				list-style: none;
+				padding:0;
+				margin: 0;
+				li{
+					border-top: 1px solid #e1e1e1;
+					margin: 0.1rem;
+					padding: 5px 0;
+					&:first-child{
+						border-top : 0;
+						margin: 0 0.1rem;
+					};
+					.photo-name-time{
+						margin: 10px 0 5px;
+						overflow: hidden;
+						.photo-name{
+							float: left;
+							height: 0.3rem;
+							.photo{
+								display: inline-block;
+								background: url(../images/topic_photo.png) no-repeat;
+								width: 0.3rem;
+								height: 0.3rem;
+								background-size: 100%;
+								float: left;
+								img{
+									width: 100%;
+									height: 100%;
+									display: block;
+								}
+							}
+							.name-position{
+								float: left;
+								.name{
+									line-height: 0.18rem;
+									margin-left: 0.1rem;
+									color: #9b9b9b;
+									font-size: 0.13rem;
+									float: none;
+									display: block;
+								}
+								.position{
+									line-height: 0.18rem;
+									margin-left: 0.1rem;
+									color: #9b9b9b;
+									font-size: 0.12rem;
+									float: none;
+									display: block;
+								}
+							}
+						}
+						.time{
+							float: right;
+							color: #9b9b9b;
+							font-size: 0.12rem;
+							line-height: 0.3rem;
+						}
+					}
+					.comm-content{
+						font-size: 0.15rem;
+						color: #696969;
+						line-height: 0.27rem;
+						margin-left: 0.4rem;
+					}
+				}
+			}
+		}
+	}
+}
+.mask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 9999;
+	display: none;
+	.bigImg{
+		width: 90%;
+		margin: 50% auto;
+	}
+}
+
+
+
+

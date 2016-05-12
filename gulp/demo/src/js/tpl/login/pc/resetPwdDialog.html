@@ -1,0 +1,21 @@
+<div class="reset-password-dialog dialog">
+	<div class="reset-password-close close"></div>
+	<div class="dialog-title-bg">
+		<span>修改密码</span>
+	</div>
+	<div class="fill-card fill-card-long">
+		<div class="reset-phone-input">
+			<input type="tel" pattern="^\d{11}$" class="reset-phone input long-input" placeholder="仅支持中国大陆手机号" maxlength="11" autocomplete="off">
+			<i class="phone-status-icon"></i>
+		</div>
+		<div class="reset-verify-btn">
+			<input type="tel" pattern="^\d{4}$" class="fill-reset-verify input short-input" placeholder="验证码" maxlength="4" validate="^\d{4}$" autocomplete="off">
+			<input type="button" class="reset-send-verify input-button short-button" value="发送验证码" send="false">
+		</div>
+		<input type="password" class="fill-new-password input long-input" placeholder="输入新密码" autocomplete="off" autocomplete="off">
+		<div class="tips-container">
+			<div class="tips reset-tips"></div>
+		</div>
+		<div class="conform-reset-submit submit">确定修改</div>
+	</div>
+</div>
