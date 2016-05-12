@@ -1,0 +1,23 @@
+<%if(bannerData.length > 0) {%>
+	<div class="banners">
+        <ul class="bgUl" id="slideWrapper">
+        	<%for(var m=0,len=bannerData.length;m<len;m++) {%>
+                <li class="slide-animation">
+                    <a href="<%=bannerData[m].url%>" target="_blank">
+                        <img src="<%=bannerData[m].photo%>">
+                    </a>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+    <a class="arrow prev">‹</a>
+    <a class="arrow next">›</a>
+    <div class="slideNum">
+        <ul class="dots" id="dots">
+        	<%for(var n=0,len=bannerData.length;n<len;n++) {%>
+            	<li class="dot"></li>
+            <%}%>
+        </ul>
+    </div>
+<%}else{%>
+<%}%>

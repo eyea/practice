@@ -1,0 +1,46 @@
+<%if(commData.length >0) {%>
+    <div class="comm-list">
+        <ul>
+            <%for(var i=0,len=commData.length;i<len;i++) {%>
+                <%if(commData[i].reply.content){%>
+                    <li>
+                        <div class="photo-name-time">
+                            <div class="photo-name">
+                                <span class="photo">
+                                    <%if(commData[i].member.photo) {%>
+                                        <img src="<%=commData[i].member.photo%>">
+                                    <%}%>
+                                </span>
+                                <div class="name-position">
+                                    <span class="name"><%=commData[i].member.realname%></span>
+                                    <span class="position"><%=commData[i].member.company%><%=commData[i].member.work%></span>
+                                </div>
+                            </div>
+                            <div class="time"><%=commData[i].create_time%></div>
+                        </div>
+                        <div class="comm-content">回复<%=commData[i].reply.member.realname%>：<%=commData[i].content%></div>
+                    </li>
+                <%}else{%>
+                    <li>
+                        <div class="photo-name-time">
+                            <div class="photo-name">
+                                <span class="photo">
+                                    <%if(commData[i].member.photo) {%>
+                                        <img src="<%=commData[i].member.photo%>">
+                                    <%}%>
+                                </span>
+                                <div class="name-position">
+                                    <span class="name"><%=commData[i].member.realname%></span>
+                                    <span class="position"><%=commData[i].member.company%><%=commData[i].member.work%></span>
+                                </div>
+                            </div>
+                            <div class="time"><%=commData[i].create_time%></div>
+                        </div>
+                        <div class="comm-content"><%=commData[i].content%></div>
+                    </li>
+                <%}%>
+            <%}%>
+        </ul>
+    </div>
+<%}else{%>
+<%}%>

@@ -1,0 +1,117 @@
+.page-download{
+	width: 100%;
+	background-color: #fff;
+	margin: 0;
+	.app-download-resource{
+		background:url(../images/mobile-app-bg.png) no-repeat;
+		height: 3.2rem;
+		background-size: 100% 100%;
+		.download-resoure-container{
+			display: none;
+		}
+		.phone-down-btn{
+			display: block;
+		    width: 190px;
+		    font-size: 16px;
+		    height: 50px;
+		    background: #F5A623;
+		    color: #fff;
+		    line-height: 50px;
+		    text-align: center;
+		    border-radius: 5px;
+		    position: absolute;
+		    top: 3.94rem;
+		    left: 50%;
+		    margin-left: -95px;
+		    text-decoration: none;
+		}
+	}
+	.app-download-introduce{
+		.download-introduce-container{
+			width: 94%;
+			height: auto;
+			margin: 0.5rem auto;
+			ul{
+				list-style: none;
+				overflow: hidden;
+				padding: 0 0 0.2rem 0;
+				margin: 0;
+				li{
+					float: none;
+					overflow: hidden;
+					width: 100%;
+					margin:0;
+					&.line-left{
+						background: url(../images/line-left.png) no-repeat;
+						height: 1rem;
+					    width: 2rem;
+					    display: block;
+					    margin: auto;
+					}
+					&.line-right{
+						background: url(../images/line-right.png) no-repeat;
+						height: 1rem;
+					    width: 2rem;
+					    display: block;
+					    margin: auto;
+					}
+					.intro-txt-right{
+						float: right;
+						font-size: 0.12rem;
+						width: 60%;
+					}
+					.intro-txt-left{
+						float: left;
+						font-size: 0.12rem;
+						width: 60%;
+					}
+					span{
+						display: block;
+						&.icon-left{
+							float: left;
+						}
+						&.icon-right{
+							float: right;
+						}
+						&.intro-icon{
+							width: 1rem;
+							height: 1rem;
+							margin: 0.1rem;
+							margin-top: 0.3rem;
+						}
+						&.media-icon{
+							background: url(../images/media-icon.png) no-repeat;
+							background-size: 100% 100%;
+						}
+						&.class-icon{
+							background: url(../images/class-icon.png) no-repeat;
+							background-size: 100% 100%;
+						}
+						&.ask-icon{
+							background: url(../images/ask-icon.png) no-repeat;
+							background-size: 100% 100%;
+						}
+						&.service-icon{
+							background: url(../images/service-icon.png) no-repeat;
+							background-size: 100%;
+
+						}
+						&.introduce-title{
+							text-align: left;
+							color: #484D67;
+							font-size: 0.14rem;
+							margin-top: 0.1rem;
+						}
+						&.introduce-content{
+						    margin-top: 0.1rem;
+						    font-size: 13px;
+						    line-height: 20px;
+						    color: #989898;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}

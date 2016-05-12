@@ -1,0 +1,161 @@
+.footer{
+	width: 100%;
+	min-width: 0;
+	overflow: hidden;
+	background: #555e68;
+	.section{
+		height: 2.14rem;
+		width: 100%;
+		margin: auto;
+		section{
+			float: left;
+			&.partner-section{
+				padding-top: .2rem;
+				display: none;
+				width: 60%;
+				ul{
+					list-style: none;
+					li{
+						width: 1rem;
+						height: .4rem;
+						float: left;
+						img{
+							width: 100%;
+							height: 100%;
+						}
+					}
+				}
+				h3{
+					color: #fff;
+					font-size: 0.18rem;
+					font-weight: normal;
+					margin: 0;
+					padding: 0;
+				}
+			}
+			&.link-section{
+				width: 100%;
+				padding-top: .2rem;
+				.foot-logo{
+					background: url(../images/foot-logo.png) no-repeat;
+					width: 1.6rem;
+					height: .5rem;
+					margin: auto;
+					background-size: 100%;
+				}
+				.links{
+					padding-top: 0.2rem;
+					padding-bottom: 0.1rem;
+					color: #c9c9c9;
+					font-size: 0.12rem;
+					text-align: center;
+					a{
+						text-decoration: none;
+						color: #c9c9c9;
+					}
+				}
+				.cooperate,.kfmail,.kfTel,.address,.attention{
+					font-size: 0.12rem;
+					color: #C9C9C9;
+					padding: 0.04rem 0;
+					text-align: center;
+					a{
+						color: #c9c9c9;
+						text-decoration: none;
+					}
+				}
+				.address{
+					display: none;
+				}
+				.attention{
+					line-height: .24rem;
+					.wx{
+						background: url(../images/wx-icon.png) no-repeat;
+						padding-left: .34rem;
+						height: .24rem;
+						display: inline-block;
+					}
+					.xl{
+						background: url(../images/xl-icon.png) no-repeat;
+						padding-left: .34rem;
+						height: .24rem;
+						margin-left: .2rem;
+						display: inline-block;
+					}
+				}
+			}
+		}
+		
+	}
+	.bottom{
+		height: 0.3rem;
+		background: #383E44;
+		p{
+			height: 0.3rem;
+			font-size: 0.09rem;
+			line-height: 0.3rem;
+			text-align: center;
+			color: #C9C9C9;
+		}
+	}
+}
+.footer-simple{
+	width: 100%;
+	min-width: 0;
+	overflow: hidden;
+	background: #555e68;
+	.section{
+		height:1.05rem;
+		width: 100%;
+		margin: auto;
+		section{
+			float: left;
+			&.link-section{
+				width: 100%;
+				height: 100%;
+				.foot-logo{
+					width: 1.65rem;
+					height: 0.50rem;
+					background: url(../images/foot-logo.png) no-repeat;
+					background-size: 100% 100%;
+					float: none;
+					margin-top: 25px;
+					margin:0.15rem auto;
+				}
+				.links{
+					font-size: 12px;
+					color: #c9c9c9;
+					float: none;
+					height: 0.3rem;
+					line-height: 0.1rem;
+					margin-left: 0;
+					text-align: center;
+					a{
+						text-decoration: none;
+						color: #c9c9c9;
+						margin: 0 10px;
+					}
+				}
+				.cooperate,.kfmail,.kfTel,.address{
+					display: none;
+				}
+				.attention{
+					display: none;
+				}
+			}
+		}
+		
+	}
+	.bottom{
+		height: 0.3rem;
+		background: #383E44;
+		p{
+			height: 0.3rem;
+			line-height: 0.3rem;
+			text-align: center;
+			color: #C9C9C9;
+			margin: 0;
+			font-size: 13px;
+		}
+	}
+}

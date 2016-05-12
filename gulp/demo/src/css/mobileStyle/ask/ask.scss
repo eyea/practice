@@ -1,0 +1,141 @@
+.page-ask{
+	margin: 0.1rem auto 0;
+	width: 100%;
+	.item{
+		padding: .17rem .11rem;
+		background: #fff;
+		.author{
+			float: left;
+			height: 0.45rem;
+			.author-photo{
+				width: 0.45rem;
+				height: 0.45rem;
+				float: left;
+				background: url(../images/topic_photo.png) no-repeat;
+				background-size:100%;
+				img{
+					width: 100%;
+					height: 100%;
+					display: block;
+					border-radius: 0.225rem;
+				}
+			}
+			.author-info{
+				margin-left: 0.1rem;
+				float: left;
+				line-height: 0.23rem;
+				span{
+					display: block;
+					font-size: .16rem;
+					i{
+						font-style: normal;
+						&.name{
+							font-size: .15rem;
+							color: #696969;
+						}
+						&.label{
+							font-size: .13rem;
+							color: #00CAA9;
+							border: 1px solid #00caa9;
+							padding: 0 0.05rem;
+							margin-left: .05rem;
+						}
+					}
+					&.author-position{
+						font-size: .13rem;
+						color: #9b9b9b;
+					}
+				}
+			}
+		}
+		.conmment-num-info{
+			margin-top: 20px;
+			display: none;
+			font-size: 0.12rem;
+			span{
+			    display: inline-block;
+			    color: #e1e1e1;
+			    margin-right: 20px;
+			    i{
+			    	font-style: normal;
+			    	display: inline-block;
+			    	width: 16px;
+			    	height: 16px;
+			    	background-size: 600%;
+			    	vertical-align: middle;
+			    	font-size: 12px;
+			    }
+			}
+			.good-num{
+			    background-position: 0 -4px;
+			}
+			.bad-num{
+				background-position: -23px -4px;
+			}
+			.comm-num{
+				background-position: -46px -4px;
+				background-size: 600%;
+			}
+		}
+		.icon{
+			background: url(../images/topic-icon.png) no-repeat;
+
+		}
+	}
+	.topic{
+		margin: 20px 0;
+		.author-share{
+			height: 50px;
+			.share{
+				display: none;
+			}
+		}
+		.topic-title{
+			font-size: .18rem;
+			color: #273748;
+			margin: 20px 0;
+			line-height: 22px;
+			font-weight: bold;
+		}
+		.topic-content{
+			font-size: .15rem;
+			color: #696969;
+			line-height: 0.22rem;
+			img{
+				max-width: 100%;
+			}
+		}
+		.person-num{
+			margin-top: 20px;
+			font-size: 13px;
+			span{
+				padding-left: 26px;
+				background-size: 140%;
+				background-position: -90px -2px;
+				color: #E1E1E1;
+				font-size: 13px;
+			}
+		}
+	}
+	.comment{
+		margin: 20px 0;
+		.comment-list{
+			border-top: 1px solid #e1e1e1;
+			&:first-child{
+				border-top: 0px;
+			}
+			.comment-author{
+				height: 50px;
+			}
+			.comment-des{
+				margin-top: 20px;
+				font-size: 16px;
+				line-height: 22px;
+				color: #696969;
+				img{
+					max-width: 100%;
+				}
+			}
+		}
+	}
+}

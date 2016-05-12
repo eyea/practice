@@ -1,0 +1,52 @@
+<div class="login-dialog dialog">
+	<div class="login-close close"></div>
+	<div class="dialog-bg">
+		<div class="login-bg big-bg">
+			<span class="login-btn">登录</span>
+		</div>
+		<div class="regist-bg small-bg">
+			<span class="regist-btn">注册</span>
+		</div>
+	</div>
+	<div class="login-fill-card">
+		<div class="login-card card login-show">
+			<div class="inputs">
+				<div class="login-phone-input">
+					<input type="text" pattern="^\d{11}$" class="login-phone input long-input"  placeholder="仅支持中国大陆手机号" maxlength="11" autocomplete="off">
+					<i class="phone-status-icon"></i>
+				</div>
+				<input type="password" class="password input long-input" placeholder="密码" autocomplete="off">
+				<div class="forget-tips">
+					<a href="javascript:void(0)" class="forget-password">忘记密码</a>
+					<div class="tips"></div>
+				</div>
+				<div class="login-submit submit">登录</div>
+			</div>
+			<div class="other-login">
+				<div>第三方网站账号登录</div>
+				<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx5d417cd26ae2f339&redirect_uri=http%3A%2F%2Fwww.xfz.cn&response_type=code&scope=snsapi_login" class="wx-login"></a>
+			</div>
+		</div>
+		<div class="regist-card card regist-hide">
+			<div class="inputs">
+				<div class="regist-phone-input">
+					<input type="text" pattern="^\d{11}$" class="regist-phone input long-input" placeholder="仅支持中国大陆手机号" maxlength="11" autocomplete="off">
+					<i class="phone-status-icon"></i>
+				</div>
+				<div class="verify">
+					<input type="text" pattern="^\d{4}$" class="verify-code input short-input"  placeholder="验证码" maxlength="4" validate="^\d{4}$" autocomplete="off">
+					<input type="button" class="send-verify-code input-button short-button"  send="false" value="发送验证码">
+				</div>
+				<div class="tips-container">
+					<div class="tips regist-tips"></div>
+				</div>
+				<div class="next-submit submit">下一步</div>
+			</div>
+			<div class="other-login">
+			<div>第三方网站账号登录</div>
+				<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx5d417cd26ae2f339&redirect_uri=http%3A%2F%2Fwww.xfz.cn&response_type=code&scope=snsapi_login" class="wx-login"></a>
+			</div>
+		</div>
+	</div>
+	<div class="slider"></div>
+</div>
