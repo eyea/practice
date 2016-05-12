@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ihover</title>
+	<link rel="stylesheet" href="ihover.css">
+	<style>
+		.m_circle{
+			position: relative;
+			float: right;
+			right: 10px;
+			top: 100px;
+			height: 200px;
+			width: 200px;
+			-webkit-transition:all .35s ease-in-out;
+			-moz-transition:all .35s ease-in-out;
+			transition:all .35s ease-in-out;
+		}
+		.m_circle a{
+			width: 200px;
+			height: 200px;
+			box-sizing:border-box;
+		}
+		.m_img{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+		}
+		.m_circle img{
+			width: 100%;
+			height: 100%;
+			display: block;
+			border-radius: 50%;
+			position: relative;
+			left: 10px;
+			top: 10px;
+		}
+		.m_spiner{
+			border: 10px solid red;
+			border-radius: 50%;
+			border-right-color:green;
+			border-bottom-color: green; 
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			-webkit-transition:all .8s ease-in-out;
+			-moz-transition:all .8s ease-in-out;
+			transition:all .8s ease-in-out;
+		}
+		.m_a:hover .m_spiner {
+		  -webkit-transform: rotate(180deg);
+		  -moz-transform: rotate(180deg);
+		  -ms-transform: rotate(180deg);
+		  -o-transform: rotate(180deg);
+		  transform: rotate(180deg);
+		}
+		.m_a:hover .m_info{
+			opacity: 1;
+			background-color: #333333;
+		}
+		.m_info p{
+		  color: #bbb;
+		  padding: 10px 5px;
+		  font-style: italic;
+		  margin: 0 30px;
+		  font-size: 12px;
+		  border-top: 1px solid rgba(255, 255, 255, 0.5);
+		}
+		.m_info h3{
+		  color: #fff;
+		  text-transform: uppercase;
+		  position: relative;
+		  letter-spacing: 2px;
+		  font-size: 22px;
+		  margin: 0 30px;
+		  padding: 55px 0 0 0;
+		  text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);			
+		}
+		.m_info{
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			border-radius: 50%;
+			text-align: center;
+			width: 200px;
+			height: 200px;
+			-webkit-transition:all .8s ease-in-out;
+			-moz-transition:all .8s ease-in-out;
+			transition:all .8s ease-in-out;
+			opacity: 0;
+		}
+		.m_info_back{
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="ih-item circle effect1">
+		<a href="#">
+	        <div class="spinner"></div>
+	        <div class="img"><img src="http://gx.zptc.cn/whqet/ihover/1.jpg" alt="img"></div>
+	        <div class="info">
+	          <div class="info-back">
+	            <h3>Heading here</h3>
+	            <p>Description goes here</p>
+	          </div>
+	        </div>
+	    </a>
+	</div>
+
+	<!-- ee	 -->
+	<div class="m_circle">
+		<a class="m_a" href="#">
+			<div class="m_spiner"></div>
+			<div class="m_img">
+				<img src="http://gx.zptc.cn/whqet/ihover/1.jpg" alt="img">
+			</div>
+			<div class="m_info">
+				<div class="m_info_back">
+					<h3>heading</h3>
+					<p>description</p>
+				</div>
+			</div>
+		</a>
+	</div>
+</body>
+</html>
