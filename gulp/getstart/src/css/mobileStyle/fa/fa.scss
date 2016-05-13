@@ -1,0 +1,157 @@
+.page-rong{
+	margin:0;
+	.banner{
+		height: 2.44rem;
+		margin: auto;
+		overflow: hidden;
+		background: url(../images/faBg.jpg) no-repeat;
+		background-size: auto 100%;
+		.rong-topic{
+			width:2rem;
+			height: 0.5rem;
+			margin:0.9rem auto 0;
+			color: #fff;
+			.title{
+				font-size: 0.2rem;
+			    text-align: center;
+			    line-height: 0.5rem;
+			    border: 1px solid #fff;
+			}
+			.title-des{
+			    font-size: 0.12rem;
+			    text-align: center;
+			    line-height: 0.14rem;
+			    background: #f5a623;
+			    width: 1.5rem;
+			    margin: -0.07rem auto 0;
+			    height: 0.14rem;
+			}
+			.mail{
+				text-align: center;
+				margin-top: 0.1rem;
+				font-size: 0.12rem;
+			}
+		}
+	}
+	.intro{
+		width: 100%;
+		height: 3.48rem;
+		background: #fff;
+		.rong-intro{
+			list-style: none;
+			width: 100%;
+			margin: auto;
+			overflow: hidden;
+			padding: 0;
+			li{
+				width: 50%;
+				float: left;
+				height: 1rem;
+				font-size: 0.15rem;
+				line-height: 2.24rem;
+				padding: 0.2rem 0;
+				text-align: center;
+				&.guide{
+					background: url(../images/guide.png) center center no-repeat;
+					background-size: 35%;
+				}
+				&.strategy{
+					background: url(../images/strategy.png) center center no-repeat;
+					background-size: 50%;
+				}
+				&.feedback{
+					background: url(../images/feedback.png) center center no-repeat;
+					background-size: 50%;
+				}
+				&.bridge{
+					background: url(../images/bridge.png) center center no-repeat;
+					background-size: 50%;
+				}
+			}
+		}
+	}
+	.service-team{
+		list-style: none;
+		width: 100%;
+		margin: 0rem auto .2rem;
+		overflow: hidden;
+		.title{
+			height: .4rem;
+			font-size: .15rem;
+			line-height: .45rem;
+			text-align: center;
+		}
+		li{
+			width: 97%;
+			float: none;
+			height: auto;
+			margin: .05rem;
+			background: #fff;
+			overflow: hidden;
+			img{
+				width: 1rem;
+				height: 1rem;
+				border-radius: .50rem;
+				margin: .1rem .05rem;
+				float: left;
+			}
+			.content{
+				width: 60%;
+				float: left;
+				margin: 0.1rem 0rem 0.1rem 0.05rem;
+				.name{
+					font-size: 0.16rem;
+					color: #34495E;
+					font-weight: normal;
+					margin-top: 0;
+				}
+				.position{
+					font-size: 0.13rem;
+					color: #00CAA9;
+					font-weight: normal;
+					margin-top: 0;
+					margin-top: -0.18rem;
+					margin-left: 0.5rem;
+				}
+				.des{
+					font-size: 0.12rem;
+					margin-top: 0.05rem;
+					color: #696969;
+					font-weight: normal;
+					line-height: 0.16rem;
+					&.ceoDes{
+						margin-top: 0.1rem;
+					}
+				}
+			}
+			
+		}
+		
+	}
+	.float-mail{
+		display: none;
+	}
+	.button-bottom{
+		height: 0.6rem;
+		background: #fff;
+		text-align: center;
+		color: #fff;
+		.float-mail-bottom{
+			    height: .4rem;
+			    line-height: .4rem;
+			    margin: 0;
+			    font-size: .12rem;
+			    width: 90%;
+			    position: absolute;
+			    float: none;
+			    left: 50%;
+			    top: 0.1rem;
+			    margin-left: -45%;
+			a{
+				text-decoration: none;
+				color: #F5A623;
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,0 +1,531 @@
+.login-mask{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	background: rgba(56,62,68,0.9);
+	display: none;
+	/*******************公共样式**********************/
+	.dialog{
+		width: 587px;
+		height: 389px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -194px;
+		margin-left: -293px;
+		.dialog-title-bg{
+		    width: 372px;
+		    height: 389px;
+		    background: #00caa9;
+		    margin: 0 auto;
+		    span{
+			    display: inline-block;
+			    width: 100%;
+			    text-align: center;
+			    color: #fff;
+			    font-size: 20px;
+			    margin-top: 20px;
+			    margin-bottom: 20px;
+		    }
+		}
+		.fill-card{
+		    position: absolute;
+		    top: 60px;
+		    left: 27px;
+		    width: 523px;
+		    height: 305px;
+		    background: #fff;
+		    border-radius: 10px;
+			box-shadow: 0 2px 12px;
+	    }
+	    .fill-card-long{
+	    	height: 378px;
+	    }
+	    .input{
+		    margin: 40px auto 15px;
+		    display: block;
+		    height: 50px;
+		    border: none;
+		    border-radius: 10px;
+		    color: #c9c9c9;
+		    font-size: 16px;
+		    font-weight: 100;
+		    background-color: #E4ECF3;
+		    text-indent: 10px;
+		    outline: none;
+		    &.long-input{
+				width: 295px;
+		    }
+		    &.short-input{
+		    	width: 132px;
+		    	float: left;
+		    	margin: 0;
+		    }
+		}
+		.input-button{
+		    width: 132px;
+		    height: 52px;
+		    cursor: pointer;
+		    background: #00caa9;
+		    border: none;
+		    border-radius: 10px;
+		    float: left;
+		    display: block;
+		    margin: 15px 10px 0;
+		    font-size: 16px;
+		    color: #fff;
+		    cursor: pointer;
+		    outline: none;
+		    &.short-button{
+				margin: 0 0 0 28px;
+		    }
+		}
+		.tips-container{
+			height: 22px;
+			margin: 15px 0 0;
+		}
+		.tips{
+		    display: inline-block;
+		    background: #fff;
+		    width: 215px;
+		    height: 22px;
+		    margin-left: 20px;
+		    border-radius: 11px;
+		    color: #E93C6A;
+		    text-align: center;
+		    line-height: 22px;
+		    font-size: 14px;
+		}
+		.submit{
+			width: 295px;
+		    height: 50px;
+			background: rgba(0,202,169,1);
+		    margin: 15px auto;
+		    border-radius: 8px;
+		    text-align: center;
+		    line-height: 50px;
+		    color: #fff;
+		    font-size: 20px;
+		    cursor: pointer;
+		}
+		.phone-status-icon{
+		    background: url(../images/login-icon.png) 7px -117px no-repeat #E4ECF3;
+		    background-size: 200%;
+		    text-indent: 50px;
+		    position: absolute;
+		    width: 20px;
+		    height: 20px;
+		    right: 30px;
+		    top: 18px;
+		    display: none;
+		    &.success{
+				background-position: 0 1px;
+		    }
+		    &.false{
+		    	background-position: 0 -44px;
+		    }
+		}
+		.close{
+			background: url(../images/close.png) 0 0 no-repeat;
+		    background-size: 100%;
+		    text-indent: 50px;
+		    position: absolute;
+		    width: 25px;
+		    height: 25px;
+		    right: 0px;
+		    top: -50px;
+		    cursor: pointer;
+		}
+		.btn-able{
+			background: rgba(0,202,169,1);
+		}
+		.btn-disable{
+			background: rgba(0,202,169,0.5);
+		}
+	}
+	/************************end**********************/
+
+	.login-dialog{
+		.dialog-bg{
+			.login-bg{
+				width: 372px;
+				height: 389px;
+				background: rgba(249,248,248,0.5);
+				float: left;
+			}
+			.regist-bg{
+				width: 215px;
+				height: 389px;
+				background: rgba(249,248,248,0.5);
+				float: left;
+			}
+			.big-bg{
+				animation: bigBg 0.5s linear;
+				-webkit-animation: bigBg 0.5s linear;
+				width: 372px
+			}
+			.small-bg{
+				animation: smallBg 0.5s linear;
+				-webkit-animation: smallBg 0.5s linear;
+				width: 215px
+			}
+			@keyframes bigBg{
+				from {width: 215px}
+				to {width: 372px}
+			}
+			@-webkit-keyframes bigBg{
+				from {width: 215px}
+				to {width: 372px}
+			}
+			@keyframes smallBg{
+				from {width: 372px}
+				to {width: 215px}
+			}
+			@-webkit-keyframes smallBg{
+				from {width: 372px}
+				to {width: 215px}
+			}
+			span{
+				display: inline-block;
+				width: 100%;
+				text-align: center;
+				color: #fff;
+				font-size: 20px;
+				margin-top: 20px;
+				cursor: pointer;
+				position: relative;
+				z-index: 99;
+			}
+		}
+		.login-fill-card{
+			position: relative;
+			top: 50%;
+			z-index: 999;
+			box-shadow: 0 2px 12px;
+			.card{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 523px;
+				height: 305px;
+				border-radius: 5px;
+				margin-top: -132px;
+				margin-left: -261px;
+				background: #fff;
+				box-shadow: 0 2px 12px #000;
+			}
+			.inputs{
+				float: left;
+				width: 334px;
+				height: 100%;
+			}
+			.other-login{
+			    float: left;
+			    height: 223px;
+			    margin-top: 40px;
+			    width: 185px;
+			    text-align: center;
+			    color: #9b9b9b;
+			    font-size: 16px;
+			    border-left: 2px solid #00caa9;
+			    .wx-login{
+			    	display: block;
+				    margin: 60px auto 0;
+				    width: 72px;
+				    height: 72px;
+				    border-radius: 36px;
+				    border: 1px solid #00caa9;
+				    background: url(../images/login-icon.png) no-repeat;
+				    background-size: 60%;
+				    background-position: 15px -221px;
+				    text-indent: 50px;
+			    }
+			}
+			.login-card{
+				opacity: 1;
+				.login-phone-input{
+					position: relative;
+					.login-phone{
+					    margin: 40px auto 0;
+					    background: url(../images/login-icon.png) no-repeat #E4ECF3;
+					    background-size: 17%;
+					    background-position: 7px -117px;
+					    text-indent: 50px;
+					}
+				}
+				.password{
+				    margin: 15px auto 15px;
+				    background: url(../images/login-icon.png) no-repeat #E4ECF3;
+				    background-size: 17%;
+				    background-position: 7px -193px;
+				    text-indent: 50px;
+				}
+				.forget-tips{
+					overflow: hidden;
+					height: 22px;
+					.forget-password{
+					    text-decoration: none;
+					    color: #9B9B9B;
+					    font-size: 14px;
+					    line-height: 22px;
+					    display: inline-block;
+					    height: 22px;
+					    float: left;
+					    margin-left: 20px;
+					}
+				}
+				.login-submit{
+				    margin: 15px auto;
+				}
+			}
+			.regist-card{
+				opacity: 0;
+				.regist-phone-input{
+					position: relative;
+				}
+				.verify{
+					overflow: hidden;
+					width: 295px;
+					margin:  15px auto 0;
+				}
+				.regist-tips{
+					margin-left: 100px;
+				}
+			}
+			.login-show{
+				animation: login-show 0.5s linear;
+				-webkit-animation : login-show 0.5s linear;
+				opacity: 1;
+				z-index: 99999;
+			}
+			.login-hide{
+				animation: login-hide 0.35s linear;
+				-webkit-animation : login-hide 0.35s linear;
+				opacity: 0;
+				z-index: 9999;
+			}
+			.regist-show{
+				animation: regist-show 0.5s linear;
+				-webkit-animation : regist-show 0.5s linear;
+				opacity: 1;
+				z-index: 99999;
+			}
+			.regist-hide{
+				animation: regist-hide 0.35s linear;
+				-webkit-animation : regist-hide 0.35s linear;
+				opacity: 0;
+				z-index: 9999;
+			}
+			@keyframes login-show{
+				0% {left: 100%;opacity: 0}
+				50% {left : 75%;opacity: 0.5}
+				100% {left: 50%;opacity: 1}
+			}
+			@-webkit-keyframes login-show{
+				0% {left: 100%;opacity: 0}
+				50% {left : 75%;opacity: 0.5}
+				100% {left: 50%;opacity: 1}
+			}
+			@keyframes login-hide{
+				0% {left: 50%;opacity: 1}
+				50% {left : 75%;opacity: 0.5}
+				100% {left: 100%;opacity: 0}
+			}
+			@-webkit-keyframes login-hide{
+				0% {left: 50%;opacity: 1}
+				50% {left : 75%;opacity: 0.5}
+				100% {left: 100%;opacity: 0}
+			}
+			@keyframes regist-show{
+				0% {left: 0%;opacity: 0}
+				50% {left : 25%;opacity: 0.5}
+				100% {left: 50%;opacity: 1}
+			}
+			@-webkit-keyframes regist-show{
+				0% {left: 0%;opacity: 0}
+				50% {left : 25%;opacity: 0.5}
+				100% {left: 50%;opacity: 1}
+			}
+			@keyframes regist-hide{
+				0% {left: 50%;opacity: 1}
+				50% {left : 25%;opacity: 0.5}
+				100% {left: 0%;opacity: 0}
+			}
+			@-webkit-keyframes regist-hide{
+				0% {left: 50%;opacity: 1}
+				50% {left : 25%;opacity: 0.5}
+				100% {left: 0%;opacity: 0}
+			}
+		}
+		.slider{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 372px;
+			height: 389px;
+			background: #00caa9;
+		}
+		.bg-left{
+			animation: bgLeft 0.5s linear;
+			-webkit-animation: bgLeft 0.5s linear;
+			left: 0;
+		}
+		.bg-right{
+			animation: bgRight 0.5s linear;
+			-webkit-animation: bgRight 0.5s linear;
+			left: 37%;
+		}
+		@keyframes bgRight{
+			0% {left: 0%;}
+			50% {left: 16%;}
+			100% {left: 37%;}
+		}
+		@-webkit-animation bgRight{
+			0% {left: 0%;}
+			50% {left: 16%;}
+			100% {left: 37%;}
+		}
+		@keyframes bgLeft{
+			0% {left: 37%;}
+			50% {left: 16%;}
+			100% {left: 0%;}
+		}
+		@-webkit-animation bgLeft{
+			0% {left: 37%;}
+			50% {left: 16%;}
+			100% {left: 0%;}
+		}
+	}
+	
+	.regist-next-dialog{
+		.regist-password{
+		    margin: 20px auto 0;
+		}
+		.resist-next-tips{
+			display: block;
+			margin: 0 auto;
+			width: 270px;
+		}
+		.next-complete{
+		    width: 300px;
+		    margin: 10px auto 0;
+		    overflow: hidden;
+		    .regist-prev-submit{
+			    float: left;
+			    width: 140px;
+			    border: 1px solid #E4ECF3;
+			    background: #fff;
+			    color: #6D85AC;
+		    }
+		    .regist-complete-submit{
+			    width: 140px;
+			    float: right;
+		    }
+		}
+	}
+	.bind-phone-dialog{
+		.is-bind-check{
+			.bind-phone-input{
+				position: relative;
+				margin: 0 auto;
+				width: 295px;
+			}
+			.bind-phone-tips{
+				display: block;
+				margin: 0 auto;
+			}
+			.bind-verify{
+				width: 295px;
+				margin: 0 auto;
+				overflow: hidden;
+				.bind-send-verify{
+					margin: 0 0 0 28px;
+				}
+			}
+			.bind-tips{
+				display: block;
+				margin: 15px auto 0;
+			}
+		}
+		.bind-tips-card{
+			.photo{
+				width: 100px;
+			    height: 100px;
+			    margin: 20px auto;
+			    img{
+			    	width: 100%;
+			    	border-radius: 50%;
+			    }
+			}
+		    .bind-tips{
+			    width: 100%;
+			    text-align: center;
+			    margin-top: 20px;
+			    color: #696969;
+			    font-size: 20px;
+			    .bind-tips{
+				    color: #6D85AC;
+				    font-size: 16px;
+				    margin-top: 10px;
+			    }
+		    }
+		    .next-bind{
+			    width: 295px;
+			    margin: 10px auto 0;
+			    overflow: hidden;
+			    .bind-cancel-submit{
+				    width: 132px;
+				    float: left;
+				    border: 1px solid #E4ECF3;
+				    color: #6D85AC;
+				    background: #fff;
+			    }
+			    .continue-bind-submit{
+				    width: 132px;
+				    float: right;
+				    background: #00caa9;
+			    }
+		    }
+		}
+	}
+	.reset-password-dialog{
+		.fill-card-long{
+			.reset-phone-input{
+				position: relative;
+			    width: 295px;
+			    margin: 0 auto;
+			}
+		}
+		.reset-verify-btn{
+			width: 295px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.fill-new-password{
+		    margin: 15px auto 15px;
+		}
+		.reset-tips{
+			display: block;
+			margin: 0 auto;
+			width: 260px;
+		}
+	}
+}
+.login-loading{
+	    width: 100px;
+	    height: 100px;
+	    background: url(../images/loading.gif) center center no-repeat;
+	    background-size: 100%;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-top: -50px;
+	    margin-left: -50px;
+}
+
+
+
+

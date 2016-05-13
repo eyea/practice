@@ -1,0 +1,219 @@
+.side{
+	float: left;
+  	width: 355px;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+	.side-activities{
+		background: #fff;
+		border: 1px solid #f2f2f2;
+		.new-activity{
+			margin: 20px;
+			font-size: 16px;
+			font-weight: bold;
+			color: #696969;
+		}
+		.activities-img{
+			width: 314px;
+			height: 255px;
+			margin: 20px;
+			background: url(../images/no-photo.png) no-repeat;
+			background-size: 87% 100%;
+			background-position-x : 20px;
+			position: relative;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			.title-tips{
+				position: absolute;
+				bottom: 0;
+				background: rgba(0,0,0,0.7);
+				height: 43px;
+				line-height: 43px;
+				width: 100%;
+				color: #fff;
+				text-indent: 1em;
+			}
+		}
+		ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li{
+				border: none;
+				line-height: 41px;
+			  	height: 41px;
+			  	padding: 2px 20px;
+				&:hover{
+					background: #F8F8F8;
+					cursor: pointer;
+				};
+				a{
+					text-decoration: none;
+					color: #696969;
+					span{
+						height: 24px;
+						line-height: 24px;
+						vertical-align: middle;
+						overflow: hidden;
+						width: 240px;
+						display: inline-block;
+						font-size: 16px;
+						&.status{
+							display: inline-block;
+							width: 42px;
+							height: 20px;
+							margin-right: 15px;
+						}
+						&.active-start{
+							border: 1px solid #00CAA9;
+							font-size: 12px;
+							text-align: center;
+							line-height: 20px;
+							color: #00CAA9;
+						}
+						&.active-new{
+							background: url(../images/status-new.png) no-repeat;
+							background-size: 100% 100%;
+							width: 42px;
+							height: 28px;
+						}
+						&.active-end{
+							border: 1px solid #ccc;
+							font-size: 12px;
+							text-align: center;
+							line-height: 20px;
+							color: #ccc;
+						}
+						&.big-title{
+							font-size: 16px;
+							color: #000;
+						}
+					}
+				}
+			}
+		}
+		.more-active{
+			font-size: 12px;
+			text-align: right;
+			line-height: 41px;
+		  	height: 41px;
+		  	padding: 2px 20px;
+			a{
+				text-decoration: none;
+				color: #4A90E2;
+			}
+		}
+	}
+	.side-video{
+		width: 355px;
+		height: 283px;
+		margin-top: 20px;
+		background: #fff;
+		display: none;
+		a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.side-download{
+		width: 355px;
+		height: 261px;
+		margin-top: 20px;
+		background: #fff;
+		.side-download-address{
+			float: left;
+			padding: 20px 0 0 15px;
+			color: #696969;
+			/*.side-download-logo{
+				background: url(../images/side-logo.png) no-repeat;
+				width: 157px;
+				height: 60px;
+				padding: 0;
+				margin: 0;
+			}*/
+			/*div{
+				width: 157px;
+				height: 40px;
+				background: #00CAA9;
+				color: #fff;
+				line-height: 40px;
+				text-align: center;
+				&.side-download-ios{
+					margin-top: 30px;
+					.ios-logo{
+						background: url(../images/ios-logo.png) no-repeat;
+						display: inline-block;
+						width: 30px;
+						height: 30px;
+						vertical-align: middle;
+						background-size: 90%;
+					}
+				}
+				&.side-download-android{
+					margin-top: 10px;
+					.android-logo{
+						background: url(../images/android-logo.png) no-repeat;
+						display: inline-block;
+						width: 30px;
+						height: 30px;
+						vertical-align: middle;
+						background-size: 90%;
+					}
+				}
+			}*/
+			.title{
+				width: 157px;
+				height: 25px;
+				line-height: 25px;
+				padding: 0;
+				margin: 0;
+				font-weight: 500;
+			}
+			.item{
+				background: url(../images/side-icon.png) no-repeat;
+				background-size: 26%;
+				padding-left: 60px;
+				height: 45px;
+				line-height: 40px;
+				margin: 20px 0 20px 5px;
+				line-height: 45px;
+				a{
+					text-decoration: none;
+					cursor: pointer;
+					color: #696969;
+				}
+				&.zhihu{
+					background-position: 0 0;
+				}
+				&.weibo{
+					background-position: 0 -56px;
+				}
+				&.toutiao{
+					background-position: 0 -112px;
+				}
+			}
+		}
+	}
+	.side-qr{
+		float: left;
+		margin-top: 50px;
+		span{
+			display: block;
+			&.side-qr-title{
+				color: #696969;
+				text-align: center;
+				font-size: 14px;
+				margin-top: 20px;
+			}
+			&.side-qr-img{
+				background: url(../images/wxQr.jpg) no-repeat;
+				background-size: 100% 100%;
+				width: 117px;
+				height: 117px;
+				margin: auto;
+			}
+		}
+	}
+}

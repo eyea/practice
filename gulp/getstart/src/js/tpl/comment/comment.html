@@ -1,0 +1,30 @@
+<div class="page-comment">
+    <div class="write-comm">
+        <%if(isPage == "article"){%>
+            <h2>文章评论<span>(0)</span></h2>
+        <%}else if(isPage == 'active') {%>
+            <h2>活动评论<span>(0)</span></h2>
+        <%}else if(isPage == 'course') {%>
+            <h2>课堂评论<span>(0)</span></h2>
+        <%}%>
+        <div class="touch-no-login">立即登录，参与评论</div>
+        <div class="open-comm">
+            <textarea id="comm-input" class="comment-btn" placeholder="请填写评论～"></textarea>
+            <div class="photo-name-submit">
+                <div class="photo-name">
+                    <span class="photo"><img src=""></span>
+                    <span class="name">王东杰</span>
+                </div>
+                <div class="tips"></div>
+                <div id="btn" class="btn comment-btn">评论</div>
+            </div>
+        </div>
+        <div class="close-comm">
+            <div class="sofa"></div>
+            <div class="now-comm">
+                <div class="text">暂无评论，快来抢沙发吧</div>
+                <div class="btn">立即评论</div>
+            </div>
+        </div>
+    </div>
+</div>

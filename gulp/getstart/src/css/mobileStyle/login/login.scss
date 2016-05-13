@@ -1,0 +1,264 @@
+.login-mask{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	background: -webkit-linear-gradient(#52C5D5, #8EE8CE); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(#52C5D5, #8EE8CE); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(#52C5D5, #8EE8CE); /* Firefox 3.6 - 15 */
+	background: linear-gradient(#52C5D5, #8EE8CE); /* 标准的语法 */
+	display: none;
+	/******************隐藏pc上的样式******************/
+	.login-dialog,.regist-next-dialog,.bind-phone-dialog,.reset-password-dialog,.login-false-wrapper,.login-success-wrapper{
+		display: none;
+	}
+	/***********************end**********************/
+
+	/*******************公共样式**********************/
+	.mobile-dialog{
+	    width: 3.5rem;
+	    height: 4.34rem;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-top: -2.17rem;
+	    margin-left: -1.75rem;
+	    background: #fff;
+	    border-radius: 0.05rem;
+	    .phone-status-icon{
+		    background: url(../images/login-icon.png) 0.07rem -1.17rem no-repeat #E4ECF3;
+		    background-size: 200%;
+		    text-indent: 0.5rem;
+		    position: absolute;
+		    width: 0.2rem;
+		    height: 0.2rem;
+		    right: 0.3rem;
+		    top: 0.18rem;
+		    display: none;
+		    &.success{
+				background-position: 0 0.01rem;
+		    }
+		    &.false{
+		    	background-position: 0 -0.44rem;
+		    }
+		}
+	    .close{
+			background: url(../images/close.png) 0 0 no-repeat;
+		    background-size: 100%;
+		    text-indent: 0.5rem;
+		    position: absolute;
+		    width: 0.25rem;
+		    height: 0.25rem;
+		    right: 0px;
+		    top: -0.5rem;
+		    cursor: pointer;
+		}
+		.tips{
+		    background: #fff;
+		    width: 100%;
+		    height: 100%;
+		    border-radius: 0.1rem;
+		    color: #E93C6A;
+		    text-align: center;
+		    line-height: 0.22rem;
+		    font-size: 0.14rem;
+		}
+		.input{
+		    margin: 0.1rem auto 0.15rem;
+		    display: block;
+		    height: 0.5rem;
+		    border: none;
+		    border-radius: 0.1rem;
+		    color: #c9c9c9;
+		    font-size: 0.16rem;
+		    font-weight: 100;
+		    background-color: #E4ECF3;
+		    text-indent: 0.1rem;
+		    outline: none;
+		    padding: 0;
+		    &.long-input{
+				width: 2.95rem;
+		    }
+		    &.short-input{
+		    	width: 1.32rem;
+		    	float: left;
+		    	margin: 0;
+		    }
+		}
+		.input-button{
+		    width: 1.5rem;
+		    height: 0.5rem;
+		    background: #00caa9;
+		    border: none;
+		    border-radius: 0.1rem;
+		    float: left;
+		    display: block;
+		    margin: 0.15rem 0.1rem 0;
+		    font-size: 0.16rem;
+		    color: #fff;
+		    cursor: pointer;
+		    outline: none;
+		    display: block;
+		    text-align: center;
+		    line-height: 0.5rem;
+		    &.short-button{
+				margin: 0;
+				float: right;
+		    }
+		}
+		.submit{
+			width: 100%;
+		    height: 0.5rem;
+			background: rgba(0,202,169,1);
+		    margin: 0.15rem auto;
+		    border-radius: 0.8rem;
+		    text-align: center;
+		    line-height: 0.5rem;
+		    color: #fff;
+		    font-size: 0.2rem;
+		    cursor: pointer;
+		}
+		.tips-container{
+			height: 0.22rem;
+			margin: 0.1rem 0 0.1rem;
+		}
+		.logo{
+			background: url(../images/login-logo.png) 0 0 no-repeat;
+		    background-size: 100%;
+		    width: 1.9rem;
+		    height: 0.63rem;
+		    margin: 0.4rem auto 0;
+		}
+		.text{
+			font-size: 0.2rem;
+			color: #00caa9;
+			text-align: center;
+			margin: 0.1rem;
+		}
+		.btn-able{
+			background: rgba(0,202,169,1);
+		}
+		.btn-disable{
+			background: rgba(0,202,169,0.5);
+		}
+	}
+	.login-regist{
+		.card{
+			width: 3rem;
+			margin: 0 auto;
+		}
+		.tab{
+			width: 85%;
+		    margin: 0.1rem auto;
+		    font-size: 0.2rem;
+		    text-align: center;
+		    overflow: hidden;
+		    .btn{
+		    	float: left;
+		    	width: 50%;
+		    	color: #9B9B9B;
+		    	&.active{
+		    		color: #00caa9;
+		    		border-bottom: 2px solid #00caa9;
+		    	}
+		    }
+		}
+		.login-card{
+			.password{
+				margin: 0.15rem auto;
+			}
+			.login-phone-input{
+				position: relative;
+			}
+			.foget-pwd{
+				text-decoration: none;
+			    color: #9B9B9B;
+			    font-size: 0.14rem;
+			    line-height: 0.22rem;
+			    height: 0.22rem;
+			    width: 1rem;
+			}
+			.login-submit{
+				width: 2.95rem;
+				height: 0.5rem;
+				color: #fff;
+				background: #00caa9;
+				border-radius: 0.1rem;
+				text-align: center;
+				line-height: 0.5rem;
+				font-size: .16rem;
+				margin-top: 0.1rem;
+			}
+		}
+		.regist-card{
+			.regist-next{
+				border-radius: 0.1rem;
+			}
+			.regist-phone-input{
+				position: relative;
+				width: 2.95rem;
+			}
+			.verify{
+				overflow: hidden;
+				margin: 0.25rem auto;
+				width: 2.95rem;
+			}
+		}
+	}
+	.fill-msg{
+		.fill-card{
+			width: 2.95rem;
+			margin: 0 auto;
+			.realname{
+				margin-top: 0;
+			}
+		}
+		.next-complete{
+			overflow: hidden;
+			margin-top: 0.3rem;
+			.regist-prev-submit{
+				background: #fff;
+				border: 1px solid #D2DCEA;
+				color: #6d85ac;
+				width: 1.35rem;
+				margin: 0;
+				float: left;
+			}
+			.regist-complete-submit{
+				margin: 0;
+				width: 1.35rem;
+				float: right;
+			}
+		}
+	}
+	.reset-password{
+		height: 3.65rem;
+		.fill-card{
+			width: 3rem;
+			margin: 0 auto;
+			overflow: hidden;
+			.reset-phone-input{
+				width: 2.95rem;
+			}
+			.conform-reset-submit{
+				border-radius: 0.1rem;
+			}
+			.reset-verify-btn{
+				width: 2.95rem;
+				overflow: hidden;
+				.reset-send-verify{
+					margin: 0;
+					float: right;
+					border-radius: 5px;
+					width: 1.3rem;
+				}
+			}
+		}
+	}
+}
+
+
+
+

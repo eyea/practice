@@ -1,0 +1,176 @@
+.page-download{
+	width: 100%;
+	margin: 65px auto 0;
+	background-color: #fff;
+	.line-left,.line-right{
+		display:none;
+	}
+	.app-download-resource{
+		background:url(../images/app-bg.jpg) center top no-repeat;
+		background-size: 100% 100%;
+		.download-resoure-container{
+			height: 513px;
+			width: 1170px;
+			overflow: hidden;
+			margin: auto;
+			position: relative;
+			.phone-img{
+  				background: url('../images/app-phone.png') no-repeat;
+  				width: 100%;
+  				height: 456px;
+  				float: left;
+  				margin-top: 60px;
+  				margin-left: 50px;
+  			}
+	  		.download-address{
+	  			position: absolute;
+	  			right: 120px;
+	  			width: 478px;
+	  			top: 108px;
+	  			margin-left: 200px;
+	  			.logo{
+		  			background: url(../images/app-download-logo.png) no-repeat;
+		  			background-size: 100% 100%;
+		  			width: 360px;
+		  			height: 112px;
+		  			margin: 0 auto;
+	  			}
+	  			.address-wrapper{
+	  				width: 100%;
+	  				background: rgba(45,60,89,.3);
+	  				margin-top: 44px;
+	  				height: 188px;
+	  				overflow: hidden;
+	  				.ios-android{
+	  					float: left;
+	  					width: 300px;
+		  				.phone{
+		  					width: 260px;
+			  				height: 60px;
+			  				border-radius: 5px;
+			  				cursor: pointer;
+			  				display: block;
+			  				span{
+			  					display: inline-block;
+			  					&.phone-logo{
+									vertical-align: top;
+								    margin-top: 5px;
+								    margin-left: 20px;
+								    width: 41px;
+								    height: 49px;
+			  					}
+			  					&.text{
+			  						padding-left: 15px;
+								    color: #fff;
+								    text-align: center;
+								    line-height: 60px;
+								    font-size: 24px;
+			  					}
+			  				}
+		  				}
+		  				.download-ios{
+			  				margin: 22px 0 20px 20px;
+			  				background-color: #FFCD26;
+			  				&:hover{
+								box-shadow: 0px 2px 8px #FFCD26;
+			  				};
+		  					.ios-logo{
+		  						background: url(../images/ios-logo.png) no-repeat;
+		  					}
+			  				
+			  			}
+			  			.download-android{
+			  				margin: 26px 0 0 20px;
+			  				background: #4A90E2;
+			  				&:hover{
+								box-shadow: 0px 2px 8px #4274AE;
+			  				};
+		  					.android-logo{
+			  					background: url('../images/android-logo.png') no-repeat;
+		  					}
+			  			}
+		  			}
+		  			.qr-img{
+		  				float: left;
+		  				.img{
+							width: 130px;
+							height: 130px;
+							display: block;
+							margin: 20px 20px 0;
+							background: url(../images/app-qr-img.png) no-repeat;
+							background-size: 100%;
+		  				}
+		  				.qr-text{
+	  					    font-size: 16px;
+						    margin: 7px 0 0 13px;
+						    color: #fff;
+						    display: inline-block;
+		  				}
+		  			}
+	  			}
+	  		}
+		}
+		.phone-down-btn{
+			display: none;
+		}
+	}
+	.app-download-introduce{
+		.download-introduce-container{
+			width: 1170px;
+			height: 460px;
+			margin: auto;
+			ul{
+				list-style: none;
+				overflow: hidden;
+				padding: 0;
+				margin: 0;
+				li{
+					float: left;
+					width: 230px;
+					margin:0 16px;
+					span{
+						display: block;
+						&.intro-icon{
+							width: 100px;
+							height: 100px;
+							margin: 60px auto;
+							img{
+								width: 100%;
+							}
+						}
+						&.introduce-content{
+							margin-top: 20px;
+							font-size: 13px;
+							line-height: 20px;
+							color: #989898;
+						}
+						&.media-icon{
+							background: url(../images/media-icon.png) no-repeat;
+							background-size: 100% 100%;
+						}
+						&.class-icon{
+							background: url(../images/class-icon.png) no-repeat;
+							background-size: 100% 100%;
+						}
+						&.ask-icon{
+							background: url(../images/ask-icon.png) no-repeat;
+							background-size: 100% 100%;
+						}
+						&.service-icon{
+							background: url(../images/service-icon.png) no-repeat;
+							background-size: 100%;
+							background-position-y:30px;
+						}
+						&.introduce-title{
+							text-align: center;
+							color: #484D67;
+							font-size: 16px;
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}

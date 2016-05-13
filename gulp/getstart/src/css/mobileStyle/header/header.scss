@@ -1,0 +1,113 @@
+body{
+	background: #F2F2F2;
+	padding: 0;
+	margin: 0;
+	.wrapper{
+		overflow: hidden;
+	}
+	.side{
+		display: none;
+	};
+	.login-container{
+		display: none;
+	}
+	header{
+		overflow: hidden;
+		width: 100%;
+		position: relative;
+		z-index: 999;
+		height: 0.88rem;
+		background: #3a3a3a;
+		top: 0;
+		left: 0;
+		box-sizing:content-box;
+		.contain{
+			height: 100%;
+			margin: 0 auto;
+			position: relative;
+			.logo{
+				margin-top: 0.09rem;
+				float: left;
+				position: relative;
+				background: url('../images/logo.png') no-repeat;
+				background-size: 100%;
+				a{
+					width: 1rem;
+					height: 0.34rem;
+					text-decoration: none;
+					cursor: pointer;
+					display: block;
+				}
+			}
+			nav{
+				float: left;
+				margin-left: 0;
+				position: absolute;
+				height: .38rem;
+				top: .5rem;
+				width: 100%;
+				background: #fff;
+				ul{
+					overflow: hidden;
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					li{
+						float: left;
+						margin: 0 0.2rem;
+						/*width: 25%;*/
+						text-align: center;
+						
+						display: block;
+						height: .36rem;
+						line-height: .36rem;
+						font-weight: normal;
+						font-size: .13rem;
+						text-decoration: none;
+						a{
+							text-decoration: none;
+							color:#565656;
+						}
+						&.focus{
+							color: #00CAA9;
+							border-bottom: .02rem solid #00CAA9;
+						}
+						&.app{
+							display: none;
+						}
+						&.about{
+							display: inline-block;
+						}
+					}
+				}
+			}
+			.mobileApp{
+				width: 0.8rem;
+				height: 0.3rem;
+				border: 0.01rem solid #fff;
+				float: right;
+				font-size: 0.12rem;
+				margin-right: 0.2rem;
+				text-align: center;
+				line-height: 0.3rem;
+				margin-top: 0.1rem;
+				display: block;
+				a{
+					color: #fff;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 280px) {html{font-size:74.6px;}}
+@media screen and (min-width: 320px) {html{font-size:85.33px;}}
+@media screen and (min-width: 360px) {html{font-size:96px;}}
+@media screen and (min-width: 375px) {html{font-size:100px;}}
+@media screen and (min-width: 414px) {html{font-size:110.4px;}}
+@media screen and (min-width: 440px) {html{font-size:117.33px;}}
+@media screen and (min-width: 480px) {html{font-size:128px;}}
+@media screen and (min-width: 520px) {html{font-size:138.66px;}}
+@media screen and (min-width: 540px) {html{font-size:144px;}}
+@media screen and (min-width: 600px) {html{font-size:160px;}}
+@media screen and (min-width: 768px) {html{font-size:208.4px;}}
