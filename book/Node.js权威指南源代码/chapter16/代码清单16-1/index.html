@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Socket.IO聊天室</title>
+<style>
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14pt;
+    color: #006bb5;
+    background-color: #f0f0f0;	
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #f0f0f0;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 18px 0px;
+}    
+div[id^=divContainer]{
+    border: 0px; 
+    margin:10px 0px 10px 0px;
+    padding: 3px;
+    background-color: #f0f0f0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+div#divLeft{
+    width:85%; 
+    background-color: #f0f0f0;  
+    float:left;
+}
+div#divRight{
+    width:15%; 
+    background-color:white;  
+    float:right;
+    font-weight:bold;
+    font-size:12px;
+}
+div#divchat{
+    border: 0px; 
+    margin:10px 0px 10px 0px;
+    padding: 3px;
+    background-color: #f0f0f0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    position:relative; 
+    height:300px; 
+    overflow:auto;
+    font-size: 12px;
+}
+table#tbDlg {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    background-color: #f0f0f0;
+}
+tr#trDlg，td#tdDlg {
+    background-color: #f0f0f0;
+    font-size: 10px;
+}
+textarea {
+    font-family: inherit;
+    font-size: 10pt;
+    border: 1px solid #444;
+    background-color: white;
+    width:100%;
+}
+input[type="button"] {
+    font-family: inherit;
+    border: 1px solid #808080;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 1px;
+    color: white;
+    background-color: #81a0b5;
+    width: 100px;
+}
+input[type="button"]:hover {
+    margin: 1px;
+    background-color: #006bb5;
+}
+input[type="button"]:active {
+    margin: 1px;
+    font-weight: bold;
+    background-color: #006bb5;
+}
+input[type="button"]:focus {
+    margin: 0px;
+    font-weight: bold;
+    background-color: #006bb5;
+}
+</style>
+
+<script src="/socket.io/socket.io.js"></script> 
+<script> 
+var userName,socket,tbxUsername,tbxMsg,divChat;
+function window_onload(){
+    divChat=document.getElementById('divchat');
+    tbxUsername=document.getElementById('tbxUsername');
+    tbxMsg=document.getElementById('tbxMsg');
+    tbxUsername.focus();
+    tbxUsername.select();
+}
+function AddMsg(msg){
+    divChat.innerHTML+=msg + '<br>';
+    if( divChat.scrollHeight > divChat.clientHeight ) 
+        divChat.scrollTop = divChat.scrollHeight - divChat.clientHeight;
+}
+function btnLogin_onclick(){
+    if(tbxUsername.value.trim()=='')
+    {
+        alert('请输入用户名');
+        return;
+    }
+    userName=tbxUsername.value.trim();
+    socket=io.connect(); 
+    socket.on('connect', function () {
+        AddMsg("与聊天服务器的连接已建立。");
+        socket.on('login',function(name) {
+            AddMsg('欢迎用户'+name+'进入聊天室。');
+        });
+        socket.on('sendClients',function(names) {
+            var divRight=document.getElementById("divRight");
+            var str="";
+            names.forEach(function(name){
+                str+=name+"<br/>"
+            });
+            divRight.innerHTML="用户列表<br/>";
+            divRight.innerHTML+=str;
+        });
+        socket.on('chat',function(data) {
+            AddMsg(data.user+'说:'+data.msg);
+        });
+        socket.on('disconnect',function() {
+            AddMsg('与聊天服务器的连接已断开。');
+            document.getElementById("btnSend").disabled=true;
+            document.getElementById("btnLogout").disabled=true;
+            document.getElementById("btnLogin").disabled="";
+            var divRight=document.getElementById("divRight");
+            divRight.innerHTML="用户列表"; 
+        });
+        socket.on('logout',function(name) {
+            AddMsg('用户'+name+'已退出聊天室。');
+        });
+        socket.on('duplicate',function() {
+            alert('该用户名已被使用。');
+            document.getElementById("btnSend").disabled=true;
+            document.getElementById("btnLogout").disabled=true;
+            document.getElementById("btnLogin").disabled="";
+        });
+    });
+    socket.on('error',function(err) {
+        AddMsg('与聊天服务器之间的连接发生错误。');
+        socket.disconnect();
+        socket.removeAllListeners('connect');
+        io.sockets = {};
+    });   
+    socket.emit('login',userName);
+    document.getElementById("btnSend").disabled='';
+    document.getElementById("btnLogout").disabled='';
+    document.getElementById("btnLogin").disabled=true;
+}
+function btnSend_onclick()
+{
+    var msg = tbxMsg.value;
+    if(msg.length > 0) 
+    {
+        socket.emit('chat',{user:userName,msg:msg});
+        tbxMsg.value='';
+    }    
+}
+function btnLogout_onclick()
+{
+    socket.emit('logout',userName);
+    socket.disconnect();
+    socket.removeAllListeners('connect');
+    io.sockets = {};
+    AddMsg("用户"+userName+"退出聊天室: "); 
+    var divRight=document.getElementById("divRight");
+    divRight.innerHTML="用户列表"; 
+    document.getElementById("btnSend").disabled="disabled";
+    document.getElementById("btnLogout").disabled="disabled";
+    document.getElementById("btnLogin").disabled=""; 
+}
+function window_onunload()
+{
+    socket.emit('logout',userName);
+    socket.disconnect();
+}
+</script> 
+</head>
+<body  onload="window_onload()" onunload="window_onunload();">
+<h1>Socket.IO聊天室</h1>
+<div id="divContainer1">
+    <table id="tbDlg" border="0" cellpadding="3" cellspacing="0" width="100%">
+        <tr id="trDlg">
+	    <td id="tdDlg" width="5">
+	        用户名：&nbsp;
+		<input id="tbxUsername" type="text" value="游客" size="20">
+		<input id="btnLogin" type="button" value="登录"
+		onclick="btnLogin_onclick();">
+		<input id="btnLogout" type="button" value="退出" disabled
+		onclick="btnLogout_onclick();">
+	    </td>
+        </tr>
+    </table>
+</div>
+<div id="divLeft">
+    <div id="divchat"></div>
+    <div id="divContainer3">
+        <table id="tbDlg" border="0" cellpadding="3" cellspacing="0" 
+        width="100%">
+            <tr id="trDlg">
+                <td valign="top" id="tdDlg" nowrap>对话</td>
+                <td valign="top" id="tdDlg">
+                    <textarea id="tbxMsg" cols="255" rows="5" 
+                    style="width:100%"></textarea>
+                </td>
+                <td valign="top" id="tdDlg">
+                    <input id="btnSend" type="button" value="发送" disabled
+                    onclick="btnSend_onclick();" >
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="divRight">
+    用户列表：
+</div>
+</body>
+</html>

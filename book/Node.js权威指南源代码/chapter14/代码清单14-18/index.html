@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>	
+<head>		
+<meta charset="utf-8"/>
+<title>向服务器端上传文件</title>
+<script>
+function uploadFile() {
+    var formData = new FormData();
+    var files=document.getElementById("file").files;
+    var file=files[0];
+    formData.append('myfile', file);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','index.html', true);
+    xhr.onload = function(e) {         
+        if (this.status == 200) {
+            document.getElementById("result").innerHTML=this.response;
+        }
+    };
+    xhr.send(formData);  
+}
+</script> 
+</head>	
+<body>  
+<h1>使用bodyParser中间件上传文件</h1>     
+<form id="form1" enctype="multipart/form-data">      
+请选择文件<input type="file" id="file" name="file"><br/>
+<input type="button" value="上传文件" onclick="uploadFile();" >     
+</form>     
+<output id="result" ></output>
+</body>
+</html>
+
+

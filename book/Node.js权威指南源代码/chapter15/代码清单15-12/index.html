@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script> 
+<script> 
+var chat = io.connect('http://localhost/chat'),
+news = io.connect('http://localhost/news');
+chat.on('connect', function () {
+    chat.send('你好。');
+    chat.on('message',function(msg){
+        console.log('从chat命名空间接收到消息:',msg);
+    });
+}); 
+news.on('connect', function () {
+    news.emit('send message','hello.');
+    news.on('send message',function(data){
+        console.log('从news命名空间接收到send message事件，数据为:',data);
+    });
+}); 
+</script> 
+</head>
+<body>
+</body>
+</html>

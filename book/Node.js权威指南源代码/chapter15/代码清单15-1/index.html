@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script> 
+<script> 
+var socket = io.connect();
+socket.on('message', function(data){console.log(data);socket.send('消息已接收到。');}) 
+socket.on('disconnect', function() {console.log('服务器端断开连接。');});
+</script> 
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿!!! 5
+html
+    head
+        style.
+            body{
+                background-color:pink;
+            }
+        script.
+            function submitData() {
+                var obj={firstname:document.getElementById("txtFirstName").value,username:document.getElementById("txtUserName").value};
+                var xhr = new XMLHttpRequest();
+                xhr.open('post','/',true);
+                xhr.onload = function(e) {
+                    if (this.status == 200) {
+                        document.getElementById("result").innerHTML=this.response;
+                    }
+                };
+                xhr.send(JSON.stringify(obj));
+            }
+    body
+        form(id="form1")
+            姓:
+            input(type="text" id="txtFirstName" name="firstname" value="陆")
+            br
+            名:
+            input(type="text" id="txtUserName" name="username" value="凌牛")
+            br
+            input(type="button" value="提交" onclick="submitData();")
+        output(id="result")       

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>	
+<head>		
+<meta charset="utf-8"/>
+<title>提交cookie</title>
+<script type="text/javascript">
+function cookieTest(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('post','index.html',true);
+    document.cookie="firstname=陆";
+    document.cookie="username=凌牛";
+    xhr.onload = function(e) {
+        if (this.status == 200) {
+            document.getElementById("result").innerHTML=this.response;
+        }
+    };
+    xhr.send();    
+}
+</script>  
+</head>	
+<body> 
+<form id="form1" method="post" action="index.html">      
+    <input type="button" value="提交cookie" onclick="cookieTest();" >     
+</form>     
+<output id="result" ></output>
+</body>
+</html>
+

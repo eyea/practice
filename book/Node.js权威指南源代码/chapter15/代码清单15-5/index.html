@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script> 
+<script> 
+var socket = io.connect();
+socket.on('setName', function(name,fn) {
+    console.log(name);
+    fn('李四','王五');
+});
+</script> 
+</head>
+<body>
+</body>
+</html>
