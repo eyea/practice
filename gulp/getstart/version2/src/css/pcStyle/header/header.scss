@@ -1,0 +1,184 @@
+body{
+	background: #F2F2F2;
+	padding: 0;
+	font-family: "lantinghei SC","Microsoft YaHei","\5B8B\4F53","Arial","sans-serif";
+	margin: 0;
+	.wrapper{
+		min-height:900px;
+	}
+	header{
+		/*overflow: hidden;*/
+		width: 100%;
+		position: fixed;
+		z-index: 9999;
+		height: 65px;
+		background: #3a3a3a;
+		top: 0;
+		left: 0;
+		box-sizing:content-box;
+		.contain{
+			max-width: 1170px;
+			height: 65px;
+			margin: 0 auto;
+			.logo{
+				margin-top: 10px;
+				float: left;
+				position: relative;
+				background: url('D:/projects/practice/gulp/getstart/version2/src/images/logo.png') no-repeat;
+				a{
+					width: 144px;
+					height: 48px;
+					text-decoration: none;
+					cursor: pointer;
+					display: block;
+				}
+			}
+			nav{
+				float: left;
+				margin-left: 120px;
+				position: relative;
+				ul{
+					overflow: hidden;
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					li{
+						float: left;
+						margin-right: 42px;
+						color:#fff;
+						height: 60px;
+						line-height: 68px;
+						font-weight: normal;
+						font-size: 16px;
+						text-decoration: none;
+						font-weight: lighter;
+						cursor: pointer;
+						a{
+							text-decoration: none;
+							color: #fff;
+						}
+						&.about{
+							display: none;
+						}
+						&.appDownload{
+							display: inline-block;
+						}
+						&:hover,&:active{
+							color:#00CAA9;
+						}
+						&.focus{
+							color: #00CAA9;
+							border-bottom: 5px solid #00CAA9;
+						}
+					}
+				}
+			}
+			.mobileApp{
+				display: none;
+			}
+			.login-container{
+				float: right;
+				line-height: 65px;
+				margin-right: 20px;
+				position: relative;
+				.icon{
+					width: 14px;
+					height: 14px;
+					background: #00caa9;
+					border-radius: 7px;
+					display: inline-block;
+					position: relative;
+					top: 20px;
+					left: -10px;
+					&:after{
+						content: '';
+						display: inline-block;
+						width: 22px;
+						height: 8px;
+						background: #00caa9;
+						position: relative;
+						left: -4px;
+						top: -13px;
+						border-top-left-radius: 4px;
+					    border-top-right-radius: 3px;
+					    border-bottom-left-radius: 6px;
+					    border-bottom-right-radius: 6px;
+					};
+				}
+				a{
+					text-decoration: none;
+					color: #00CAA9;
+				}
+				b{
+					color: #00CAA9;
+					font-weight: normal;
+				}
+				.logout{
+					display: none;
+					position: absolute;
+					left: -30px;
+					top: 65px;
+					box-shadow: 0px 3px 4px #ccc;
+					background: #fff;
+					width: 140px;
+					border-radius: 5px;
+					height: 110px;
+					i{
+						border: solid transparent;
+						border-width: 10px;
+						border-bottom-color: #fff;
+						display: block;
+						width: 0;
+						height: 0;
+						margin-top: -20px;
+						margin-left: 60px;
+					}
+					a{
+						height: 54px;
+						line-height: 54px;
+						display: block;
+						text-align: center;
+						color: #6d85ac;
+						&:hover{
+							color: #00CAA9;
+						};
+					}
+					b{
+						width: 120px;
+						margin: 0 auto;
+						display: block;
+						background: #e1e1e1;
+						height: 1px;
+					}
+				}
+				.login-success-wrapper{
+					cursor: pointer;
+					overflow: hidden;
+					.photo{
+					    width: 40px;
+					    height: 40px;
+					    margin-top: 12px;
+					    float: left;
+					    border-radius: 20px;
+					    img{
+					    	width: 100%;
+					    	height: 100%;
+					    	border-radius: 20px;
+					    	border: none;
+					    	display: block;
+					    }
+					}
+					.name{
+						float: left;
+						color: #fff;
+						font-size: 16px;
+						margin-left: 10px;
+						&:hover{
+							color:#00caa9;
+						};
+					}
+				}
+			}
+		}
+	}
+}

@@ -20,22 +20,48 @@
     <link rel="stylesheet" type="text/css" href="./build/css/index.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo"></div>
-        <nav class="nav">
-            <ul>
-                <li><a href="">新闻</a></li>
-                <li><a href="">课堂</a></li>
-                <li><a href="">服务</a></li>
-                <li><a href="">APP</a></li>
-                <li><a href="">关于我们</a></li>
-            </ul>
-        </nav>
-        <div class="login">
-            <i class="icon"></i>
-            <a href="">登陆</a>
-            <b>/</b>
-            <a href="">注册</a>
+    <header class="header">
+        <div class="contain">
+            <div class="logo">
+                <a class="backHome" href="/"></a>
+            </div>
+            <div class="mobileApp">
+                <a href="">下载APP</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="news focus" data-id="news">
+                        <a href="">新闻</a>
+                    </li>
+                    <li class="activity" data-id="activity">
+                        <a href="">课堂</a>
+                    </li>
+                    <li class="fa" data-id="fa">
+                        <a href="">投融资服务</a>
+                    </li>
+                    <li class="app" data-id="app">
+                        <a href="">APP</a>
+                    </li>
+                    <li class="about" data-id="about">
+                        <a href="">关于我们</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="login-container">
+                <div class="logout" id="logout">
+                    <i class="triangle"></i>
+                    <a href="javascript:void(0)" id="reset-pwd-btn">修改密码</a>
+                    <b>/</b>
+                    <a href="javascript:void(0)" id="logout-btn">退出登录</a>
+                </div>
+                <input type="hidden" name="csrfmiddlewaretoken" value="CRcRyyplZlEWsxtb9RtChaj6iUWGKcTA">
+                <div class="login-false-wrapper">
+                    <i class="icon"></i>
+                    <a href="javascript:void(0)" id="login-btn">登录</a>
+                    <b>/</b>
+                    <a href="javascript:void(0)" id="regist-btn">注册</a>
+                </div>
+            </div>
         </div>
     </header>
 
