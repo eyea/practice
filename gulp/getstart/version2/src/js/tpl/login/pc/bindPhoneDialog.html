@@ -1,0 +1,33 @@
+<div class="bind-phone-dialog dialog">
+	<div class="bind-phone-close close"></div>
+	<div class="dialog-title-bg">
+		<span>绑定手机号</span>
+	</div>
+	<div class="is-bind-check fill-card">
+		<div class="bind-phone-input">
+			<input type="tel" pattern="^\d{11}$" class="bind-phone-num input long-input"  placeholder="仅支持中国大陆手机号" maxlength="11" autocomplete="off">
+			<i class="phone-status-icon"></i>
+		</div>
+		<div class="bind-verify">
+			<input type="tel" pattern="^\d{4}$" class="bind-fill-verify input short-input"  placeholder="验证码" maxlength="4" validate="^\d{4}$" autocomplete="off">
+			<input type="button" class="bind-send-verify input-button short-button" value="发送验证码">
+		</div>
+		<div class="tips-container">
+			<div class="tips bind-phone-tips"></div>
+		</div>
+		<div class="bind-btn-submit submit">下一步</div>
+	</div>
+	<div class="bind-tips-card fill-card">
+		<div class="photo">
+			<img src="http://www.xfz.cn/static/build/images/topic_photo.png">
+		</div>
+		<div class="bind-tips">
+			<div class="phone-tips"><span class="phone"></span><span>已注册小饭桌</span></div>
+			<div class="bind-tips">是否绑定该手机号</div>
+		</div>
+		<div class="next-bind">
+			<div class="bind-cancel-submit submit">取消</div>
+			<div class="continue-bind-submit submit">继续绑定</div>
+		</div>
+	</div>
+</div>

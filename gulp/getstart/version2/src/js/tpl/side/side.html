@@ -1,0 +1,49 @@
+<div class="side-activities">
+<div class="new-activity">最新活动</div>
+    <div class="activities-img">
+        <a href="/event/<%=sideData[0].uid%>.html" target="_blank">
+            <img src="<%=sideData[0].photo%>">
+        </a>
+        <div class="title-tips"><%=sideData[0].small_title%></div>
+    </div>
+    <ul>
+        <%for(var j=1,sideLen=5;j<sideLen;j++){%>
+            <li>
+                <%if(sideData[j].begin_time == "1") {%>
+                    <a href="/event/<%=sideData[j].uid%>.html" target="_blank">
+                        <%if(j == 0) {%>
+                            <span class="status active-new"></span>
+                            <span class="active-title big-title"><%=sideData[j].small_title%></span>
+                        <%}else{%>
+                            <span class="status active-start">报名中</span>
+                            <span class="active-title"><%=sideData[j].small_title%></span>
+                        <%}%>
+                    </a>
+                <%}else if(sideData[j].begin_time == "0") {%>
+                    <a href="/event/<%=sideData[j].uid%>.html" target="_blank">
+                        <span class="status active-end">已结束</span>
+                        <span class="active-title"><%=sideData[j].small_title%></span>
+                    </a>
+                <%}%>
+            </li>
+        <%}%>
+    </ul>
+    <div class="more-active">
+        <a href="/events">更多活动</a>
+    </div>
+</div>
+<div class="side-video">
+    <a target="_blank"></a>
+</div>
+<div class="side-download">
+    <div class="side-download-address">
+        <div class="title">关注小饭桌</div>
+        <div class="zhihu item"><a href="http://zhuanlan.zhihu.com/xiaofanzhuo" target="_blank">小饭桌创业课堂</a></div>
+        <div class="weibo item"><a href="http://weibo.com/u/5108257900" target="_blank">小饭桌创业课堂</a></div>
+        <div class="toutiao item"><a href="http://toutiao.com/m3193898201/" target="_blank">小饭桌</a></div>
+    </div>
+    <div class="side-qr">
+        <span class="side-qr-img"></span>
+        <span class="side-qr-title">扫码关注小饭桌<br>微信公众平台：xfz008</span>
+    </div>
+</div>

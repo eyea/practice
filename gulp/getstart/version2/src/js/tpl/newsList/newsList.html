@@ -1,0 +1,24 @@
+<ul>
+    <%for(var i=0,len=list.length;i<len;i++) {%>
+        <li>
+            <a class="news-container" href="/post/<%=list[i].uid%>.html" target="_blank">
+            	<div class="news-img">
+                    <img src="<%=list[i].photo%>-website.news.list">
+            	</div>
+                <div class="news-content">
+                    <div class="news-title"><%=list[i].title%></div>
+                    <div class="news-detail"><%=list[i].intro%></div>
+                    <div class="news-other">
+                        <span class="news-author">
+                        	<%if(list[i].author.photo && list[i].author.photo != ""){%>
+                           		<img src="<%=list[i].author.photo%>-member.photo" class="news-author-photo">
+                            <%}%>
+                            <i class="news-author-name"><%=list[i].author.name%></i>
+                        </span>
+                        <span class="news-time"><%=list[i].time%></span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    <%}%>
+</ul>

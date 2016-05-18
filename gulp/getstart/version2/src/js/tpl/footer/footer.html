@@ -1,0 +1,7 @@
+<%if(partnerData.length > 0){%>
+	<%for(var k=0,partnerlen=partnerData.length;k<partnerlen;k++) {%>
+		<li data-uid="<%=partnerData[k].uid%>">
+			<a href="<%=partnerData[k].link%>" target="_blank"><img src="<%=partnerData[k].photo%>" alt="<%=partnerData[k].name%>"></a>
+		</li>
+	<%}%>
+<%}%>

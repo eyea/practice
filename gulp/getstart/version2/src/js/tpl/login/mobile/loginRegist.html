@@ -1,0 +1,35 @@
+<div class="mobile-dialog login-regist">
+    <div class="login-close close"></div>
+    <div class="tab">
+        <div class="login-btn btn active">登录</div>
+        <div class="regist-btn btn">注册</div>
+    </div>
+    <div class="login-card card" data-show="true">
+        <div class="logo"></div>
+        <div class="tips-container">
+            <div class="tips"></div>
+        </div>
+        <div class="login-phone-input">
+            <input type="tel" pattern="^d{11}$" class="login-phone input long-input" placeholder="仅支持中国大陆手机号" maxlength="11">
+            <i class="phone-status-icon"></i>
+        </div>
+        <input type="password" class="password input long-input" placeholder="密码" autocomplete="off" minlength="6" maxlength="20">
+        <div class="foget-pwd">忘记密码</div>
+        <div class="login-submit">登录</div>
+    </div>
+    <div class="regist-card card" data-show="false">
+        <div class="logo"></div>
+        <div class="tips-container">
+            <div class="tips"></div>
+        </div>
+        <div class="regist-phone-input">
+            <input type="tel" pattern="^d{11}$" class="regist-phone input long-input" placeholder="仅支持中国大陆手机号" maxlength="11">
+            <i class="phone-status-icon"></i>
+        </div>
+        <div class="verify">
+            <input type="tel" pattern="^d{4}$" class="verify-code input short-input" placeholder="验证码" maxlength="4" validate="^d{4}$">
+            <div class="send-verify-code input-button short-button btn-disable" send="false">发送验证码</div>
+        </div>
+        <div class="regist-next submit" id="regist-next">下一步</div>
+   </div>
+</div>
