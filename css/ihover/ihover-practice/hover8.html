@@ -23,7 +23,6 @@
 		.wrapper3:hover .detail{
 			opacity: .8;
 			background-color: #eee;	
-			z-index: 3;	
 			-webkit-transform: scale(0.5) translateX(0%);
 			-moz-transform: scale(0.5) translateX(0%);
 			-ms-transform: scale(0.5) translateX(0%);
@@ -36,6 +35,13 @@
 		    -ms-transform: scale(0.5) translateX(0);
 		    -o-transform: scale(0.5) translateX(0);
 		    transform: scale(0.5) translateX(0);			
+		}
+		.wrapper3:hover .bot-detail{
+			-webkit-transform:translateX(0);
+			-moz-transform:translateX(0);
+			-ms-transform:translateX(0);
+			-o-transform:translateX(0);
+			transform:translateX(0);
 		}
 		.wrapper3 a{
 			display: block;
@@ -59,8 +65,7 @@
 			-moz-transform: scale(1);
 			-ms-transform: scale(1);
 			-o-transform: scale(1);
-			transform: scale(1);			
-			z-index: 2;
+			transform: scale(1);	
 		}
 		#img1{
 			display: block;
@@ -70,7 +75,6 @@
 			position: absolute;
 			top: 10px;
 			left: 10px;
-			z-index: 2;
 		}
 		#img1,.spinner{
 			-webkit-transition:all .5s ease-in-out;
@@ -80,8 +84,8 @@
 		.detail{
 			position: absolute;
 			border-radius: 50%;
-			top: 20px;
-			left: 20px;
+			top: 10px;
+			left: 10px;
 			opacity: 0;
 			text-align: center;
 			-webkit-transition:all .5s ease-in-out;
@@ -99,21 +103,28 @@
 			text-align: center;
 			margin:100px auto 0;
 		}
-		.top-img{
-
-		}
 		.bot-detail{
-			
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			-webkit-transition:all 0.5s ease-in-out;
+			-moz-transition:all 0.5s ease-in-out;
+			transition:all 0.5s ease-in-out;
+			-webkit-transform: translateX(100%);
+		    -moz-transform: translateX(100%);
+		    -ms-transform: translateX(100%);
+		    -o-transform: translateX(100%);
+		    transform: translateX(100%);
 		}
 	</style>
 </head>
 <body>
 	<div class="wrapper3 main">
 		<a href="">
-			<div class="top-img">
+			<div class="top-img main">
 				<img class="spinner main" id="img1" src="./3.jpg" alt="">
 			</div>
-			<div class="bot-detail">
+			<div class="bot-detail main">
 				<div class="detail main">
 					<h1>title</h1>
 					<p>brief</p>
