@@ -40,8 +40,9 @@ gulp.task('styles',function() {
 			   .pipe(rename({ suffix: '.min' }))
 			   .pipe(minifycss())
 			   .pipe(gulp.dest(path.build + '/css'))
-			   .pipe(rev.manifest())
-			   .pipe(gulp.dest(path.build+'/css/ver'));
+			   // 下面是加版本号的
+			   // .pipe(rev.manifest())
+			   // .pipe(gulp.dest(path.build+'/css/ver'));
 });
 
 // 操作js

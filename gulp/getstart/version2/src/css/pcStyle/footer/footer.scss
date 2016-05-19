@@ -1,0 +1,109 @@
+.footer{	
+	width: 100%;
+	min-width: 980px;
+	overflow: hidden;
+	background: #555e68;
+	.section{
+		height: 240px;
+		width: 1170px;
+		margin: auto;
+		section{
+			float: left;
+			&.partner-section{
+				padding-top: 20px;
+				width: 60%;
+				ul{
+					list-style: none;
+					padding: 0;
+					margin: 0;
+					li{
+						/*width: auto;*/
+						height: 30px;
+						float: left;
+						margin: 20px;
+						img{
+							/*width: 100%;*/
+							height: 100%;
+						}
+					}
+				}
+				h3{
+					color: #fff;
+					font-size: 18px;
+					font-weight: normal;
+					margin: 0;
+					padding: 0;
+				}
+			}
+			&.link-section{
+				width: 40%;
+				padding-top: 20px;
+				.foot-logo{
+					width: 165px;
+					height: 50px;
+					background: url(../images/foot-logo.png) no-repeat;
+					background-size: 100% 100%;
+				}
+				.links{
+					padding-top: 30px;
+					padding-bottom: 10px;
+					font-size: 13px;
+					color: #c9c9c9;
+					a{
+						text-decoration: none;
+						color: #c9c9c9;
+					}
+				}
+				.cooperate,.kfmail,.kfTel,.address,.attention{
+					font-size: 13px;
+					color: #C9C9C9;
+					padding: 4px 0;
+					a{
+						color: #c9c9c9;
+						text-decoration: none;
+					}
+				}
+				.attention{
+					line-height: 24px;
+					.wx{
+						background: url(../images/wx-icon.png) no-repeat;
+						padding-left: 34px;
+						height: 24px;
+						display: inline-block;
+					}
+					.showWx,.showXl{
+						color: #fff;
+						cursor: pointer;
+					}
+					.wxQr{
+						background: url(../images/wxQr.jpg) no-repeat;
+						width: 200px;
+						height: 200px;
+						position: fixed;
+						bottom: 130px;
+						background-size: 100% 100%;
+						display: none;
+					}
+					.xl{
+						background: url(../images/xl-icon.png) no-repeat;
+						padding-left: 34px;
+						height: 24px;
+						margin-left: 20px;
+						display: inline-block;
+					}
+				}
+			}
+		}
+		
+	}
+	.bottom{
+		height: 68px;
+		background: #383E44;
+		p{
+			height: 68px;
+			line-height: 68px;
+			text-align: center;
+			color: #C9C9C9;
+		}
+	}
+}
