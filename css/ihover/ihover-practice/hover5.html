@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hover5</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.wrapper3{
+			margin: 100px auto;
+			position: relative;
+			-webkit-transition:all .3s ease-in-out;
+			transition:all .3s ease-in-out;
+		}
+		.wrapper3:hover .spinner{
+			-webkit-transform:rotate(180deg);
+			-moz-transform:rotate(180deg);
+			-ms-transform:rotate(180deg);
+			transform:rotate(180deg);
+		}
+		.wrapper3:hover .detail{
+			opacity: 1;
+			background-color: #eee;	
+		    -webkit-transform: scale(1) translateX(0);
+		    -moz-transform: scale(1) translateX(0);
+		    -ms-transform: scale(1) translateX(0);
+		    -o-transform: scale(1) translateX(0);
+		    transform: scale(1) translateX(0);			
+		}
+		.wrapper3:hover #img1,.wrapper3:hover .spinner{
+		    -webkit-transform: scale(0) translateX(-100%);
+		    -moz-transform: scale(0) translateX(-100%);
+		    -ms-transform: scale(0) translateX(-100%);
+		    -o-transform: scale(0) translateX(-100%);
+		    transform: scale(0) translateX(-100%);			
+		}
+		.wrapper3 a{
+			display: block;
+			text-decoration: none;
+		}
+		.main{
+			width: 300px;
+			height: 300px;
+		}
+		.spinner{
+			border-radius: 50%;
+			width: 320px;
+			height: 320px;
+			border: 10px solid #6cf;
+			border-top-color:green;
+			border-left-color:green;
+			-webkit-transition:all .3s ease-in-out;
+			transition:all .3s ease-in-out;
+			z-index: 2;
+		}
+		#img1{
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 2;
+		}
+		#img1,.spinner{
+			-webkit-transition:all .5s ease-in-out;
+			-moz-transition:all .5s ease-in-out;
+			transition:all .5s ease-in-out;	
+		    -webkit-transform: scale(1) translateX(0);
+		    -moz-transform: scale(1) translateX(0);
+		    -ms-transform: scale(1) translateX(0);
+		    -o-transform: scale(1) translateX(0);
+		    transform: scale(1) translateX(0);
+		}
+		.detail{
+			position: absolute;
+			border-radius: 50%;
+			top: 10px;
+			left: 10px;
+			opacity: 0;
+			text-align: center;
+			-webkit-transition:all .5s ease-in-out;
+			-moz-transition:all .5s ease-in-out;
+			transition:all .5s ease-in-out;	
+		    -webkit-transform: scale(1) translateX(100%);
+		    -moz-transform: scale(1) translateX(100%);
+		    -ms-transform: scale(1) translateX(100%);
+		    -o-transform: scale(1) translateX(100%);
+		    transform: scale(1) translateX(100%);		
+		}
+		h1{
+			border-bottom: 2px dotted black;
+			width: 150px;
+			text-align: center;
+			margin:100px auto 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper3 main">
+		<a href="">
+			<img class="spinner main" id="img1" src="./3.jpg" alt="">
+			<div class="detail main">
+				<h1>title</h1>
+				<p>brief</p>
+			</div>
+		</a>
+	</div>
+</body>
+</html>

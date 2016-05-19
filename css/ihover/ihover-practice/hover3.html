@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hover3</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.wrapper2{
+			margin: 100px auto;
+			position: relative;
+			-webkit-transition:all .2s ease-in-out;
+			transition:all .2s ease-in-out;
+		}
+		.wrapper2:hover .spinner{
+			-webkit-transform:rotate(180deg);
+			-moz-transform:rotate(180deg);
+			-ms-transform:rotate(180deg);
+			transform:rotate(180deg);
+		}
+		.wrapper2:hover .detail{
+			opacity: .8;
+			background-color: #eee;
+		    -webkit-transform: translateY(0);
+		    -moz-transform: translateY(0);
+		    -ms-transform: translateY(0);
+		    -o-transform: translateY(0);
+		    transform: translateY(0);			
+		}
+		.wrapper2 a{
+			display: block;
+			text-decoration: none;
+		}
+		.main{
+			width: 300px;
+			height: 300px;
+		}
+		.spinner{
+			border-radius: 50%;
+			width: 300px;
+			height: 300px;
+			border: 10px solid #6cf;
+			border-top-color:green;
+			border-left-color:green;
+			-webkit-transition:all .6s ease-in-out;
+			transition:all .6s ease-in-out;
+		}
+		#img1{
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+		.detail{
+			position: absolute;
+			border-radius: 50%;
+			top: 10px;
+			left: 10px;
+			opacity: 0;
+			text-align: center;
+			-webkit-transition:all .5s ease-in-out;
+			-moz-transition:all .5s ease-in-out;
+			transition:all .5s ease-in-out;			
+		}
+		.detail{
+		    -webkit-transform: translateY(100%);
+		    -moz-transform: translateY(100%);
+		    -ms-transform: translateY(100%);
+		    -o-transform: translateY(100%);
+		    transform: translateY(100%);			
+		}
+		h1{
+			border-bottom: 2px dotted black;
+			width: 150px;
+			text-align: center;
+			margin:100px auto 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper2 main">
+		<a href="">
+			<div class="spinner main"></div>
+			<img id="img1" src="./3.jpg" alt="">
+			<div class="detail main">
+				<h1>title</h1>
+				<p>brief</p>
+			</div>
+		</a>
+	</div>
+</body>
+</html>
