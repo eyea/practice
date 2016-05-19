@@ -14,11 +14,11 @@
 		}
 		.wrapper3:hover .bot-detail{
 			opacity: 1;
-			-webkit-transform: scale(1) translateX(0%);
-			-moz-transform: scale(1) translateX(0%);
-			-ms-transform: scale(1) translateX(0%);
-			-o-transform: scale(1) translateX(0%);
-			transform: scale(1) translateX(0%);
+			-webkit-transform: scale(0.5) translateX(0%);
+			-moz-transform: scale(0.5) translateX(0%);
+			-ms-transform: scale(0.5) translateX(0%);
+			-o-transform: scale(0.5) translateX(0%);
+			transform: scale(0.5) translateX(0%);
 		}
 		.wrapper3:hover .detail{
 			opacity: 1;
@@ -29,32 +29,24 @@
 			-o-transform: scale1) translateX(0%);
 			transform: scale(1) translateX(0%);
 		}
-		.wrapper3:hover #img1,.wrapper3:hover .spinner{
-		    -webkit-transform: scale(0.5) translateX(-100%) rotate(-180deg);
-		    -moz-transform: scale(0.5) translateX(0);
-		    -ms-transform: scale(0.5) translateX(0);
-		    -o-transform: scale(0.5) translateX(0);
-		    transform: scale(0.5) translateX(0);			
+		.wrapper3:hover #img1{
+		    -webkit-transform: scale(0) translateX(0);
+		    -moz-transform: scale(0) translateX(0);
+		    -ms-transform: scale(0) translateX(0);
+		    -o-transform: scale(0) translateX(0);
+		    transform: scale(0) translateX(0);			
 		}
 		.wrapper3:hover .top-img{
 			pointer-events: none;
-			-webkit-transform: scale(0.5);
-			-moz-transform: scale(0.5);
-			-ms-transform: scale(0.5);
-			-o-transform: scale(0.5);
-			transform: scale(0.5);
+			-webkit-transform: scale(0) translateX(-100%);
+			-moz-transform: scale(0) translateX(-100%);
+			-ms-transform: scale(0) translateX(-100%);
+			-o-transform: scale(0) translateX(-100%);
+			transform: scale(0) translateX(-100%);
 		}
 		.wrapper3:hover .top-img img{
 			opacity: 0;
 			pointer-events: none;
-		}
-		}
-		.wrapper3:hover .bot-detail .detail{
-			  -webkit-transform: scale(1);
-			  -moz-transform: scale(1);
-			  -ms-transform: scale(1);
-			  -o-transform: scale(1);
-			  transform: scale(1);			
 		}
 		.wrapper3 a{
 			display: block;
@@ -65,30 +57,16 @@
 			height: 300px;
 		}
 		.top-img{
-		  -webkit-transform: scale(1);
-		  -moz-transform: scale(1);
-		  -ms-transform: scale(1);
-		  -o-transform: scale(1);
-		  transform: scale(1);
+		  -webkit-transform: scale(1) translateX(0);
+		  -moz-transform: scale(1) translateX(0);
+		  -ms-transform: scale(1) translateX(0);
+		  -o-transform: scale(1) translateX(0);
+		  transform: scale(1) translateX(0);
 		  -webkit-transition: all 0.3s ease-in-out;
 		  -moz-transition: all 0.3s ease-in-out;
 		  transition: all 0.3s ease-in-out;			
 		}
-		.spinner{
-			border-radius: 50%;
-			width: 320px;
-			height: 320px;
-			border: 10px solid #6cf;
-			border-top-color:green;
-			border-left-color:green;
-			-webkit-transition:all .3s ease-in-out;
-			transition:all .3s ease-in-out;
-
-			-webkit-transform: scale(1);
-			-moz-transform: scale(1);
-			-ms-transform: scale(1);
-			-o-transform: scale(1);
-			transform: scale(1);	
+		.spinner{	
 		}
 		#img1{
 			display: block;
@@ -99,20 +77,22 @@
 			top: 10px;
 			left: 10px;
 			opacity: 1;
+			border-radius: 50%;
+			width: 320px;
+			height: 320px;
+			border: 10px solid #6cf;
+			border-top-color:green;
+			border-left-color:green;
+
+			-webkit-transform: scale(1) translateX(0);
+			-moz-transform: scale(1) translateX(0);
+			-ms-transform: scale(1) translateX(0);
+			-o-transform: scale(1) translateX(0);
+			transform: scale(1) translateX(0);
+
 			-webkit-transition: all 0.3s ease-in-out 0.3s;
 			-moz-transition: all 0.3s ease-in-out 0.3s;
-			transition: all 0.3s ease-in-out 0.3s;
-
-			-webkit-transform: translateX(0);
-			-moz-transform: translateX(0);
-			-ms-transform: translateX(0);
-			-o-transform: translateX(0);
-			transform: translateX(0);			
-		}
-		#img1,.spinner{
-			-webkit-transition:all .3s ease-in-out;
-			-moz-transition:all .3s ease-in-out;
-			transition:all .3s ease-in-out;	
+			transition: all 0.3s ease-in-out 0.3s;		
 		}
 		.bot-detail{
 			position: absolute;
@@ -138,11 +118,11 @@
 			text-align: center;
 
 			pointer-events: none;
-			-webkit-transform: scale(0.5);
-			-moz-transform: scale(0.5);
-			-ms-transform: scale(0.5);
-			-o-transform: scale(0.5);
-			transform: scale(0.5);
+			-webkit-transform: scale(0.5) translateX(100%);
+			-moz-transform: scale(0.5) translateX(100%);
+			-ms-transform: scale(0.5) translateX(100%);
+			-o-transform: scale(0.5) translateX(100%);
+			transform: scale(0.5) translateX(100%);
 			-webkit-transition: all 0.35s ease-in-out 0.6s;
 			-moz-transition: all 0.35s ease-in-out 0.6s;
 			transition: all 0.35s ease-in-out 0.6s;
