@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-sizing</title>
+	<style>
+		div{
+			border-radius: 50%;
+			margin: 20px;
+			text-align: center;
+		}
+		.test1{
+			width: 200px;
+			height: 200px;
+			box-sizing: content-box;
+			padding: 10px;
+			border: 10px solid #eee;
+			background: green;
+			float: left;
+		}
+		.test2{
+			width: 200px;
+			height: 200px;
+			box-sizing: border-box;
+			padding: 10px;
+			border: 10px solid #eee;
+			background: yellow;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="test1"></div>
+	<div class="test2"></div>
+</body>
+</html>
