@@ -18,62 +18,83 @@
 			width: 1000px;
 			height: 500px;
 		}
-
-		.first{
+		.first,.second{
 			height: 25px;
 			width: 25px;
+			position: relative;			
+		}
+		.first{
 			background: red;
 			position: relative;
 			top: 0;
 			left: 0;
-			animation: first 2s;
-			-moz-animation:first 2s; /* Firefox */
-			-webkit-animation:first 2s; /* Safari and Chrome */
-			-o-animation:first 2s; /* Opera */		
+			animation: first 2s linear 1s infinite alternate;
+			-moz-animation:first 2s linear 1s infinite alternate; /* Firefox */
+			-webkit-animation:first 2s linear 1s infinite alternate; /* Safari and Chrome */
+			-o-animation:first 2s linear 1s infinite alternate; /* Opera */		
 		}
-		
+		/*
+			infinite 是播放次数无限次 也可以写成数值
+			ease是默认速度 低速开始然后快 然后结束前慢
+			ease-in是低速开始 
+			linear是从头到尾速度相同；
+			animation-timing-function: cubic-bezier(0,0,1,1);}函数定义速度曲线
+		*/
+		.second{
+			background: green;
+			top: -25px;
+			left: 55px;
+			animation: second 2s ease-in-out 1s infinite alternate;
+			-webkit-animation: second 2s ease-in-out 1s infinite alternate;
+			-moz-animation: second 2s ease-in-out 1s infinite alternate;
+			-o-animation: second 2s ease-in-out 1s infinite alternate;
+		}
 		/*动画定义 start*/
 		@keyframes first{
 			0% {background: red;left: 0;top: 0;}
-			25% {background: yellow;left: 20px;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;border-radius: 50%;}
 			50% {background: blue;left: 20px;top: 20px;}
 			75% {background: green;left: 0px;top: 20px;}
-			100% {background: red;left: 0px;top: 0px;}
+			100% {background: red;left: 0px;top: 0px;border-radius: 4px;}
 		}
 		@-webkit-keyframes first{
 			0% {background: red;left: 0;top: 0;}
-			25% {background: yellow;left: 20px;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;border-radius: 50%;}
 			50% {background: blue;left: 20px;top: 20px;}
 			75% {background: green;left: 0px;top: 20px;}
-			100% {background: red;left: 0px;top: 0px;			
+			100% {background: red;left: 0px;top: 0px;border-radius: 4px;}			
 		}
 		@-moz-keyframes first{
 			0% {background: red;left: 0;top: 0;}
-			25% {background: yellow;left: 20px;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;border-radius: 50%;}
 			50% {background: blue;left: 20px;top: 20px;}
 			75% {background: green;left: 0px;top: 20px;}
-			100% {background: red;left: 0px;top: 0px;			
+			100% {background: red;left: 0px;top: 0px;border-radius: 4px;}			
 		}
 		@-o-keyframes first{
 			0% {background: red;left: 0;top: 0;}
-			25% {background: yellow;left: 20px;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;border-radius: 50%;}
 			50% {background: blue;left: 20px;top: 20px;}
 			75% {background: green;left: 0px;top: 20px;}
-			100% {background: red;left: 0px;top: 0px;			
+			100% {background: red;left: 0px;top: 0px;border-radius: 4px;}			
 		}
 		/*动画定义 end*/
-
-
-
-
-
-
-
-
-
-
-
-
+		@keyframes second{
+			from{left: 55px}
+			to{left: 100px;}
+		}
+		@-webkit-keyframes second{
+			from{left: 55px}
+			to{left: 100px;}
+		}
+		@-moz-keyframes second{
+			from{left: 55px}
+			to{left: 100px;}			
+		}
+		@-o-keyframes second{
+			from{left: 55px}
+			to{left: 100px;}			
+		}
 
 
 	</style>
@@ -81,6 +102,7 @@
 <body>
 	<div class="wrapper">
 		<div class="first"></div>
+		<div class="second"></div>
 	</div>
 </body>
 </html>
