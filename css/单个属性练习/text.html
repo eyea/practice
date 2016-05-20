@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>text相关属性</title>
+</head>
+<body>
+	<ul>
+		<li>
+			text-indent  内联对象要使用该属性必须先使该对象表现为块级或内联块级。
+		</li>
+		<li>
+			text-overflow  <br>
+clip：
+当对象内文本溢出时不显示省略标记（...），而是将溢出的部分裁切掉。
+ellipsis：
+当对象内文本溢出时显示省略标记（...）。
+		</li>
+		<li>
+			text-align:<br>
+			left：
+内容左对齐。
+center：
+内容居中对齐。
+right：
+内容右对齐。
+justify：
+内容两端对齐。写本文档时仅Firefox能看到正确效果
+start：
+内容对齐开始边界。（CSS3）
+		</li>
+		<li>
+			text-transform:none;uppercase;lowercase;capitalize;
+		</li>
+		<li>
+			text-decoration:underline;overline;line-through;blink
+		</li>
+		<li>
+			text-stroke：[ text-stroke-width ] || [ text-stroke-color ]
+			[ text-stroke-width ]：
+			设置或检索对象中的文字的描边厚度
+			[ text-stroke-color ]：
+			设置或检索对象中的文字的描边颜色			
+		</li>
+		<li>
+			letter-spacing:normal;
+			word-spacing:normal;
+		</li>
+		<li>
+			vertical-align:
+			
+		</li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<p style="margin-top:30px;width:200px;height:20px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+		当对象内文本溢出时不显示省略标记（...），而是将溢出的部分裁切掉
+	</p>
+	<p style="text-align:end;">
+		而是将溢出的部分裁切掉而是将溢出的部分裁切掉
+	</p>
+	<p style="text-decoration:line-through;font-size:30px;">
+		blinkblinkblinkblinkblinkblink
+	</p>
+	<p style="-webkit-text-stroke:1px #f00;font-size:30px;letter-spacing:10px;">
+		[ text-stroke-width ]：
+		设置或检索对象中的文字的描边厚度
+		[ text-stroke-color ]：
+		设置或检索对象中的文字的描边颜色		
+	</p>
+</body>
+</html>
