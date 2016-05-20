@@ -18,6 +18,10 @@
 		}
 		.separate{
 			border-collapse:separate;
+			border-spacing:10px 20px;
+			/*border-spacing:只针对separate有效collapse无效*/
+			/*表格无内容时候显示或者隐藏边框 hide&&show*/
+			empty-cells: hide;
 		}
 		.collapse{
 			border-collapse: collapse;
@@ -62,11 +66,13 @@
 				<td>表格固定算法布局</td>
 				<td>表格固定算法</td>
 				<td>表格固定算法</td>
+				<td>表格固定算法</td>
 			</tr>
 			<tr>
 				<td>表格固定算法</td>
 				<td>表格固定算法</td>
 				<td>表格固定算法</td>
+				<td></td>
 			</tr>
 		</tbody>
 	</table><br>
@@ -76,6 +82,7 @@
 				<td>表格固定算法布局</td>
 				<td>表格固定算法</td>
 				<td>表格固定算法</td>
+
 			</tr>
 			<tr>
 				<td>表格固定算法</td>
