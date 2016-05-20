@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>content-内容</title>
+	<style>
+		li{
+			margin: 20px;
+		}
+		li li:before{
+			color: #f00;
+			font-family: serif,sans-serif;
+			font-size: 20px;
+		}
+		ol{
+			list-style: none;
+		}
+		.counter1 li{
+			counter-increment: name;
+		}
+		.counter1 li:before{
+			content: counter(name) ".";
+		}
+		.counter2 li{
+			counter-increment: name2 2;
+		}
+		.counter2 li:before{
+			content: counter(name2) ".";
+		}
+		.counter3 li{
+			counter-increment: name3 -1;
+		}
+		.counter3 li:before{
+			content: counter(name3) "__";
+		}
+	</style>
+</head>
+<body>
+	<h1>counter-increment 计算器增加值的改变egs</h1>
+
+	<ul>
+		<li class="counter1">
+			<strong>默认时候的计数器：</strong>
+			<ol>
+				<li>列表项</li>
+				<li>列表项</li>
+				<li>列表项</li>
+			</ol>
+		</li>
+		<li class="counter2">
+			<strong>修改计数器每次增加的值为2：</strong>
+			<ol>
+				<li>列表项</li>
+				<li>列表项</li>
+				<li>列表项</li>
+			</ol>
+		</li>
+		<li class="counter3">
+			<strong>修改计数器每次增加的值为-1：</strong>
+			<ol>
+				<li>列表项</li>
+				<li>列表项</li>
+				<li>列表项</li>
+			</ol>
+		</li>
+	</ul>
+</body>
+</html>
