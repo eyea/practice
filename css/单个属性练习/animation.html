@@ -8,6 +8,9 @@
 			padding: 0;
 			margin: 0;
 		}
+		div{
+			border-radius: 4px;
+		}
 		.wrapper{
 			position: relative;
 			margin: 100px auto 0;
@@ -15,7 +18,50 @@
 			width: 1000px;
 			height: 500px;
 		}
+
+		.first{
+			height: 25px;
+			width: 25px;
+			background: red;
+			position: relative;
+			top: 0;
+			left: 0;
+			animation: first 2s;
+			-moz-animation:first 2s; /* Firefox */
+			-webkit-animation:first 2s; /* Safari and Chrome */
+			-o-animation:first 2s; /* Opera */		
+		}
 		
+		/*动画定义 start*/
+		@keyframes first{
+			0% {background: red;left: 0;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;}
+			50% {background: blue;left: 20px;top: 20px;}
+			75% {background: green;left: 0px;top: 20px;}
+			100% {background: red;left: 0px;top: 0px;}
+		}
+		@-webkit-keyframes first{
+			0% {background: red;left: 0;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;}
+			50% {background: blue;left: 20px;top: 20px;}
+			75% {background: green;left: 0px;top: 20px;}
+			100% {background: red;left: 0px;top: 0px;			
+		}
+		@-moz-keyframes first{
+			0% {background: red;left: 0;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;}
+			50% {background: blue;left: 20px;top: 20px;}
+			75% {background: green;left: 0px;top: 20px;}
+			100% {background: red;left: 0px;top: 0px;			
+		}
+		@-o-keyframes first{
+			0% {background: red;left: 0;top: 0;}
+			25% {background: yellow;left: 20px;top: 0;}
+			50% {background: blue;left: 20px;top: 20px;}
+			75% {background: green;left: 0px;top: 20px;}
+			100% {background: red;left: 0px;top: 0px;			
+		}
+		/*动画定义 end*/
 
 
 
@@ -34,7 +80,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		div
+		<div class="first"></div>
 	</div>
 </body>
 </html>
