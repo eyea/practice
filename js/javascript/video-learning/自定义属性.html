@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义属性</title>
+	<style>
+		input{
+			padding: 20px;
+			cursor: pointer;
+			margin-right: 50px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="0">
+	<input type="button" value="0">
+	<input type="button" value="0">
+
+
+
+	<script>
+		var oBtn = document.getElementsByTagName('input');
+		var arr = ['A','B','C','D'];
+
+		for(var i=0;i<oBtn.length;i++){
+			oBtn[i].num = 0;
+			oBtn[i].onclick = function(){
+				this.value = arr[this.num];
+				this.num++;
+
+				if(this.num === arr.length){
+					this.num=0;
+				}
+			}	
+		}
+	</script>
+</body>
+</html>
