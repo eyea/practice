@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义属性--建立匹配-对应</title>
+	<style>
+		input{
+			padding: 20px;
+			cursor: pointer;
+			margin-right: 50px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="btn1">
+	<input type="button" value="btn2">
+	<input type="button" value="btn3">
+
+
+
+	<script>
+		var oBtn = document.getElementsByTagName('input');
+		var arr = ['A','B','C','D'];
+
+		for(var i=0;i<oBtn.length;i++){
+			oBtn[i].index = i; 
+			// 这里是自定义属性
+			oBtn[i].onclick = function(){
+				alert(this.index);
+			}
+		}
+	</script>
+</body>
+</html>
