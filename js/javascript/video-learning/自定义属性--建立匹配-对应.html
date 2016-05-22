@@ -16,17 +16,24 @@
 	<input type="button" value="btn2">
 	<input type="button" value="btn3">
 
+	<p>aa</p>
+	<p>b</p>
+	<p>c</p>
+
 
 
 	<script>
 		var oBtn = document.getElementsByTagName('input');
+		var oP = document.getElementsByTagName('p');
 		var arr = ['A','B','C','D'];
 
 		for(var i=0;i<oBtn.length;i++){
 			oBtn[i].index = i; 
 			// 这里是自定义属性
 			oBtn[i].onclick = function(){
-				alert(this.index);
+				// alert(this.index);
+				this.value=arr[this.index];
+				oP[this.index].innerHTML = arr[this.index];
 			}
 		}
 	</script>
