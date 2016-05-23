@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>qq菜单实例1</title>
+	<style>
+		ul,h2{padding: 0;margin: 0;}
+		li{list-style: none;}
+		#ulList{width: 240px;border:1px solid #333;margin: 0 auto;}
+		#ulList .lis{}
+		#ulList h2{background: url(right.png) no-repeat left center #eee;height: 30px;line-height:30px;font-size: 20px; line-height: 30px;text-indent: 35px;color: black;background-size: 30px}
+		#ulList .active{background: url(left.png) no-repeat left center yellow;background-size: 30px}
+		.lis ul{display: none;}
+		.lis ul li{line-height: 24px;border-bottom: 1px solid #333;text-indent:46px; }
+	</style>
+</head>
+<body>
+<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ulList');
+		var oH2 = oUl.getElementByTagName('h2');
+		var oUl = oH2.getElementByTagName('ul');
+
+		
+	}
+</script>
+	<ul id="ulList">
+		<li class="lis">
+			<h2 class="active">我的好友</h2>
+			<ul>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+			</ul>
+		</li>
+		<li class="lis">
+			<h2>企业好友</h2>
+			<ul>
+				<li>李四</li>
+				<li>李四</li>
+				<li>李四</li>
+				<li>李四</li>
+			</ul>
+		</li>
+		<li class="lis">
+			<h2>黑名单</h2>
+			<ul>
+				<li>小黑</li>
+				<li>小黑</li>
+				<li>小黑</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
