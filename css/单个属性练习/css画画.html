@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css绘图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			width: 500px;
+			height: 500px;
+			background-color: #eee;
+			margin: 60px auto 0;
+			border-radius: 4px;
+		}
+		.wrapper div{
+			margin-right: 20px;
+			margin-bottom: 20px;
+			float: left;
+		}
+		.d1{
+			width: 0px;
+			height: 0px;
+			border-top: 40px solid rgba(0,0,0,0);
+			border-right: 40px solid rgba(0,0,0,0);
+			border-bottom: 40px solid yellow;
+			border-left: 40px solid rgba(0,0,0,0);
+
+			border-left-width: 0px;
+		}
+		.d2{
+			width: 80px;
+			height: 80px;
+			background-color: #eee;
+			border-radius: 50%;
+			border: 6px solid green;
+		}
+	</style>
+</head>
+<body id="test">
+	<div class="wrapper">
+		<div class="d1"></div>
+		<div class="d2"></div>
+
+	</div>
+</body>
+</html>
