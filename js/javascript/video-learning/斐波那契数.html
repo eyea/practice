@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斐波那契数</title>
+</head>
+<body>
+	<script>
+		function fibo(num){
+			var arr = [];
+			var fobi_fun = function(start, next, n){
+				if(n == 0){
+					return arr;
+				}else{
+					arr.push(start);
+					return fobi_fun(next, start + next, n - 1);
+				}
+			}
+
+			return fobi_fun(0, 1, num);
+		}
+
+		document.write(fibo(20));
+document.write("<br/>");
+
+		function fibo1(num) {
+			var arr1 = [],
+			    fibo1_fun = function(start,next,n){
+			    	if(n == 0){
+			    		return arr1;
+			    	}else{
+			    		arr1.push(start);
+			    		return fibo1_fun (next,start+next,n-1);
+			    	}
+			    };
+			 return fibo1_fun (0,1,num);
+		}		
+		document.write(fibo1(10));
+	</script>	
+</body>
+</html>
