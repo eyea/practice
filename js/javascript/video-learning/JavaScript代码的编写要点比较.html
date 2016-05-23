@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript代码的基本要点</title>
+</head>
+<body>
+	<script>
+// 反例
+		myname = "global"; // 全局变量
+		function func() {
+		    alert(myname); // "undefined"
+		    // var myname = "local";
+		    // alert(myname); // "local"
+		}
+		func();	
+
+		function looper() {
+			var i=0,
+				max,
+				myarray = [] ;
+			// ...
+
+			for(i=0;max=myarray.length;i<max;i++) {
+				// 使用myarray[i]做点什么
+			}
+		}	
+	</script>
+</body>
+</html>
