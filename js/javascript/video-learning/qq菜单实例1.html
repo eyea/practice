@@ -8,10 +8,11 @@
 		li{list-style: none;}
 		#ulList{width: 240px;border:1px solid #333;margin: 0 auto;}
 		#ulList .lis{}
-		#ulList h2{background: url(right.png) no-repeat left center #eee;height: 30px;line-height:30px;font-size: 20px; line-height: 30px;text-indent: 35px;color: black;background-size: 30px}
+		#ulList h2{cursor: pointer;background: url(right.png) no-repeat left center #eee;height: 30px;line-height:30px;font-size: 20px; line-height: 30px;text-indent: 35px;color: black;background-size: 30px}
 		#ulList .active{background: url(left.png) no-repeat left center yellow;background-size: 30px}
 		.lis ul{display: none;}
-		.lis ul li{line-height: 24px;border-bottom: 1px solid #333;text-indent:46px; }
+		.lis ul li{line-height: 24px;border-bottom: 1px solid #333;text-indent:46px;cursor: pointer;}
+		.hover{background-color: green}
 	</style>
 </head>
 <body>
@@ -20,6 +21,10 @@
 		var oUl = document.getElementById('ulList');
 		var aH2 = oUl.getElementsByTagName('h2');
 		var aUl = oUl.getElementsByTagName('ul');
+
+		aLi = null;
+		arrLi = []
+
 
 		for(var i=0;i<aH2.length;i++){
 			aH2[i].index = i;
@@ -32,7 +37,28 @@
 					this.className = '';
 				}
 			}
+		};
+
+// 找元素放到一个数组，方便以后的拓展
+		for(var i=0;i<aUl.length;i++){
+			aLi = aUl[i].getElementsByTagName('li');
+			for(var j=0;j<aLi.length;j++){
+					arrLi.push(aLi[j]);
+			}
+		};
+
+		for(var i=0;i<arrLi.length;i++){
+			arrLi[i].onclick = function(){
+					// 有作用域的知识点 变量i
+				for(var i=0;i<arrLi.length;i++){
+					arrLi[i].className = '';
+				}
+
+				this.className = 'hover';
+			}
 		}
+
+		
 
 	}
 </script>
