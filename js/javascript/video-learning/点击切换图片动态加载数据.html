@@ -28,11 +28,14 @@
 		var oBot = oDiv.getElementById('bot');
 		var oP = oDiv.getElementById('pp');
 		var oUL = oDiv.getElementsByTagName('ul')[0];
+		var oLi = oDiv.getElementsByTagName('li')[0];
 
 		var arrUrl = ['img/彩虹5.jpg','img/日食2.jpg','img/日食5.jpg','img/日食6.jpg'];
 		var arrText = ['图片1','222','3333','last'];
 		// 有数组的地方都会有这样的数字静静等着~~~
 		var num = 0;
+		var oldLi = null; //下面第二种方法
+
 
 		for(var i=0;i<arrText.length;i++){
 			oUL.innerHTML+='<li><li>';
@@ -42,9 +45,29 @@
 		oImg.src=arrUrl[num];
 		oNumr.innerHTML = 1+num+'/'+arrUrl.length;
 		oBot.innerHTML = arrText[num];
+		oLi[num].className = 'active';
 
+		// 点击事件
+		for(var i=0;i<oLi.length;i++){
+			oLi[i].index = i;
+			oLi[i].onclick = function(){
+				// alert(this.index);
+				oImg.src = arrUrl[this.index];
+				oBot.innerHTML = arrText[this.idex];
+				oNumr.innerHTML = 1+this.index+'/'+arrText.length;
+			}
+		}
 
+		// li元素的颜色 有两种方法，一种是全部清空，，另外一种是定点(good)--清空上一个，当前添加；
+		for(var i=0;i<oLi.length;i++){
+			oLi[i].className = '';
+			this.className = 'active';
+		}
 
+		// shangyige ??? 注意 把上一个清空时候要把当前给上一个
+		oldLi.className = '';
+		oldLi = this;
+		this.className = 'active';
 	}
 </script>
 	<div id="wrapper">
