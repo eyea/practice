@@ -1,0 +1,24 @@
+{
+  "name": "xd",
+  "description": "this is about bower --learning",
+  "main": "index",
+  "keywords": [
+    "index",
+    "xd"
+  ],
+  "authors": [
+    "xd"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4"
+  }
+}
