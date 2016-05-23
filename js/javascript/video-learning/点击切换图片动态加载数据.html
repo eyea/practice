@@ -6,41 +6,55 @@
 	<style>
 		*{padding:0;margin: 0}
 		img{width: 300px;height: 300px}
-		.wrapper{position: relative;width: 300px;height: 300px;margin: 10px auto;}
-		.numr,.bot{position: absolute;height: 30px;width: 300px;line-height: 30px;text-align: center;color: white;}
-		.bot{position: absolute;bottom: 0;height: 30px;width: 300px;line-height: 30px;}
-		.numr{top: 0px}
-		.numr{position: absolute;right: -30px;top: 0}
-		.numr li{list-style: none;width: 30px;height: 30px;background-color: #eee;text-align: center;line-height: 30px;margin-bottom: 5px} 
+		#wrapper{position: relative;width: 300px;height: 300px;margin: 20px auto;}
+		#numr,#bot{position: absolute;height: 30px;width: 300px;line-height: 30px;text-align: center;color: white;}
+		#bot{position: absolute;bottom: 0;height: 30px;width: 300px;line-height: 30px;}
+		#numr{top: 0px}
+		#pp{position: absolute;right: -30px;top: 0}
+		#pp li{list-style: none;width: 30px;height: 30px;background-color: #eee;text-align: center;line-height: 30px;margin-bottom: 5px} 
+		.top{
+			background-color: green;
+		}
+		.active{background-color: red}
 	</style>
 </head>
 <body>
 <script>
 	window.onload = function(){
 		var oDiv = document.getElementById('wrapper');
-		var oImg = oDiv.getElementByTagName('img');
+		var oImg = oDiv.getElementsByTagName('img')[0];
+		//注意图片后面的[0]
 		var oNumr = oDiv.getElementById('numr');
 		var oBot = oDiv.getElementById('bot');
 		var oP = oDiv.getElementById('pp');
+		var oUL = oDiv.getElementsByTagName('ul')[0];
 
 		var arrUrl = ['img/彩虹5.jpg','img/日食2.jpg','img/日食5.jpg','img/日食6.jpg'];
 		var arrText = ['图片1','222','3333','last'];
 		// 有数组的地方都会有这样的数字静静等着~~~
 		var num = 0;
+
+		for(var i=0;i<arrText.length;i++){
+			oUL.innerHTML+='<li><li>';
+		}
+
+		// 初始化
+		oImg.src=arrUrl[num];
+		oNumr.innerHTML = 1+num+'/'+arrUrl.length;
+		oBot.innerHTML = arrText[num];
+
+
+
 	}
 </script>
 	<div id="wrapper">
 		<div class="top">
-			<img src="img/彩虹5.jpg" alt="">
+			<img src="" alt="正在加载中...">
 		</div>
-		<div id="numr">1/4</div>
-		<div id="bot">说明</div>
+		<div id="numr">正在计算中...</div>
+		<div id="bot">正在加载中...</div>
 		<div id="pp">
 			<ul>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
 			</ul>
 		</div>
 	</div>
