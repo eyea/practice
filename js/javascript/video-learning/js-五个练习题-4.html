@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-五个练习题-4</title>
+</head>
+<body>
+	<script>
+		function b(x,y,a){
+			arguments[2] = 10;
+			// alert(a);
+			alert(arguments[2]);
+		}
+		b(1,2);
+		// b(1,2,3);
+	</script>
+
+	<p>
+		Arguments对象是活动对象的一个属性，它包括如下属性：
+
+callee — 指向当前函数的引用
+length — 真正传递的参数个数
+properties-indexes (字符串类型的整数) 属性的值就是函数的参数值(按参数列表从左到右排列)。 properties-indexes内部元素的个数等于arguments.length. properties-indexes 的值和实际传递进来的参数之间是共享的。
+这个共享其实不是真正的共享一个内存地址，而是2个不同的内存地址，使用JavaScript引擎来保证2个值是随时一样的，当然这也有一个前提，那就是这个索引值要小于你传入的参数个数，也就是说如果你只传入2个参数，而还继续使用arguments[2]赋值的话，就会不一致.
+	</p>
+</body>
+</html>
