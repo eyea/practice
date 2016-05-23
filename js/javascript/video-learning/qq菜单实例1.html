@@ -18,15 +18,27 @@
 <script>
 	window.onload = function(){
 		var oUl = document.getElementById('ulList');
-		var oH2 = oUl.getElementByTagName('h2');
-		var oUl = oH2.getElementByTagName('ul');
+		var aH2 = oUl.getElementsByTagName('h2');
+		var aUl = oUl.getElementsByTagName('ul');
 
-		
+		for(var i=0;i<aH2.length;i++){
+			aH2[i].index = i;
+			aH2[i].onclick = function(){
+				if(this.className == ''){
+					aUl[this.index].style.display = 'block';
+					this.className = 'active';
+				}else{
+					aUl[this.index].style.display = '';
+					this.className = '';
+				}
+			}
+		}
+
 	}
 </script>
 	<ul id="ulList">
 		<li class="lis">
-			<h2 class="active">我的好友</h2>
+			<h2>我的好友</h2>
 			<ul>
 				<li>张三</li>
 				<li>张三</li>
