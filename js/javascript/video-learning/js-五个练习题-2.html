@@ -6,10 +6,25 @@
 </head>
 <body>
 	<script>
-		if(!'a' in window){
-			var a = 1;
-		}
-		alert(a);
+		var a = 1,
+		    b = function a(x) {
+		        x && a(--x);
+		    };
+		alert('a='+a);
+		alert(b);
 	</script>
 </body>
+
+		<div class="kefu_tel">
+			<div class="kefu">
+				<img src="/Static/Home/images/icon/defaulthead.png" alt="人物头像">
+				：29589669
+			</div>
+			<div class="tel">
+				<div class="tel_icon"></div>
+				：18897566938
+			</div>
+			<!-- 二维码 -->
+			<div class="qr_img"></div>
+		</div>
 </html>
