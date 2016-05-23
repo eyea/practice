@@ -17,7 +17,7 @@
 		}
 		.wrapper div{
 			margin-right: 20px;
-			margin-bottom: 20px;
+			/*margin-bottom: 20px;*/
 			float: left;
 		}
 		.d1{
@@ -30,6 +30,10 @@
 
 			border-left-width: 0px;
 		}
+		.d2,.d3{
+			width: 80px;
+			height: 80px;
+		}
 		.d2{
 			width: 80px;
 			height: 80px;
@@ -37,12 +41,53 @@
 			border-radius: 50%;
 			border: 6px solid green;
 		}
+		.d3{
+			height: 10px;
+			background-color: blue;
+			border-radius: 10px;
+			margin-top: 40px;
+			-webkit-transform:rotate(-45deg);
+			transform: rotate(-45deg)
+		}
+		.home{
+			background-color: pink;
+			height: 80px;
+			width: 80px;
+		}
+		.home_top{
+			width: 0px;
+			height: 0px;
+			border-top: 1px solid rgba(0,0,0,0);
+			border-right: 1px solid rgba(0,0,0,0);
+			border-bottom: 40px solid black;
+			border-left: 1px solid rgba(0,0,0,0);
+			border-left-width:40px;
+			border-right-width: 40px;
+		}
+		.home_bot{
+			width: 40px;
+			height: 20px;
+			margin-left: 10px;
+			background-color: black;
+			border-bottom: 10px solid pink;
+			border-bottom-width: 20px;
+			border-left:9px solid black;
+			border-left-width: 10px;
+			border-right-width: 10px;
+			border-right:9px solid black;
+
+		}
 	</style>
 </head>
 <body id="test">
 	<div class="wrapper">
 		<div class="d1"></div>
 		<div class="d2"></div>
+		<div class="d3"></div>
+		<div class="home">
+			<div class="home_top"></div>
+			<div class="home_bot"></div>
+		</div>
 
 	</div>
 </body>
