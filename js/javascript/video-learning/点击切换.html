@@ -28,11 +28,13 @@
 		var arrImg = ['img/彩虹5.jpg','img/日食2.jpg','img/日食5.jpg','img/日食6.jpg'];
 		var arrText = ['图片1','222','3333','last'];
 		var num = 0;
-		var oldLi = null;
+		// var oldLi = null;
 
 		for(var i=1;i<arrImg.length+1;i++){
 			oUl.innerHTML += '<li>'+i+'</li>';
 		}
+
+		// oldLi = 
 
 		var oLi = oWrap.getElementsByTagName('li');  //这里如果[0]，下面length报错
 			// alert(oLi.length);
@@ -40,8 +42,11 @@
 
 		for(var i=0;i<oLi.length;i++){
 			// alert(1212);
-			oLi[i].index = i;
+			oLi[i].index = i;			
 			oLi[i].onclick = function(){
+		for(var i=0;i<arrImg.length;i++){
+			oLi[i].className = '';
+		}
 				oImg.src = arrImg[this.index];
 				oH2.innerHTML = 1+this.index+'/'+arrImg.length;
 				oP.innerHTML = arrText[this.index];
