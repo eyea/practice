@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js实现简单的面试题</title>
+	<style>
+		*{padding: 0;margin:0;}
+		#wrapper{width: 500px;height: 500px;margin: 60px auto;border: 1px solid gray;border-radius: 6px;padding: 10px;position: relative;overflow: hidden;}
+		
+		p,li{height: 30px;line-height: 30px;margin-bottom: 5px;padding:0 10px;}
+		ul{height: auto;overflow-y: hidden;}
+		li{list-style: none;overflow: hidden;}
+		.fl{float: left;}
+		.fr{float: right;}
+		#edit{width: 520px;height: 520px;background-color: #6cf;position: absolute;top: 0;left: 0;border-radius: 6px;display: none;padding-top: 200px;}
+		#tP{background-color: blue;color: white}
+		#bP{text-align: right;cursor: pointer;color: green;background-color: #eee;font-weight: 600;}
+		span{background-color: #eee;padding: 4px;color: blue;font-weight:400;cursor: pointer;}
+		#edit input{display: block;margin:0 auto;width: 250px;height: 30px; line-height: 30px;font-size: 16px;padding:0 10px;margin-bottom: 20px;border: 1px solid #6cf}
+		#seBtn{text-align: center;color: white;background-color: green}
+		#num{background-color: blue;color: red}
+	</style>
+</head>
+<body>
+<script>
+	window.onload = function(){
+		var oWra = document.getElementById('wrapper');
+		var oP1 = document.getElementById('tP');
+		var oNum = document.getElementById('num');
+		var oUl = document.getElementById('ul');
+		var oLi = document.getElementsByTagName('li')[0];
+		var oP2 = document.getElementById('bP');
+		var oEdit = document.getElementById('edit');
+		var oSubmit = document.getElementById('seBtn');
+		var oChange = document.getElementById('textw');
+		var oI = document.getElementsByTagName('i')[0];
+
+		var count = [];
+		var arrAdd = [];
+		var arrText = [];
+
+
+		var count_num = 0;
+		oP2.onclick = function(){
+			oUl.innerHTML += ('<li>'+'<i class="addHere">'+'新增条目'+(1+count_num)+'</i>'+'<span class="fr" '+'id=span'+ count_num +'>'+'编辑'+'</span>'+'</li>');
+			count_num ++;
+			oNum.innerHTML = count_num;			
+		}
+
+		// var oRewrite = document.getElementsByTagName('span')[0];
+
+		// var oSpan = document.getElementById('span'+'count_num');
+		
+		// alert(oSpan);
+
+		var fun = function(){
+			oP1.onclick = function(){  
+				oEdit.style.display = 'block';
+			}	
+
+			oSubmit.onclick = function(){
+				arrText.push(oChange.value);
+				alert(arrText);
+				oEdit.style.display = '';
+				oI.innerHTML = arrText;
+			}			
+		};
+		fun();
+	}
+</script>
+	<div id="wrapper">
+		<p id="tP">现在一共有<span id="num">0</span>个条目</p>
+		<ul id="ul"></ul>
+		<p id="bP">新增条目</p>
+		<div id="edit">
+			<input type="text" id="textw" value="" placeholder="编辑内容">
+			<input id="seBtn" type="buttom" value="确定">
+		</div>		
+	</div>
+</body>
+</html>
