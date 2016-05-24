@@ -32,58 +32,41 @@
 		var oP2 = document.getElementById('bP');
 		var oEdit = document.getElementById('edit');
 		var oSubmit = document.getElementById('seBtn');
+		// 下面的span 实际个数不确定该怎么写 ？？？
+		var oRewrite = document.getElementsByTagName('span');
+
 		var oChange = document.getElementById('textw');
 		var oI = document.getElementsByTagName('i')[0];
 
-		// var count = [];
 		var arrAdd = [];
 		var arrText = [];
-		
-		// var oRewrite = document.getElementsByTagName('span')[0];
 
 		var count_num = 0;
 		oP2.onclick = function(){
 			oUl.innerHTML += ('<li>'+'<i class="addHere">'+'新增条目'+(1+count_num)+'</i>'+'<span class="fr" '+'id=span'+ count_num +'>'+'编辑'+'</span>'+'</li>');
 			count_num ++;
 			oNum.innerHTML = count_num;	
-// start
-
-			// for(var i=0;i<count_num;i++){
-				
-
-				var oRewrite = document.getElementsByTagName('span');
-
-				for(var i=0;i<10;i++){
-
-					oRewrite[i].index = i;
-					oRewrite[i].onclick = function(){  
-						oEdit.style.display = 'block';
-						// alert(i);
-					}	
-
-					oSubmit.onclick = function(){
-						arrText.push(oChange.value);
-						// alert(arrText);
-						// oI.innerHTML = oChange.value;
-						oEdit.style.display = '';
-						// oI.innerHTML = arrText[0];
-						alert(oRewrite);
-						// alert(oRewrite[i]);
-					}	
-
-			}
-
-
-		
-// end					
+		}
+	
+		// var oRewrite = document.getElementsByTagName('span')[0];
+// alert(oRewrite);
+		oRewrite.onclick = function(){  
+			oEdit.style.display = 'block';
 		}
 
+		oSubmit.onclick = function(){
+			oEdit.style.display = 'none';
+			arrText.push(oChange.value);
+		} 
+
+	
 
 	}
 </script>
 	<div id="wrapper">
 		<p id="tP">现在一共有<span id="num">0</span>个条目</p>
-		<ul id="ul"></ul>
+		<ul id="ul">
+		</ul>
 		<p id="bP">新增条目</p>
 		<div id="edit">
 			<input type="text" id="textw" value="" placeholder="编辑内容">
