@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品价格计算器小demo</title>
+	<style>
+		li{list-style: none;margin-bottom: 20px;}
+	</style>
+</head>
+<body>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('list');
+			var aLi = oUl.getElementsByTagName('li');
+
+			// fn1(aLi[0]);
+			// 把第一个li用进来了
+			for(var i=0;i<aLi.length;i++){
+				fn1(aLi[i]);
+			}
+			// 这部分是函数对所有类似的结构应用 用for循环
+
+			function fn1(aLi){
+				// 通过父级寻找子元素
+				// 一个要写[0]
+				var aInp = aLi.getElementsByTagName('input');
+				var oSt = aLi.getElementsByTagName('strong')[0];
+				var oEm = aLi.getElementsByTagName('em')[0];
+				var oSpan = aLi.getElementsByTagName('span')[0];
+				var oI = aLi.getElementsByTagName('i')[0];
+
+				// innerHTML获取的是字符类型的
+				var n1 = Number(oSt.innerHTML);
+				var n2 = Number(oEm.innerHTML);
+				// alert(1);
+				aInp[1].onclick = function(){
+					n1 ++;
+					oSt.innerHTML = n1;
+					oSpan.innerHTML = n1*n2;
+				}
+				aInp[0].onclick = function(){
+					// 负值是不行的赔本
+					if(n1>0){
+						n1 --;
+						oSt.innerHTML = n1;
+						oSpan.innerHTML = n1*n2;
+					}
+				}
+			};
+
+		}
+	</script>
+	<ul id="list">
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>30</em>元
+			小计：<span>0</span>元
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>40</em>元
+			小计：<span>0</span>元
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>50</em>元
+			小计：<span>0</span>元
+		</li>
+	</ul>
+	<p>
+		总计金额：<i>0</i>元
+	</p>
+</body>
+</html>
