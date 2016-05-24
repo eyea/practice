@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击切换</title>
+	<style>
+		*{padding: 0;margin: 0;}
+		#wrapper{margin: 100px auto;width: 300px;height: 300px;position: relative;}
+		img{display: block;position: absolute;top: 0;left: 0;width: 300px;height: 300px;}
+		h2,p{position: absolute;width: 300px;height: 20px;line-height: 20px;font-size: 14px;color: red;background-color: #eee;text-align: center;}
+		h2{top: 0}
+		p{bottom: 0}
+		ul{position: absolute;right: -50px;top: 0}
+		li{list-style: none;width: 30px;height: 30px;background-color: #eee;margin-bottom: 10px;line-height:30px;text-align: center;}
+	</style>
+</head>
+<body>
+<script>
+	window.onload = function(){
+		var oWrap = document.getElementById('wrapper');
+		var oImg = oWrap.getElementsByTagName('img')[0];
+		var oH2 = oWrap.getElementsByTagName('h2')[0];
+		var oP = oWrap.getElementsByTagName('p')[0];
+		var oUl= oWrap.getElementsByTagName('ul')[0];
+		var oLi = oWrap.getElementsByTagName('li')[0];
+
+		var arrImg = ['img/彩虹5.jpg','img/日食2.jpg','img/日食5.jpg','img/日食6.jpg'];
+		var arrText = ['图片1','222','3333','last'];
+	}
+</script>
+	<div id="wrapper">
+		<img src="img/彩虹5.jpg" alt="">
+		<h2 class="title">1/4</h2>
+		<p>介绍</p>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+		</ul>
+	</div>
+</body>
+</html>
