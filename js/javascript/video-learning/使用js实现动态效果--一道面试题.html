@@ -35,7 +35,7 @@
 		var oChange = document.getElementById('textw');
 		var oI = document.getElementsByTagName('i')[0];
 
-		var count = [];
+		// var count = [];
 		var arrAdd = [];
 		var arrText = [];
 		
@@ -55,21 +55,24 @@
 
 				for(var i=0;i<10;i++){
 
-					// oRewrite[i].index = i;
+					oRewrite[i].index = i;
 					oRewrite[i].onclick = function(){  
 						oEdit.style.display = 'block';
-						alert(i);
+						// alert(i);
 					}	
 
 					oSubmit.onclick = function(){
 						arrText.push(oChange.value);
-						alert(arrText);
+						// alert(arrText);
 						// oI.innerHTML = oChange.value;
 						oEdit.style.display = '';
-						oI.innerHTML = arrText[0];
+						// oI.innerHTML = arrText[0];
+						alert(oRewrite);
+						// alert(oRewrite[i]);
 					}	
 
-			}			
+			}
+
 
 		
 // end					
