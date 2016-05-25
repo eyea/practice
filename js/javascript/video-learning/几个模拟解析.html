@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟解析练习</title>
+</head>
+<body>
+	<script>
+		var a = 1;
+		function fn1(){
+			alert(a);
+			var a =2；
+		}；
+		fn1();	// 
+		alert(a);
+	</script>
+	<script>
+		var a = 1;
+		function fn2(a){
+			alert(a);
+			var a = 2 ;
+		};
+		fn2();
+		alert(a);
+	</script>
+	<script>
+		var a = 1;
+		function fn1(){
+			alert(a);
+			a = 3;
+		};
+		fn1();
+		alert(a);
+	</script>
+	<script>
+		var a = 1;
+		function fn1(a){
+			alert(a);
+			var a = 4;
+		};
+		fn1(a);
+		alert(a);
+	</script>
+</body>
+</html>
