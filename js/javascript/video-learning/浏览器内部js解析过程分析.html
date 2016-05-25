@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js解析分析-1</title>
+</head>
+<body>
+	不只两步：但先来两步学习:
+
+作用 域
+
+	1. 声明 var function 参数
+		变量 函数 存储
+
+			变量 初始都为undefined
+			函数就是函数体
+
+	2. 逐行读取 
+	      同名的变量PK函数，函数胜
+	   = + - / * % 赋值 
+
+
+	<script>
+		// console.log(a);
+		alert(a);		// function a(){alert(a);};
+		var a = 1;		
+		alert(a);		// 1
+		function a(){alert(a);};
+		alert(a);		// 上面没有调用，不执行函数 1
+		var a = 2;
+		alert(a);		// 覆盖a=1  2
+		function a(){alert(a);};
+		alert(a);		// 2
+	</script>
+</body>
+</html>
