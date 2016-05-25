@@ -5,6 +5,20 @@
 	<title>js原理-5</title>
 </head>
 <body>
-	
+	<script>
+		function a() {
+			alert(this);
+		}
+		a.call(null);
+	</script>
+
+	<p>
+		正确答案： 全局对象（window）
+解释：
+这个问题，可能会比较困惑。因为懂call的童鞋都会觉得，call的时候把null传递为了当前的上下文了。里面的this应该是null才对啊。
+
+事实却是： 前面都没错，this会是null。但是，this中介绍过，null是没有任何意义的，因此，最终会变成全局对象。 所以，这里结果就变成了全局对象。 这里还有ECMAScript-262-3标准文档中的一句话作为证据：
+“If thisArg is null or undefined, the called function is passed the global object as the this value. Otherwise, the called function is passed ToObject(thisArg) as the this value.”
+	</p>
 </body>
 </html>
