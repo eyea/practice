@@ -8,38 +8,38 @@
 	<script>
 		var a = 1;
 		function fn1(){
-			alert(a);
-			var a =2；
-		}；
-		fn1();	// 
-		alert(a);
+			console.log(a);
+			var a = 2;
+		};
+		fn1();	// ...
+		console.log(a);  // 1
 	</script>
 	<script>
 		var a = 1;
 		function fn2(a){
-			alert(a);
+			console.log(a);
 			var a = 2 ;
 		};
-		fn2();
-		alert(a);
+		fn2();	// ...
+		console.log(a);  // 1
 	</script>
 	<script>
 		var a = 1;
 		function fn1(){
-			alert(a);
+			console.log(a);
 			a = 3;
 		};
-		fn1();
-		alert(a);
+		fn1(); // 1 
+		console.log(a); // 3
 	</script>
 	<script>
 		var a = 1;
 		function fn1(a){
-			alert(a);
+			console.log(a);
 			var a = 4;
 		};
-		fn1(a);
-		alert(a);
+		fn1(a);   // 1
+		console.log(a); // 1
 	</script>
 </body>
 </html>

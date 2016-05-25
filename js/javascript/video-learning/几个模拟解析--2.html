@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>几个模拟解析--2</title>
+</head>
+<body>
+	<script>
+		var num = 0;
+		function fn1(){
+			num ++;
+		}
+
+		function fn2(){
+			num --;
+		}
+		fn2();
+		
+		fn1();
+		alert(num); // 0
+
+	</script>
+</body>
+</html>
