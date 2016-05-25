@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js内部原理-1</title>
+</head>
+<body>
+
+ JavaScript处理上下文分为两个阶段：
+
+进入执行上下文
+执行代码
+可以理解为，第一个阶段是静态处理阶段，第二个阶段为动态处理阶段。
+
+而在静态处理阶段，就会创建 变量对象（variable object），并且将变量申明作为属性进行填充。
+到了执行阶段，才会根据执行情况，来对变量对象中属性（就是申明的变量）的值进行更新。
+=========================================
+=========================================
+针对这个问题，其实际过程如下：
+
+进入执行上下文： 创建VO，并填充变量申明 a，VO如下所示：
+
+VO(global) = {
+a: undefined
+}
+所以，这个时候，a其实已经存在了。
+
+执行代码： 进入 if语句，发现条件判断 "a" in window 为true。于是就不会进入if代码块，直接执行alert语句，因此，最终为undefined。
+
+	<script>
+		if(!('a' in window)){
+			var a = 1 ;
+		}
+		alert(a);  //undefined
+	</script>
+</body>
+</html>
