@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js内部原理-2</title>
+</head>
+<body>
+
+<p>
+这个问题，第一反应可能会是将 function a打印出来。因为明明就看到了function a了。看似，也顺其自然。
+
+但是，事实并非如此。还是和此前一个问题一样。从两个阶段来分析：
+
+进入执行上下文： 这个时候要注意了， b = function a(){}，这里的 function a并非函数申明，因为整个这个句话属于赋值语句（assignment statement），所以，这里的 function a会被看作是函数表达式。 函数表达式是不会对VO造成影响的。所以，这个时候VO中其实只有 a和x（函数形参）：
+
+VO(global) = {
+a: undefined,
+b: undefined
+}
+执行代码： 这个时候a的值修改为1：
+
+VO(global) = {
+x: undefined,
+a: 1
+}
+所以，最后alert(a)的结果是1。	
+</p>
+	<script>
+		var a = 1;
+		var b = function a(x){
+			x && a(--x);
+		};
+		alert(a);
+	</script>
+</body>
+</html>
