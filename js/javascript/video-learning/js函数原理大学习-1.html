@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js函数-1</title>
+</head>
+<body>
+	<script>
+
+/*
+	
+
+		alert(foo);	// "foo" is not defined
+
+		(function foo(){
+			alert(11);
+		});
+
+		// 后面也没用，因为它根本就不在VO中
+		// 去掉（）就可以了
+		alert(foo);	// "foo" is not defined
+
+		// 2222222222
+		var foo = function(){
+			alert('foo');
+		};
+		foo();
+
+*/
+		// 333333333
+/*
+		var foo = {};
+
+		(function initialize(){
+			var x = 10;
+
+			foo.bar = function(){
+				alert(x);
+			};
+		})();
+
+		foo.bar();   //  10
+		alert(x);   //	"x" is not defined
+*/
+/*我们看到函数“foo.bar”（通过其[[Scope]]属性）获得了对函数“initialize”内部变量“x”的访问。 而同样的“x”在外部就无法访问到。很多库都使用这种策略来创建“私有”数据以及隐藏辅助数据。通常，这样的情况下FE的名字都会省略掉：
+(function () {
+ 
+  // 初始化作用域
+ 
+})();
+*/
+	// 44444444444444
+/*
+		var foo = 3 ;
+		var bar = (foo % 2 == 0) ? function () {alert(0)} : function () {alert(1)};
+
+		bar();
+*/
+	// 55555555555
+
+	</script>
+</body>
+</html>
