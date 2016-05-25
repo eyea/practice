@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>几个模拟解析--3</title>
+</head>
+<body>
+	<script>
+	// 函数是 从里到外的 
+		/*function fn1(){
+			var a = '苹果';
+		}
+		fn1();
+		alert(a); //直接报错，不是undefined.y因为没有预解析
+*/
+		// 想要获取函数内部的值，有两个办法
+
+		// 第yi种方法  局部变量可以改变全局的
+		var str = '';
+		function fn1(){
+			var a = 'Apple';
+			str = a ;
+		}
+		fn1();
+		alert(str);
+
+		// 第二种方法  函数是全局作用域哦---传参
+
+		function fn2(){
+			var a = '99克拉钻石';
+			fn3(a);
+		};
+		function fn3(b){
+			alert(b);
+		};
+		fn2();
+
+
+	</script>
+</body>
+</html>
