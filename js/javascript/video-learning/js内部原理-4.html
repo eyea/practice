@@ -6,23 +6,15 @@
 </head>
 <body>
 	<script>
-		// function b(x,y,a){
-		// 	arguments[2] = 10;
-		// 	alert(a);
-		// }
-		// b(1,2,3);  // 10
-		// b(1,2);  //
-		// }
+		function b(x,y,a){
+			arguments[2] = 10;
+			alert(a);
+		}
 
-		window.onload = function(){
-				function check(){
-					 console.log('ddd');
-					 // return true;
-				}
-				check();
-			}
+			b(1,2,3);  // 10
+			b(1,2);  // undefined
+
 	</script>
-<input type="submit" onclick="javascript: return check()">
-点击报错 不知为什么
+
 </body>
 </html>
