@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>几个模拟解析 if语句 for循环 --4</title>
+</head>
+<body>
+FF和别的浏览器 对于if语句内的不同解析--规范代码，不要在if语句里声明函数和声明变量
+	<script>
+		alert(fn1); //undefined
+		alert(a);   //undefined
+		alert(fn2);
+
+	function fn2(){
+		alert(22222); ///22222222
+	};
+		if(true){
+			var a = 90;
+
+			function fn1(){
+				alert(999); ///dddd
+			};
+			// 在if语句里写 无非是定义全局的变量和全局函数
+			// 所以不要这样写
+		}
+	</script>
+	<h2>btn</h2>
+	<script>
+		window.onload = function (){
+			var aBtn = document.getElementsByTagName('input');
+
+			for(var i=0;i<aBtn.length;i++){
+				// alert(i); //这里i分别弹出 0 1 2 
+				aBtn[i].onclick = function(){
+					console.log(i); //undefined
+					for(var i = 0 ;i<aBtn.length;i++){
+						aBtn[i].style.backgroundColor = "red";
+					}
+				}
+			}
+		}
+	</script>
+	<input type="button" value="按钮1">
+	<input type="button" value="按钮2">
+	<input type="button" value="按钮3">
+</body>
+</html>
