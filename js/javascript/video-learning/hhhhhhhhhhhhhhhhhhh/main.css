@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+html,body,div,span,img,small,strong{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+a{color:#007bc4/*#424242*/; text-decoration:none;}
+a:hover{text-decoration:underline}
+ol,ul{list-style:none}
+body{height:100%; font:14px/18px "Microsoft Yahei", Tahoma, Helvetica, Arial, Verdana, "\5b8b\4f53", sans-serif; color:#51555C;}
+img{border:none}
+
+#main{width:980px; min-height:600px; margin:30px auto 0 auto; border:1px solid #d3d3d3; background:#fff; -moz-border-radius:5px;-khtml-border-radius: 5px;-webkit-border-radius: 5px; border-radius:5px;}
+
+
+.demo{width:760px; margin:40px auto 0 auto; min-height:150px;}
+textarea{width:100%; height:80px; border:1px solid #ddd; color:#666}
+.copy{line-height:32px}
+#msg{margin-left:10px; color:green; border:1px solid #3c3; background:url(checkmark.png) no-repeat 2px 3px; padding:3px 6px 3px 20px}
+
+/*a:hover, a.hover {color: red}*/
+/*a:active, a.active {color: yellow}*/
+

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>JSDemo index</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.zclip.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#aaa').zclip({
+        copy:function(){return $('#textId').val();}
+    });
+});
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+	<input id="textId" type="text" value="hello world"/>
+	<input type="button" id="aaa" value="Copy"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body >
+<div id="main">
+   <div class="demo" style="position:relative;" >
+   		<textarea id="mytext">请输入内容</textarea><br/>
+        <a href="#" id="copy_input" class="copy">复制内容</a>
+   </div>
+</div>
+
+
+<script type="text/javascript" src="jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="jquery.zclip.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#copy_input').zclip({	
+		path: 'ZeroClipboard.swf',
+		copy: function(){
+			return $('#mytext').val();
+		},
+		afterCopy: function(){
+			$("<span id='msg'/>").insertAfter($('#copy_input')).text('复制成功').fadeOut(2000);
+		}
+	});
+});
+</script>	
+</body>
+</html>

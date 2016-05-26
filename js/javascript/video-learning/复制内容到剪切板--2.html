@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复制内容到剪切板--2</title>
+	<style>
+		/* 选中后的文字样式 */
+		::selection {
+		    color: #fff;
+		    background-color: #1abc9c;
+		}
+		::-moz-selection {
+		    color: #fff;
+		    background-color: #1abc9c;
+		}		
+	</style>
+</head>
+<body>
+	<script>
+		window.onload = function(){
+			var oText = document.getElementById('hellow').value;
+			// alert(oText);
+			// 兼容性处理
+			function selectText (element) {
+			    var text = element,
+			        range,
+			        selection;
+
+			    if (body.createTextRange) {
+			        // IE
+			        range = body.createTextRange();
+			        range.moveToElementText(text);
+			        range.select();
+			    } else if (window.getSelection) {
+			        // Others
+			        selection = window.getSelection();
+			        range = doc.createRange();
+			        range.selectNodeContents(text);
+			        selection.removeAllRanges();
+			        selection.addRange(range);
+			    } else {
+			        return false;
+			    }
+			};
+
+		document.addEventListener('keydown', function (e) {
+		    if (e.ctrlKey && e.keyCode === 67) {
+		        // 按下 ctrl + c
+		        alert('23333')
+		        // selectText(oText);
+		    }
+		});			
+
+		}		
+	</script>
+
+	<input id="hellow" type="text" onmouseenter="selectText()" value="hellow"> 
+</body>
+</html>
