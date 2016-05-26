@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>fffffffffff</title>
+<script type="text/javascript" src="ZeroClipboard.js"></script>
+<script language="JavaScript">
+  var clip = null;  
+  function $(id) { return document.getElementById(id); }  
+  function init() {  
+  	clip = new ZeroClipboard.Client();
+  	clip.setHandCursor(true);  	
+  	clip.addEventListener('mouseOver', function (client){    
+    	clip.setText( $('fe_text').value );
+  	});
+  	clip.addEventListener('complete', function (client, text) {   
+    	alert("vvvvvvvvvvvv");
+  	});
+  	clip.glue('clip_button', 'clip_container');
+  }
+</script>
+</head>
+
+<body onLoad="init()">
+<div style="width:560px; height:auto; margin:150px auto;">vvvvvvvvvvvv<br /><br />
+  <textarea style="width: 550px; height:80px;" name=urlName id="fe_text">vvvvvvvvvvvv</textarea>
+  <br /><br />
+  <span id="clip_container">
+  <button id="clip_button" style="width:128px;height:32px;line-height:26px;font:16px arial;">aaaaaaa</button>
+  </span></div>
+</body>
+</html>
