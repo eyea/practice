@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<title>定时器--2</title>
 	<style>
-		img{border: none;width: 100px;height: 100px;display: inline-block;margin-top: 100px;cursor: pointer;position: absolute;left: 20px}
+		img{border: none;width: 100px;height: 100px;display: inline-block;margin-top: 100px;cursor: pointer;position: absolute;left: 20px;  top: 20px}
+		/*如果没有指定top 下面回调函数不会执行 ....*/
 	</style>
 </head>
 <body>
@@ -13,38 +14,46 @@
 	<script>
 		window.onload = function(){
 			var oImg = document.getElementById('img1');
-			var arrShake = [];
 
 			oImg.onclick = function(){
-				for(var i=20;i>0;i-=2){
+				// -- this	-- this	函数内函数的作用域变量问题  函数内的函数内的this指的是全局
+				var _this = this ;
+				shake(_this,'left',function(){
+					shake(_this,'top');
+				});
+			};
+
+			function shake(obj,attr,endFn){
+
+				var arrShake = [];
+				var num = 0 ;
+				var pos = parseInt(getStyle(obj,attr));  // 有隐患的这样对于多个一起运动 重复点击有bug 	muyouxiufu ...				
+				for(var i=10;i>0;i-=2){
 					arrShake.push(i,-i);
 				}
 				arrShake.push(0);
-				// alert(arrShake);
-				// doMove(oImg,arrShake3,12,180);
 
-				// var speed = parseInt(getStyle(oImg,'left')) + 10 ;  // 如果放在这里，定时器执行一次 为啥
+				clearInterval(obj.timer);
 
-				clearInterval(oImg.timer);
+				obj.timer = setInterval(function(){
+					
+					obj.style[attr] = pos + arrShake[num] + 'px' ;
+					num ++ ;
 
-				oImg.timer = setInterval(function(){
-					var speed = parseInt(getStyle(oImg,'left')) + 10 ;
-					if(speed == 300){
-						speed = 300;
+					if(num === arrShake.length){
+						clearInterval(obj.timer);
+						endFn && endFn();
+
 					}
-					oImg.style.left = speed +'px' ;
+					// 回调函数
+					// endFn && endFn();
+					// alert(1212)
 
-					if(speed == 300){
-						clearInterval(oImg.timer);
-					}
+				},50);	
 
-
-				},50);
-
-
-
-
+// 这样对于多个一起运动 重复点击有bug --修复了						
 			};
+
 		}
 	</script>
 </body>
