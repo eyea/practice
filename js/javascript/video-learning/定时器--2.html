@@ -23,37 +23,6 @@
 				});
 			};
 
-			function shake(obj,attr,endFn){
-
-				var arrShake = [];
-				var num = 0 ;
-				var pos = parseInt(getStyle(obj,attr));  // 有隐患的这样对于多个一起运动 重复点击有bug 	muyouxiufu ...				
-				for(var i=10;i>0;i-=2){
-					arrShake.push(i,-i);
-				}
-				arrShake.push(0);
-
-				clearInterval(obj.timer);
-
-				obj.timer = setInterval(function(){
-					
-					obj.style[attr] = pos + arrShake[num] + 'px' ;
-					num ++ ;
-
-					if(num === arrShake.length){
-						clearInterval(obj.timer);
-						endFn && endFn();
-
-					}
-					// 回调函数
-					// endFn && endFn();
-					// alert(1212)
-
-				},50);	
-
-// 这样对于多个一起运动 重复点击有bug --修复了						
-			};
-
 		}
 	</script>
 </body>

@@ -24,8 +24,42 @@
 };
 // 封装运动函数 end
 
+
 // 封装一个getStyle()函数 start
 ;function getStyle(obj,attr){
 	return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr] ;
 };
 // 封装一个getStyle()函数 end
+
+
+// 封装一个shake()函数 start
+function shake(obj,attr,endFn){
+
+	var arrShake = [];
+	var num = 0 ;
+	var pos = parseInt(getStyle(obj,attr));  // 有隐患的这样对于多个一起运动 重复点击有bug 	muyouxiufu ...				
+	for(var i=10;i>0;i-=2){
+		arrShake.push(i,-i);
+	}
+	arrShake.push(0);
+
+	clearInterval(obj.timer);
+
+	obj.timer = setInterval(function(){
+		
+		obj.style[attr] = pos + arrShake[num] + 'px' ;
+		num ++ ;
+
+		if(num === arrShake.length){
+			clearInterval(obj.timer);
+			endFn && endFn();
+
+		}
+		// 回调函数
+		// endFn && endFn();
+		// alert(1212)
+
+	},50);	
+			
+};
+// 封装一个shake()函数 end
