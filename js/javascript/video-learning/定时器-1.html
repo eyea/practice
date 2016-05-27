@@ -4,17 +4,24 @@
 	<meta charset="UTF-8">
 	<title>定时器--1</title>
 	<style>
-		#btn1{padding: 10px;cursor: pointer;}
+		#btn1,#btn2,#btn3,#btn4{padding: 10px;cursor: pointer;}
 		#div1{width: 60px;height: 60px;background-color: gray;border: 1px solid gray; border-radius: 50%;position: absolute;top: 60px;left: 20px}
 	</style>
 </head>
 <body>
-	<input type="button" id="btn1" value="向前->">
+	<input type="button" id="btn1" value="右边走">
+	<input type="button" id="btn2" value="左边走">	
+	<input type="button" id="btn3" value="下边走">	
+	<input type="button" id="btn4" value="上边走">	
 	<div id="div1"></div>
 
 	<script>
 		window.onload = function(){
 			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			var oBtn3 = document.getElementById('btn3');
+			var oBtn4 = document.getElementById('btn4');
+
 			var oDiv1 = document.getElementById('div1');
 			// timer = null;
 
@@ -25,8 +32,18 @@
 
 			//开始运动
 			oBtn1.onclick = function(){
-				doMove();
-			}; //不要带括号
+				doMove(oDiv1,'left',12,500);
+			}; 
+			oBtn2.onclick = function(){
+				doMove(oDiv1,'left',-12,10);
+			}; 
+			oBtn3.onclick = function(){
+				doMove(oDiv1,'top',12,500);
+			}; 
+			oBtn4.onclick = function(){
+				doMove(oDiv1,'top',-12,60);
+			}; 
+			//不要带括号
 
 			// oBtn1.onclick = function (){
 			// 	// alert( parseInt(getStyle(oDiv1,'width')) );  //换成证书
@@ -51,24 +68,26 @@
 			// };
 
 			// 封装运动函数 start
-
-			function doMove(){
+				//说明 obj是运动的对象 dir是方向 target是到达的目标距离,attr 是要改变属性
+			function doMove(obj,attr,dir,target){
 				// alert( parseInt(getStyle(oDiv1,'width')) );  //换成证书
 
-				clearInterval(oDiv1.timer);  //先reset 防止多次点击hold不住  oDiv1.timer 定义在div上的定时器更好
+				clearInterval(obj.timer);  //先reset 防止多次点击hold不住  oDiv1.timer 定义在div上的定时器更好
 				
-				oDiv1.timer = setInterval(function(){
-					var speed = parseInt(getStyle(oDiv1,'left')) + 5;
+				obj.timer = setInterval(function(){
+					var speed = parseInt(getStyle(obj,attr)) + dir;
 
-					if(speed > 500){
-						speed = 500 ;
+					if(speed > target && dir > 0 || speed < target && dir < 0){
+						speed = target ;
 					}
+					// 注意这个判断的作用~~~
 
-					oDiv1.style.left = speed +'px' ;
+					obj.style[attr] = speed +'px' ;  //这部分原来是 obj.style.left = speed +'px' ; 想想为啥
 
-					if(speed == 500){
-						clearInterval(oDiv1.timer);
+					if(speed == target){
+						clearInterval(obj.timer);
 						// alert(speed);
+						// alert("done !")
 					}
 				},50);				
 			};
