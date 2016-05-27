@@ -24,3 +24,8 @@
 };
 // 封装运动函数 end
 
+// 封装一个getStyle()函数 start
+;function getStyle(obj,attr){
+	return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr] ;
+};
+// 封装一个getStyle()函数 end

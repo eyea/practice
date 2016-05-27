@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器--2</title>
+	<style>
+		img{border: none;width: 100px;height: 100px;display: inline-block;margin-top: 100px;cursor: pointer;position: absolute;left: 20px}
+	</style>
+</head>
+<body>
+	<img id="img1" src="img/日食6.jpg" alt="">
+	<script src='dong.js'></script>
+	<script>
+		window.onload = function(){
+			var oImg = document.getElementById('img1');
+			var arrShake = [];
+
+			oImg.onclick = function(){
+				for(var i=20;i>0;i-=2){
+					arrShake.push(i,-i);
+				}
+				arrShake.push(0);
+				// alert(arrShake);
+				doMove(oImg,arrShake,12,180);
+			};
+		}
+	</script>
+</body>
+</html>
