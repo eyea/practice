@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>11111111
+<div id="div1"></div>
+<script>
+    /*
+     1.拖拽的时候，如果有文字被选中，会产生问题
+     原因：当鼠标按下的时候，如果页面中有文字被选中，那么会触发浏览器默认拖拽文字的效果
+     解决：
+     标准：阻止默认行为
+     非标准ie：全局捕获
+     */
+    var odiv = document.getElementById('div1');
+    odiv.onmousedown = function(ev){
+        var ev = ev||event;
+
+        var disX = ev.clientX - this.offsetLeft;
+        var disY = ev.clientY - this.offsetTop;
+        //解决IE
+        if ( odiv.setCapture ) {
+            odiv.setCapture();
+        }
+        document.onmousemove = function(ev){
+            var ev = ev||event;
+            odiv.style.left = ev.clientX - disX + 'px';
+            odiv.style.top = ev.clientY - disY + 'px';
+        };
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+            //释放全局捕获releaseCapture()
+            if(odiv.releaseCapture()){
+                odiv.releaseCapture()
+            }
+        };
+        return false;
+    }
+</script>
+</body>
+</html>

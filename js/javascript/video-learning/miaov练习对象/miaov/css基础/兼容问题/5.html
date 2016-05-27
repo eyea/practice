@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            margin: 100px;
+            border: 20px solid red;
+            float: left;
+            /*position: relative;*/
+        }
+        .box1{
+            width: 200px;
+            height: 100px;
+            background: blue;
+            /*float: right;*/
+            margin-left: -40px;
+            position: relative;
+            /*
+            在IE6下margin-left: -40px;超出父级的一部分不会出现
+            解决办法：
+            父级加float: left;
+            子级加position:relation
+            */
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="box1"></div>
+</div>
+</body>
+</html>

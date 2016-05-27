@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+#div1{}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	
+	//$('div').slice(0,2).data('name','hello');
+	//$('div:data(name)').css('background','red');
+	
+	//$('body').children(':focusable()').css('background','red');
+	
+	//$('body').children(':tabbable()').css('background','red');
+	
+	//$('div').disableSelection();
+	
+	/*$('input').focus(1000,function(){
+		this.style.background = 'red';
+	});*/
+	
+	//$('p').scrollParent().css('background','red');
+	
+	$(document).on('keydown',function(ev){
+		if(ev.keyCode == $.ui.keyCode.ENTER){
+			alert('回车');
+		}
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<div>div</div>
+<div>div</div>
+<div>div</div>
+<div>div</div>
+<input type="text">
+<input type="text">
+<input type="text">
+<div style="height:200px; height:200px; overflow:hidden">
+	<p>ppp</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<form>
+	<input type="range" value="2" min="1" max="10" step="2" id="text" />
+	<input type="submit" />
+</form>
+<script>
+var oText=document.getElementById("text");
+oText.value="2";
+alert(oText.value);
+oText.addEventListener("invalid",fn,false);
+function fn()
+{
+	alert(this.validity.rangeOverflow);
+	ev.preventDefault();
+}
+
+//valueMissing   当输入值为空的时候返回true
+//typeMismatch   当输入类型和要求的类型不一致的时候返回true
+//patternMismatch 当用户输入的内容和预期的正则要求不匹配 返回true
+//tooLong 当用户输入的长度 超出了maxlength的限制 返回true
+</script>
+</body>
+</html>

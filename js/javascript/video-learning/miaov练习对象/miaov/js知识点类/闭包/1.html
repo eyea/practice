@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //函数嵌套函数 内部函数可以引用外部函数的参数和变量；参数和变量不会被垃圾回收机制收回；
+    /*
+    function aaa(){
+        var b = 5;
+        function bbb(){
+            alert(a);
+            alert(b);
+        }
+    }
+    aaa();
+    */
+
+    /*
+    //js中的垃圾回收机制
+    function aaa(){
+        var a = 1;
+    }
+    aaa();
+     */
+
+    function aaa(){
+        var a = 5;
+        function bbb(){
+            alert(a);
+        }
+        return bbb;
+    }
+    var c = aaa();
+    c();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+        /*景深*/
+            -webkit-perspective:400px;
+           /*建立3D空间*/
+            -webkit-transform-style:preserve-3d;
+        }
+        img{
+            margin-left: 200px;
+            margin-top: 100px;
+            -webkit-transform:rotateY(0deg);
+            -webkit-transition:3s ease all;
+        }
+        img:hover{
+            -webkit-transform:rotateY(360deg);
+        }
+    </style>
+</head>
+<body>
+<img src="img/s_14.jpg" alt=""/>
+</body>
+</html>

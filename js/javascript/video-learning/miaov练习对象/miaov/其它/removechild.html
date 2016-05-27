@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ull">
+    <li>qqqqqqqqq<a href="">删除</a></li>
+    <li>的鬼地方<a href="">删除</a></li>
+    <li>3465444<a href="">删除</a></li>
+    <li>fdsssss<a href="">删除</a></li>
+    <li>hjgffffff<a href="">删除</a></li>
+</ul>
+<script>
+    var aa = document.getElementsByTagName("a");
+    var oul = document.getElementById("ull");
+    var i = 0;
+    for(i=0;i<aa.length;i++){
+        aa[i].onclick = function(){
+            oul.removeChild(this.parentNode);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #im{
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            width: 288px;
+        }
+    </style>
+</head>
+<body>
+<img id="im" src="img/s7.jpg" alt=""/>
+<script src="miaov.js"></script>
+<script type="text/javascript">
+        var oimg = document.getElementById('im');
+        var arr = [];
+        var timer = null;
+        var num = 0;
+        oimg.onclick = function(){
+            clearInterval(timer);
+            var pos = parseInt(getStyle(oimg,'left'));
+            for(var i = 16;i>=0;i-=2){
+                arr.push(i,-i);
+            }
+            timer = setInterval(function(){
+                oimg.style.left = pos + arr[num] + 'px';
+                num ++;
+                if(num === arr.length){
+                    clearInterval(timer);
+                }
+            },50)
+        }
+</script>
+</body>
+</html>

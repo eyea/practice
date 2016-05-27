@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="inp" type="text" value="1234"/>
+<input id="btn" type="button" value="按钮"/><br/>
+<img id="imgs" src="../img/s5.jpg" alt=""/>
+<p id="p1">sdjfkdjfkds</p>
+<script>
+    window.onload=function(){
+        var INp = document.getElementById("inp");
+        var btn = document.getElementById("btn");
+        var img = document.getElementById("imgs");
+        var op = document.getElementById("p1");
+        btn.onclick = function(){
+           // img.src = INp.value;//图片替换
+           // alert(op.innerHTML)
+            op.innerHTML = INp.value;
+            INp.value = ''
+        }
+    }
+</script>
+</body>
+</html>

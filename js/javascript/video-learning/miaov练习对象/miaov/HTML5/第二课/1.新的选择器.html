@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1" class="box" title="hello">1111</div>
+
+<div class="box">222</div>
+<script>
+//    var oDiv = document.querySelector('#div1');
+//    oDiv.style.background = 'red';
+
+
+//var oDiv = document.querySelector('.box'); //只能选择一组当中的第一个元素；
+//    oDiv.style.background = 'yellow';
+
+//var oDiv = document.querySelector('[title = hello]');
+//oDiv.style.background = 'blue';
+
+var oDiv = document.querySelectorAll('.box');
+for(var i = 0;i<oDiv.length;i++){
+    oDiv[i].style.background = 'yellow';
+}
+
+</script>
+</body>
+</html>

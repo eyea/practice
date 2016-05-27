@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<script>
+    var obtn = document.getElementsByTagName('input');
+    for(var i=0;i<obtn.length;i++){
+        obtn[i].onclick = function(){
+            alert(i);//3
+        }
+    }
+</script>
+</body>
+</html>

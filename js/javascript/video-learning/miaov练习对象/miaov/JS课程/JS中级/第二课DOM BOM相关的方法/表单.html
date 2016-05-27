@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" id="form1">
+    <input type="text" name="text1" value="内容"/>
+    <input type="radio" name="sex" value="男" checked/>男
+    <input type="radio" name="sex" value="女"/>女
+    <input type="checkbox" name="a" value="css" checked/>css
+    <input type="checkbox" name="a" value="html"/>html
+    <input type="checkbox" name="a" value="javascript"/>javascript
+    <select name="city" id="">
+        <option value="上海">上海</option>
+        <option value="成都">成都</option>
+        <option value="北京" selected>北京</option>
+    </select>
+    <input type="button" value="按钮" name="btn"/>
+</form>
+<script>
+    var oForm = document.getElementById('form1');
+    //name
+    //  alert(oForm.text1.value);
+
+    //onchange 当值发生改变的时候触发；
+    /*
+    text:当光标离开的时候如果内容有变化是就触发
+    radio/checkbox:标准下点击的时候只要值变化了那就会触发
+          非标准下焦点离开的时候如果值变了就会触发
+      */
+    oForm.text1.onchange = function(){
+       // alert(this.value);
+    };
+    oForm.sex[0].onchange = function(){
+      //  alert(1);
+        // alert(this.value)
+    };
+    oForm.a[0].onchange = function(){
+        //  alert(2);
+    };
+    oForm.city.onchange = function(){
+        // alert(this.value);
+    };
+
+
+    oForm.btn.onclick = function(){
+
+        for(var i = 0;i<oForm.sex.length;i++){
+            if(oForm.sex[i].checked){
+                alert(oForm.sex[i].value + '被选中了')
+            }else{
+                alert(oForm.sex[i].value + '没被选中')
+            }
+        }
+
+        for(var i = 0;i<oForm.a.length;i++){
+            if(oForm.a[i].checked){
+                alert(oForm.a[i].value + '被选中了')
+            }else{
+                alert(oForm.a[i].value + '没被选中')
+            }
+        }
+
+        for(var i = 0;i<oForm.city.length;i++){
+            if(oForm.city[i].selected){
+                alert(oForm.city[i].value + '被选中了')
+            }else{
+                alert(oForm.city[i].value + '没被选中')
+            }
+        }
+    };
+
+
+</script>
+</body>
+</html>

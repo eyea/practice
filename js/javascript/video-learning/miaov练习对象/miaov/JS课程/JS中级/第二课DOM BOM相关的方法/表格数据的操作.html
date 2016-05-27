@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table id="tab1" width="100%" border="1px">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script>
+    var odiv = document.getElementById('tab1');
+    var otbody = odiv.tBodies[0];
+    var data = [
+        {id:1,usename:'bob',sex:'男'},
+        {id:2,usename:'steve',sex:'男'},
+        {id:3,usename:'kevie',sex:'男'},
+        {id:4,usename:'ani',sex:'女'}
+    ];
+    for(var i = 0;i<data.length;i++){
+        var otr = document.createElement('tr');
+
+        var otd = document.createElement('td');
+        otd.innerHTML = data[i].id;
+        otr.appendChild(otd);
+
+        //隔行变色
+        if(i%2 == 0){
+            otr.style.background = 'red';
+        }else{
+            otr.style.background = 'yellow';
+        }
+
+        var otd = document.createElement('td');
+        otd.innerHTML = data[i].usename;
+        otr.appendChild(otd);
+
+        var otd = document.createElement('td');
+        otd.innerHTML = data[i].sex;
+        otr.appendChild(otd);
+
+        var otd = document.createElement('td');
+        // otd.innerHTML = '&nbsp';
+        otr.appendChild(otd);
+
+        var oA = document.createElement('a');
+        oA.innerHTML = '删除';
+        oA.href = 'javascript:;';
+        otd.appendChild(oA);
+
+        //删除一行
+        oA.onclick = function(){
+           otbody.removeChild(this.parentNode.parentNode);
+           for(var i = 0;i<otbody.rows.length;i++){
+               if(i%2 == 0){
+                   otbody.rows[i].style.background = 'red';
+               }else{
+                   otbody.rows[i].style.background = 'yellow';
+               }
+           }
+        };
+
+        otbody.appendChild(otr);
+    }
+
+
+</script>
+</body>
+</html>

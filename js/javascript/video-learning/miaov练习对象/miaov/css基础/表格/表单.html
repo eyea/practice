@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        form{
+            margin: 0;
+        }
+        input{
+            margin: 0;
+            padding: 0;
+        }
+
+        select{
+            margin: 0;
+            /*width: 200px;*/
+            /*height: 100px;*/
+            /*
+            在IE6,7下只支持宽不支持高
+            */
+        }
+        textarea{
+            margin: 0;
+            padding: 0;
+            resize:none;
+            overflow: auto;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<form action="http://www.baidu.com/" method="get" target="_blank">
+    提交按钮：<input type="submit" value="提交" name=""/><br/><br/>
+    文本框：<input type="text" name=""/><br/><br/>
+    密码：<input type="password" name=""/><br/><br/>
+    单选按钮：
+    <input type="radio" name="gender" id="a"/><label for="a">男</label>
+    <input type="radio" name="gender" id="b"/><label for="b">女</label><br/><br/>
+    复选框：
+    <input type="checkbox" name=""/>打球
+    <input type="checkbox" name="" checked/>看书
+    <!--
+    checked 默认选中
+    disabled 禁用
+    -->
+    <input type="checkbox" name=""/>看电影
+    <input type="checkbox" name=""/>听音乐
+    <input type="checkbox" name="" disabled/>睡觉
+    <hr/>
+    上传：
+    <input type="file" name=""/><br/><br/>
+    图片：
+    <input src="img/sun.jpg" type="image" name=""/>
+    <hr/>
+    下拉选框：
+    <select name="" id="">
+        <option value="">1990</option>
+        <option value="">1991</option>
+        <option value="" selected>1992</option>
+        <option value="">1993</option>
+        <option value="">1994</option>
+    </select><br/><br/>
+    <textarea name="" cols="30" rows="5"></textarea>
+</form>
+</body>
+</html>

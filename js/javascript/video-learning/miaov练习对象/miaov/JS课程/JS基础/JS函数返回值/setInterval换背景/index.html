@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="换背景"/>
+<input type="button" value="暂停"/>
+<script>
+    var abtn = document.getElementsByTagName("input");
+    var timer = null;
+    var num = 0;
+    var obody = document.body;
+    var arr = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg',
+        'images/7.jpg','images/8.jpg','images/9.jpg','images/10.jpg','images/11.jpg','images/12.jpg'
+    ,'images/13.jpg','images/14.jpg','images/15.jpg'];
+
+    abtn[0].onclick = function(){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            obody.style.background = 'url('+arr[num]+')';
+            num++;
+            num%=arr.length;
+        },2000)
+    };
+    abtn[1].onclick = function(){
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 30px;
+            height: 500px;
+            background: blue;
+            position: absolute;
+            left: 10px;
+            right: 10px;
+        }
+        #div2{
+            width: 30px;
+            height: 30px;
+            background: red;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            cursor: move;
+        }
+        #div3{
+            width: 500px;
+            height: 0px;
+            background: yellow;
+            position: absolute;
+            left: 50px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2"></div>
+</div>
+<div id="div3"></div>
+<script>
+    var odiv1 = document.getElementById('div1');
+    var odiv2 = document.getElementById('div2');
+    var odiv3 = document.getElementById('div3');
+    var iMaxTop = odiv1.offsetHeight - odiv2.offsetHeight;
+    odiv2.onmousedown = function(ev){
+        var ev = ev||event;
+        var disY = ev.clientY - this.offsetTop;
+        document.onmousemove = function(ev){
+            var ev = ev||event;
+            var T = ev.clientY - disY;
+            if(T<0){
+                T = 0
+            }else if(T>iMaxTop){
+                T = iMaxTop;
+            }
+            odiv2.style.top = T + 'px';
+            var iScale = T/iMaxTop;
+            document.title = iScale;
+            odiv3.style.height = 500 * iScale + 'px';
+        };
+        document.onmouseup = function(){
+            document.onmousemove = document.onmouseup = null;
+        };
+        return false;
+    }
+</script>
+</body>
+</html>

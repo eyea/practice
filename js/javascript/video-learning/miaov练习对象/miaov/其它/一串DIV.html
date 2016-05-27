@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    window.onload = function(){
+        var adiv = document.getElementsByTagName("div");
+        var i = 0;
+        document.onmousemove = function(ev){
+            var oevent = ev||event;
+            for(i = adiv.length-1;i>0;i--){
+                adiv[i].style.left = adiv[i-1].style.left;
+                adiv[i].style.top = adiv[i-1].style.top;
+            }
+            adiv[0].style.left = oevent.clientX+"px";
+            adiv[0].style.top = oevent.clientY+"px";
+        }
+    }
+</script>
+</body>
+</html>

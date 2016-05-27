@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 120px;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+<input id="inp1" type="text"/><br/>
+<input id="inp2" type="text"/>
+<input id="btn" type="button" value="点击"/>
+<div id="div1"></div>
+<script>
+    var inp1 = document.getElementById("inp1");
+    var inp2 = document.getElementById("inp2");
+    var btn = document.getElementById("btn");
+    var div1 = document.getElementById("div1");
+//    btn.onclick = function(){
+//        JS中允许‘.’替换成‘[]’
+//         div1.style.width = inp2.value .后面的值无法修改
+//        div1.style[inp1.value] = inp2.value; //[]里面的值可以随便写
+//    }
+
+    btn['onclick'] = function(){
+        //JS中允许‘.’替换成‘[]’
+        // div1.style.width = inp2.value .后面的值无法修改
+        div1.style[inp1.value] = inp2.value; //[]里面的值可以随便写
+    }
+</script>
+</body>
+</html>

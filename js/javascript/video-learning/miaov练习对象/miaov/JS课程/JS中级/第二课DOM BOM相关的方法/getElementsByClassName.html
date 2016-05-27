@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul1">
+    <li>111111</li>
+    <li class="box box">222222</li>
+    <li class="box box2">333333</li>
+    <li class="box box1">444444</li>
+</ul>
+<script>
+    var aLi = document.getElementsByClassName('box');
+    alert(aLi.length);
+//    function getElementsByClassName(className){
+//        var aEls = document.getElementsByTagName('*');
+//        var arr = [];
+//        for(var i = 0;i<aEls.length;i++){
+////            if(aEls[i].className == className){
+////                arr.push(aEls[i]);
+////            }
+//             var aClassName = aEls[i].className.split('');
+//            for(var j = 0;j<aClassName.length;j++){
+//                if(aClassName[j] == className){
+//                    arr.push(aEls[i]);
+//                }
+//            }
+//        }
+//        return arr;
+//    }
+</script>
+</body>
+</html>

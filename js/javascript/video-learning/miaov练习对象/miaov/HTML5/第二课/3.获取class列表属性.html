@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1" class="box1 box2 box3"></div>
+<script>
+    var oDiv = document.getElementById('div1');
+    //alert(oDiv.classList);//类似与数组的对象
+//    alert(oDiv.classList.length)  //3
+//    oDiv.classList.add('box4');
+//    oDiv.classList.remove('box2')
+    oDiv.classList.toggle('box2');//如果里面有就删除，没有的话就添加；
+    oDiv.classList.toggle('box5');
+</script>
+</body>
+</html>

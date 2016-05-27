@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+#div1{ width:100px; height:100px; background:red; display:-none; position:absolute;}
+#div1.box{ background:blue; font-size:100px;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	//$('#div1').draggable({axis : 'x',handle:'p'});
+	
+	
+	
+	$('#sortable').sortable({axis : 'y'});
+	
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="点击">
+<input type="button" value="点击2">
+
+
+<ul id="sortable">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+</ul>
+</body>
+</html>

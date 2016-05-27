@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var json = {name:'leo',age:23};
+    // alert(json.name);
+
+
+    var arrUrl = ['img/1.jpg','img/2.jpg','img/3.jpg'];
+    var arrText = ['图片1','图片2','图片3'];
+    var imgData = {
+        url:['img/1.jpg','img/2.jpg','img/3.jpg'],
+        text:['图片1','图片2','图片3']
+    };
+    // alert(imgData.url[2]);
+
+    var json = {'name':'maiov'};
+   // alert(json.name);  //miaov
+   // alert(json['name']); //miaov
+    json.name = 'bob';
+    //  alert(json.name);  //bob;
+
+
+    var json2 = {abc:'bov',xuj:'123'};
+    var json3 = [{'name':'steve','age':45},{'name':'kevic','age':89}];
+    //  alert(json3[0].name)  //steve;
+
+
+    var json4 = {'name':'kebe','age':34,'favorite':'backseball'};
+    for(var attr in json4){
+       // alert(attr); //name age favorite
+       //  alert(json4[attr]); // kebe 34 backseball;
+    }
+
+    var json5 = {
+        'url':['img/1.jpg','img/2.jpg','img/3.jpg'],
+        'text':['图片1','图片2','图片3']
+    };
+    for(var attr in json5){
+        for(var i = 0;i<json5[attr].length;i++){
+            alert(json5[attr][i]);
+        }
+    }
+</script>
+</body>
+</html>

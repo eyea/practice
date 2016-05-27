@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //constructor :  查看对象的构造函数
+function aaa(){
+
+}
+    //aaa.prototype.constructor = aaa; 每一个函数都是有的，都是自动生成的
+    aaa.prototype.constructor = Array;
+    var a = new aaa();
+   // alert(a.constructor);
+
+
+    var arr = [];
+    //alert(arr.constructor); //Array;
+
+
+    function bbb(){
+
+    }
+
+//    bbb.prototype.name = 'lihui';
+//    bbb.prototype.age = '25';
+
+    bbb.prototype = {
+        constructor:bbb,
+        name:'lihui',
+        age:'25'
+    };
+    var a1 = new bbb();
+  //  alert(a1.constructor);
+
+
+
+</script>
+</body>
+</html>

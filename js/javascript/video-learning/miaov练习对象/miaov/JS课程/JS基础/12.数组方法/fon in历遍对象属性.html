@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str = '';
+    var num = 0;
+    for(var attr in document){
+        str += num + '.' + attr + document[attr] + '<br/>';
+        num ++;
+    }
+    document.body.innerHTML = str;
+</script>
+</body>
+</html>

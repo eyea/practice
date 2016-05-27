@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var odiv = document.getElementById("div1");
+    var L = odiv.offsetLeft;
+    var T = odiv.offsetTop;
+    setInterval(function(){
+        L++;
+        T++;
+        odiv.style.left = L + 'px';
+        odiv.style.top = T + 'px';
+    },40)
+</script>
+</body>
+</html>

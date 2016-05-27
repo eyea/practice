@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*div{*/
+            /*width:150px;height:20px;border:5px solid blue*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div id="div1">123</div>
+<script>
+    var odiv = document.getElementById("div1");
+    var off = true;
+    odiv.onclick = function(){
+        if(off){
+            odiv.style.cssText = 'width:150px;height:20px;border:5px solid red';
+            off = false;
+        }else{
+            odiv.style.cssText = '';
+            off = true;
+        }
+
+    }
+</script>
+</body>
+</html>

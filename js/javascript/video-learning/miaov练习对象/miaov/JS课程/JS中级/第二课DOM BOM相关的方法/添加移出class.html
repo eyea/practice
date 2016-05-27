@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box3{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" class="box2">11</div>
+<div id="div2" class="box box3">22</div>
+<script>
+    var oDiv = document.getElementById('div1');
+    var oDiv1 = document.getElementById('div2');
+
+    //添加class
+    addClass(oDiv,'box3');
+    //移除class
+     removeClass(oDiv1,'box3');
+
+
+    function addClass(obj,className){
+        if(obj.className == ''){
+            obj.className = className;
+        }else{
+            var arrClassName = obj.className.split(' ');
+            var _index = arrIndexOf(arrClassName,className);
+            if(_index == -1){
+                obj.className +=' ' + className;
+            }
+        }
+    }
+
+    function removeClass(obj,className){
+        if(obj.className != ''){
+            var arrClassName = obj.className.split(' ');
+            var _index = arrIndexOf(arrClassName,className);
+            if(_index != -1){
+                arrClassName.splice(_index,1);
+                obj.className = arrClassName;
+            }
+        }
+    }
+
+    function arrIndexOf(arr,v){
+        for(var i = 0;i<arr.length;i++){
+            if(arr[i] == v){
+                return i;
+            }
+        }
+        return -1;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="改变" id="input1"/>
+<script>
+    var oinput = document.getElementById('input1');
+    oinput.onclick = function(){
+      window.parent.document.getElementById('div1').style.background = 'red';
+//        window.top.document.getElementById('div1').style.background = 'red';
+    }
+</script>
+</body>
+</html>

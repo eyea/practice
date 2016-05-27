@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>111111111</li>
+    <li>222222222</li>
+    <li>333333333</li>
+</ul>
+<script>
+    var ali = document.getElementsByTagName('li');
+    for(var i = 0;i<ali.length;i++){
+
+//        (function(i){
+//           ali[i].onclick = function() {
+//               alert(i);
+//           }
+//        })(i)
+//
+        ali[i].onclick = (function(i){
+            return function(){
+                alert(i)
+            }
+        })(i)
+
+    }
+</script>
+</body>
+</html>

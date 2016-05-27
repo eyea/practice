@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+  p { margin:0; }
+body { text-align:center; }
+#box { width:288px; height:180px; border:10px solid #ccc; margin:50px auto 0; position:relative; }
+a {
+    display: none;
+    width:40px; height:40px; background:#fff; filter:alpha(opacity:80); opacity:0.8;
+    position:absolute; top:68px; font-size:18px; color:#000; text-align:center; line-height:40px;
+    text-decoration:none; }
+a:hover { filter:alpha(opacity:30); opacity:0.3; }
+#prev { left:0; }
+#next { right:0; }
+#p1 {
+    display: none;
+    width:288px; height:30px; line-height:30px; text-align:center; background:#000;
+    color:#fff; font-size:14px; filter:alpha(opacity:50); opacity:0.5;
+    position:absolute; bottom:0; left:0; }
+strong {
+    display: none;
+    width:288px; height:30px; line-height:30px; text-align:center;
+    background:#000; color:#fff; font-size:14px; filter:alpha(opacity:50);
+    opacity:0.5; position:absolute; top:0; left:0; }
+#img1 { width:288px; height:180px; }
+span { position:absolute; width:288px; height:30px; line-height:30px; text-align:center;
+    top:-50px; left:0; font-family:'微软雅黑'; }
+</style>
+<script>
+window.onload = function (){
+    var odiv = document.getElementById('box');
+	var oPrev = document.getElementById('prev');
+	var oNext = document.getElementById('next');
+	var oP = document.getElementById('p1');
+	var oStrong = document.getElementById('strong1');
+	var oImg = document.getElementById('img1');
+	var aBtn = document.getElementsByTagName('input');
+	
+	var arrUrl = [ '../img/s1.jpg','../img/s2.jpg','../img/s3.jpg','../img/s4.jpg',
+        '../img/s5.jpg','../img/s6.jpg','../img/s7.jpg','../img/s8.jpg','../img/s9.jpg' ];
+	var arrText = [ '文字一','文字二','文字三','文字四','文字五','文字六','文字七','文字八'
+        ,'文字九'];
+	var num = 0;
+	var onOff = true;
+	// 初始化
+	function fnTab(){
+		oP.innerHTML = arrText[num];
+		oStrong.innerHTML = num+1 + ' / ' + arrUrl.length;
+		oImg.src = arrUrl[num];
+	}
+	fnTab();
+	
+	oPrev.onclick = function (){
+		num --;
+		if(num == -1){
+            num = arrUrl.length - 1;
+        }
+         fnTab();
+	};
+	oNext.onclick = function (){
+		num ++;
+		if( num == arrUrl.length ){
+			num = 0;
+		}
+		fnTab();
+	};
+    function blo(){
+        oPrev.style.display = "block";
+        oNext.style.display = "block";
+        oStrong.style.display = "block";
+        oP.style.display = "block";
+    }
+    odiv.onmouseover = function(){
+        blo();
+    };
+    odiv.onmouseout = function(){
+        oPrev.style.display = "none";
+        oNext.style.display = "none";
+        oStrong.style.display = "none";
+        oP.style.display = "none";
+    }
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<a id="prev" href="javascript:;"><</a>
+	<a id="next" href="javascript:;">></a>
+    <p id="p1">图片文字加载中……</p>
+    <strong id="strong1">图片数量计算中……</strong>
+	<img id="img1" />
+</div>
+
+</body>
+</html>

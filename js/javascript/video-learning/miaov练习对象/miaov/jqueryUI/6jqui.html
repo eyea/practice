@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+#div1{ width:100px; height:100px; background:red; display:-none; position:absolute;}
+#div1.box{ background:blue; font-size:100px;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	//$('#div1').draggable({axis : 'x',handle:'p'});
+	
+	$('#div1').draggable({axis : 'x',create:function(){
+		//alert(1);
+	},start:function(){
+		//alert(2);
+	}});
+	
+	$('#div1').on('dragstart',function(){
+		alert(2);
+	});
+	
+	$('input').eq(0).click(function(){
+		//$('#div1').draggable('option','axis','y');
+		//$('#div1').draggable('destroy');
+		//$('#div1').draggable('disable');
+		var obj = $('#div1').draggable('instance');
+		obj.disable();
+		//$('#div1').draggable('disable').draggable('widget').css('background','blue');
+		
+	});
+	$('input').eq(1).click(function(){
+		
+		$('#div1').draggable('enable');
+	});
+	
+	
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="点击">
+<input type="button" value="点击2">
+<div id="div1">
+a
+<p>ppppppp</p>
+</div>
+
+</body>
+</html>

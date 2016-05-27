@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            background: blue\9;
+            +background:yellow;
+            _background:green;
+            /*
+            \9给IE10之前的浏览器解析
+            +，* IE7,包括IE7之前的浏览器解析
+            _下划线 IE6，包括IE6之前的浏览器解析；
+            */
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<img src="../images/3.jpg" alt=""/>
+</body>
+</html>

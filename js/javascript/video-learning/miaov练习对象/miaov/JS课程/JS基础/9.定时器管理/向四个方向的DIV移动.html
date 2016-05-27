@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+            left: 12px;
+            top: 68px;
+        }
+        .box{
+            width: 91px;
+            height: 60px;
+            /*border: 2px solid blue;*/
+            position: relative;
+            margin: 0 auto;
+        }
+        input{
+            position: absolute;
+        }
+        input:nth-child(1){
+            right: 0;
+            top: 20px;
+        }
+        input:nth-child(2){
+            left: 0;
+            top: 20px;
+        }
+        input:nth-child(3){
+            left: 30px;
+            top: 0px;
+        }
+        input:nth-child(4){
+            bottom: 0;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input type="button" value="向前"/>
+    <input type="button" value="向后"/>
+    <input type="button" value="向上"/>
+    <input type="button" value="向下"/>
+</div>
+
+<div id="div1"></div>
+<script type="text/javascript">
+    var obtn = document.getElementsByTagName("input")[0];
+    var obtn2 = document.getElementsByTagName("input")[1];
+    var obtn3 = document.getElementsByTagName("input")[2];
+    var obtn4 = document.getElementsByTagName("input")[3];
+    var odiv = document.getElementById("div1");
+    var timer = null;
+     function doMove(obj,attr,dir,target){
+        dir = parseInt(getStyle(obj,attr))<target?dir:-dir;
+        clearInterval(timer);
+        timer = setInterval(function(){
+            var speed = parseInt(getStyle(obj,attr)) + dir;
+            if(speed>target&&dir>0||speed<target&&dir<0){
+                speed = target;
+            }
+            odiv.style[attr] = speed + 'px';
+            if(speed == target){
+                clearInterval(timer);
+            }
+        },50);
+    };
+    //向前
+    obtn.onclick = function(){
+        doMove(odiv,'left',20,1200);
+    };
+    //向后
+    obtn2.onclick = function(){
+        doMove(odiv,'left',20,12);
+    };
+    //向上
+    obtn3.onclick = function(){
+        doMove(odiv,'top',20,68);
+    };
+    //向下
+    obtn4.onclick = function(){
+        doMove(odiv,'top',20,550);
+    };
+    function getStyle(obj,attr){
+        return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+    }
+</script>
+</body>
+</html>

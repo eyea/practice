@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1 div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid yellow;
+            display: none;
+        }
+        .active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <input class="active" type="button" value="1"/>
+    <input type="button" value="2"/>
+    <input type="button" value="3"/>
+    <div style="display: block">111111</div>
+    <div>222222</div>
+    <div>333333</div>
+</div>
+<script>
+    var oParent = document.getElementById('div1');
+    var ainput = oParent.getElementsByTagName('input');
+    var adiv = oParent.getElementsByTagName('div');
+
+    init();
+    function init(){
+        for(var i = 0;i<ainput.length;i++){
+            ainput[i].index=i;
+            ainput[i].onclick = change;
+        }
+    }
+
+ function change(){
+     for(var i = 0;i<ainput.length;i++){
+         ainput[i].className = '';
+         adiv[i].style.display = 'none';
+     }
+     this.className = 'active';
+     adiv[this.index].style.display = 'block';
+ }
+</script>
+</body>
+</html>

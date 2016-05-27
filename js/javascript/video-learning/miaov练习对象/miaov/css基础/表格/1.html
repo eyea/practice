@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        th,td{
+            padding: 0;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        /*css reset*/
+        /*
+        注意：1.不要给table,th,td以外的表格标签加样式
+             2.单元格默认平分table的宽度
+             3.th里面的文字默认加粗，并且左右上下居中
+             4.table决定了整个表格的宽度
+             5.table里面的单元格宽度会被转换成百分比
+             6.表格里面每一列必须要有宽度
+             7.表格同一竖列继承最大宽度
+             8.表格同行继承最大高度
+        border-collapse 属性设置表格的边框是否被合并为一个单一的边框，
+        还是象在标准的 HTML 中那样分开显示。
+
+        colspan 属性规定单元格可横跨的列数
+        rowspan 属性规定单元格可横跨的行数
+        */
+
+        th,td{
+            border: 1px solid #000000;
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th colspan="2">周一</th>
+        <th>周二</th>
+        <th>周三</th>
+
+    </tr>
+    <tr>
+        <td></td>
+        <td rowspan="3"></td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td></td>
+
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td rowspan="2"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td colspan="2" rowspan="3"></td>
+        <!--<td></td>-->
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <!--<td></td>-->
+        <!--<td></td>-->
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <!--<td></td>-->
+        <!--<td></td>-->
+    </tr>
+</table>
+</body>
+</html>

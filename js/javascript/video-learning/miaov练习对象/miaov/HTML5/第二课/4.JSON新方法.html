@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // eval:可以解析任何字符串变成JS
+    //parse:只能解析JSON形式的字符串变成JS；（安全性要高一些）parse() : 把字符串转成json
+    //stringify() : 把json转化成字符串  会自动的把双引号加上
+
+
+
+
+    //    var str = 'function show(){alert(123)}';
+//    eval(str);
+//    show();
+
+
+//var str = '{"name":"hello"}';//字符串中的属性要严格的加上引号
+//    var json = JSON.parse(str);
+//alert(json.name)
+
+    var str = {name:"hello"};
+      var json = JSON.stringify(str);
+    alert(json);
+</script>
+</body>
+</html>

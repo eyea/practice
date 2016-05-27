@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="添加" id="input1"/>
+<ul id="ul1">
+    <li>11111</li>
+    <li>22222</li>
+    <li>33333</li>
+    <li>44444</li>
+</ul>
+<script>
+    var oul = document.getElementById('ul1');
+    var ali = oul.getElementsByTagName('li');
+    var oinput = document.getElementById('input1');
+    var inow = 4;
+
+            /*
+            for(var i = 0;i<ali.length;i++){
+                ali[i].onmouseover = function(){
+                    this.style.background = 'yellow';
+                };
+                ali[i].onmouseout = function(){
+                    this.style.background = '';
+                };
+            }
+            */
+
+
+    oul.onmouseover = function(ev){
+        var ev = ev||event;
+        var target = ev.target||ev.secElement;
+        if(target.nodeName.toLowerCase() == 'li'){
+            target.style.background = 'yellow';
+        }
+
+    };
+    oul.onmouseout = function(ev){
+        var ev = ev||event;
+        var target = ev.target||ev.secElement;
+        if(target.nodeName.toLowerCase() == 'li'){
+            target.style.background = '';
+        }
+    };
+
+
+
+    oinput.onclick = function(){
+        inow++;
+        var oli = document.createElement('li');
+        oli.innerHTML = 11111*inow;
+        oul.appendChild(oli);
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

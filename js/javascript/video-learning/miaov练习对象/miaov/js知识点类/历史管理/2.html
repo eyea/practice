@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="35选7" id="input1"/>
+<div id="div1"></div>
+<script>
+    //onhashchange 事件 当hash值有变化的时候，就会触发
+    var oinput = document.getElementById('input1');
+    var odiv = document.getElementById('div1');
+
+    var inow = 1;
+    oinput.onclick = function(){
+        var number = randomNum(35,7);
+        odiv.innerHTML = number;
+        history.pushState(number,'',inow++)
+    };
+       window.onpopstate = function(ev){
+       var number = ev.state||'';
+       odiv.innerHTML = number;
+   }
+    function randomNum(alls,now){
+        var arr = [];
+        var newArr = [];
+        for(var i = 1;i<=alls;i++){
+            arr.push(i)
+        }
+        for(var i = 0;i<now;i++){
+            console.log(arr.length);
+            newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1))
+        }
+        return newArr;
+//        console.log(arr)
+        //  alert(arr);
+    }
+</script>
+</body>
+</html>

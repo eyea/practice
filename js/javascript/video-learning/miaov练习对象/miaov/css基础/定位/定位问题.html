@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 200px;
+            background: blue;
+            overflow: hidden;
+            position: relative;
+        }
+        .box2{
+            width: 200px;
+            height: 400px;
+            background: #ffff00;
+            position: relative;
+        }
+        /*
+        IE6,7下的父级的overflow:hidden是包不住子级的相对定位的
+        解决办法：
+          给父级加 position: relative;
+        */
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2"></div>
+</div>
+</body>
+</html>

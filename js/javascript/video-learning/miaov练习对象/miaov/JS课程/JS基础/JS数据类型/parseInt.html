@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = '+100px123';
+    //  alert(Number(a)); NaN
+    // alert(parseInt(a)) //100
+    var a1 = '-100px';
+    //  alert(parseInt(a1))  //-100
+    var a2 = '+1000';
+   // alert(parseInt(a2)) //1000
+    var a3 = '+100px';
+    // alert(parseInt(a3))  //100
+    var a4 = '-100';
+    // alert(parseInt(a4))  //-100
+    var a5 = '0010';
+    // alert(parseInt(a5)) //10
+    var a6 = '24.55千万元';
+    // alert(parseInt(a6)) //24
+    // alert(parseFloat(a6))  //24.55
+
+
+    //判断是整数还是小数方法
+    var num = '235';
+    if(parseInt(num) == parseFloat(num)){
+        alert(num + '是整数')
+    }else{
+        alert(num + '是小数')
+    }
+</script>
+</body>
+</html>

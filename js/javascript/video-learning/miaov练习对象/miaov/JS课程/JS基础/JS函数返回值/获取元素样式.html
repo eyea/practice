@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 120px;
+            height: 23px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="点击"/>
+<div id="div1"></div>
+<script>
+    var ainp = document.getElementsByTagName("input")[0];
+    function $(id){
+        return document.getElementById(id);
+    }
+    ainp.onclick = function(){
+      // alert(getComputedStyle($("div1")).width) //获取的是计算机（浏览器）计算后是样式；IE6,7,8不兼容
+      // alert($("div1").currentStyle.width); //标准浏览器不兼容
+
+        alert(getStyle($("div1"),'backgroundColor'));
+        //background:url... 复合样式（不要获取）
+        //backgroundColor    单一样式（不要用来做判断）
+        //不要有空格
+        //不要获取未设置后的样式：不兼容；
+    };
+
+//    11111111111
+//    function getStyle(obj,attr){
+//        if(obj.currentStyle){
+//            return (obj.currentStyle[attr]);
+//        }else{
+//            return (getComputedStyle(obj)[attr]);
+//        }
+//    }
+
+//    22222222222222222222222222222222
+    function getStyle(obj,attr){
+        return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            width: 300px;
+
+        }
+        ul li{
+            height: 50px;
+            border: 1px solid red;
+            line-height: 50px;
+            /*float: left;*/
+            vertical-align: top;
+            width: 300px;
+        }
+        a{
+            float: left;
+        }
+        span{
+            float: right;
+        }
+        /*
+        IE6,7下的li下的几个px问题
+        在IE 6，7下li本身没浮动，但是内容浮动了li下就会多出几px
+        解决办法
+        1.给li加浮动
+        2.给li加 vertical-align: top;
+        */
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="">11111111111111111111111</a><span>dfsdfsd</span></li>
+    <li><a href="">11111111111111111</a><span>dfsdfsd</span></li>
+    <li><a href="">11111111111111111111</a><span>dfsdfsd</span></li>
+    <li><a href="">111111111111111</a><span>dfsdfsd</span></li>
+
+</ul>
+</body>
+</html>

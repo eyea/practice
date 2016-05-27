@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="jquery-ui.css"/>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮2"/>
+<div id="div1">
+    <p style="background: red">pppppp</p>
+</div>
+<script>
+    $(function(){
+       // $('#div1').draggable();
+//        $('#div1').draggable({axis:'x',cursor:'move',cursorAt:{left:20,top:20},handle:'p'});
+//        $('#div1').draggable({axis:'x',cursor:'move',handle:'p'});
+
+
+//        $('#div1').draggable({axis:'x',cursor:'move'});//初始化
+
+        $('#div1').draggable({axis : 'x',create:function(){
+            alert(1);
+        },start:function(){
+            alert(2);
+        }});
+
+        $('input').eq(0).click(function(){
+            //$('#div1').draggable('option','axis','y'); //三个参数就是设置
+//          var op = $('#div1').draggable('option','axis');  //两个参数就是获取
+//            alert(op)
+//            $('#div1').draggable('destroy');
+            //$('#div1').draggable('disable');
+//            $('#div1').draggable('instance');
+            $('#div1').draggable('disable').draggable('widget').css('background','blue');
+        });
+        $('input').eq(1).click(function(){
+            //$('#div1').draggable('option','axis','y'); //三个参数就是设置
+//          var op = $('#div1').draggable('option','axis');  //两个参数就是获取
+//            alert(op)
+            $('#div1').draggable('enable');
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //字符类：一组相似的元素，[]中括号的整体代表一个字符
+
+//    var str = 'dfg';
+//    var re = /d[fsd]g/;
+//    alert(re.test(str)); //true;
+
+
+//    var str = 'dfdg';
+//    var re = /d[fsd]g/;
+//    alert(re.test(str)); //false;
+
+    //排除 : ^ 如果^写在[]里面的话，就代表排除的意思
+
+//    var str = 'abc';
+//     var re = /a[^bde]c/;
+//     alert( re.test(str) ); //false;
+
+//    var str = 'awc';
+//    var re = /a[^bde]c/;
+//    alert( re.test(str) ); //true;
+
+//    var str = 'aswc';
+//    var re = /a[^bde]c/;
+//    alert( re.test(str) ); //false;
+
+    var str = 'abc';
+    var re = /a[c-z]c/;
+    alert( re.test(str) ); //false;
+</script>
+</body>
+</html>

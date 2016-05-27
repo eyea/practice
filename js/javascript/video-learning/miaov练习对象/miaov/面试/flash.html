@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background: black;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            background: pink;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*
+            在IE下 div 在上层
+            解决办法加
+            <param name="wmode" value="transparent"/>
+            */
+        }
+    </style>
+</head>
+<body>
+<object data="" type="">
+    <param name="wmode" value="transparent"/>
+    <embed src="1.swf" type="" width="400" height="400" wmode="transparent"/>
+</object>
+<div class="box"></div>
+<!--定义和用法
+<embed> 标签定义嵌入的内容，比如插件。
+<embed> 标签是 HTML 5 中的新标签。
+
+object
+定义一个嵌入的对象。
+请使用此元素向您的 XHTML 页面添加多媒体。
+此元素运行您规定插入 HTML 文档中的对象的数据和参数，
+以及可用来显示和操作数据的代码。
+-->
+</body>
+</html>

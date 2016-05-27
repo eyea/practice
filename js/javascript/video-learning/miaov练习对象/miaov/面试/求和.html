@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*
+    var a = [2,3,23,5,10]; //43
+    a.sum = function(){
+        var result = 0;
+        for(var i = 0;i< a.length;i++){
+            result += a[i];
+        }
+        return result;
+    };
+    alert(a.sum()); //43
+    */
+
+    //原型的写法
+   var str = [23,34,3,6,56,5];
+    var str2 = [23,1,5,10,20];
+    Array.prototype.sum = function(){
+        var result = 0;
+        for(var i = 0;i< this.length;i++){
+            result += this[i];
+        }
+        return result;
+    };
+   // alert(str.sum()); //127
+    alert(str2.sum()); //59
+</script>
+</body>
+</html>

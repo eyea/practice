@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            width: 120px;
+            height: 40px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="1"/>
+<input type="button" value="2"/>
+<input type="button" value="3"/><br>
+<input type="button" value="4"/>
+<input type="button" value="5"/>
+<input type="button" value="6"/><br>
+<input type="button" value="7"/>
+<input type="button" value="8"/>
+<input type="button" value="9"/><br>
+<input type="button" value="10"/>
+<input type="button" value="11"/>
+<input type="button" value="12"/>
+
+<script>
+   // alert(5%8)  //5;  %取膜
+  //  alert(0%3)  //0;
+  // alert(5%9)  //5
+  // alert(55%8)  // 7
+
+   var obtn = document.getElementsByTagName('input');
+   var arr = ['yellow','blue','red'];
+   //颜色循环变化
+   for(var i=0;i<obtn.length;i++){
+       obtn[i].index = i;
+        // console.log(i);
+       obtn[i].style.background = arr[i%arr.length];
+       obtn[i].onmouseover = function(){
+
+           this.style.background = 'green'
+       };
+       obtn[i].onmouseout = function(){
+//           var mm = this;
+//           alert(this.index);
+          this.style.background =  arr[this.index%arr.length];
+       }
+   }
+
+</script>
+</body>
+</html>

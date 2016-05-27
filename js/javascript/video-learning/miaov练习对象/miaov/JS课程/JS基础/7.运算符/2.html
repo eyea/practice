@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            width: 120px;
+            height: 40px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="1"/>
+<input type="button" value="2"/>
+<input type="button" value="3"/><br>
+<input type="button" value="4"/>
+<input type="button" value="5"/>
+<input type="button" value="6"/><br>
+<input type="button" value="7"/>
+<input type="button" value="8"/>
+<input type="button" value="9"/><br>
+<input type="button" value="10"/>
+<input type="button" value="11"/>
+<input type="button" value="12"/>
+
+<script>
+
+//   var s = 30;
+//   alert(Math.floor(s/60)+'分'+s%60+'秒');
+
+//   var s = 70;
+//alert(Math.floor(s/60)); //1  Math.floor()
+
+alert(Math.floor(20.23)) //20 Math.floor()取整数
+
+
+
+    var obtn = document.getElementsByTagName('input');
+    var arr = ['yellow','blue','red'];
+    var str = '';
+    //颜色循环变化
+    for(var i=0;i<obtn.length;i++){
+        obtn[i].index = i;
+        // console.log(i);
+        obtn[i].style.background = arr[i%arr.length];
+        obtn[i].onmouseover = function(){
+            str = this.style.background; //先存颜色
+            this.style.background = 'green'
+        };
+        obtn[i].onmouseout = function(){
+//           var mm = this;
+//           alert(this.index);
+            this.style.background =  str;
+        }
+    }
+
+</script>
+</body>
+</html>

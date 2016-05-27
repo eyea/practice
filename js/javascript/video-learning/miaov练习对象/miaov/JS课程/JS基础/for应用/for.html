@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li>aaaaaaaaaa11</li>
+    <li>aaaaaaaaaaa222</li>
+    <li>aaaaaaaa33</li>
+</ul>
+<script>
+    var oul = document.getElementById("list");
+    var ali = oul.getElementsByTagName("li");
+    var arr = ['今天','明天','后天'];
+
+    /*
+    for(var i=0;i<ali.length;i++){
+        ali[i].innerHTML = arr[i]; //往li中加文字；
+        ali[i].onclick = function(){
+           // alert(123)
+        }
+    }
+     */
+
+   // for(var i=0;i<3;i++){
+        // alert(i);
+ //   }
+   // alert(i) //3
+
+
+  //数字太大性能有问题
+   /*
+   for(var i=0;i<1000;i++){
+        document.body.innerHTML += '<input type="button" value="按钮">'
+    }
+  */
+
+    var str = '';
+    for(var i=0;i<1000;i++){
+        str += '<input type="button" value="按钮">'
+    }
+    document.body.innerHTML += str;
+</script>
+</body>
+</html>

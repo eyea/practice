@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="btn" type="button" value="按钮"/>
+<script>
+   // alert(this)  //object window
+//    window.alert(123)
+    var btn = document.getElementById("btn");
+
+
+
+///////////////////////
+    function fn(){
+        alert(this); //1.object HTMLInputElement          2.object window
+    }
+
+
+   //1111111111
+      btn.onclick = fn;
+
+
+
+
+   //22222222222
+//    btn.onclick = function(){
+//        fn();
+//    };
+                      ////////////////////
+
+
+
+</script>
+</body>
+</html>

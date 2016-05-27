@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+            var oUl = document.getElementById('ul1');
+           alert(oUl.childNodes.length); //chrome 9 ;  IE5.5 4 ; IE6 4 ;火狐 9；
+            /*
+            1111111111111111111111111111111111
+             元素.childNodes : 只读 属性 子节点列表集合
+             标准下：包含了文本和元素类型的节点，也会包含非法嵌套的子节点
+             非标准下：只包含元素类型的节点，ie7以下不会包含非法嵌套子节点
+
+             childNodes只包含一级子节点，不包含后辈孙级以下的节点
+
+             DOM节点的类型有很多种	12种
+
+             元素.nodeType : 只读 属性 当前元素的节点类型
+
+             元素节点	:	1
+             属性节点	:	2
+             文本节点 :	3
+             */
+          //  alert( oUl.nodeType );//  1
+           // alert(oUl.childNodes[0].nodeType); //  3
+
+           // 22222222222222222222222
+            // 元素.attributes : 只读 属性 属性列表集合
+
+
+         //    alert( oUl.attributes[0].name); //id
+          //   alert( oUl.attributes[1].name); //style
+         //   alert( oUl.attributes[0].value);  //ul1
+
+          //  alert( oUl.attributes[1].value);  // width: 200px;height: 300px;background: yellow
+            //   alert( oUl.attributes.length ); //2
+
+            //alert( oUl.attributes[0].nodeType );
+
+            /*for (var i=0; i<oUl.childNodes.length; i++) {
+
+             if ( oUl.childNodes[i].nodeType == 1 ) {
+             oUl.childNodes[i].style.background = 'red';
+             }
+
+             }*/
+
+        };
+
+    </script>
+</head>
+<body>
+<div id="div1">
+    <p>11111111</p>
+    <ul id="ul1" style="width: 200px;height: 300px;background: yellow">
+        <li>11111</li>
+        <li>22222</li>
+        <li>33333</li>
+        <li>44444</li>
+    </ul>
+</div>
+</body>
+</html>

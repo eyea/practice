@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+
+    //.  :  任意字符
+    //\. : 真正的点
+
+//   var str = 'a.c';
+//
+//     var re = /a\.c/;
+//
+//     alert(re.test(str));//true
+
+    //\b : 独立的部分   （ 起始，结束，空格 ）
+    //\B : 非独立的部分
+
+//    var str = 'onetwo';
+//    var re = /one\b/;
+//    alert( re.test(str) );//false;
+    //\b : 独立的部分   （ 起始，结束，空格 ）
+    //\B : 非独立的部分
+
+//    var str = 'one two';
+//
+//    var re = /one\b/;
+//
+//    alert( re.test(str) ); //true
+
+//    var str = 'onetwo';
+//
+//    var re = /\bone/;
+//
+//    alert( re.test(str) ); //true
+
+//    var str = 'onetwo';
+//
+//    var re = /\bone\b/;
+//
+//    alert( re.test(str) ); //false
+
+    var str = 'one two';
+
+    var re = /\bone\b/;
+
+    alert( re.test(str) ); //true
+
+</script>
+</body>
+</html>

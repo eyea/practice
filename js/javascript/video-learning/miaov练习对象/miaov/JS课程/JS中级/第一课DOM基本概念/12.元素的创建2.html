@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="text1" />
+<input type="button" value="留言" id="btn" />
+<ul id="ul1"></ul>
+<script>
+    var oText = document.getElementById('text1');
+    var oBtn = document.getElementById('btn');
+    var oUl = document.getElementById('ul1');
+    oBtn.onclick = function(){
+        var oLi = document.createElement('li');
+        oLi.innerHTML = oText.value;
+        var oA = document.createElement('a');
+        oA.innerHTML = '删除';
+        oLi.appendChild(oA);
+        oA.href = 'javascript:;';
+        oA.onclick = function(){
+           oUl.removeChild(this.parentNode);
+        };
+
+        //从后面插入
+        //  oUl.appendChild(oLi);
+
+        //从前面插入
+//        在ie下如果第二个参数的节点不存在，会报错
+//        在其他标准浏览器下如果第二个参数的节点不存在，则会以appendChild的形式进行添加
+//          oUl.insertBefore(oLi,oUl.children[0]);
+
+        //可以做个判断
+        if ( oUl.children[0] ) {
+            oUl.insertBefore( oLi, oUl.children[0] );
+        } else {
+            oUl.appendChild( oLi );
+        }
+    }
+</script>
+</body>
+</html>

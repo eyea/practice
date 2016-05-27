@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+#div1{ width:100px; height:100px; background:red; display:-none}
+#div1.box{ background:blue; font-size:100px;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	$('input').click(function(){
+		
+//		$('#div1').show('clip',1000);
+		//$('#div1').hide('fold',1000);
+//		$('#div1').toggle('fold',1000);
+		
+//		$('#div1').toggle('blind',{direction:'left'},1000);
+		
+		$('#div1').effect('pulsate',1000);
+		
+	});
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="点击">
+<div id="div1">
+a
+</div>
+</body>
+</html>

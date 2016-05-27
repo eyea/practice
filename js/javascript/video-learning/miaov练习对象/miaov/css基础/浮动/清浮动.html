@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+       .box{
+           /*width: 300px;*/
+           margin: 0 auto;
+           border: 10px solid #000;
+           overflow: auto;
+           /*float: left;*/
+           /*display: inline-block;*/
+
+       /*
+       清浮动
+       1.给父级也加浮动
+       2.给父级加display: inline-block;
+       3.在浮动元素下加<div class="clear"></div>
+       .clear{
+            height: 0;
+            clear: both;
+            font-size: 0;
+        }
+        4.在浮动元素下加<br clear="all"/>
+        5.在IE6,7下浮动元素父级有宽度的话就不用清浮动
+        6.haslayout 根据元素内容的大小，或者父级的大小来重新计算元素的宽高。
+        7.给浮动元素的父级加
+        .clear:after{
+             content: "";
+             display: block;
+             clear: both;
+         }
+        .clear{
+            zoom: 1;
+        }
+        8.给浮动元素父级加overflew
+       */
+       }
+       .div{
+           width: 200px;
+           height: 200px;
+           background: red;
+           float: left;
+        }
+        /*.clear{*/
+            /*height: 0;*/
+            /*background: rosybrown;*/
+            /*clear: both;*/
+            /*font-size: 0;*/
+        /*}*/
+
+        /*.clear:after{*/
+             /*content: "";*/
+             /*display: block;*/
+             /*clear: both;*/
+         /*}*/
+        .clear{
+            zoom: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="box clear">
+    <div class="div"></div>
+    <!--<div class="clear"></div>-->
+    <!--<br clear="all"/>-->
+</div>
+</body>
+</html>

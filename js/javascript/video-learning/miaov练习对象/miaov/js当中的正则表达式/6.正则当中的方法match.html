@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //match:正则去匹配字符串，如果匹配成功，则返回匹配成功的数组，如果匹配失败，则返回null;
+    //match的写法：字符串.match(正则)；
+    //正则默认：如果匹配成功就会结束，不会继续匹配；如果想全部查找，就要加标识g(全局匹配)。
+    //量词：匹配不确定的位置
+    // + 至少出现一次
+    var str = 'a1dfa4324vffd90b09jhh7';
+    var re = /\d+/g;
+//    alert(str.match(re));
+
+    var re1 = /(d)(f)(a)/;
+    alert(str.match(re1)); //[dfa,d,f,a]
+</script>
+</body>
+</html>

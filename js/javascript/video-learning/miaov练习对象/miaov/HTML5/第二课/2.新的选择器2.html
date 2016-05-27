@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1" class="box" title="hello">1111</div>
+<div class="box">222</div>
+<script>
+    var oDiv = document.getElementsByClassName('box');
+    for(var i = 0;i<oDiv.length;i++){
+        oDiv[i].style.background = 'blue';
+    }
+</script>
+</body>
+</html>

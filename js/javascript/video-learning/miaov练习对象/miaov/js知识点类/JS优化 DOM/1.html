@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var odiv = document.getElementById('div1');
+    var str = '';
+
+//    console.time('hello');
+//    for(var i = 0;i<5000;i++){
+//        odiv.innerHTML += 'a';
+//    }
+//    console.timeEnd('hello');
+
+    console.time('hello');
+    for(var i = 0;i<5000;i++){
+        str += 'a';
+    }
+    odiv.innerHTML = str;
+    console.timeEnd('hello');
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //去掉所有空格
+    var str = '   we d   fs  45  ';
+    var re = /\s+/g;
+//    alert('('+str.replace(re,'')+')');
+
+    //去掉首尾空格
+    var re2 = /^\s+|\s+$/g;
+    alert('('+str.replace(re2,'')+')');
+</script>
+</body>
+</html>

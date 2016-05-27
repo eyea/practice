@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            list-style: none;
+             margin: 0 auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="5.jpg" alt=""/></li>
+</ul>
+<script>
+    var oul = document.getElementsByTagName("ul");
+    setTimeout(function(){
+        oul[0].style.display = 'block';
+        setTimeout(function(){
+            oul[0].style.display = 'none'
+        },4000)
+    },3000);
+
+    //3秒出现，4秒后消失
+</script>
+</body>
+</html>

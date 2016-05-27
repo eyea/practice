@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //递归
+    //1.函数调用函数自身，执行递的动作
+    //2.最后一次判断一个终止条件，可以执行归的动作
+    function test(n){
+        if(n == 1){
+            console.trace();
+            return 1;
+        }
+        return n*test(n - 1);
+    }
+    alert(test(5)); //1*2*3*4*5 =120;
+</script>
+</body>
+</html>

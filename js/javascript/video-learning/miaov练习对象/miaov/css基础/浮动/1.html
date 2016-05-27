@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float: left;
+            /*
+            浮动 left right none
+            元素加了浮动会脱离文档流，按照指定的一个方向移动直到碰到父级的边界或者另外一个浮动元素停止
+            提升层级半层
+            */
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">111</div>
+<div class="box2">222</div>
+</body>
+</html>

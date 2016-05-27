@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul1">
+    <li>11111</li>
+    <li>22222</li>
+    <li>33333</li>
+    <li>44444</li>
+</ul>
+<script>
+    //event 事件源：不管在哪个事件中，只要你操作的那个元素就是事件源；
+    //IE window.event.srcElement 标准下 event.target
+    //nodeName 找到当前元素的标签名
+    var oul = document.getElementById('ul1');
+    var ali = oul.getElementsByTagName('li');
+//        for(var i = 0;i<ali.length;i++){
+//            ali[i].onmouseover = function(){
+//                this.style.background = 'yellow';
+//            };
+//            ali[i].onmouseout = function(){
+//                this.style.background = '';
+//            };
+//        }
+
+    oul.onmouseover = function(ev){
+        var ev = ev||event;
+        var target = ev.target||ev.secElement;
+        if(target.nodeName.toLowerCase() == 'li'){
+            target.style.background = 'yellow';
+        }
+
+    };
+    oul.onmouseout = function(ev){
+        var ev = ev||event;
+        var target = ev.target||ev.secElement;
+        if(target.nodeName.toLowerCase() == 'li'){
+            target.style.background = '';
+        }
+    }
+
+</script>
+</body>
+</html>

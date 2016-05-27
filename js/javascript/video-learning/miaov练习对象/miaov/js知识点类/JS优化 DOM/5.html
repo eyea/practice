@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul1"></ul>
+<script>
+    var oul = document.getElementById('ul1');
+    console.time('hello');
+    for(var i = 0;i<5000;i++){
+        var oli = document.createElement('li');
+//        oli.style.width = '100px';
+//        oli.style.height = '100px';
+//        oli.style.background = 'yellow';
+        //优化后
+        oli.style.cssText = 'width:100px;height:100px;background:yellow';
+        oul.appendChild(oli);
+
+    }
+    console.timeEnd('hello');
+
+</script>
+</body>
+</html>

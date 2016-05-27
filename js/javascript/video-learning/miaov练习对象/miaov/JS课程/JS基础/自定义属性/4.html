@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="1"/>
+<input type="button" value="1"/>
+<input type="button" value="1"/>
+<script>
+    var abtn = document.getElementsByTagName("input");
+    var arr = ['a','b','c'];
+    for(var i=0;i<abtn.length;i++){
+        abtn[i].a = i;
+        abtn[i].onclick = function(){
+          //  alert(arr[this.a]);
+        }
+    }
+</script>
+</body>
+</html>

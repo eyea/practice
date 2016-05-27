@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //类 : JS是没有类的概念的 , 把JS中的构造函数看做的类
+    function Aaa(){
+        this.name = [1,23,3];
+    }
+    Aaa.prototype.showName = function(){
+        alert(this.name);
+    };
+    function Bbb(){
+        Aaa.call(this);
+    }
+    var F = function(){};
+    F.prototype = Aaa.prototype;
+    Bbb.prototype = new F();
+    Bbb.prototype.constructor = Bbb;//修正指向问题
+    var b1 = new Bbb();
+    b1.name.push('25');
+    //b1.showName();
+
+    var b2 = new Bbb();
+    b2.showName();
+</script>
+</body>
+</html>

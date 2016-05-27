@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<form>
+	<input type="text" id="text" />
+	<input type="submit" />
+</form>
+<script>
+var oText=document.getElementById("text");
+oText.addEventListener("invalid",fn,false);
+oText.oninput=function()
+{
+	if(this.value=="敏感词")
+	{
+		this.setCustomValidity("请不要输入敏感词");
+	}
+	else
+	{
+		this.setCustomValidity("");
+	}
+};
+function fn()
+{
+	alert(this.validity.customError);
+	ev.preventDefault();
+}
+
+//valueMissing   当输入值为空的时候返回true
+//typeMismatch   当输入类型和要求的类型不一致的时候返回true
+//patternMismatch 当用户输入的内容和预期的正则要求不匹配 返回true
+//tooLong 当用户输入的长度 超出了maxlength的限制 返回true
+//customError  不符合在定义验证的时候返回true
+</script>
+</body>
+</html>

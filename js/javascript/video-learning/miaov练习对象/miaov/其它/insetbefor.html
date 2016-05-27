@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="txt1" type="text"/><input id="btn1" type="button" value="创建Li"/>
+<ul id="ull"></ul>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    $("btn1").onclick = function(){
+        var oli = document.createElement("li");//创建一个节点
+        var ali = $("ull").getElementsByTagName("li");
+        oli.innerHTML = $("txt1").value;
+        if(oli.length == 0){
+            $("ull").appendChild(oli);
+        }else{
+            $("ull").insertBefore(oli,ali[0]);
+        }
+    }
+</script>
+</body>
+</html>

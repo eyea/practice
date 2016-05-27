@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .img1{
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body style="font-size: 50px">
+<p id="time"></p>
+<img class="img1" src="img/0.JPG" alt=""/>
+<img src="img/0.JPG" alt=""/>
+<img src="img/0.JPG" alt=""/>
+<img src="img/0.JPG" alt=""/>
+<img src="img/0.JPG" alt=""/>
+<img src="img/0.JPG" alt=""/>
+<script>
+    var oP = document.getElementById("time");
+    var aimg = document.getElementsByTagName("img");
+    setInterval(fntime,1000);
+    fntime();
+    function fntime(){
+        var str = '';
+        var mytime = new Date();
+        var iHours = mytime.getHours();
+        var iMins = mytime.getMinutes();
+        var iSec = mytime.getSeconds();
+        str = toTwo(iHours)+toTwo(iMins)+toTwo(iSec);
+        oP.innerHTML = str;
+       // aimg[5].src = 'img/'+str.charAt(5)+'.JPG';
+        for(var i=0;i<aimg.length;i++){
+            aimg[i].src = 'img/'+str.charAt(i)+'.JPG';
+        }
+    }
+
+    function toTwo(n){
+        return n<10?'0'+n:''+n;
+
+    }
+</script>
+</body>
+</html>

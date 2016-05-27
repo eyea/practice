@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="tet1" type="text"/>
+<input id="tet2" type="text"/>
+<input id="btn" type="button" value="求和"/>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    $("btn").onclick = function(){
+        var num = parseInt($("tet1").value)+parseInt($("tet2").value);
+        if(isNaN(num)){
+            alert("你输入的有误");
+        }else{
+            alert(num);
+        }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            padding:0; margin:0;
+        }
+        li { list-style:none; }
+        body { background:#333; }
+        #pic { width:750px; height:500px;
+            position:relative; margin:0 auto;
+            background:url(img/21.jpg) no-repeat center #fff; }
+        #pic img {
+            width:750px; height:500px;
+        }
+        #pic ul {
+            height: 40px;
+            position:absolute;
+            bottom: -50px;
+            left: -10px;
+
+        }
+        #pic li {
+            cursor: pointer;
+            font-size: 18px;
+            font-family: '微软雅黑';
+            border-radius: 50%;
+            float: left;
+            margin-left: 10px;
+            width:40px; height:40px;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            margin-bottom:4px; background:#666; }
+        #pic .active { background:#FC3; }
+        #pic span { top:0; }
+        #pic p { bottom:0; margin:0; }
+        #pic p,#pic span { position:absolute; left:0; width:750px; height:30px;
+            line-height:30px; text-align:center; color:#fff;
+            background: rgba(0,0,0,0.3);
+
+        }
+    </style>
+</head>
+<body>
+<div id="pic">
+    <img src="" />
+    <span>数量正在加载中……</span>
+    <p>文字说明正在加载中……</p>
+    <ul></ul>
+</div>
+<script>
+    var oDiv = document.getElementById('pic');
+    var oImg = oDiv.getElementsByTagName('img')[0];
+    var oSpan = oDiv.getElementsByTagName('span')[0];
+    var oP = oDiv.getElementsByTagName('p')[0];
+    var oUl = oDiv.getElementsByTagName('ul')[0];
+    var aLi = oUl.getElementsByTagName('li');
+    var arrUrl = [ 'img/10.jpg','img/11.jpg','img/12.jpg','img/13.jpg','img/14.jpg',
+        'img/15.jpg','img/16.jpg','img/17.jpg','img/18.jpg','img/19.jpg',
+        'img/20.jpg','img/21.jpg', 'img/22.jpg', 'img/23.jpg', 'img/24.jpg' ];
+    var arrText = [ '美女1', '美女2', '美女3', '美女4', '美女5',
+        '美女6', '美女7', '美女8', '美女9', '美女10',
+        '美女11', '美女12', '美女13', '美女14', '美女15'];
+    var num = 0;
+    var timer = null;
+    for( var i=0; i<arrUrl.length; i++ ){
+        oUl.innerHTML += '<li>'+(i+1)+'</li>';
+    }
+
+    // 初始化
+    function fnTab(){
+        oImg.src = arrUrl[num];
+        oSpan.innerHTML = 1+num+' / '+arrUrl.length;
+        oP.innerHTML = arrText[num];
+        //清除所有classname 当前classname 为 active;
+        for( var i=0; i<aLi.length; i++ ){
+            aLi[i].className = '';
+        }
+        aLi[num].className = 'active';
+    }
+    fnTab();
+    //为每一个li添加hover效果；
+    for( var i=0; i<aLi.length; i++ ){
+        aLi[i].index = i;			// 索引值
+        aLi[i].onmouseover = function (){
+            num = this.index;
+            fnTab();
+        };
+    }
+    //自动轮播
+    function autoplay(){
+        timer = setInterval(function(){
+            num++;
+            num%=aLi.length;
+            fnTab();
+        },2000);
+    }
+    autoplay();
+
+    //鼠标移入移出时暂停
+    oDiv.onmouseover = function(){
+        clearInterval(timer);
+    };
+    oDiv.onmouseout = function(){
+        autoplay()
+    }
+</script>
+</body>
+</html>

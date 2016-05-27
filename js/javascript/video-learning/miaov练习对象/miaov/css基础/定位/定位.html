@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 150px;
+            height: 150px;
+            background: red;
+            position: absolute;
+            /*z-index: 2;*/
+        }
+        .one{
+            width: 100px;
+
+            position: absolute;
+            height: 100px;
+            background: #9cf;
+        }
+        /*
+        position: absolute;相对于整个文档不是html 和 body
+        1.使内嵌支持宽高
+        2.块属性标签内容撑开宽度
+
+
+        定位元素默认后者高于前者
+        */
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="one">1111</div>
+</body>
+</html>

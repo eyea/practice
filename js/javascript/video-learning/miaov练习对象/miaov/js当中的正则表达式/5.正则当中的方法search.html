@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //search:正则去匹配字符串，如果匹配成功，就返回匹配成功的位置，如果匹配失败，就返回-1；
+    //search的写法：字符串.search(正则)；
+    //正则中的默认是区分大小写的；如果不区分大小写的话，在正则的最后加标示i
+    var str = 'wedsac';
+
+    var re1 = /d/;
+    var re2 = /m/;
+    var re3 = /ds/;
+    var re4 = /E/;
+    var re5 = /E/i;
+    var re6 = new RegExp('A','i');
+//    alert(str.search(re1));  //2
+//    alert(str.search(re2));  //-1
+ //   alert(str.search(re3));  //2
+  //  alert(str.search(re4));  //-1
+  //  alert(str.search(re5)); //1
+    alert(str.search(re6));   //4
+</script>
+</body>
+</html>

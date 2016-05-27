@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var oF = document.createElement('iframe');
+    document.body.appendChild( oF );
+
+    var ifArray = window.frames[0].Array;
+
+    var arr = new ifArray();
+
+    alert( arr.constructor == Array );  //false
+
+    alert( arr instanceof Array );  //false
+
+    alert( Object.prototype.toString.call(arr) == '[object Array]' );  //true
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="打开新窗口"/>
+<input type="button" value="关闭窗口"/>
+<input type="button" value="关闭新窗口"/>
+<script>
+    /*
+    BOM 浏览器对象模型
+    open(页面的地址url，打开的方式) 打开一个新的窗口（页面）；
+    close() 关闭窗口；
+    如果url为空，则默认打开一个空白页面；
+    如果打开方式为空，默认为新窗口方式打开；
+    * */
+  var ainput = document.getElementsByTagName('input');
+    var opener = null;
+    ainput[0].onclick = function(){
+       // window.open('http://www.baidu.com','_self');
+        opener = window.open();
+        opener.document.body.style.background = 'yellow';
+    };
+    ainput[1].onclick = function(){
+        window.close();
+        // 1.ff 默认无法直接关闭  2.chrome 默认直接关闭  3.IE 询问用户
+    };
+    ainput[2].onclick = function(){
+        opener.close();
+    }
+ </script>
+</body>
+</html>

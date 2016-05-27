@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="javascript:;">成都</a>
+<a href="javascript:;">杭州</a>
+<a href="javascript:;">上海</a>
+<a href="javascript:;">大连</a>
+<a href="javascript:;">新疆</a>
+<a href="javascript:;">资阳</a>
+<ul id="ul1"></ul>
+<script>
+    var aA = document.getElementsByTagName('a');
+    var oul = document.getElementById('ul1');
+    var aLi = oul.getElementsByTagName('li');
+    for(var i = 0;i<aA.length;i++){
+        aA[i].onclick = function(){
+            if(mj(this.innerHTML)){
+                var oli = document.createElement('li');
+                oli.innerHTML = this.innerHTML;
+                if(!aLi[0]){
+                    oul.appendChild(oli);
+                }else{
+                    oul.insertBefore(oli,aLi[0]);
+                }
+
+            }else{
+                 mj2(this.innerHTML);
+            }
+        }
+    }
+    function mj(text){
+        var result = true;
+        for(var i = 0;i<aLi.length;i++){
+            if(aLi[i].innerHTML == text){
+                result = false;
+            }
+        }
+        return result;
+    }
+    function mj2(text){
+        for(var i = 0;i<aLi.length;i++){
+            if(aLi[i].innerHTML == text){
+                oul.insertBefore(aLi[i],aLi[0]);
+            }
+        }
+    }
+</script>
+</body>
+</html>

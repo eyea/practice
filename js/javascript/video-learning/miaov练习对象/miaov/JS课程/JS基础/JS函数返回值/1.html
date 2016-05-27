@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="btn" type="button" value="按钮"/>
+<script>
+    /*
+    //return 返回值
+    function aa(){
+        return 100;
+    }
+    alert(aa());//100
+    */
+
+/*
+    function a(){
+        return function(){
+            alert(123); //123
+        }
+    }
+    //alert(a());
+    a()(); //123
+    */
+
+
+    /*
+    function $(id){
+        return document.getElementById(id);
+    }
+    $("btn").onclick = function(){
+        alert(123)
+    }
+    */
+
+
+    /*
+    function b(n){
+        var arr = [];
+        for(var i=1;i<=n;i++){
+            arr.push(i)
+        }
+        return arr;
+    }
+   // alert(b(5)); //1,2,3,4,5
+   // alert(b(3))  //1,2,3
+
+   */
+
+    /*
+    function a(b,c){
+        var arr = [];
+        for(var i = b;i<=c;i++){
+            arr.push(i);
+        }
+        return arr;
+    }
+    alert(a(9,7)); //3,4,5,6,7
+    */
+
+
+
+    function a(b,c){
+        var arr = [];
+        if(b<c){
+            for(var i = b;i<=c;i++){
+                arr.push(i);
+            }
+            return arr;
+        }else{
+            for(var i = c;i<=b;i++){
+                arr.push(i);
+            }
+            return arr;
+        }
+    }
+    //alert(a(9,7)); //7,8,9
+    // alert(a(5,7))  //5,6,7
+    //  alert(a(3,7))    //3,4,5,6,7
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{
+            list-style: none;
+            width: 400px;
+            height: 270px;
+            background: url("img/21.jpg");
+            float: left;
+            margin-left: 24px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var ali = document.getElementsByTagName("li");
+  //  var off = true;//只能控制一组
+    for(var i=0;i<ali.length;i++){
+        ali[i].onoff = true;
+        ali[i].onclick = function(){
+//           this.style.background = 'url("img/22.jpg")';
+            if(this.off){
+                this.style.background = 'url("img/22.jpg")';
+                this.off = false;
+            }else{
+                this.style.background = 'url("img/21.jpg")';
+                this.off = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>

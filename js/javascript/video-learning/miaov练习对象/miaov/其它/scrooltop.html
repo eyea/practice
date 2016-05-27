@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="height: 2300px">
+<script>
+
+    document.onclick = function(){
+        //非Chrome
+       // alert(document.documentElement.scrollTop);
+        //Chrome
+      //  alert(document.body.scrollTop);
+        var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
+        alert(scrolltop);
+    }
+
+</script>
+</body>
+</html>

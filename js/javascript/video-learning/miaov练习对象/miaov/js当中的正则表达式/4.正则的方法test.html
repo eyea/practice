@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //test:正则去匹配字符串，如果匹配成功就返回真，如果匹配失败就返回假
+    //test的写法  正则.test(字符串)
+    /*
+    * \s 空格
+    * \S 非空格
+    * \d 数字
+    * \D 非数字
+    * \w 字符 （字母，数字，下划线）
+    * \W 非字符
+    * */
+
+     /*
+    var str = 'wedsac';
+
+    var re = /d/;
+   // alert(re.test(str)); //true
+
+    var re = /da/;
+   // alert(re.test(str)); //false
+
+    var re = /ds/;
+    alert(re.test(str)); //true
+      */
+
+    var str = '1455222';
+    var re = /\D/;
+    if(re.test(str)){
+        alert('不全是数字');
+    }else{
+        alert('全是数字');
+    }
+
+</script>
+</body>
+</html>

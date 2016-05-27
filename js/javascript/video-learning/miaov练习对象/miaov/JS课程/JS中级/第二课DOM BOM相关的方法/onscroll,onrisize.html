@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="height: 3400px">
+<script>
+
+    //onscroll  当滚动条滚动的时候触发
+    //onresize  当窗口改变大小的时候触发
+    var i = 0;
+    window.onscroll = function(){
+        document.title = i ++;
+    }
+    window.onresize = function(){
+        document.title = i ++;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            text-align:center;
+        }
+        #box {
+            width:750px; height:500px;
+            border:10px solid #ccc;
+            margin:50px auto 0;
+            position:relative;
+        }
+        #box ul li{
+            width:750px; height:500px;
+            list-style: none;
+            position: absolute;
+            top: 0;
+        }
+        a {
+            /*display: none;*/
+            width:40px; height:270px;
+            background:#aaa;
+            filter:alpha(opacity:40); opacity:0.4;
+            position:absolute;
+            top: 0;
+            padding-top: 230px;
+            font-size:48px;
+            color:#000;
+            text-align:center;
+            text-decoration:none;
+            z-index: 26;
+        }
+        #prev { left:0;}
+        #next { right:0;}
+        a:hover { filter:alpha(opacity:10); opacity:0.1; }
+        #p1 {
+            /*display: none;*/
+            width:750px; height:30px; line-height:30px; text-align:center;
+            background:#000;z-index: 26;
+            color:#fff; font-size:18px; filter:alpha(opacity:40); opacity:0.4;
+            position:absolute; bottom:0; left:0; }
+
+        strong {
+            /*display: none;*/
+            width:750px; height:30px; line-height:30px; text-align:center;z-index: 26;
+            background:#000; color:#fff; font-size:18px; filter:alpha(opacity:40);
+            opacity:0.4; position:absolute; top:0; left:0; }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <a id="prev" href="javascript:;"><</a>
+    <a id="next" href="javascript:;">></a>
+    <strong id="strong1">图片数量计算中……</strong>
+    <p id="p1">图片文字加载中……</p>
+    <ul class="imglist">
+        <li style="background: url('images/1.jpg') center;z-index: 24"></li>
+        <li style="background: url('images/2.jpg') center"></li>
+        <li style="background: url('images/3.jpg') center"></li>
+        <li style="background: url('images/4.jpg') center"></li>
+        <li style="background: url('images/5.jpg') center"></li>
+        <li style="background: url('images/6.jpg') center"></li>
+        <li style="background: url('images/7.jpg') center"></li>
+        <li style="background: url('images/8.jpg') center"></li>
+        <li style="background: url('images/9.jpg') center"></li>
+        <li style="background: url('images/10.jpg') center"></li>
+        <li style="background: url('images/11.jpg') center"></li>
+        <li style="background: url('images/12.jpg') center"></li>
+        <li style="background: url('images/13.jpg') center"></li>
+        <li style="background: url('images/14.jpg') center"></li>
+        <li style="background: url('images/15.jpg') center"></li>
+        <li style="background: url('images/16.jpg') center"></li>
+        <li style="background: url('images/17.jpg') center"></li>
+        <li style="background: url('images/18.jpg') center"></li>
+        <li style="background: url('images/19.jpg') center"></li>
+        <li style="background: url('images/20.jpg') center"></li>
+        <li style="background: url('images/21.jpg') center"></li>
+        <li style="background: url('images/22.jpg') center"></li>
+        <li style="background: url('images/23.jpg') center"></li>
+        <li style="background: url('images/24.jpg') center"></li>
+    </ul>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var odiv = document.getElementById('box');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var oP = document.getElementById('p1');
+    var oStrong = document.getElementById('strong1');
+    var oImg = document.getElementById('img1');
+    var aBtn = document.getElementsByTagName('input');
+    var oli = document.getElementsByTagName("li");
+//    alert(oli.length)
+
+    var arrText = [ '文字一','文字二','文字三','文字四','文字五','文字六','文字七','文字八'
+        ,'文字九','文字十','文字十一','文字十二','文字十三','文字十四','文字十五','文字十六',
+        '文字十七','文字十八'
+        ,'文字十九','文字二十','文字二十一','文字二十二','文字二十三','文字二十四'
+    ];
+    var num = 0;
+    var timer = null;
+    // 初始化
+    function fnTab(){
+        oP.innerHTML = arrText[num];
+        oStrong.innerHTML = num+1 + ' / ' + oli.length;
+        $("ul li").eq(num).fadeIn().siblings().fadeOut();
+    }
+    fnTab();
+
+    oPrev.onclick = function (){
+        num --;
+        if(num == -1){
+          num=oli.length-1
+        }
+        fnTab();
+    };
+    oNext.onclick = function (){
+        num ++;
+        if( num == oli.length ){
+            num = 0;
+        }
+        fnTab();
+    };
+//自动轮播
+    function auto_play(){
+        timer = setInterval(function(){
+            num ++;
+            if( num == oli.length ){
+                num = 0;
+            }
+            $("ul li").eq(num).fadeIn().siblings().fadeOut();
+            fnTab();
+        },2000);
+    }
+    auto_play();
+
+    $("#box").hover(function(){
+        clearInterval(timer);
+    },function(){
+        auto_play();
+    });
+</script>
+</body>
+</html>

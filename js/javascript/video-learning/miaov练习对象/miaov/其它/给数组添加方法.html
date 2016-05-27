@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr1 = new Array(12,34,1,45,3);
+    var arr2 = new Array(1,4,7,5,4);
+//    arr1.sum = function()
+    Array.prototype.sum = function()
+
+    {
+        var result = 0;
+        var i = 0;
+        for(i=0;i<this.length;i++){
+            result+=this[i];
+        }
+        return result;
+    };
+    alert(arr1.sum());
+    alert(arr2.sum());
+</script>
+</body>
+</html>

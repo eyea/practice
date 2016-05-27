@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<form>
+	<input type="text" required id="text"/>
+	<input type="submit" />
+</form>
+<script>
+var oText=document.getElementById("text");
+oText.addEventListener("invalid",fn,false);
+function fn()
+{
+	alert(this.validity.valueMissing);
+	ev.preventDefault();
+}
+
+//valueMissing   当输入值为空的时候返回true
+</script>
+</body>
+</html>

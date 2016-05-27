@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+替换前<br />
+<textarea>
+</textarea><br />
+替换后<br />
+<textarea>
+</textarea><br />
+<input type="button" value="确定" id="input1" />
+</body>
+<script>
+    //菲称仁爱礁附近17艘中国船均在菲军监视之下
+
+    //| : 或的意思
+
+    //replace : 第二个参数：可以是字符串，也可以是一个回调函数
+    var aT = document.getElementsByTagName('textarea');
+    var oInput = document.getElementById('input1');
+
+    var re = /菲称|中国船|监视之下/g;
+    oInput.onclick = function(){
+        aT[1].value = aT[0].value.replace(re,function(str){
+            var result = '';
+            for(var i = 0;i<str.length;i++){
+               result += '*';
+            }
+            return result;
+        })
+    }
+</script>
+</body>
+</html>

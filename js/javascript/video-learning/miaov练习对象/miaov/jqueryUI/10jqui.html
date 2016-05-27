@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	
+	$.widget('miaov.testProgressBar',$.ui.mouse,{
+		
+		options : {
+			value : 0,
+			ut : '%',
+			color : 'black',
+			customMouseUp : function(){}
+		},
+		
+		_create : function(){
+			var progress = this.options.value + this.options.ut;
+			this.element.html( progress ).css('color',this.options.color);
+			this._mouseInit();
+		},
+		_setOption : function(a,b){
+			if(a == 'value'){
+				this.element.html( b + this.options.ut );
+			}
+		},
+		aaa : function(){
+			alert(1);
+		},
+		_aaa : function(){
+			alert(2);
+		},
+		_mouseUp : function(){
+			this.element.trigger('miaovcustomMouseUp');
+			this.options.customMouseUp();
+		}
+		
+	});
+	
+	/*$('#div1').testProgressBar({value : 50,ut:'px',color:'red',customMouseUp:function(){
+		alert('up时候触发');
+	}});*/
+	
+	$('#div1').testProgressBar({value : 50,ut:'px',color:'red',customMouseUp:function(){
+		
+	}});
+	$('#div1').on('miaovcustomMouseUp',function(){
+		alert('up时候触发');
+	}); 
+	
+	$('input').click(function(){
+		//alert( $('#div1').testProgressBar('option','value') );
+		//$('#div1').testProgressBar('option','value','80');
+		//alert( $('#div1').testProgressBar('option','value') );
+		$('#div1').testProgressBar('aaa');
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="点击">
+<div id="div1"></div>
+</body>
+</html>

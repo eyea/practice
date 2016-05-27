@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+#div1{}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	
+	
+	$( "#div1" ).accordion({ heightStyle : 'auto' });
+
+	$('input').click(function(){
+	
+		var html = $('#div1 div').eq(0).html();
+
+		$('#div1 div').eq(0).append(html);
+	
+		$( "#div1" ).accordion('refresh');
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="添加">
+<div id="div1">
+	<h3>111111</h3>
+    <div>111111的内容<br>111111的内容<br>111111的内容<br>111111的内容<br></div>
+    <h3>222222</h3>
+    <div>222222的内容</div>
+    <h3>333333</h3>
+    <div>333333的内容</div>
+</div>
+</body>
+</html>

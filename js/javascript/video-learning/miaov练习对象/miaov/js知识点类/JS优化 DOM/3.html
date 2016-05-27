@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul1"></ul>
+<script>
+    var oul = document.getElementById('ul1');
+    var ali = oul.getElementsByTagName('li');
+    for(var i = 0;i<5000;i++){
+        var oli = document.createElement('li');
+        oul.appendChild(oli);
+    }
+
+    console.time('hello');
+    var len = ali.length;
+    for(var i = 0;i<len;i++){
+        ali[i].innerHTML = 'li';
+    }
+    console.timeEnd('hello');
+////////////////////////////////////////////////////////////////////
+    var oul = document.getElementById('');
+    var oinput = document.getElementById('');
+    var oli = document.getElementById('');
+  //优化后
+    var doc = document;
+    var oul = doc.getElementById('');
+    var oinput = doc.getElementById('');
+    var oli = doc.getElementById('');
+
+    childNodes
+    children
+
+    firstChild
+    firstElementChild
+
+    // var oul = document.getElementById('ul1');
+   // var ali = oul.getElementsByTagName('li');
+    //优化后
+    var ali = document.querySelectorAll('#ul1 li'); //ie8以下不支持
+</script>
+</body>
+</html>

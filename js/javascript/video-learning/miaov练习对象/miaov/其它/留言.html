@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<textarea name="" id="txt1" cols="40" rows="10"></textarea>
+<input id="txt2" type="text"/><input id="btn1" type="button" value="提交"/>
+<script>
+    var otxt1=document.getElementById("txt1");
+    var otxt2=document.getElementById("txt2");
+    var obtn1=document.getElementById("btn1");
+    obtn1.onclick = function(){
+        otxt1.value+=otxt2.value+'\n';
+        otxt2.value = '';
+    }
+    otxt2.onkeydown = function(ev){
+        var oevent = ev||event;
+        if(oevent.keyCode == 13){
+            otxt1.value+=otxt2.value+'\n';
+            otxt2.value = '';
+        }
+    }
+</script>
+</body>
+</html>

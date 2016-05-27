@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="box">
+    <li>
+        <h2>大学一班</h2>
+        <ul>
+            <li>科比</li>
+            <li>詹姆斯</li>
+            <li>安东尼</li>
+        </ul>
+    </li>
+    <li>
+        <h2>高中好友</h2>
+        <ul>
+            <li>小米</li>
+            <li>小明</li>
+            <li>张三</li>
+            <li>李四</li>
+        </ul>
+    </li>
+    <li>
+        <h2>小学朋友</h2>
+        <ul>
+            <li>小妹</li>
+            <li>小红</li>
+        </ul>
+    </li>
+    <li>
+        <h2>大学其他</h2>
+        <ul>
+            <li>立方</li>
+            <li>远方</li>
+            <li>李芳英</li>
+            <li>小玄子</li>
+            <li>大礼服</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oul = document.getElementById("box");
+    var aul = oul.getElementsByTagName("ul");
+    var arrLi = [];//先建立一个数组
+
+    for(var i=0;i<aul.length;i++){
+        var ali = aul[i].getElementsByTagName("li");
+        for(var j=0;j<ali.length;j++){
+          arrLi.push(ali[j]); //将所有的li放入arrLi的数组中
+            alert(arrLi)
+        }
+    }
+
+    for(var i = 0;i<arrLi.length;i++){
+
+        //点击所有li中的一个；
+        arrLi[i].onclick = function(){
+          //  alert(arrLi.length) 14
+
+            //如果不是当前所点击的那个，那么背景颜色就变为空
+            for( var i=0; i<arrLi.length; i++ ){
+                if( arrLi[i] !=this ){
+                    arrLi[i].style.background = '';
+                }
+            }
+
+
+            //背景颜色为空时，点击变为红，再点变为空，再点变为红如此循环；
+            if( this.style.background  == '' ){
+                this.style.background = 'red';
+            }else{
+                this.style.background = '';
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            width: 100px;
+            height: 100px;
+            font-size: 55px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="1"/>
+<input type="button" value="1"/>
+<input type="button" value="1"/>
+<script>
+    var abtn = document.getElementsByTagName("input");
+//    alert(abtn.length)
+    var arr = ['1','2','3'];
+    for(var i=0;i<abtn.length;i++){
+        abtn[i].num = 1;
+        abtn[i].onclick = function(){
+           // arr[this.num]
+            this.value = arr[this.num];
+            this.num++; // this.num++;必须在this.value = arr[this.num];之后
+            if(this.num === arr.length){
+                this.num = 0;
+            }
+        }
+    }
+</script>
+</body>
+</html>

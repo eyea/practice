@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul1"></ul>
+<script>
+    var oul = document.getElementById('ul1');
+    console.time('hello');
+    for(var i = 0;i<5000;i++){
+        var oli = document.createElement('li');
+        oli.innerHTML = 'li';
+        oul.appendChild(oli); //生成oli.innerHTML = 'li'添加到oul.appendChild(oli);之前；
+        // 如果先添加在生成的话，会对重排和重绘产生影响
+    }
+    console.timeEnd('hello');
+
+</script>
+</body>
+</html>

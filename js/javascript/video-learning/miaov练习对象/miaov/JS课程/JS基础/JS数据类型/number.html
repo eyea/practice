@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = '100';
+    //  alert(a+100)  //100100 变成了字符串连接
+
+   // alert(Number(a)+100)  //200
+    var a1 = '';
+   //   alert(Number(a1))  //0
+    var a2 = true;
+  //  alert(Number(a2)) //1
+    var a3 = false;
+  //  alert(Number(a3))   //0
+    var a4 = function(){};
+  //  alert(Number(a4))  //NaN
+    var a5 = [];
+   // alert(Number(a5)) //0
+    var json = {abc:123};
+    //alert(Number(json))  //NaN
+    var a6 = null;
+   // alert(Number(a6)) //0
+    var a7
+    //alert(Number(a7))  //NaN
+    var a8 = undefined;
+    alert(Number(a8));
+</script>
+</body>
+</html>

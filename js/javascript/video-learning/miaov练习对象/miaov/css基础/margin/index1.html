@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 400px;
+            height: 100px;
+            background: blue;
+            padding-top: 100px;
+            /*margin-bottom: 50px;*/
+
+        }
+        #box2{
+            width: 200px;
+            height: 50px;
+            background: red;
+            /*margin-top: 50px;*/
+        }
+        /*
+        外边距的问题
+        1.上下外边距会叠压
+        2.父子级包含的时候子级的margin-top会传递给父级
+        */
+    </style>
+</head>
+<body>
+<!--<div id="box1"></div>-->
+<!--<div id="box2"></div>-->
+
+
+<div id="box1">
+    <div id="box2"></div>
+</div>
+
+</body>
+</html>

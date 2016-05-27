@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="json2.js"></script>
+</head>
+<body>
+<script>
+//    var a = {name:"hello"};
+//    var b = a;
+//    b.name = "he";
+//    alert(a.name); //he
+
+/*
+var a = {name:"hello"};
+var b = {};
+for(var attr in a){
+    b[attr] = a[attr]
+}
+b.name = "he";
+alert(a.name); //hello
+*/
+
+//新方法
+/*
+    var a = {name:"hello world"};
+    var str = JSON.stringify(a);
+    var b = JSON.parse(str);
+    b.name = 'he';
+    alert(a.name); //hello world
+    */
+
+
+var a = {name:{age:100}};
+var str = JSON.stringify(a);
+var b = JSON.parse(str);
+b.name.age = 30;
+alert(a.name.age); //100
+
+</script>
+</body>
+</html>

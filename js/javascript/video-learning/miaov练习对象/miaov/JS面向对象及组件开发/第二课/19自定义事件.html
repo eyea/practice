@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1">div1</div>
+<span id="span1">span1</span>
+<script>
+    var oDiv = document.getElementById('div1');
+    var oSpan = document.getElementById('span1');
+    bindEvent(oDiv,'click',function(){alert(1)});
+    bindEvent(oDiv,'click',function(){alert(2)});
+    bindEvent(oSpan,'show',function(){alert(3)});
+    fireEvent(oSpan,'show');
+    function bindEvent(obj,events,fn){
+        //obj : 楼层
+        //events : 书架
+        //fn : 一本书
+
+        obj.listeners = obj.listeners || {};
+        obj.listeners[events] = obj.listeners[events] || [];
+        obj.listeners[events].push( fn );
+
+
+        if(obj.addEventListener){
+            obj.addEventListener(events,fn,false);
+        }else{
+            obj.attachEvent('on'+events,fn);
+        }
+    }
+    function fireEvent(obj,events){  //主动触发自定义事件
+       for(var i = 0;i<obj.listeners[events].length;i++){
+           obj.listeners[events][i]();
+       }
+    }
+</script>
+</body>
+</html>

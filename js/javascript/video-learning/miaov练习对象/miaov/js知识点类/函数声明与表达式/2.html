@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+   //区别
+   //1.函数表达式可以直接后面加括号执行，而函数声明是不可以的；
+   //2.函数声明可以可以被提前解析出来的；
+//    function aaa(){
+//        alert(123);
+//    }();
+
+//    var a = function aaa(){
+//        alert(123);//123
+//    }();
+
+
+//~function aaa(){
+//        alert(111);//111
+//    }()
+
+   /*
+    if(true){
+        function aaa(){
+            alert(111);
+        }
+    }else{
+        function aaa(){
+            alert(222);
+        }
+    }
+    aaa();
+    */
+
+   if(true){
+       var a = function aaa(){
+           alert(111);
+       }
+   }else{
+       var a = function aaa(){
+           alert(222);
+       }
+   }
+   a();
+</script>
+</body>
+</html>

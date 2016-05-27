@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str = 'aaaldkflsssskjussssssbhgfssssss';
+    var arr = str.split('');
+//    document.body.innerHTML = arr;
+     str = arr.sort().join('');
+    document.body.innerHTML = str;
+
+    var value = '';
+    var index = 0;
+
+    var re = /(\w)\1+/g;
+
+    str.replace(re,function($0,$1){
+
+//        alert($0,$1);
+//        alert($1);
+        if(index<$0.length){
+            index = $0.length;
+//            alert(index);
+            value = $1;
+        }
+
+    });
+ alert('最多的字符:'+value+',重复的次数:'+index);
+
+</script>
+</body>
+</html>

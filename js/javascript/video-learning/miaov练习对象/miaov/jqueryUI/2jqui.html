@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="jquery-ui.css">
+<style>
+#div1{ width:100px; height:100px; background:red;}
+#div1.box{ background:blue; font-size:100px;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$(function(){
+	$('input').click(function(){
+//		$('#div1').animate({width : 400 , height : 400},1000,'easeOutBounce');
+		
+		$('#div1').addClass('box',1000,'linear');
+		
+		//$('#div1').removeClass('box',1000,'linear');
+		
+//		$('#div1').animate({backgroundColor : 'blue'},1000,'easeOutBounce');
+		
+	});
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="点击">
+<div id="div1">
+a
+</div>
+</body>
+</html>

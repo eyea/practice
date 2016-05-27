@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        div {padding: 40px;}
+        #div1 {background:red}
+        #div2 {background:green}
+        #div3 {background:blue; position: absolute; top: 300px;}
+    </style>
+    <script>
+        window.onload = function() {
+
+            /*
+             事件冒泡 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制
+             */
+
+            var oDiv1 = document.getElementById('div1');
+            var oDiv2 = document.getElementById('div2');
+            var oDiv3 = document.getElementById('div3');
+
+            function fn1() {
+                alert( this.id );
+            }
+//            oDiv1.addEventListener('click',fn1,false);
+//            oDiv2.addEventListener('click',fn1,false);
+//            oDiv3.addEventListener('click',fn1,false);
+
+            oDiv1.addEventListener('click',fn1,true);
+            oDiv2.addEventListener('click',fn1,true);
+            oDiv3.addEventListener('click',fn1,true);
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+</body>
+</html>

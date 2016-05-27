@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body style="height: 2000px">
+<div id="div1"></div>
+<script>
+    document.onmousemove = function(ev){
+        var oevent = ev||event;
+        var odiv  = document.getElementById("div1");
+        var scrolltop = document.documentElement.scrollTop||document.body.scrollTop;
+        var scrollleft = document.documentElement.scrollLeft||document.body.scrollLeft;
+        odiv.style.left = oevent.clientX+scrollleft+"px";
+        odiv.style.top = oevent.clientY+scrolltop+"px";
+    }
+</script>
+</body>
+</html>

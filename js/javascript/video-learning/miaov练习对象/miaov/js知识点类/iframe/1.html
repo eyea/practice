@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="改变" id="input1"/>
+<iframe src="1-1.html" frameborder="0" id="iframe1"></iframe>
+<script>
+    var oinput = document.getElementById('input1');
+    var oiframe = document.getElementById('iframe1');
+    oinput.onclick = function(){
+        //所有浏览器都支持的
+        //oiframe.contentWindow.document.getElementById('div1').style.color = 'red';
+        //ie6,7不支持
+        oiframe.contentDocument.getElementById('div1').style.color = 'blue';
+    }
+</script>
+</body>
+</html>

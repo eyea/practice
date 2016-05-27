@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text"/>
+<input type="button" value="加密"/>
+<div id="div1"></div>
+<script>
+    var abtn = document.getElementsByTagName('input');
+    var odiv = document.getElementById("div1");
+    abtn[1].onclick = function(){
+        var str = abtn[0].value;
+        var str1 = '';
+        for(var i = 0;i<str.length;i++){
+            str1 += String.fromCharCode(str.charCodeAt(i)-12) + ' ';
+        };
+        odiv.innerHTML = str1;
+    }
+</script>
+</body>
+</html>
