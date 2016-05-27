@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clipboard</title>
+</head>
+<body>
+<!-- Target -->
+<input id="foo" placeholder="" ="请输入内容">
+
+<!-- Trigger -->
+<button class="btn" data-clipboard-target="#foo">
+    <input type="submit" value='点击复制'>
+</button>
+
+<!-- 222222222 -->
+<!-- Target -->
+<br><br>
+<textarea id="bar">Mussum ipsum cacilds...</textarea>
+
+<!-- Trigger -->
+<button class="btn" data-clipboard-action="cut" data-clipboard-target="#bar">
+    Cut to clipboard
+</button>
+<!-- 33333333333333333333 -->
+<!-- Trigger -->
+<button class="btn" data-clipboard-text="Just because you can doesn't mean you should — clipboard.js">
+    Copy to clipboard
+</button>
+
+
+	<script src='clipboard.js'></script>
+	<script>
+		window.onload = function(){
+			var clipboard = new Clipboard('.btn');
+			// clipboard.on('success', function(e) {
+			//     console.info('Action:', e.action);
+			//     console.info('Text:', e.text);
+			//     console.info('Trigger:', e.trigger);
+
+			//     e.clearSelection();
+			// });
+
+			// clipboard.on('error', function(e) {
+			//     console.error('Action:', e.action);
+			//     console.error('Trigger:', e.trigger);
+			// });			
+		}
+	</script>
+</body>
+</html>
