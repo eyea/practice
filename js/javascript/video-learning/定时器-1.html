@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器--1</title>
+	<style>
+		#btn1{padding: 10px;cursor: pointer;}
+		#div1{width: 60px;height: 60px;background-color: gray;border: 1px solid gray; border-radius: 50%;position: absolute;top: 60px;left: 20px}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn1" value="向前->">
+	<div id="div1"></div>
+
+	<script>
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oDiv1 = document.getElementById('div1');
+			// timer = null;
+
+			// 封装一个getStyle()函数
+			function getStyle(obj,attr){
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr] ;
+			}
+
+			//开始运动
+			oBtn1.onclick = doMove; //不要带括号
+
+			// oBtn1.onclick = function (){
+			// 	// alert( parseInt(getStyle(oDiv1,'width')) );  //换成证书
+
+			// 	clearInterval(oDiv1.timer);  //先reset 防止多次点击hold不住  oDiv1.timer 定义在div上的定时器更好
+				
+			// 	oDiv1.timer = setInterval(function(){
+			// 		var speed = parseInt(getStyle(oDiv1,'left')) + 5;
+
+			// 		if(speed > 500){
+			// 			speed = 500 ;
+			// 		}
+
+			// 		oDiv1.style.left = speed +'px' ;
+
+			// 		if(speed == 500){
+			// 			clearInterval(oDiv1.timer);
+			// 			// alert(speed);
+			// 		}
+			// 	},50);
+				
+			// };
+
+			// 封装运动函数 start
+
+			function doMove(){
+				// alert( parseInt(getStyle(oDiv1,'width')) );  //换成证书
+
+				clearInterval(oDiv1.timer);  //先reset 防止多次点击hold不住  oDiv1.timer 定义在div上的定时器更好
+				
+				oDiv1.timer = setInterval(function(){
+					var speed = parseInt(getStyle(oDiv1,'left')) + 5;
+
+					if(speed > 500){
+						speed = 500 ;
+					}
+
+					oDiv1.style.left = speed +'px' ;
+
+					if(speed == 500){
+						clearInterval(oDiv1.timer);
+						// alert(speed);
+					}
+				},50);				
+			};
+			// 封装运动函数 end
+
+
+		}
+	</script>
+</body>
+</html>
