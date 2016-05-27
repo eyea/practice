@@ -24,7 +24,9 @@
 			}
 
 			//开始运动
-			oBtn1.onclick = doMove; //不要带括号
+			oBtn1.onclick = function(){
+				doMove();
+			}; //不要带括号
 
 			// oBtn1.onclick = function (){
 			// 	// alert( parseInt(getStyle(oDiv1,'width')) );  //换成证书
