@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <title>登录</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/us.css" />
+  <link rel="stylesheet" href="css/us-ui.css" />
+  <link rel="stylesheet" href="css/us-font.css" />
+  <link rel="stylesheet" href="css/us-login.css" />
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.css"/>
+
+</head>
+
+<body>
+  <!-- header start -->
+  <div id="header">
+    <nav class="navbar navbar-default" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="javascript:;">欢迎用户</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">登录</a></li>
+          <li><a href="#"><span class="col1">免费注册</span></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人中心<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">密码管理</a></li>
+              <li><a href="#">我要挂货</a></li>
+              <li><a href="#">个人记录</a></li>
+              <li><a href="#">个人信箱</a></li>
+            </ul>
+          </li>
+          <li><a href="#">手机版</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+  </div>
+  <!-- header end -->
+
+  <!-- top start -->
+  <div id="top" class="clearfix">
+  </div>
+  <!-- top end -->
+
+  <!-- content start-->
+  <div id="content" class="clearfix">
+    <!-- head.html end -->
+    <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-sm-3 col-sm-offset-1 col-md-4 col-md-offset-1 col-lg-4" style="background:#f4f4f4; height:200px; margin-top: 30px;">
+           
+         </div>
+          <div class="col-xs-12 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-2 col-lg-4">
+            <div role="tabpanel" id="login">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                   <li role="presentation" class="active">
+                       <a href="#log" aria-controls="log" role="tab" data-toggle="tab">登录</a>
+                   </li>
+                   <li role="presentation">
+                       <a href="#reg" aria-controls="reg" role="tab" data-toggle="tab">注册</a>
+                   </li>
+                </ul>
+                 <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="log">
+                     <form action="" method="POST" role="form" class="form">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="" placeholder="用户名">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="" placeholder="密码">
+                        </div>
+                         <div class="form-group">
+                          <input type="text" class="form-control" id="" placeholder="验证码">
+                          <button type="" class="code" id="log-code">获取验证码</button>
+                          <img src="img/slide-1.png" class="code-img" height="80" width="150">
+                        </div>
+                       <div class="sub">
+                         <button type="submit" class="btn btn-primary">登录</button>
+                       </div>
+                       <div class="passwords">
+                         <div class="checkbox">
+                           <label>
+                             <input type="checkbox" value="">
+                             记住密码
+                           </label>
+                         </div>
+                         <a class="forget" href="javascript:;">忘记密码?</a>
+                       </div>
+                     </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="reg">
+                      <form action="" method="POST" role="form" class="form">           
+                        <div class="form-group">
+                         <input type="text" class="form-control" id="" placeholder="手机号码">
+                         <button type="" class="code" id="reg-code">获取验证码</button>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="" placeholder="验证码">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="" placeholder="密码">
+                        </div>
+                        <div class="sub">
+                          <button type="submit" class="btn btn-primary">立即注册</button>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      <!-- foot.html start -->
+  </div>
+  <!-- content end -->
+
+  <!--Footer-part-->
+  <div id="footer">
+    <div class="container link">
+      <ul class="clearfix">
+        <li><a href="#">返回首页</a></li>
+        <li><a href="#">关于我们</a></li>
+        <li><a href="#">商家入驻</a></li>
+        <li><a href="#">广告合作</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li><a href="#">隐私条框</a></li>
+        <li><a href="#">友情链接</a></li>
+      </ul> 
+      <p>CopyRight © 2007-2016 XXX有限公司 苏ICP备09011225号 NewPower Co. 版权所有 经营许可证编号：苏B2-20120395 </p>      
+    </div>
+  </div>
+  <!--end-Footer-part-->
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script> 
+  <script src="js/us-main.js"></script> 
+</body>
+
+</html>
+<!-- foot.html end -->

@@ -1,0 +1,24 @@
+/*US网站页面说明*/
+
+model.html			模板文件	完成1
+header.html			切的头部	完成1	
+footer.html			切的尾部	完成1
+
+college-life.html		校园生活	完成1
+college-life-wind.html 		校园风云	完成1
+college-life-joke		校园八卦	完成1
+college-life-msg		校园资讯	完成1
+college-buy.html		校园易购	完成1
+college-buy-gather		聚福利		完成1
+college-buy-give		闲互送		完成1
+college-round.html		校园周边	完成1
+srd-activity.html		有活动		完成1
+srd-business.html		口碑商		完成1
+srd-easy.html			便生活		完成1
+feedback.html			回馈		完成1
+login.html			注册登录	完成1
+index.html			主页		
+note.html			留言墙		完成1
+pop.html			弹出层		完成1
+person.html			个人中心
+article-detatil.html		文章详情	完成1	

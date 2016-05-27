@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <title>USxian</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/us.css" />
+  <link rel="stylesheet" href="css/us-ui.css" />
+  <link rel="stylesheet" href="css/us-private.css" />
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.css"/>
+</head>
+
+<body>
+  <!-- header start -->
+  <div id="header">
+    <nav class="navbar navbar-default" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="container">
+          <div class="row">
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="javascript:;">欢迎登录</a></li>
+              <li><a href="javascript:;"><span class="icon icon-user"></span>飞鱼</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="icon icon-envelope"></span>&nbsp个人中心<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">我的小xian</a></li>
+                  <li><a href="#">买到的宝贝</a></li>
+                  <li><a href="#">订单查询</a></li>
+                  <li><a href="#">积分商城</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">登录</a></li>
+              <li><a href="#"><span class="col1">免费注册</span></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人中心<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">密码管理</a></li>
+                  <li><a href="#">我要挂货</a></li>
+                  <li><a href="#">个人记录</a></li>
+                  <li><a href="#">个人信箱</a></li>
+                </ul>
+              </li>
+              <li><a href="#">手机版</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+  </div>
+  <!-- header end -->
+
+  <!-- top start -->
+  <div id="top" class="clearfix">
+    <div class="container">
+      <div class="row top-section-lg">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 top-section clearfix">
+          <img class="qr pull-left" src="img/qr.png" alt="qr-code" />
+          <div class="prompt pull-left">
+            <p class="text-center">微信扫我</p>
+            <p>获得最新消息</p>
+          </div>
+        </div>
+        <img class="logo pull-left" src="img/logo-lg.png" alt="logo" />
+        <form id="search" action="" method="POST" role="form" class="form col-xs-12 col-sm-4 col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="" placeholder="点击查询">
+            <button type="submit" class="btn btn-primary"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- top end -->
+
+  <!-- navbar start -->
+  <nav class="navbar navbar-default g-navbar" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+        <span class="sr-only">US校园</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex2-collapse">
+      <div class="container g-nav">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">校园生活</a></li>
+          <li><a href="#">校园易购</a></li>
+          <li><a href="#">校园周边</a></li>
+          <li><a href="#">留言墙</a></li>
+        </ul>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+  <!-- navbar end -->
+  <div id="carousel-slide" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-slide" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-slide" data-slide-to="1" class=""></li>
+      <li data-target="#carousel-slide" data-slide-to="2" class=""></li>
+      <li data-target="#carousel-slide" data-slide-to="3" class=""></li>
+      <li data-target="#carousel-slide" data-slide-to="4" class=""></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img data-src="img/slide/1.jpg" alt="First slide" src="img/slide/1.jpg" />
+      </div>
+      <div class="item">
+        <img data-src="img/slide/2.jpg" alt="Second slide" src="img/slide/2.jpg" />
+      </div>
+      <div class="item">
+        <img data-src="img/slide/3.jpg" alt="Third slide" src="img/slide/3.jpg" />
+      </div>
+      <div class="item">
+        <img data-src="img/slide/4.jpg" alt="Fourth slide" src="img/slide/4.jpg" />
+      </div>
+      <div class="item">
+        <img data-src="img/slide/5.jpg" alt="Fifth slide" src="img/slide/5.jpg" />
+      </div>
+    </div>
+      <a class="left carousel-control" href="#carousel-slide" data-slide="prev"><span class="icon icon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#carousel-slide" data-slide="next"><span class="icon icon-chevron-right"></span></a>
+  </div>
+  <!-- content start -->
+  <div id="content-index" class="container">
+    <div class="row">
+      <div class="container col-xs-8 col-sm-8 col-md-8 col-lg-8 g-content-left">
+        <!-- 最新资讯 -->
+        <div class="section-lg">
+          <div class="us-title">
+            <h4 class="widget-title"><span class="icon icon-rss"></span>&nbsp最新资讯</h4>
+            <a class="more">more<span class="icon icon-circle-arrow-right"></span></a>
+          </div>
+          <!-- 资讯 -->
+          <div class="section">
+            <div class="short-ifo clearfix">
+              <img class="g-avatar pull-left"src="img/content/users/user.png" alt="user" />
+              <div class="pull-left">
+                <p class="short-ifo-title">&nbsp<span>天天魔盗团@</span><strong>2015-09-21&nbsp&nbsp14:25</strong></p>
+                <p class="short-ifo-sum">
+                  <span>【社团纳新】</span>我们社团最近新招一批盗窃社员
+                </p>
+              </div>
+            </div>
+            <div class="short-ifo-msg">
+              <span class="triangle-up"></span>
+              <p>最近格鲁和他的小黄人们动作很大啊，但是作为黑大天天魔盗团的团伙们岂能容他们乱搞！他们差点就把我们家门口的那段长城偷走了！所以我们打算去偷自由女神像，急需像电脑前这样的你帮助我们完成这个大业，这样就可以比过格鲁他们了... </p>
+            </div>
+          </div>
+          <!-- 列表 -->
+          <div class="section clearfix">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 g-content-left">
+                <div class="ifo-list">
+                  <div class="ad-sm">
+                    <img src="img/ad/ad-sm1.png" class="img-responsive" alt="ad1">
+                  </div>
+                  <ul class="ifo-list-left">
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="ifo-list">
+                  <div class="ad-sm">
+                    <img src="img/ad/ad-sm2.png" class="img-responsive" alt="ad2">
+                  </div>
+                  <ul class="ifo-list-right">
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        [<strong>校园新闻</strong>]<span>某某学校不可告人的秘密的秘密秘密密m</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 最新兑换 -->
+        <div class="section-lg">
+          <div class="us-title">
+            <h4 class="widget-title"><span class="icon icon-tags"></span>&nbsp最新抢换</h4>
+            <a class="more">more<span class="icon icon-circle-arrow-right"></span></a>
+          </div>
+          <!-- 商品详情 -->
+          <div class="section">
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products1.png" src="img/content/products/products1.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>大宝SOD蜜一箱</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products2.png" src="img/content/products/products2.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>手机一个</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products3.png" src="img/content/products/products3.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>CD一张</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products4.png" src="img/content/products/products4.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>相机一台</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products1.png" src="img/content/products/products1.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>大宝SOD蜜一箱</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products2.png" src="img/content/products/products2.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>手机一个</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products3.png" src="img/content/products/products3.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>CD一张</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="thumbnail product">
+                  <a href="#" class="pic">
+                    <img data-src="img/content/products/products4.png" src="img/content/products/products4.png" alt="products1">
+                  </a>
+                  <div class="caption product-detail">
+                    <h5>[<strong>闲置</strong>]<span>相机一台</span></h5>
+                    <p>闲置或便宜卖</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <!-- 分享 -->
+        <div class="row">
+          <div class="shares"></div>
+        </div>
+        <!-- 最新留言 -->
+        <div class="row">
+          <div class="option-lg">
+            <div class="us-title">
+              <h4 class="widget-title">最新留言</h4>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 note-left" >
+              <ul class="users">
+                <li><a href="#"><img src="img/content/users/user.png"></a></li>
+                <li><a href="#"><img src="img/content/users/user.png"></a></li>
+                <li><a href="#"><img src="img/content/users/user.png"></a></li>
+                <li><a href="#"><img src="img/content/users/user.png"></a></li>
+                <li><a href="#"><img src="img/content/users/user.png"></a></li>
+              </ul>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 note-right" >
+              <ul class="notes">
+                <li>
+                  <span class="point"></span>
+                  <div class="msg">
+                    <span class="triangle"></span>
+                    <div class="ifo">
+                      <p class="ifos">@游戏王：我了个大X，这游戏尼玛也太好玩了吧http://xxx.com</p>
+                      <p class="timer"><strong>2015/10/10</strong>14:00</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span class="point"></span>
+                  <div class="msg">
+                    <span class="triangle"></span>
+                    <div class="ifo">
+                      <p class="ifos">@游戏王：我了个大X，这游戏尼玛也太好玩了吧http://xxx.com</p>
+                      <p class="timer"><strong>2015/10/10</strong>14:00</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span class="point"></span>
+                  <div class="msg">
+                    <span class="triangle"></span>
+                    <div class="ifo">
+                      <p class="ifos">@游戏王：我了个大X，这游戏尼玛也太好玩了吧http://xxx.com</p>
+                      <p class="timer"><strong>2015/10/10</strong>14:00</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span class="point"></span>
+                  <div class="msg">
+                    <span class="triangle"></span>
+                    <div class="ifo">
+                      <p class="ifos">@游戏王：我了个大X，这游戏尼玛也太好玩了吧http://xxx.com</p>
+                      <p class="timer"><strong>2015/10/10</strong>14:00</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <span class="point"></span>
+                  <div class="msg">
+                    <span class="triangle"></span>
+                    <div class="ifo">
+                      <p class="ifos">@游戏王：我了个大X，这游戏尼玛也太好玩了吧http://xxx.com</p>
+                      <p class="timer"><strong>2015/10/10</strong>14:00</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="option-lg">
+            <div class="us-title">
+              <h4 class="widget-title">最新留言</h4>
+            </div>
+            <ul class="new-critic">
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+              <li>@超好看：这部动漫我看过！超好看！</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content end -->
+
+  <!-- back to top start -->
+  <div id="return"><span class="icon icon-circle-arrow-up"></span></div>
+  <!-- back to top end -->
+
+  <!--Footer-part-->
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+          <div class="link clearfix">
+            <ul class="link1 clearfix">
+              <li><a href="#">返回首页<span>-</span></a></li>
+              <li><a href="#">关于我们<span>-</span></a></li>
+              <li><a href="#">商家入驻<span>-</span></a></li>
+              <li><a href="#">广告合作<span>-</span></a></li>
+              <li><a href="#">联系我们<span>-</span></a></li>
+              <li><a href="#">隐私条框<span>-</span></a></li>
+              <li><a href="#">友情链接<span>-</span></a></li>
+            </ul> 
+            <ul class="link2 clearfix">
+              <li><a href="#">黑龙江大学官网</a></li>
+              <li><a href="#">支付宝</a></li>
+              <li><a href="#">微信钱包</a></li>
+              <li><a href="#">腾讯</a></li>
+            </ul>
+            <div class="pay clearfix">
+              <a class="wepay" href="#"><img src="img/wepay.png" class="img-responsive" alt="微信支付"></a>
+              <a class="alipay" href="#"><img src="img/alipay.png" class="img-responsive" alt="阿里支付"></a>
+            </div>
+            <p>Copyright © 2015 usxian.com. All Rights Reserved. 黑ICP备12345678号-1 微信号：usxian </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+          <img class="wechat" src="img/wechat.png" alt="官方微信">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--end-Footer-part-->
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script> 
+  <script src="js/us-main.js"></script>
+</body>
+
+</html>
