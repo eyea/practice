@@ -21,7 +21,29 @@
 				}
 				arrShake.push(0);
 				// alert(arrShake);
-				doMove(oImg,arrShake,12,180);
+				// doMove(oImg,arrShake3,12,180);
+
+				// var speed = parseInt(getStyle(oImg,'left')) + 10 ;  // 如果放在这里，定时器执行一次 为啥
+
+				clearInterval(oImg.timer);
+
+				oImg.timer = setInterval(function(){
+					var speed = parseInt(getStyle(oImg,'left')) + 10 ;
+					if(speed == 300){
+						speed = 300;
+					}
+					oImg.style.left = speed +'px' ;
+
+					if(speed == 300){
+						clearInterval(oImg.timer);
+					}
+
+
+				},50);
+
+
+
+
 			};
 		}
 	</script>
