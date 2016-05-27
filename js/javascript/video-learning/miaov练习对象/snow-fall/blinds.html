@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>百叶窗</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			li{list-style-type: none;}
+			#ul1{width: 300px;height: auto;float: left;border-top: 1px solid #000;margin: 20px;}
+			li{width: :100%;height: 30px;overflow: hidden;position: relative;border-bottom: 1px dashed #333333;line-height: 30px;}
+			li div{position: absolute;top: -30px;transition: 500ms;}
+			li div p{height: 30px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var ul=document.getElementById("ul1");
+				toshow(ul);
+				
+				function toshow(obj){
+					var divs=obj.getElementsByTagName("div");
+					var offsetT=-30;
+					var div_num=0;
+					
+					setInterval(function(){
+						
+						div_num=0;
+						
+						offsetT*=-1;
+						var timer=setInterval(function(){
+							if(div_num<divs.length){
+								divs[div_num].style.top=divs[div_num].offsetTop+offsetT+"px";
+							}else{
+								clearInterval(timer);
+							}
+							div_num++;
+//							divs[div_num].style.top=
+						},100);
+					},3000);
+				}
+			}
+		</script>
+		
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>
+				<div>
+					<p>1111111112</p>
+					<p>请等待3s,会自动切换</p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>1111111113</p>
+					<p>1111111114</p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>1111111115</p>
+					<p>1111111116</p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>1111111117</p>
+					<p>1111111118</p>
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>1111111119</p>
+					<p>1111111110</p>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>

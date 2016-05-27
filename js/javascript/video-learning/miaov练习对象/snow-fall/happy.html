@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" src="js/requestNextAnimationFrame.js" ></script>
+		<style>
+		    body{margin: 0;overflow: hidden;}
+			#panal1{}
+			.bkg{position: absolute;left: 0;top: 0px;z-index: -5;transition: opacity 2s;}
+			.snow{position: absolute;transition: left 0.1s,top 0.1;}
+			.words{font-family: "幼圆";font-size: 100px;color: #CCCCCC;text-shadow: 5px 5px 5px #000000;width: 0;height: 40%;
+			      overflow: hidden;transition: width 4s;}
+		</style>
+	</head>
+	<body>
+		<audio src="audio/birth.mp3" controls="controls" style="display: none" autoplay="autoplay" loop="loop"></audio>
+		<div id="panal1" style="width: 100%;">
+			
+			<img class="bkg" width="100%" height="100%" src="imgs/1.jpg" style="opacity: 1;"/>
+			<img class="bkg" width="100%" height="100%" src="imgs/2.jpg" style="opacity: 0;"/>
+			<img class="bkg" width="100%" height="100%" src="imgs/3.jpg" style="opacity: 0;"/>
+			<div id="snow_box"></div>
+		    <div class="words">
+		    	<p style="margin-left: 300px;margin-top: 250px;"><nobr>愿天下所有的人</nobr></p>
+		    </div>
+		    <div class="words">
+		    	<p style="margin-left: 800px;"><nobr>平安快乐幸福</nobr></p>
+		    </div>
+		</div>
+		<script>
+		
+		    for(var i=0;i<300;i++){
+		    	$("#snow_box").append('<img class="snow" src="imgs/snow1.png" />');
+		    }
+		
+		    var panal=document.getElementById("panal1");
+		    var w=1920;
+			var h=1080;
+			panal.style.height=h+"px";
+            var speed=new Array();
+			panal1();
+			
+			function panal1(){
+				var snow = document.getElementsByClassName("snow");
+				for(var i=0;i<snow.length;i++){
+					var num=parseInt(Math.random()*3+2);
+					snow[i].width=num*3;
+				}
+				for(var i=0;i<snow.length;i++){
+					var num=parseInt(Math.random()*w+1);
+					snow[i].style.left=num+"px";
+				}
+				for(var i=0;i<snow.length;i++){
+					var num=parseInt(Math.random()*h+1);
+					snow[i].style.top=num+"px";
+				}
+				for(var i=0;i<snow.length;i++){
+					var num=parseInt(Math.random()*2+1);
+					speed[i]=num;
+				}
+			}
+			
+			var nowImg=0;;
+			setInterval(function(){
+				var num=parseInt(Math.random()*3);
+				var bkg=document.getElementsByClassName("bkg");
+				bkg[nowImg].style.opacity="0";
+				bkg[num].style.opacity="1";
+				nowImg=num;
+			},2000);
+			
+			animate();
+			function animate(){
+				w=1920;
+				h=1080;
+				var snow = document.getElementsByClassName("snow");
+				for(var i=0;i<snow.length;i++){
+						var L =snow[i].offsetLeft;
+						var T =snow[i].offsetTop;
+							snow[i].style.left=L-2+"px";
+				         	snow[i].style.top=T+speed[i]+"px";
+						
+						if(L<-30){
+							snow[i].style.left=w+"px";
+						}
+						
+						if(T>h){
+							snow[i].style.top="-30px";
+						}
+				}
+				requestNextAnimationFrame(animate);
+			}
+			
+			
+			window.onmousedown=function(){
+				var words=document.getElementsByClassName("words");
+				words[0].style.width="100%";
+				setTimeout(function(){
+					words[1].style.width="100%";
+				},1000);
+			}
+		</script>
+	</body>
+</html>
