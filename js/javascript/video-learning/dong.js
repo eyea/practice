@@ -34,7 +34,7 @@
 
 // 封装一个shake()函数 start
 //  说明  obj--动画对象 ； attr--属性left top ； endFn--回调函数
-function shake(obj,attr,endFn){
+;function shake(obj,attr,endFn){
 
 	var arrShake = [];
 	var num = 0 ;
