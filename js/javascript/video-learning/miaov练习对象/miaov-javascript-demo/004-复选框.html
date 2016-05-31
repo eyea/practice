@@ -13,11 +13,13 @@ window.onload = function (){
 	var ainput = document.getElementsByTagName("input");
 	oBtn.onclick = function (){
 		for(i =0; i<ainput.length; i++){
-			if(ainput[i].checked == true){
-				ainput[i].checked = false;
-			}else{
-				ainput[i].checked = true;
-			}
+			// if(ainput[i].checked == true){
+			// 	ainput[i].checked = false;
+			// }else{
+			// 	ainput[i].checked = true;
+			// }
+			ainput[i].checked = !ainput[i].checked;
+
 		}
 	}
 }
