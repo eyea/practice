@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+</head>
+<body>
+	<script>
+		var arr = [1,2,3,4,5,4];
+
+		for(var i = 0;i<arr.length;i++){
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[i]==arr[j]){
+					arr.splice(j,1); // 干掉第j个，干一个 1
+					j--;  //注意splice会改变数组长度，j<arr.length会减少所以j--；
+					//其实这里可以直接 arr.pop(j)
+				}
+			}
+		};
+		alert(arr);  //1,2,3,4,5
+	</script>
+</body>
+</html>
