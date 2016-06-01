@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 500px;height: 180px;border: 6px solid gray; 
+			text-align: center;margin: 0 auto;
+			padding: 20px;
+			font-size: 20px;
+		}
+		#div2{
+			margin-top: 20px;
+			height: 60px;
+		}
+		#div2 input{
+			height: 20px;
+			line-height: 20px;
+		}
+		span{color: red}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">
+实现思路：
+
+1: 针对IE：IE有个zoom属性。虽然经常我们用它来清浮动什么的。但是它在缩放元素上也是很强大的。eg：被设置zoom:0.5的元素会以该元素的左上角为原点在直接被缩小一半，所占据的文档流内体积也会减少一半（IE7和8+对zoom后的元素的margin值理解不同可以注意下，不过单纯缩放元素时不太需要用到）。
+<!-- 
+firefox下呢，就可以使用css3的transform:scale()。（需要额外设置transform-origin:0 0为缩放原点）。
+
+另外zoom也被webkit支持，scale还是zoom请自行选择~
+
+2. 接下来我们就可以按设计稿直接切成成一个巨大无比的1920*1000的页面。
+
+3. 然后获取用户的当前窗口尺寸，eg当前窗口宽1200，那么我们需要缩放的比例 zoom=1200/1920=0.625。然后把我们的主显示的父框缩小0.625倍就可以啦~（当然为了高度不出滚动条，高度的尺寸也要纳入计算范围）
+
+是不是很简单呢？以后遇到会影响内容浏览的大页面的时候 可以考虑用这种方法做一个缩放哦~	 -->	
+		</p>
+		<!-- <a id="alink" href="javascript:;"><<收缩</a> -->
+	</div>
+	<div id="div2">
+		<input type="text">
+		<input type="button" value="查询">
+	</div>
+	<script>
+		window.onload = function(){
+			var aDiv = document.getElementById('div1');
+			var oP = document.getElementById('p1');
+			var oAlink = document.getElementById('alink');
+			var aInput = document.getElementsByTagName('input');
+			var str = oP.innerHTML;
+			var flag = true;
+			// oAlink.onclick = function(){
+			// 	if(flag){
+			// 		oP.innerHTML = str.substring(1,20);
+			// 		oAlink.innerHTML = '展开>>'	;	
+			// 	}else{
+			// 		oP.innerHTML = str;
+			// 		oAlink.innerHTML = '<<收缩';
+			// 	}
+			// 	flag = !flag;
+			// };
+			// 搜索功能
+			aInput[1].onclick = function(){
+				var sword = aInput[0].value;
+				oP.innerHTML = oP.innerHTML.split(sword).join('<span>'+sword+'</span>');
+			}
+
+		}
+	</script>
+</body>
+</html>
