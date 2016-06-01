@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sort</title>
+</head>
+<body>
+	<script>
+		var arr = [1,2,38,3,4,5];
+
+		// alert(arr.reverse());  // 倒叙
+		//alert(arr.sort()); // 1,2,3,38,4,5  sort是按照字符串来排序的
+		arr.sort(function(a,b){
+			return a-b;
+		});
+		// alert(arr); //正确的排序哦
+
+		var arrWidth = ['12px','987px','3px'];
+		arrWidth.sort(function(a,b){
+			return parseInt(a) - parseInt(b);
+		});
+		// alert(arrWidth);
+
+		// 随机排序
+		var arr1 = [1,2,3,4,5,6,7];
+		arr1.sort(function(a,b){
+			return Math.random()-0.5; //这里必须减去个0.5 要不然就是倒叙的
+		});
+		// alert(arr1);
+
+		// concat
+		
+		alert(arr.concat(arr1));
+
+	</script>
+</body>
+</html>
