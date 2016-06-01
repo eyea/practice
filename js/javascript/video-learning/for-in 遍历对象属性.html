@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for-in 遍历对象属性</title>
+</head>
+<body>
+
+<div style="height: 30px;width: 980px;background-color: #ccc;color: white;">
+	json 不可以是用for循环可以使用for-in循环
+	数组 都可以用
+</div>
+	<script>
+		var str = '';
+		var str1 = ''; 
+		var num = 0;
+		var num1  = 0;
+		for(var attr in window){
+			str += num + '.' + attr + ":" +window[attr] + '<br/>';
+
+			num ++;
+		}
+		// document.body.innerHTML = str ;
+		for(var attr in document){
+			str1 += num1+'.'+attr+":"+document[attr]+'<br/>';
+			num1 ++;
+		};
+		document.body.innerHTML += str1;
+	</script>
+
+</body>
+</html>
