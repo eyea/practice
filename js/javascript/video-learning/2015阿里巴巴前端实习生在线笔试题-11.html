@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		div{
+			width: 60px;
+			height: 60px;
+			background-color: black;
+			color: white;
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 60px;
+			text-align: center;
+			/*float: left;*/
+			display: inline-block;
+			_display:inline;
+			margin-right: 10px;
+		}
+		/*另外一种答案*/
+			/**base style**/
+			div{
+			  background:#000;
+			  color:#fff;
+			  height:50px;
+			  width:50px;
+			  text-align:center;
+			  line-height:50px;
+			}
+
+			/**start here**/
+			main{
+			  text-align:center;
+			}
+			div{
+			  display:inline-block;
+			  _display:inline;/*hank IE*/
+			  _zoom:0;/*hank IE*/
+			}		
+	</style>
+</head>
+<body>
+	<h1>实现下图的布局</h1>
+	<img src="img/面试题.png" alt="">
+	<p>================================</p><br><br><br>
+	<main>
+	    <div>
+	        A
+	    </div>
+	    <div>
+	        B
+	    </div>
+	    <div>
+	        C
+	    </div>
+	</main>	
+
+</body>
+</html>
