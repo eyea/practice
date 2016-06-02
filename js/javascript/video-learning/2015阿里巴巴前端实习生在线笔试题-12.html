@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		table{width: 300px;border: 1px solid gray;text-align: center;}
+	</style>
+</head>
+<body>
+	<p>有一个包含数据列表的页面，数据行数不确定。每一行数据都有一个删除按钮，单击删除按钮删除该列数据，请用JavaScript实现该功能。</p>
+	<p>================================</p><br><br><br>
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td><a href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td><a href="javascript:;">删除</a></td>
+			</tr>
+		</tbody>
+		<tfoot>
+		</tfoot>
+	</table>
+	<ul>
+        <li>一<button>删除一</button></li>
+        <li>二<button>删除二</button></li>
+        <li>三<button>删除三</button></li>
+        <li>四<button>删除四</button></li>
+        <li>五<button>删除五</button></li>
+        <li>六<button>删除六</button></li>
+	</ul>
+	<ul>
+        <li>一<button>删除一</button></li>
+        <li>二<button>删除二</button></li>
+        <li>三<button>删除三</button></li>
+        <li>四<button>删除四</button></li>
+        <li>五<button>删除五</button></li>
+        <li>六<button>删除六</button></li>
+	</ul>
+<script>
+	window.onload = function(){
+
+    var oUl = document.getElementsByTagName('ul');
+
+    oUl[0].onclick = function(ev){
+
+        var ev = ev || window.event;
+
+        var target = ev.target || ev.srcElement;
+
+        if(target.tagName.toLowerCase() == 'button'){
+
+            var tr = target.parentNode;
+
+            tr.parentNode.removeChild(tr);
+
+        }
+
+    }
+}
+</script>
+<!-- ziji 练习 -->
+<script>
+	var aUl = document.getElementsByTagName('ul');
+	aUl[1].onclick = function(ev){
+		var ev = ev || window.event;
+		var target = ev.target || ev.secElement;
+		if(target.tagName.toLowerCase() == 'button'){
+			var tr = target.parentNode;
+			// alert(tr.innerHTML);//六<button>删除六</button>
+			tr.parentNode.removeChild(tr);
+		}
+	}
+</script>
+</body>
+</html>
