@@ -31,5 +31,18 @@ window.onload = function(){
 <p>第三个</p>
 <p>第四个</p>
 <p>第五个</p>
+<script>
+    window.onload = function(){
+        var aP = document.getElementsByTagName('p');
+
+        for(var i=0;i<aP.length;i++){
+            aP[i].onclick = (function(){
+                return function(){
+                    this.style.color='red';
+                }
+            })(i);
+        }
+    }
+</script>
 </body>
 </html>
