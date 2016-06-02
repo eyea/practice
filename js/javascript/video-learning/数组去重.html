@@ -13,7 +13,7 @@
 				if(arr[i]==arr[j]){
 					arr.splice(j,1); // 干掉第j个，干一个 1
 					j--;  //注意splice会改变数组长度，j<arr.length会减少所以j--；
-					//其实这里可以直接 arr.pop(j)
+					//其实这里可以直接 arr.pop(j) -->这个不行滴。。。
 				}
 			}
 		};

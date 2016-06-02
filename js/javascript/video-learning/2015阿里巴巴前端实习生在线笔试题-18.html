@@ -12,8 +12,11 @@
 
 			for(var j=i+1;j<arr.length;j++){
 
-				if(arr[i]===arr[j]){
+				if(arr[i]==arr[j]){
 					// alert(arr[i]);
+                    arr.splice(j,1);  //干掉j 1个
+                    j--;
+                    // arr.pop(j);-->no
 				}
 			}
 		};
@@ -35,7 +38,8 @@
 
 在排序的算法中，快速排序是相对比较高效的：
 
-Array.prototype.quickSort = function(){
+<script>
+    Array.prototype.quickSort = function(){
 
     if(this.length <= 1){
 
@@ -70,7 +74,7 @@ Array.prototype.quickSort = function(){
     }
 
 }
-对于数组去重，有以下三种方法： 第一种：
+// 对于数组去重，有以下三种方法： 第一种：
 
 Array.prototype.unique1 = function(){
 
@@ -89,7 +93,7 @@ Array.prototype.unique1 = function(){
     return newArray;
 
 }
-第二种：
+// 第二种：
 
 Array.prototype.unique2 = function(){
 
@@ -108,7 +112,7 @@ Array.prototype.unique2 = function(){
     return newArray;
 
 }
-第三种：
+// 第三种：
 
 Array.prototype.unique3 = function(){
 
@@ -129,13 +133,14 @@ Array.prototype.unique3 = function(){
     return newArray;
 
 }
-先对数组按降序排序，再去重便可实现题目的要求,这样效率也会高一点：
+// 先对数组按降序排序，再去重便可实现题目的要求,这样效率也会高一点：
 
 var newArray = [1,2,1,9,10,3,4,3,5,2,4,6,5,7,4,8,7,3,5,3];
 
 var nowArray = newArray.quickSort().unique1();
 
-console.log(nowArray);		
+console.log(nowArray);
+</script>		
 	</div>
 </body>
 </html>

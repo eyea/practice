@@ -22,7 +22,9 @@ function shenmegui(template, data) {
 	<div>
 解析：
 
-var data = {
+<script>
+// 就是个正则。。。
+    var data = {
 
     name:'xiaoming',
 
@@ -35,17 +37,36 @@ var template = "My name is {$name},my age is {$age}."
 function outputTemplate(template,data){
 
     var regName = /(\{\$name\})/g;
-
-    var regAge = /(\{\$age\})/g;
+    var regAge  = /(\{\$age\})/g;
 
     template = template.replace(regName,data.name);
-
     template = template.replace(regAge,data.age);
-
     return template;
+
+
+
+
+
+
+
+
+
+
+
+
+    // var regName = /(\{\$name\})/g;
+
+    // var regAge = /(\{\$age\})/g;
+
+    // template = template.replace(regName,data.name);
+
+    // template = template.replace(regAge,data.age);
+
+    // return template;
 }
 
-alert(outputTemplate(template,data));		
+alert(outputTemplate(template,data));
+</script>		
 	</div>
 </body>
 </html>
