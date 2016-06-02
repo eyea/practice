@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json for-in 遍历json</title>
+</head>
+<body>
+	<script>
+		var json = {'name':'dong','age':20};
+		for( var attr in json){
+			//alert(attr); // 找json里面属性的名称
+			// alert(json[attr]); //找json里面属性的名称对应的值
+		};
+
+		var json1 = {
+			'name' : ['a','b','c'],
+			'age'  : [1,2,3]
+		}
+		for(var attr in json1){
+			// alert(json1[attr]); // abc 123 jianzhi
+			for(var i=0;i<json1[attr].length;i++){
+				alert(json1[attr][i]); //a b c 1 2 3  找到json里面数组所有的元素
+			}
+
+		}
+	</script>
+</body>
+</html>

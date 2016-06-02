@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json-1</title>
+</head>
+<body>
+	<script>
+		var json = { 'name':'dong','age':26};  //name加引号是安全的
+		// alert(json.name);
+		var json1 = {
+			'name' : ['wang','x','dong'],
+			'age'  : [12,24,100]
+		}
+		// alert(json1.name[2]); //dong
+		//  alert(json1['age']);  // 12,24,100
+		//  alert(json1.age);  // 12,24,100
+
+		// json 里面可以 数组 数组里面可以json
+		var arr = [{'name':'li'},{'age':18}] ;
+		alert(arr[1].age);  //18
+
+	</script>
+</body>
+</html>

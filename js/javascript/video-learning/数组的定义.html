@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的定义-1</title>
+</head>
+<body>
+<div>
+	字符串改变不了长度，数组可以length
+</div>
+	<script>
+		var arr0 = [1,3,4];  //better 
+		var arr1 = new Array(36);  // 数组是一个对象 里面写东西和不懈东西是不一样的
+		// alert(arr1.length);
+		var arr2 = new Array('hh');
+		// alert(arr2.length);  // 1
+
+		var arr3 = [1,2,3,4];
+		arr3.length = 1;
+		// alert(arr3); // 1 把数组清空啦 但是 arr3=【】这个效率更高 数组内容更多 效率正比
+
+		var str = 'aaaa';
+		str.length = 1;
+		alert(str.length); // 4 --》字符串改变不了长度，数组可以length
+
+	</script>
+</body>
+</html>
