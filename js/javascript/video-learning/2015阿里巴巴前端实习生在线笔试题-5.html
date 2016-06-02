@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+		em{color:green;font-size:20px}
+	</style>
+</head>
+<body>
+	<script>
+
+	</script>
+	<div>
+通过下面的哪些方法可以获取页面的html元素 <br>
+
+A、document.getElementById<br>
+B、document.getElementsByClassName<br>
+C、document.querySelector<br>
+D、document.querySelectorAll<br>
+	</div><br>
+	<div>
+C、D 、document.querySelector只返回匹配的第一个元素，如果没有匹配项，返回null。document.querySelectorAll返回匹配的元素集合，如果没有匹配项，返回空的NodeList(节点数组)。这两个方法都可以接受三种类型的参数：id(#)，class(.)，标签，很像jquery的选择器。如：
+<br>
+var obj = document.querySelector("#id");
+var obj = document.querySelector(".classname");
+var obj = document.querySelector("div");
+var el = document.body.querySelector("style[type='text/css'], style:not([type])");
+var elements = document.querySelectorAll("#score>tbody>tr>td:nth-of-type(2)");
+var elements = document.querySelectorAll("#id1, #id2, .class1, class2, div a, #list li img");
+所以C和D都是正确的。
+	</div>
+</body>
+</html>

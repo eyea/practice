@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+	</style>
+</head>
+<body>
+	<script>
+		var name = 'World!';
+		(function () {
+		  if (typeof name === 'undefined') {
+		    var name = 'Jack';
+		    console.log('Goodbye ' + name);
+		  } else {
+		    console.log('Hello ' + name);
+		  }
+		})();	
+		//  Goodbye Jack
+	</script>
+	<div>
+解析：
+
+因为JavaScript中的变量的查找是就近原则去寻找var定义的变量，当就近没有找到的话就会找外层。题目中因为if判段语句(typeof name === 'undefined')就近定义的name就在其执行完的下一行，所以name就被预解析了，<span>实际上可以理解成在if判段语句(typeof name === 'undefined')上面var name这样定义了name，但是尚未被赋值。而在它执行完后面再去为name赋值name = 'Jack';，所以name的值是undefined。所以typeof name === 'undefined'成立，所以判断语句会走if成立部分。</span> 所以最终答案应该为A。	
+	</div>
+</body>
+</html>

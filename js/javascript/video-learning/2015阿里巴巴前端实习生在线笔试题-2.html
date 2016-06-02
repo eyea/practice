@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+	</style>
+</head>
+<body>
+	<script>
+		console.log(null instanceof Object); // false
+		console.log(null == undefined);  // true
+		console.log(NaN == NaN);   // false
+		console.log(false == undefined); //false
+	</script>
+	<div>
+解析：
+
+A、未定义的值和定义未赋值的为undefined，null是一种特殊的object，所以typeof null 返回的应该是object，但是为什么null instanceof Object返回的是false呢？原因就是null是个特殊的Object类型的值 ，表示空引用的意思 。<span>instanceof 表示某个变量是否是某个对象的实例</span> ,所以为false 。
+
+B、undefined == null是正确的，尽管如此，和其他相似之处，但null和undefined并不是等价的。每个作为其独特的类型的唯一成员,undefined是Undefined类型和null是Null类型。所以<span>undefined === null是不正确的</span>，因为他们虽然值相等，但是类型不相等。区分这两个值，可以认为<span>undefined代表一个意想不到的没有值而null作为预期没有值的代表。</span>
+
+（null:）是一个对象，但是为空。因为是对象，所以typeof null返回object 。null是JavaScript保留关键字。 <span>null参与数值运算时其值会自动转换为0</span>，因此，下列表达式计算后会得到正确的数值： 表达式：123 + null 结果值：123 表达式：123 * null 结果值：0
+
+（undefined：）是全局对象（window）的一个特殊属性，其值是未定义的。但<span>typeof undefined返回undefined</span>。
+
+C、NaN是一个值类型,同是也是一个数值.意思是Not A Number,这个都知道是什么意思.值比较特殊,特殊在于NaN是一个数字,是一个与任何数值都不相等的数字。所以NaN == NaN返回false。
+
+D、undefined被转换为布尔值为false，Boolean(undefined)返回的是false，但是undefined不等于false。所以false == undefined返回false。
+
+所以最终答案应该为B。		
+	</div>
+</body>
+</html>

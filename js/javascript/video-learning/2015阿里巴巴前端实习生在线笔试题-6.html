@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+		em{color:green;font-size:20px}
+	</style>
+</head>
+<body>
+	<script>
+
+	</script>
+<div>
+下面选项中，对javascript事件的描述不正确的是
+
+A、IE使用attachEvent/detachEvent方法来添加和删除事件监听器；w3c使用addEventListener/removeEventListener方法
+B、IE是将event对象作为参数传递给监听器,w3c事件监听器内使用的是一个全局的Event对象
+C、IE提供了对事件捕获阶段的支持
+D、要停止事件的传递，IE的做法是设置event对象的cancelBubble为true，而w3c的做法是设置执行stopPropagation方法
+</div>
+<br><br><br>
+<span>
+	解析：
+
+A、IE使用attachEvent/detachEvent方法来添加和删除事件监听器；w3c使用addEventListener/removeEventListener方法。这是正确的。
+
+B、IE事件监听器内使用的是一个全局的Event对象，而w3c是将event对象作为参数传递给监听器。所以B是错误的。
+
+C、<em>IE没有提供对事件捕获阶段的支持</em>。所以C也是错误的。
+
+D、<em>要想阻止冒泡，在Microsoft模型中，需要将事件的cancelBubble属性设置为true。在W3C模型中，需要调用事件的stopPropagation()方法</em>。
+
+这两种方法阻止了事件的所有冒泡。如果想解决浏览器兼容问题，可以像下面这样写：
+
+function doSomething(e){
+
+    e = window.event || e;
+
+    e.cancelBubble = true;
+
+    if(e.stopPropagation){
+
+        e.stopPropagation();
+
+    }
+
+}
+在不支持cancelBubble属性的浏览器中设置它的值并不会报错。浏览器会忽略它并创建这个属性。当然，它并不能真正地阻止冒泡，但是给它分配值的操作本身是安全的。
+
+所以最终的答案是B,C。
+</span>
+</body>
+</html>

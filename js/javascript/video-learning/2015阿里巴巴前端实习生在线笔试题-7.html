@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+		em{color:green;font-size:20px}
+	</style>
+</head>
+<body>
+	<script>
+		var array1 = [1,2];
+
+		var array2 = array1;
+
+		array1[0] = array2[1];  // 1-->2,2
+
+		array2.push(3);  //  2-->2,2,3      1-->2,2,3
+
+		console.log(array1);
+
+		console.log(array2);
+	</script>
+<div>
+	解析：
+
+数组对象是引用的关系，array2改变，array1也会改变。array1改变，array2也会改变。
+
+所以最终的答案是C。
+</div>
+
+</body>
+</html>

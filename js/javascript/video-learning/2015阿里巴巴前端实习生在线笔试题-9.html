@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+		em{color:green;font-size:20px}
+	</style>
+</head>
+<body>
+<p>实现函数range([start,]stop[,step])返回一个数组（step大于1）</p>
+	<script>
+		function range(a,b,c){
+			var arr = [];
+			var num = 0;
+			for(var i=a;i<b-a+1;i++){
+				arr.push(i);
+				num ++;
+			};
+			// alert(num)
+			// arr.splice(1,c);
+			// arr.toString().substring(a,arr.length);  //no
+
+			// String.split() 执行的操作与 Array.join 执行的操作是相反的。
+
+			// alert(arr.join(' ')); // 数组转换成字符串
+			alert((arr.join('').split()));
+
+			console.log(arr);
+		}
+		range(1,10,2);
+		// range(1,11);
+		// range(0);
+		// range(10);
+		// range(0,30,5);
+	</script>
+<div>
+
+</div>
+</body>
+</html>
