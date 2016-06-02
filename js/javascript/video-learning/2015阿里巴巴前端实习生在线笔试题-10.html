@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2015阿里巴巴前端实习生在线笔试题</title>
+	<style>
+		span{color: red}
+		em{color:green;font-size:20px}
+	</style>
+</head>
+<body>
+	<p>
+		1、对象A直接调用对象B的某个方法，实现交互逻辑。但是导致的问题是A和B紧密耦合，修改B可能导致A调用B的方法失效。 2、为了解决耦合导致的问题，我们可以设计成： 对象A生成消息 -> 将消息通知给一个消息处理器（Observable）-> 消息处理器将消息传递给B 具体的调用过程变成： A.emit(‘message’,data); B.on(‘message’,function(data){}); 请实现这一事件消息代理功能 //请将事件消息功能补充完整 function EventEmitter(){}
+	</p>
+	<script>
+		function EventEmitter(){
+			this.eventFunctionMap = {};
+		};
+		EventEmitter.prototype.emit = function(eventName,data){
+			this.eventFunctionMap[eventName].call(this,data);
+		};
+		EventEmitter.prototype.on = function(eventName,callback){
+			this.eventFunctionMap[eventName] = callback;
+		}
+	</script>
+</body>
+</html>
