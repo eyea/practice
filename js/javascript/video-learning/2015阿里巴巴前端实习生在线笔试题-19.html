@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>写一个函数，实现：</title>
+</head>
+<body>
+	<p>
+已知：
+
+var data = {
+    name: 'xiaoming',
+    age: '18'
+};
+var template = "My name is {$name}, my age is {$age}".
+//写一个函数，实现：
+function shenmegui(template, data) {
+
+} => My name is xiaoming, my age is 18.		
+	</p>
+<br>=================<br><br><br><br>
+	<div>
+解析：
+
+var data = {
+
+    name:'xiaoming',
+
+    age:'18'
+
+};
+
+var template = "My name is {$name},my age is {$age}."
+
+function outputTemplate(template,data){
+
+    var regName = /(\{\$name\})/g;
+
+    var regAge = /(\{\$age\})/g;
+
+    template = template.replace(regName,data.name);
+
+    template = template.replace(regAge,data.age);
+
+    return template;
+}
+
+alert(outputTemplate(template,data));		
+	</div>
+</body>
+</html>
