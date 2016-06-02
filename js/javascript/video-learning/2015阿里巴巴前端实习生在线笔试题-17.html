@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用html+css实现以下图形（不能用图片）</title>
+	<style type="text/css">
+#rectangle{
+    background: #FFF;
+    border: 10px solid #999999;
+    padding:10px;
+    height: 120px;
+    width: 200px;
+}
+#circle{
+    position:absolute;
+    margin-left: 140px;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    background: #999999; 
+    -moz-border-radius: 20px; 
+    -webkit-border-radius: 20px; 
+    border-radius: 20px;
+}
+#triangle{
+    width: 0; 
+    height: 0; 
+    position:absolute;
+    margin-top: 40px;
+    border-bottom: 80px solid #999999; 
+    border-left: 50px solid transparent; 
+    border-right: 70px solid transparent; 
+}
+#triangle2{
+    width: 0; 
+    height: 0; 
+    position:absolute;
+    margin-top: 60px;
+    margin-left: 80px;
+    border-bottom: 60px solid #999999; 
+    border-left: 30px solid transparent; 
+    border-right: 70px solid transparent; 
+}
+#wrapper{width: 250px;height: 150px;border: 10px solid #999;position: relative;top: 100px;left: 200px;padding:10px;}
+#sun,#left,#right{position: absolute;}
+#sun{right: 50px;top: 30px;width: 60px;height: 60px;border-radius: 50%;background-color: #999}
+/*#left{left: 20px;bottom: 10px;width: 140px;height: 80px;border:1px solid green;border-top-left-radius: 80px;border-top-right-radius: 80px;}*/
+#left{left: 20px;bottom: 10px;width: 0px;height: 0px;border-left: 30px solid transparent;border-bottom: 80px solid #999;border-right: 90px solid transparent}
+#right{left: 100px;bottom: 10px;width: 0px;height: 0px;border-left: 30px solid transparent;border-bottom: 60px solid #999;border-right: 70px solid transparent}
+
+p{position: absolute;top: 300px;
+	left: 500px;
+	width: 0;height: 0;border-left: 20px solid yellow;border-bottom:60px solid green;border-right: 70px solid yellow;
+}
+</style>
+</head>
+<body>
+	<div id="rectangle">
+		<span id="circle"></span>
+		<span id="triangle"></span>
+		<span id="triangle2"></span>
+	</div>
+	<div id="wrapper">
+		<span id="sun"></span>
+		<span id="left"></span>
+		<span id="right"></span>
+	</div>
+	<p></p>
+</body>
+</html>
