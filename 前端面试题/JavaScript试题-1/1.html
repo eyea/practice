@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// 原始对象
+		var a = 1;
+		a.a = 2;
+		console.log(a);		// 1
+		console.log(a.attributes); 	//是undefined   a.a=a{a:''};
+		console.log('a.a-->'+a.a); //不是2  是undefined；
+		// 这一题需要理解的是点的作用，在JS解释器中，首先会判断左侧的变量是什么类型，如果是普通对象，会创建一个新的对象作用域，然后挂载a属性。console.log部分的a也是又创建了一个封装对象，但是这个对象下面的a是没有赋值的。
+	// 引用类型
+
+		var a = {n:1};
+		var b = a;
+		a.x = a = {n:2};
+
+		console.log(a.x);// --> undefined
+		console.log(b.x);// --> Object {n: 2}
+		// 这个涉及到了连续赋值的情况，详情参考javascript 连等赋值问题.在程序运行到之后，先确定好了 a.x 和 a 的引用，再从右往左开始赋值的。还有一点就是可以理解的是.运算优先级高于=运算符，所以会先创建a.x对象，然后在执行赋值过程。赋值顺序从右向左。
+
+
+
+
+	</script>
+</body>
+</html>
