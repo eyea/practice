@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+</head>
+<body>
+	<div>
+	<p>div1</p>
+		去除字符串中的多余空格？<br>
+
+		如果使用了\s作为匹配的情况，有没有消除不了的情况（是有的），具体是什么？<br>
+
+		为了保证页面输出安全，我们经常需要对一些特殊的字符进行转义，请写一个函数escapeHtml，将<, >, &, “进行转义 <br>			
+	</div>
+
+	<p>div2</p>
+	<div>
+		写一个function，清除字符串前后的空格。(兼容所有浏览器)
+	</div>
+
+	
+	<script>
+	// div1
+		function escapeHtml(str){
+			return str.replace(/[<>&"]/g,function(match){
+				switch(match){
+					case '<' :
+						return '&lt;';
+					case '>' :
+						return '&gt;';
+					case '&' :
+						return '&amp;';
+					case '\'' :
+						return '&auot;';
+				}
+			});
+		};
+	//div2  写一个function，清除字符串前后的空格。(兼容所有浏览器)
+		if(!String.prototype.trim){
+			String.prototype.trim = function(){
+				return this.replace(/^\s+/,'').replace(/\s+$/,'');
+				// return this.replace(/(^\s*)|(\s*$)/g, ”);
+			}
+		};
+		// var str = " \t\n test string ".trim(); 
+		// alert(str == 'test string') ; /true
+	</script>
+
+</body>
+</html>
