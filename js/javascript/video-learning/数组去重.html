@@ -17,7 +17,41 @@
 				}
 			}
 		};
-		alert(arr);  //1,2,3,4,5
+		console.log('arr = [1,2,3,4,5,4]--->'+arr);  //1,2,3,4,5
+	</script>
+	<script>
+		var arr1 = [1,3,5,7,446,6,6,456,76];
+		for(var i=0;i<arr1.length;i++){
+			for(var j=i+1;j<arr1.length;j++){
+				if(arr1[i]==arr1[j]){
+					arr1.splice(j,1);
+				}
+			}
+		};
+		console.log(arr1.reverse());
+	</script>
+	<script>
+		var arr2 = [1,3,5,7,446,6,6,456,76];
+		arr2.sort();  //[1, 3, 446, 456, 5, 6, 6, 7, 76]
+		arr2.sort(function(a,b){
+			return a-b;
+		});//[1, 3, 5, 6, 6, 7, 76, 446, 456]
+		arr2.sort(function(a,b){
+			return b-a;
+		});//[456, 446, 76, 7, 6, 6, 5, 3, 1]
+		//随机排序
+		arr2.sort(function(){
+			return Math.random() - 0.5;
+		});//随机
+		//去重
+		function quikcsort(){
+			var left = [];
+			var right = [];
+			
+		}
+
+		//console.log(arr2);
+		console.log(arr2.quikcsort());
 	</script>
 </body>
 </html>
