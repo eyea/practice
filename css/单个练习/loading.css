@@ -87,3 +87,30 @@
 		transform: perspective(100px) rotateX(-180deg)  rotateY(-179.9deg);
 	}
 }
+/*bounce*/
+.bounce{position: relative;}
+.bounce1,.bounce2{width: 60px;height: 60px;background-color: #84C0F2;border-radius: 50%;opacity: .6;/*两个圆叠加中心颜色加深*/position: absolute;top: 0;left: 0;
+	animation:bounce 2s infinite ease-in-out;
+	-webkit-animation:bounce 2s infinite ease-in-out;
+}
+.bounce1 {
+	animation-delay: -1s; /*要让一个圆提前开始动画，否则刚开始会是两个大圆重叠在一起*/
+	-webkit-animation-delay: -1s; /*两圆的时间取值要注意*/
+}
+@keyframes bounce{
+	0%,100%{
+		transform:scale(0);
+	}
+	50%{
+		transform: scale(1);
+	}
+}
+@-webkit-keyframes bounce {
+	0%, 100%{
+		-webkit-transform: scale(0);
+	}
+	50% {
+		-webkit-transform: scale(1);
+	}
+}
+
