@@ -6,8 +6,8 @@
 	<style>
 		*{padding: 0;margin: 0;}
 		.wrapper{
-			width: 600px;
-			height: 600px;
+			width: 80%;
+			height: 80%;
 			border:1px solid gray;
 			border-radius: 6px;
 			overflow: hidden;
@@ -15,11 +15,27 @@
 			position: absolute;
 			top: 0;left: 0;bottom: 0;right: 0;
 		}
+		.wrapper div{
+			width: 30px;
+			height: 30px;
+			border:1px solid red;
+			border-radius: 6px;
+		}
+		.c1{
+			  min-width: 20%;  
+			  max-width: 80%;  
+			  min-height: 20%;  
+			  max-height: 80%;  
+			  resize: both;
+			  /*用户可以手动调节大小观看   */
+			  overflow: auto; 
+			  text-align: center;		
+		}
 	</style>
 </head>
 <body>
 	<div class="wrapper">
-		
+		<div class="c1">resize: both;</div>
 	</div>
 </body>
 </html>
