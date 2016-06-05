@@ -8,9 +8,11 @@
 	border:1px solid #eee;
 	border-radius: 6px;
 	padding: 10px;
+	overflow: hidden;
+	color: white;
 }
 /*loading start*/
-
+.fl{float: left;margin-right: 20px;}
 /*rect*/
 .rect{
 	width: 8px;
@@ -19,7 +21,8 @@
 	margin-right: 4px;
 	animation:stretch 1.5s infinite ease-in-out;
 	-webkit-animation:stretch 1.5s infinite ease-in-out;
-	display: inline-block;
+	/*  这样是可以的 但是对于练习来说 代码量多余了 直接float就好*/
+	display: inline-block;   
 	*display: inline;
 }
 
@@ -56,4 +59,31 @@
 	-webkit-animation-delay:.6s;
 }
 
-/**/
+/*box*/
+.box{
+	width: 60px;height: 60px;background-color: #84C0F2;
+	animation: rotate 1.5s infinite ease-in-out;
+	-webkit-animation: rotate 1.5s infinite ease-in-out;
+}
+@keyframes rotate {
+	0% {
+		transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		transform: perspective(100px) rotateX(-180deg) rotateY(0deg); /*此处需要加rotateY(0deg)，否则会导致50%-100%的过程中不会按Y轴旋转*/
+	}
+	100% {
+		transform: perspective(100px) rotateX(-180deg)  rotateY(-179.9deg);
+	}
+}
+@-webkit-keyframes rotate {
+	0% {
+		transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		transform: perspective(100px) rotateX(-180deg) rotateY(0deg); /*此处需要加rotateY(0deg)，否则会导致50%-100%的过程中不会按Y轴旋转*/
+	}
+	100% {
+		transform: perspective(100px) rotateX(-180deg)  rotateY(-179.9deg);
+	}
+}
