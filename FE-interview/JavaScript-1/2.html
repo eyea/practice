@@ -39,7 +39,7 @@
 生成[x,y]范围的随机整数-->ok
 已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”  -->ok
 已知有字符串foo=”get-element-by-id”,写一个function将其转化成驼峰表示法”getElementById”
---->
+--->  ok
 var numberArray = [3,6,2,4,1,5]; 实现倒排，排序。  -->
 怎样添加、移除、移动、复制、创建和查找节点
 将一个#fffff类型的数据转换为rgb(255,255,255)形式
@@ -88,14 +88,25 @@ var numberArray = [3,6,2,4,1,5]; 实现倒排，排序。  -->
 		console.log(tuoFeng(str));
 	</script>
 	<script>
-		var str = 'border-bottom-color';
+		var str = 'get-element-by-id';
 		function test(str){
 			var re = /-(\w)/g;	//通过正则找到-b -c。默认的是匹配一次，所以要用g来全局匹配。\w指的字符。找一个-找一个字符。
-			return str.replace(re,function($0,$1){
+			return str.replace(re,function($0,$1){  //$0代表正则，$1代表指向  
 				return $1.toUpperCase();
 			})
 		};
 		console.log('第二种' + test(str));
+	</script>
+	<script>
+			var numArr = [3,6,2,4,1,5]; //实现倒排，排序。
+			function test(numArr){
+				// 倒排
+				console.log('numArr.reverse()--->' + numArr.reverse());
+				console.log('numArr.reverse()--->' + numArr.sort(function(a,b){
+					return a-b;
+				}));
+			};
+			test(numArr);	
 	</script>
 </body>
 </html>
