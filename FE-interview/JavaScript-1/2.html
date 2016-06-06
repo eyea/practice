@@ -12,14 +12,15 @@
 		}
 
 		foo2(010);
-		console.log(0.2 + 0.4);		function foo1(a){
+		console.log(0.2 + 0.4);		//0.6000000000000001
+		function foo1(a){
 		    return a + '01';
 		}
 
 		foo1(01);
 		var foo = "11"+2-"1";
-		console.log(foo);
-		console.log(typeof foo);		
+		console.log(foo); //111
+		console.log(typeof foo);//number		
 	</script>
 	<div>
 		比较时候的转换的原则:
@@ -35,12 +36,56 @@
 	<div>
 		基础的代码使用技巧
 
-生成[x,y]范围的随机整数
-已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”
+生成[x,y]范围的随机整数-->ok
+已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”  -->ok
 已知有字符串foo=”get-element-by-id”,写一个function将其转化成驼峰表示法”getElementById”
-var numberArray = [3,6,2,4,1,5]; 实现倒排，排序。
+--->
+var numberArray = [3,6,2,4,1,5]; 实现倒排，排序。  -->
 怎样添加、移除、移动、复制、创建和查找节点
 将一个#fffff类型的数据转换为rgb(255,255,255)形式
 	</div>
+	<script>
+		// 生成[x,y]范围的随机整数
+		function randomf(min,max){
+			var num = Math.floor(min+Math.random()*(max-min));
+			console.log(num);
+		};
+		randomf(1,3);
+	</script>
+	<script>
+		function strToArr(){
+			var stringArray = ['This','is','Baidu','Campus'];
+			// stringArray.join('--');
+			console.log(stringArray.join(' '));
+		};
+		strToArr();
+	</script>
+	<script>
+		var str = 'get-element-by-id';
+		function tuoFeng(str){
+			var strArr = str.split('-');  //用split()函数来进行分割字符串arr里面
+			// var nArr = [];
+			// for(var i=1;i<strArr.length;i++){
+			// 	if(i=0){
+			// 		// nArr.push(strArr[0]);
+			// 	}else{
+			// 		strArr[i].replace(/(\w)/,function(v){
+			// 			return v.toUpperCase();
+			// 		// alert(1212);
+			// 			nArr.push(strArr[i]);
+			// 		})
+			// 	};
+			// };
+			// console.log(nArr);  错误的示例
+
+			for(var i =1;i<strArr.length;i++){//从数组的第二项开始循环，charAt(0)找到第一个字母。substring(1)截掉第一个字母。
+				strArr[i] = strArr[i].charAt(0).toUpperCase() + strArr[i].substring(1);//循环之后把得到的字符赋给arr。
+				console.log(strArr[i]);
+			};
+			return strArr.join('');	//用join方法来拼接，空拼接
+			console.log(str);
+		}
+		console.log(tuoFeng(str));
+	</script>
 </body>
 </html>
