@@ -87,5 +87,15 @@ var numberArray = [3,6,2,4,1,5]; 实现倒排，排序。  -->
 		}
 		console.log(tuoFeng(str));
 	</script>
+	<script>
+		var str = 'border-bottom-color';
+		function test(str){
+			var re = /-(\w)/g;	//通过正则找到-b -c。默认的是匹配一次，所以要用g来全局匹配。\w指的字符。找一个-找一个字符。
+			return str.replace(re,function($0,$1){
+				return $1.toUpperCase();
+			})
+		};
+		console.log('第二种' + test(str));
+	</script>
 </body>
 </html>
