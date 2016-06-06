@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = [1,2,5,4,5,6,3,44,8,2];
+		function test(arr) {
+			arr.filter(function(elem, pos,self){return self.indexOf(elem)== pos;})
+		};
+		console.log(test(arr));
+		
+// 		filter是过滤的意思，filter通过一个函数的参数来选择什么项需要被filter掉，函数返回true保留，false干掉。
+
+// 函数参数带三个参数，第一个elem是这一项元素，第二个pos是这一项所在的位置，第三个self指的是执行filter的数组。那么，你看，巧妙吗:self.indexOf(elem) 是指这个项目在数组中的位置，位置是第一个，也就是说同样的项目在第一位和第5位都出现了，他返回的是0，而此时pos还是4，所以通过self.indexOf(elem) == pos 能判断出这一项是不是重复出现的项，如果是（返回false），则干掉它。
+	</script>
+</body>
+</html>
