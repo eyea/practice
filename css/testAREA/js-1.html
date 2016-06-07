@@ -181,8 +181,26 @@
 
 // caller是返回一个对函数的引用，该函数调用了当前函数；callee是返回正在被执行的function函数，也就是所指定的function	对象的正文。
 //如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成）	
+		var shengtuzu = [];
+		function sheng(n){
+			if(n==1){
+				return 1;
+			}else if(n==2){
+				return 1;
+			}else{
+				if(shengtuzu[n]){
+					return shengtuzu[n];
+				}else{
+					//argument.callee()表示 sheng(n)
+					shengtuzu[n] = arguments.callee(n-1)+arguments.callee(n-2);
+					return shengtuzu[n];
+				}
+			}
+		};
+		console.log('10个月能生几对兔子===>'+sheng(10));
+//  如何消除一个数组里面重复的元素？
 
-
+		
 	</script>
 </body>
 </html>
