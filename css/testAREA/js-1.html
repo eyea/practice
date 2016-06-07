@@ -154,7 +154,7 @@
 
 		for(var i=1;i<=3;i++){
 		  setTimeout(function(){
-		      console.log('i--->'+i);   //4  4  4  原因：Javascript事件处理器在线程空闲之前不会运行 
+		      //  console.log('i--->'+i);   //4  4  4  原因：Javascript事件处理器在线程空闲之前不会运行 
 		  },0);  
 		};	
 
@@ -199,8 +199,20 @@
 		};
 		console.log('10个月能生几对兔子===>'+sheng(10));
 //  如何消除一个数组里面重复的元素？
-
-		
+		var deArr = [1,2,3,3,4,4,5,5,6,1,9,3,25,4];
+		function deArrfn(arr){
+			for(var i=0;i<arr.length;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[j]==arr[i]){
+						arr.splice(j,1);
+						j--;
+					}
+				}
+			};
+			return arr;  //  循环完毕之后 要返回数组 否则就是   undefined
+		};
+		console.log('deArr--->'+deArrfn(deArr));
+// 
 	</script>
 </body>
 </html>
