@@ -82,7 +82,36 @@
 		// }
 
 // 用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
+		// function radArr(a,b,num){
+		// 	for(var i=a;i<b;i+=num){
+		// 		var arr = [] ;
+		// 		arr[i] = Math.floor(a+Math.random()*(b-a));
+		// 		arr.push()
+		// 	};
+		// };
+		// console.log('radArr(10,100,10)---->' + radArr(1,4,1));  --->这是第一次写的错了 分析下
+
+		var arr = [] ;
+		function radArr(a,b,num){
+			for(var i=a;i<b;i+=num){
+				var radnum = Math.floor(a+Math.random()*(b-a+1));
+				console.log('i-->'+i);
+				arr.push(radnum);
+			};
+			arr.sort();
+			console.log('arr-->'+ arr + '\n' + 'arr.length-->' + arr.length);
+		};
+		arr.push(radArr(10,100,10));
 		
+		// 紧挨着的下面是可以的
+		// function aa(a,b){
+		// 	return Math.floor(Math.random()*(b-a+1)+a);
+		// };
+		// for(var i=0;i<10;i++){
+		// 	arr.push(aa(10,100));
+		// }
+		// console.log(arr);
+
 	</script>
 </body>
 </html>
