@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#test{   
+		        width:300px;   
+		        height:300px;   
+		 		color: white;
+		 		font-size: 30px;
+		        background-color:blue;      /*firefox*/
+		        background-color:red\9;      /*all ie*/
+		        background-color:yellow;    /*ie8*/
+		        +background-color:pink;        /*ie7*/
+		        _background-color:orange;       /*ie6*/    }  
+		 :root #test { background-color:purple\9; }  /*ie9*/
+		 @media all and (min-width:0px){ #test {background-color:black;} }  /*opera*/
+		 @media screen and (-webkit-min-device-pixel-ratio:0){
+		   #test {background-color:gray;}
+		}       /*chrome and safari*/		
+	</style>
+</head>
+<body>
+	<div id="test">css--hack</div>
+</body>
+</html>
