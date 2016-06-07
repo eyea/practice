@@ -1,0 +1,131 @@
+/*-----------------------------全局样式-------------------------------------*/
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,span,a,input,textarea,p,blockquote,th,td,header,nav,footer,article,section,aside,time,figure{margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+ul{list-style:none}
+legend{display:none}
+fieldset,img{border:none;vertical-align:middle}
+em,cite,i{font-style:normal}
+input,button,textarea{outline:none;border:0;vertical-align:middle;border:0;font-family:Arial}
+input[type="submit"],input[type="reset"],input[type="button"],button {-webkit-appearance:none;border-radius:0}
+select{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+textarea{resize:none}
+html{-webkit-text-size-adjust:none}
+body,html{height: 100%;}
+body{height: 100%;font:30px/1.5 Microsoft YaHei;position:relative;margin:auto;color:#000;word-break:break-allwidth:640px;background:#fff}
+body a{color:#000;text-decoration:none;cursor:pointer}
+body a:hover,body a:active,body a:focus{text-decoration:none;outline:none}
+/*-----------------------------css-------------------------------------*/
+.main{min-height:100%;padding-bottom:103px;-webkit-box-sizing:border-box;box-sizing:border-box;background:#f2f2f2}
+.content{max-width:640px;margin:0 auto;background:#fff ;position:relative}
+.title{height:36px;padding:20px 0;text-align:center;color:#f4fbec}
+.title span{display:block;font-size:18px;margin-top:-6px;font-weight:normal}
+a.report{position:absolute;right:10px;top:10px;padding:0 20px;height:64px;line-height:64px;color:#f4fbec}
+.userinfo{padding:50px 0 40px;text-align:center}
+.closep{position: absolute;left: 0;top: 0;width: 64px;height: 64px;background:url(../images/closes.png) no-repeat center center;}
+
+.user-picture{width:80px;height:80px;margin:0 auto;border-radius:50%;background-clip:border-box;}
+.user-picture img{display:block;width:100%;height:100%;border-radius:50%}
+.user-red{margin-top:2px; font-size:18px;}
+.red-message{font-size:22px;line-height:32px;color:#c9c9c9}
+.money-wrap{height:36px;padding-top:60px}
+.money-wrap strong{font-size:92px;color:#fc0501;position:relative;vertical-align:top;top:-66px;margin-right:10px}
+.money-tips{color:#7b95c6;font-size:22px;line-height:62px}
+.button{padding-bottom:50px;background:#f2f2f2}
+.button li{height:108px;line-height:108px;color: #fff;text-align:center;border-top:2px #e1e1e1 solid;cursor:pointer;background:#d65645;border-bottom:2px #e1e1e1 solid}
+
+.tellText{font-size: 20px;color: gray;padding-top: 20px; padding-left: 10px;padding-right: 10px;background-color: #F2F2F2;}
+
+.my-info{padding:0 32px 40px;display:none}
+.my-info input.text-input{display:block;width:100%;height:80px;padding:10px 20px;margin-top:16px;border:2px #e2e2e2 solid;background:#f7f7f7;font-size:30px;vertical-align:top;-webkit-box-sizing:border-box;box-sizing:border-box}
+.my-info input.info-submit,input.tixian-submit{display:block;width:100%;height:80px;margin-top:20px;background:#bf3422;font-size:30px;color:#fff;cursor:pointer;vertical-align:top}
+.my-info input.info-submit:active{background:#b33120}
+.info-tips{margin-top:24px;color:#a2a2a2}
+.info-tips em{color:#3879c2}
+.rule-wrap{padding:32px 32px 52px;line-height:40px;color:#4e4e4e;display:none}
+.rule p{text-indent:1em}
+.rule .time{text-indent:0}
+.return{height:78px;line-height:78px;font-size:30px;color:#fff;text-align:center;background:#bf3422;display:block;margin:50px 32px 0}
+#rule{background:#f7f7f7}
+#rule p{font-size:24px}
+
+.content_top {
+    background: url(../images/22.png) no-repeat center center;
+    height: 496px;
+	text-align:center; 
+	font-weight:normal;
+}
+
+.content_2top {
+    font-size:66pt;
+    padding-top:350px;
+}
+.content2 {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
+}
+
+.title {
+    height: 36px;
+    padding: 20px 0;
+    text-align: center;
+    color: #f4fbec
+}
+
+.title span {
+    display: block;
+    font-size: 18px;
+    margin-top: -6px;
+    font-weight: normal
+}
+/*-----------------------------隐藏-------------------------------------*/
+.advert{position:fixed;left:0;bottom:0;right:0;max-width:640px;margin:0 auto;z-index:100}
+.advert .closes{position:absolute;left:0;top:0;width:30px;height:30px;background-size:100%}
+.advert a,.advert img{display:block;width:100%}
+#shade{background:rgba(0,0,0,0.9);z-index:1000;position:fixed;left:0;top:0;width:100%;height:100%}
+.open-red{background: url(../images/caidown.png) no-repeat center bottom #e1544a;background-size: 100%; position:absolute;left:0;right:0;top:-8%;bottom:0;width:559px;height:720px;margin:auto;border-radius:10px;background-clip:border-box}
+#get,#ok,#share{display:none}
+.closes-shade{position:absolute;left:0;top:0;width:64px;height:64px;z-index:10}
+.open{display:block;width:170px;height:170px;margin:0 auto;background:url(../images/kai.png) no-repeat;text-indent:-9999px;overflow:hidden}
+.opend{transition:all 3.5s linear;-webkit-transition:all 3.5s linear;transform:rotateY(1800deg);-webkit-transform:rotateY(1800deg)}
+.open-red .userinfo{padding:70px 0 78px}
+.open-red .user-red{line-height:48px;font-size:22px;color:#ffe2b3;margin-top: 20px;}
+.open-red .money-tips{line-height:27px;font-size:22px;color:#ffe2b3;padding:0;margin-top: 10px;}
+.open-red .red-message{color:#ffe2b3;font-size:32px;line-height:54px;margin-top:55px}
+.share{position:absolute;left:0;top:0;right:0;bottom:0;padding:100px 74px;cursor:pointer;display:none; z-index:1010}
+.share img{display:block;width:100%;max-width:492px;margin:0 auto}
+.share2{position:absolute;left:0;top:0;right:0;bottom:0;padding:100px 74px;cursor:pointer;display:none;z-index:1020}
+.share2 img{display:block;width:100%;max-width:492px;margin:0 auto}
+#tixian{display:none}
+.tixian .my-info{display:block}
+.take-tips-wrap,.ok-tips-wrap{position:absolute;left:0;top:0;right:0;bottom:0;width:520px;height:580px;margin:auto;background:#bc4d3a;border-radius:10px;background-clip:border-box;display:none}
+.take-tips{padding:88px 40px 80px}
+.tips-picture{height:174px;}
+.tips-pictures{height:174px;}
+.take-tips p{margin-top:24px;font-size:30px;color:#fff;line-height:50px;text-align:center;font-weight:bold}
+.back{display:block;height:82px;line-height:82px;margin-top:40px;text-align:center;color:#fff;font-size:30px;background:#ffac3c;border-radius:8px;background-clip:border-box}
+.ok-tips-wrap{width:440px;padding:0 40px 130px}
+.ok-tips-wrap .user-red{font-size:18px;color:#f6882d;line-height:48px}
+.ok-tips-wrap .money-tips{font-size:18px;line-height:27px;color:#ff9a8b}
+.take-info{padding:0 76px;line-height:40px;color:#f6882d}
+.report-wrap{position:fixed;left:0;top:0;right:0;bottom:0;width:640px;height:100%;background:#f0eff4;z-index:1000;display:none;margin:auto}
+.choose-title{padding:0 20px 0;line-height:88px;color:#757479;border-bottom:2px #eaeaea solid;font-size:30px}
+input.report-smt{position:absolute;right:0;top:0px;width:120px;height:88px;color:#009619;font-size:30px;border-radius:8px;background:none}
+.choose-item{padding:0 20px;background:#fff}
+.choose-item input{display:none}
+.choose-item label{display:block;height:80px;line-height:80px;padding:0 20px;color:#0f0f0f;border-bottom:2px #f4f4f4 solid;font-size:26px;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}
+.choose-item label.hRadio_Checked{}
+a.more{display:block;height:80px;line-height:80px;padding:0 20px;color:#0f0f0f;position:relative}
+a.more:after{position:absolute;right:20px;top:0;bottom:0;width:10px;content:"";}
+textarea.supplement{display:block;margin-top:20px;height:168px;line-height:80px;padding:4px 40px;color:#0f0f0f;background:#fff;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:26px}
+/*-----------------------------css end-------------------------------------*/
+.report-finish{position:fixed;left:0;top:0;right:0;width:640px;height:100%;margin:0 auto;background:#efeff4;text-align:center;display:none;z-index:200}
+.report-finish h2{height:88px;line-height:88px;color:#fff;text-align:center;background:#38373d}
+.wechat{margin-top:60px}
+.wechat img{display:block;margin:0 auto}
+.condition{display:block;line-height:50px;margin-top:50px}
+.report-finish p{line-height:50px;color:#6e6e6e}
+.finish{position:absolute;right:0;top:0;padding:0 20px;height:80px;line-height:80px;color:#14c012}
+.ad{position:fixed;left:0;bottom:0;width:100%;z-index:999999}
+.ad img{width:100%;display:block;margin:0 auto;max-width:640px}

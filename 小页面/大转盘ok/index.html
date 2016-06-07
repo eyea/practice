@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="stylesheet" href="./css/skin16.css">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=640, target-densitydpi=device-dpi">
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+    <title>【微信红包】恭喜发财，万事如意！657346人已抢到！！！</title>
+</head>
+<body>
+<div class="main" id="main_id" style="display:none;">
+<div class="content">
+        <div class="content_top"><div class="content_2top"><span id="money">16.88</span></div></div>
+        <ul class="button">
+            <li class="take-money"><a href="javascript:;"><img src="./images/tx22.png"></a></li>
+        </ul>
+        <div class="content_bottom"><img src="./images/list.jpg"></div>
+        <div class="tellText">特别说明：活动期间<span>2016.5.20-2016.6.19</span>，集团红包将在活动结束后48小时内发货！</div>
+    </div>
+</div>
+
+<div id="shade">
+    <div class="open-red" id="open-red">
+        <div class="userinfo">
+            <div class="closep">
+            </div>
+            <div class="user-picture">
+                <img src="./images/1.jpg" class="touxiangimg">
+            </div>
+            <div class="user-red">集团红包</div>
+            <div class="money-tips">发了一个红包，金额随机</div>
+            <div class="red-message">恭喜发财，大吉大利！</div>
+        </div>
+        <a class="open auto-x">拆礼包</a>
+    </div>
+
+    <div class="share2"><img src="./images/songfeishia.jpg"></div>
+</div>
+
+<div id="tap-share" style="position: absolute;width: 100%;height: 100%;top: 0;left: 0;padding-top: 30px;z-index: 10;background: rgba(0, 0, 0, 0.72);display:none">
+    <img src="./images/share3.png" style="width: 100%;  max-width: 80%;  float: right;">
+</div>
+
+<script type="text/javascript" src="./js/jquery-2-1-1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".open").on("tap", function (event) {
+            event.preventDefault();
+            if (!$(this).hasClass("opend")) {
+                $(this).addClass("opend");
+                setTimeout(function () {
+                    document.getElementById("shade").style.display = "none";
+                    document.getElementById("main_id").style.display = "block";
+                    document.body.background="#f2f2f2";
+                    $("#bannerDowm").hide();
+                }, 2000)
+            }
+        });
+        $(document).on("tap", ".take-money", function (event) {
+            event.preventDefault();
+            document.getElementById('tap-share').style.display='block';
+            // document.getElementById('tap-share').style.height=document.body.scrollHeight;
+
+        })
+    })
+
+    function suijijine() {
+        var a = Math.round((Math.random() * 10)) + 6.88;
+        return a.toFixed(2);
+    }
+    $("#money").text(suijijine());
+</script>
+<script type="text/javascript" src="./js/jweixin-1.1.0.js"></script>
+</body>
+</html>
