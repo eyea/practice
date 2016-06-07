@@ -212,7 +212,44 @@
 			return arr;  //  循环完毕之后 要返回数组 否则就是   undefined
 		};
 		console.log('deArr--->'+deArrfn(deArr));
-// 
+// 疯狗那个问题
+		function Dog(){
+			this.wow = function(){
+				console.log('wow');
+			}
+			this.yelp = function(){
+				this.wow()
+			}
+		}
+		function MadDog(){
+			this.yelp = function(){
+				var self = this;
+				setInterval(function(){
+					self.wow();
+				},500);
+			}
+		};
+		MadDog.prototype = new Dog();
+		//for test
+		var dog = new Dog();
+		dog.yelp();  //wow
+		var madDog = new MadDog();
+		madDog.yelp();  // ok
+//	下面这个ul，如何点击每一列的时候alert其index?（闭包）  -----md
+
+			var alertindex = document.getElementsByTagName('li');
+			for(var i=0;i<alertindex.length;i++){alert(1)
+				alertindex[i].index = i;
+				alertindex[i].onclick = function(){
+					console.log(this.index);
+				}
+			};
 	</script>
+
+	<ul id='alertindex'>
+		<li>这是第一条</li>
+		<li>这是第二条</li>
+		<li>这是第三条</li>
+	</ul>	
 </body>
 </html>
