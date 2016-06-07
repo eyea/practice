@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = ['This','is','Baidu','Employer'];
+		function strArr(arr){
+			var str = arr.join(' ');
+			console.log(str);
+		};
+		strArr(arr);
+
+		var foo = 'get-element-by-id';
+		function test1(str){
+			var arr = str.split('-');
+			for(var i=1;i<arr.length;i++){
+				arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
+			};
+			str = arr.join('');
+			console.log(str);
+		}
+		test1(foo);
+
+		var numberArray = [3,6,2,4,1,5];
+		console.log(numberArray.reverse());
+		function test2(a,b){
+			return a-b;
+		};
+		console.log(numberArray.sort(test2));
+//驱虫+排序
+		var mulArr = [6,2,3,6,2,4,1,5];
+		for(var i=0;i<mulArr.length;i++){
+			for(var j=i+1;j<mulArr.length;j++){
+				if(mulArr[j]==mulArr[i]){
+					mulArr.splice(j,1);
+					j--;
+				}
+			};
+		};
+		console.log(mulArr.sort(test2));
+// 输出今天的日期，以YYYY-MM-DD的方式，比如今天是2014年9月26日，则输出2014-09-26
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth() + 1;
+		month = month <10 ? '0' + month : month;
+		var day = d.getDate();
+		day = day <10 ? '0' + day : day ;
+		console.log(year + '-' + month + '-' + day );
+
+//将字符串”<tr><td>{$id}</td><td>{$name}</td></tr>>”中的{$id}替换成10，{$name}替换成Tony （使用正则表达式）
+		var str = '<tr><td>{$id}</td><td>{$name}</td></tr>>';
+
+		var zzstr = str.replace(/{\$id}/g,'10').replace(/{\$name}/g,'Tony');
+		console.log(str + '--->' + zzstr);
+
+//写一个函数escapeHtml，将<, >, &, “进行转义
+		function escapeHtml(str){
+			return str.replace(/[<>'&]/g,function(match){
+				switch(match){
+					case '<' :
+						return '&lt;';
+					case '>' :
+						return '&gt;';
+					case '&' :
+						return '&amp;';
+					case '\'' :
+						return '&quot;';
+				}
+			});
+		};
+		var str = "1,[,<,>,',&,25";
+		console.log(escapeHtml(str));
+
+		// var foo = 1;
+		// function(){
+		//     console.log(foo);
+		//     var foo = 2;
+		//     console.log(foo);
+		// }
+
+// 用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
+		
+	</script>
+</body>
+</html>
