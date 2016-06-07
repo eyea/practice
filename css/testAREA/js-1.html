@@ -147,16 +147,42 @@
 			return json;
 		};
 		console.log(strTojson22(strTojson2));
+
+//  匹配邮箱的正则表达式：
+		var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+		var retMail1= /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+
+		for(var i=1;i<=3;i++){
+		  setTimeout(function(){
+		      console.log('i--->'+i);   //4  4  4  原因：Javascript事件处理器在线程空闲之前不会运行 
+		  },0);  
+		};	
+
+		for(var i=0;i<=3;i++){
+			setTimeout(function(a){  	  //改成立即执行函数
+				console.log('a--->'+a);  // 0 1 2 3
+			}(i),0);
+		};	
+//写一个function，清除字符串前后的空格。（兼容所有浏览器）
+//-------使用自带接口trim()，考虑兼容性：
+		if (!String.prototype.trim) { 
+		 // String.prototype.trim = function() { 
+		 // return this.replace(/^\s+/, "").replace(/\s+$/,"");
+		 // } 
+		 	String.prototype.trim = function(){
+		 		return this.replace(/^\s+/,'').replace(/\s+$/,'');
+		 		// 或者这样写 return this.replace(/(^\s*)|(\s*$)/,'');
+		 	}
+		} 
+		 
+		// test the function 
+		//   var str = " \t\n test string ".trim(); 
+		//   alert(str == "test string"); // alerts "true"
+
+// caller是返回一个对函数的引用，该函数调用了当前函数；callee是返回正在被执行的function函数，也就是所指定的function	对象的正文。
+//如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成）	
+
+
 	</script>
 </body>
 </html>
-
-function serilizeUrl(url) {
-    var result = {};
-    url = url.split("?")[1];
-    var map = url.split("&");
-    for(var i = 0, len = map.length; i < len; i++) {
-        result[map[i].split("=")[0]] = map[i].split("=")[1];
-    }
-    return result;
-}
