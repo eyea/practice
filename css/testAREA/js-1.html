@@ -103,7 +103,7 @@
 		};
 		arr.push(radArr(10,100,10));
 		
-		// 紧挨着的下面是可以的
+		// 紧挨着的下面是可以的  但是没有上面的好
 		// function aa(a,b){
 		// 	return Math.floor(Math.random()*(b-a+1)+a);
 		// };
@@ -112,6 +112,51 @@
 		// }
 		// console.log(arr);
 
+//.把两个数组合并，并删除第二个元素
+		var a1 = [11,29,57,62,68,68,71,80,82];
+		var a2 = [10,13,29,30,45,51,69,74,90];
+		var aTotal = a1.concat(a2);
+		console.log('aTotal--->'+ aTotal);
+		aTotal.splice(1,1);
+		console.log('aTotal--after--->'+ aTotal);
+
+//写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
+		var strTojson1 = 'URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e';
+		function strTojson(str){
+			var json = {};
+			var strAfter = str.split('?')[1];  //数组的第二项是字符串的形式，所以可以用split（）方法
+			// console.log(strAfter);
+			var strAfter = strAfter.split('&');
+			// console.log(strAfter);  //  ["a=1", "b=2", "c=", "d=xxx", "e"]
+			for(var i=0;i<strAfter.length;i++){
+				// alert(strAfter[i]);  //每一项
+				json[strAfter[i].split('=')[0]] = strAfter[i].split('=')[1];
+			};
+			return json;
+		};
+		console.log(strTojson(strTojson1));
+//自己重新写 整理思路--》ok
+		var strTojson2 = 'URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e';
+		function strTojson22(str){
+			var json = {};
+			var str1 = str.split('?')[1].split('&');
+			// alert(str1.length);  //5
+			for(var i=0;i<str1.length;i++){
+				json[str1[i].split('=')[0]] = str1[i].split('=')[1] ;
+			};
+			return json;
+		};
+		console.log(strTojson22(strTojson2));
 	</script>
 </body>
 </html>
+
+function serilizeUrl(url) {
+    var result = {};
+    url = url.split("?")[1];
+    var map = url.split("&");
+    for(var i = 0, len = map.length; i < len; i++) {
+        result[map[i].split("=")[0]] = map[i].split("=")[1];
+    }
+    return result;
+}
