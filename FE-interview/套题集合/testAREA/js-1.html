@@ -292,69 +292,89 @@
 		        });
 		    }
 		};
-//   想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）
-		var oDrag = document.getElementById('drag');
-		oDrag.onmousedown = function(ev){
-			var that = this;
-			ev = ev || event ;
-			oDrag.onmousemove = function(){
-				that.style.top = ev.clientY;
-				that.style.left = ev.clientX;
-			};
-			oDrag.onmouseup = function(){
-				// return false;
-				alert(12121)
-			}
+//   想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）   ------------------------> how to do ?????
+		// var oDrag = document.getElementById('drag');
+		// oDrag.onmousedown = function(ev){
+		// 	var that = this;
+		// 	ev = ev || event ;
+		// 	oDrag.onmousemove = function(){
+		// 		that.style.top = ev.clientY;
+		// 		that.style.left = ev.clientX;
+		// 	};
+		// 	oDrag.onmouseup = function(){
+		// 		// return false;
+		// 		alert(12121)
+		// 	}
 
-		}
+		// }
 // 用户第一次进来显示tips，同一天访问改页面不显示；  用户点击我知道了伺候不再显示tips提醒
-function setcookie(name,value,days){  //给cookie增加一个时间变量
-　　var exp = new Date(); 
-　　exp.setTime(exp.getTime() + days*24*60*60*1000); //设置过期时间为days天
-　　document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
-} 
-function getCookie(name){
-　　var result = "";
-　　var myCookie = ""+document.cookie+";"; 
-　　var searchName = "+name+"='';
-　　var startOfCookie = myCookie.indexOf(searchName);
-　　var endOfCookie;
-　　if(satrtOfCookie != -1){
-　　　　startOfcookie += searchName.length;
-　　　　endOfCookie = myCookie.indexOf(";",startOfCookie);
-　　　　result = (myCookie.substring(startOfCookie,endOfCookie));
-　　}
-　　return result;
-}
+// function setcookie(name,value,days){  //给cookie增加一个时间变量
+// 　　var exp = new Date(); 
+// 　　exp.setTime(exp.getTime() + days*24*60*60*1000); //设置过期时间为days天
+// 　　document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+// } 
+// function getCookie(name){
+// 　　var result = "";
+// 　　var myCookie = ""+document.cookie+";"; 
+// 　　var searchName = "+name+"=" ";
+// 　　var startOfCookie = myCookie.indexOf(searchName);
+// 　　var endOfCookie;
+// 　　if(satrtOfCookie != -1){
+// 　　　　startOfcookie += searchName.length;
+// 　　　　endOfCookie = myCookie.indexOf(";",startOfCookie);
+// 　　　　result = (myCookie.substring(startOfCookie,endOfCookie));
+// 　　}
+// 　　return result;
+// }
+// (function(){
+// 　　var oTips = document.getElementById('tips');//假设tips的id为tips
+// 　　var page = {
+// 　　check: function(){//检查tips的cookie是否存在并且允许显示
+// 　　　　var tips = getCookie('tips');
+// 　　　　if(!tips || tips == 'show') return true;//tips的cookie不存在
+// 　　　　if(tips == "never_show_again") return false;
+// 　　},
+// 　　hideTip: function(bNever){
+// 　　　　if(bNever) setcookie('tips', 'never_show_again', 365);
+// 　　　　oTips.style.display = "none";//隐藏
+// 　　},
+// 　　showTip: function(){
+// 　　oTips.style.display = "inline";//显示，假设tips为行级元素
+// 　　},
+// 　　init: function(){
+// 　　　　var _this = this;
+// 　　　　if(this.check()){
+// 　　　　_this.showTip();
+// 　　　　setcookie('tips', 'show', 1);
+// 　　}
+// 　　oTips.onclick = function(){
+// 　　　　_this.hideTip(true);
+// 　　};
+// 　　}
+// 　　};
+//   page.init();
+// })();
+//  
+//define 
+(function(window){
+    function fn(str){
+        this.str=str;
+    }
+ 
+    fn.prototype.format = function(){
+        var arg = arguments;
+        return this.str.replace(/\{(\d+)\}/ig,function(a,b){
+             return arg[b]||"";
+      });
+    }
+    window.fn = fn;
+})(window);
+ 
+//use
 (function(){
-　　var oTips = document.getElementById('tips');//假设tips的id为tips
-　　var page = {
-　　check: function(){//检查tips的cookie是否存在并且允许显示
-　　　　var tips = getCookie('tips');
-　　　　if(!tips || tips == 'show') return true;//tips的cookie不存在
-　　　　if(tips == "never_show_again") return false;
-　　},
-　　hideTip: function(bNever){
-　　　　if(bNever) setcookie('tips', 'never_show_again', 365);
-　　　　oTips.style.display = "none";//隐藏
-　　},
-　　showTip: function(){
-　　oTips.style.display = "inline";//显示，假设tips为行级元素
-　　},
-　　init: function(){
-　　　　var _this = this;
-　　　　if(this.check()){
-　　　　_this.showTip();
-　　　　setcookie('tips', 'show', 1);
-　　}
-　　oTips.onclick = function(){
-　　　　_this.hideTip(true);
-　　};
-　　}
-　　};
-  page.init();
+    var t = new fn('<p><a href="{0}">{1}</a><span>{2}</span></p>');
+    console.log(t.format('http://www.alibaba.com','Alibaba','Welcome'));
 })();
-
 </script>
 
 	<ul id='alertindex'>
