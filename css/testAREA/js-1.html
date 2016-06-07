@@ -254,7 +254,107 @@
 			console.log.apply(console,args);
 		};
 		log("hello!!");
-//
+// 对作用域上下文和this的理解，看下列代码：
+		var User = {
+			count:1,
+			getCount:function(){
+				return this.count;
+			}
+		};
+		log(User.getCount()); // 1
+		var func1 = User.getCount;
+		log(func1());	// undefined   
+		//  --->如果要确保Uesr总是能访问到func的上下文，即正确返回1 应该怎么做？ 看下面
+		//正确的方法是使用Function.prototype.bind -----ruxia: jiaorong o ~~~
+		Function.prototype.bind = Function.prototype.bind ||  function(context){
+			var self = this;
+			return function(){
+				return self.apply(context,arguments);
+			};
+		}
+		var func = User.getCount.bind(User);
+		log('func()---->' + func());  // 1
+
+//  如何用原生JS实现Jq的ready方法？
+		function ready(fn){
+		    if(document.addEventListener) {        //标准浏览器
+		        document.addEventListener('DOMContentLoaded', function() {
+		            //注销事件, 避免反复触发
+		            document.removeEventListener('DOMContentLoaded',arguments.callee, false);
+		            fn();            //执行函数
+		        }, false);
+		    }else if(document.attachEvent) {        //IE
+		        document.attachEvent('onreadystatechange', function() {
+		            if(document.readyState == 'complete') {
+		                document.detachEvent('onreadystatechange', arguments.callee);
+		                fn();        //函数执行
+		            }
+		        });
+		    }
+		};
+//   想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）
+		var oDrag = document.getElementById('drag');
+		oDrag.onmousedown = function(ev){
+			var that = this;
+			ev = ev || event ;
+			oDrag.onmousemove = function(){
+				that.style.top = ev.clientY;
+				that.style.left = ev.clientX;
+			};
+			oDrag.onmouseup = function(){
+				// return false;
+				alert(12121)
+			}
+
+		}
+// 用户第一次进来显示tips，同一天访问改页面不显示；  用户点击我知道了伺候不再显示tips提醒
+function setcookie(name,value,days){  //给cookie增加一个时间变量
+　　var exp = new Date(); 
+　　exp.setTime(exp.getTime() + days*24*60*60*1000); //设置过期时间为days天
+　　document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+} 
+function getCookie(name){
+　　var result = "";
+　　var myCookie = ""+document.cookie+";"; 
+　　var searchName = "+name+"='';
+　　var startOfCookie = myCookie.indexOf(searchName);
+　　var endOfCookie;
+　　if(satrtOfCookie != -1){
+　　　　startOfcookie += searchName.length;
+　　　　endOfCookie = myCookie.indexOf(";",startOfCookie);
+　　　　result = (myCookie.substring(startOfCookie,endOfCookie));
+　　}
+　　return result;
+}
+(function(){
+　　var oTips = document.getElementById('tips');//假设tips的id为tips
+　　var page = {
+　　check: function(){//检查tips的cookie是否存在并且允许显示
+　　　　var tips = getCookie('tips');
+　　　　if(!tips || tips == 'show') return true;//tips的cookie不存在
+　　　　if(tips == "never_show_again") return false;
+　　},
+　　hideTip: function(bNever){
+　　　　if(bNever) setcookie('tips', 'never_show_again', 365);
+　　　　oTips.style.display = "none";//隐藏
+　　},
+　　showTip: function(){
+　　oTips.style.display = "inline";//显示，假设tips为行级元素
+　　},
+　　init: function(){
+　　　　var _this = this;
+　　　　if(this.check()){
+　　　　_this.showTip();
+　　　　setcookie('tips', 'show', 1);
+　　}
+　　oTips.onclick = function(){
+　　　　_this.hideTip(true);
+　　};
+　　}
+　　};
+  page.init();
+})();
+
 </script>
 
 	<ul id='alertindex'>
@@ -262,5 +362,6 @@
 		<li>这是第二条</li>
 		<li>这是第三条</li>
 	</ul>	
+	<div id="drag" style="width:100px;height:100px;background-color:red;position:absolute;top:0;left:0"></div>
 </body>
 </html>
