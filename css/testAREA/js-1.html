@@ -5,7 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<script>
+<script>
 		var arr = ['This','is','Baidu','Employer'];
 		function strArr(arr){
 			var str = arr.join(' ');
@@ -238,13 +238,24 @@
 //	下面这个ul，如何点击每一列的时候alert其index?（闭包）  -----md
 
 			var alertindex = document.getElementsByTagName('li');
-			for(var i=0;i<alertindex.length;i++){alert(1)
-				alertindex[i].index = i;
+			for(var i=0;i<alertindex.length;i++){
+				alertindex[i].index = i; 
 				alertindex[i].onclick = function(){
 					console.log(this.index);
 				}
-			};
-	</script>
+			};   //------------------------>error  why???????????????????
+// 定义个log 代理console.log() --->apply
+		function log1(msg){
+			console.log(msg);
+		};
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(wxd)');
+			console.log.apply(console,args);
+		};
+		log("hello!!");
+//
+</script>
 
 	<ul id='alertindex'>
 		<li>这是第一条</li>
