@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$javascript编程部分</title>
+</head>
+<body>
+	<script>
+		function log(msg){
+			//console.log(msg); // 传入一个参数还好 如果多个就不行了 换 伪数组argumengts换成数组
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(wxd)');
+			console.log.apply(console,args);
+		}
+//  今天是星期几
+		var days = ['日','一','二','三','四','五','六'];	
+		var date = new Date();
+		log('今天是星期' + days[date.getDay()]);
+	</script>
+</body>
+</html>
