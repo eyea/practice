@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift("(wxd)");
+			console.log.apply(console,args);
+		};
+		var foo1 = 10+"20";
+		log(foo1); //1020
+
+		var str1 = "i'm a lasagna hog";
+		log(str1.split('').reverse().join(''));
+
+		// var a = ( window.foo || ( window.foo = "bar" ) );
+		// log(a)
+
+		var foo2 = 'Hello';
+		(function(){
+			var bar = ' World';
+			log(foo2+bar);
+		})()
+		// Hello World
+
+		var foo3 = [];
+		foo3.push(1);
+		foo3.push(2);
+		log('foo3.length-->'+foo3.length);  // 2
+
+		var foo4 = {n:1};
+		var bar4 = foo4;
+		foo4.x = foo4 = {n:2};
+		log('foo4.x-->'+foo4.x);   // foo4.x-->undefined
+		log(foo4);    //  {n:2}
+
+		console.log('one');
+		setTimeout(function() {
+		  console.log('two');
+		}, 0);
+		console.log('three');	// one three  two	
+	</script>
+</body>
+</html>
