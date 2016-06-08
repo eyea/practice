@@ -48,6 +48,17 @@
 				return Object.prototype.toString.call(arg) === '[object Array]';
 			}
 			return false;
+		};
+// 如何判断一个对象是否为函数-->判断对象是否为函数，如果当前运行环境对可调用对象（如正则表达式）的typeof返回'function'，采用通用方法，否则采用优化方法
+		function isFunction(arg){
+			if(arg){
+				if(typeof (/./) !== 'function'){
+					return typeof arg === 'function';
+				}else{
+					return Object.prototype.toString.call(arg) === '[object Function]'
+				}
+			} //end if
+			return false;
 		}
 	</script>
 
