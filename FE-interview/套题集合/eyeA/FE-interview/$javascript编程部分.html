@@ -24,6 +24,74 @@
 				},1000);				
 			})(i);
 		};
+// 完成一个函数,接受数组作为参数,数组元素为整数或者数组,数组元素包含整数或数组,函数返回扁平化后的数组
+// 如：[1, [2, [ [3, 4], 5], 6]] => [1, 2, 3, 4, 5, 6]
+		var flatarr = [1, [2, [ [3, 4], 5], 6]];
+		function flat(flatarr,result){
+			var i,len,d;
+			// var result = [];  -->放到这里是不行的 为啥
+			for(i=0,len = flatarr.length;i<len;i++){
+				d = flatarr[i];
+				if(typeof d === 'number'){
+					result.push(d);
+				}else{
+					flat(d,result);
+				}
+			};
+		};
+		var result = [];
+			flat(flatarr,result);
+			log('result---->'+ result);
 	</script>
+
+
+
+
+
+
+<span id="target"></span>
+<script type="text/javascript">
+    // 为了简化。每月默认30天
+    function getTimeString() {
+        var start = new Date();
+        var end = new Date(start.getFullYear() + 1, 0, 1);
+        var elapse = Math.floor((end - start) / 1000);
+
+        var seconds = elapse % 60 ;
+        var minutes = Math.floor(elapse / 60) % 60;
+        var hours = Math.floor(elapse / (60 * 60)) % 24;
+        var days = Math.floor(elapse / (60 * 60 * 24)) % 30;
+        var months = Math.floor(elapse / (60 * 60 * 24 * 30)) % 12;
+        var years = Math.floor(elapse / (60 * 60 * 24 * 30 * 12));
+
+        return start.getFullYear() + '年还剩' + years + '年' + months + '月' + days + '日'
+            + hours + '小时' + minutes + '分' + seconds + '秒';
+    }
+
+    function domText(elem, text) {
+        if (text == undefined) {
+
+            if (elem.textContent) {
+                return elem.textContent;
+            } else if (elem.innerText) {
+                return elem.innerText;
+            }
+        } else {
+            if (elem.textContent) {
+                elem.textContent = text;
+            } else if (elem.innerText) {
+                elem.innerText = text;
+            } else {
+                elem.innerHTML = text;
+            }
+        }
+    }
+
+    var target = document.getElementById('target');
+
+    setInterval(function () {
+        domText(target, getTimeString());
+    }, 1000)
+</script>
 </body>
 </html>
