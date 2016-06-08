@@ -15,7 +15,15 @@
 //  今天是星期几
 		var days = ['日','一','二','三','四','五','六'];	
 		var date = new Date();
-		log('今天是星期' + days[date.getDay()]);
+		log('今天是星期' + days[date.getDay()] + date.getDay());
+// 循环 延时 输出结果0 1 2 3 4,
+		for(var i=0;i<5;i++){
+			(function(i){
+				setTimeout(function(){
+					log(i);
+				},1000);				
+			})(i);
+		};
 	</script>
 </body>
 </html>
