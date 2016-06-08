@@ -35,13 +35,20 @@
 				if(typeof d === 'number'){
 					result.push(d);
 				}else{
-					flat(d,result);
+					flat(d,result);  //这个方法 应该是递归
 				}
 			};
 		};
 		var result = [];
-			flat(flatarr,result);
-			log('result---->'+ result);
+		flat(flatarr,result);
+		log('扁平化数组结果是result---->'+ result);
+//判断一个对象是否是   数组    ----->如果浏览器支持Array.isArray()可以直接判断否则需进行必要判断
+		function isArray(arg){
+			if(typeof arg === 'object'){
+				return Object.prototype.toString.call(arg) === '[object Array]';
+			}
+			return false;
+		}
 	</script>
 
 
