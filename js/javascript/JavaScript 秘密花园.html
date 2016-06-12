@@ -125,6 +125,20 @@
 			}
 		})(i),1000);
 	};
+
+// arguments 对象
+//arguments 变量不是一个数组（Array）。 尽管在语法上它有数组相关的属性 length，但它不从 Array.prototype 继承，实际上它是一个对象（Object）。因此，无法对 arguments 变量使用标准的数组方法，比如 push, pop 或者 slice。 虽然使用 for 循环遍历也是可以的，但是为了更好的使用数组方法，最好把它转化为一个真正的数组。
+	// Array.prototype.slice.call(arguments);创建一个新的数组，包含所有 arguments 对象中的元素。 这个转化比较慢，在性能不好的代码中不推荐这种做法。
+
+// 作用域与命名空间
+	function zuoyongyu(){
+		for(var i=0;i<10;i++){
+
+		};
+		log('作用域===>'+ i);
+	};
+	zuoyongyu(); // 10
+
 </script>
 
 
@@ -166,7 +180,8 @@
 
 
 
-
+<h2>JavaScript 中局部变量只可能通过两种方式声明，一个是作为函数参数，另一个是通过 var 关键字声明。</h2>
+<h2>JavaScript 会提升变量声明。这意味着 var 表达式和 function 声明都将会被提升到当前作用域的顶部。</h2>
 
 	<h1>http://bonsaiden.github.io/JavaScript-Garden/zh/</h1>
 	<p>
