@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>segmentfault---1</title>
+</head>
+<body>
+	<h1>第一部分：Object Prototypes (对象原型)</h1>
+	<h1>第二部分：参数 arguments</h1>
+	<h1>第三部分：上下文</h1>
+	<h1>第四部分：弹出窗口（Overlay library</h1>
+	<script>
+		// 自定义个打印方法
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift("(wxd)");
+			console.log.apply(console,args);
+		};
+		// 定义一个方法，传入一个string类型的参数，然后将string的每个字符间加个空格返回
+		// spacify('hello world') // => 'h e l l o  w o r l d' 
+		var str1 =  'hello world';
+		function spacify(str){
+			//return str.split('');  //["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+			return str.split('').join(' ');
+			//split-->把str化成数组，然后join把数组化成str
+		};
+		
+		log(spacify(str1));
+	</script>
+</body>
+</html>
