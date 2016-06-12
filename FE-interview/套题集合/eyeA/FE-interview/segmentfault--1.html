@@ -84,15 +84,18 @@
 
 		//   弹出窗口（Overlay library） dianji关闭 考察冒泡机制
 		var close = document.getElementById('overlay');
-		close.click(closeOverlay());
-		// close.click = function(e){
-		// 	if(e.target == e.currentTarget)
+		// close.click(closeOverlay());
+		close.onclick = function(ev){ 
+			var ev = ev || event;
+			if(ev.target == ev.currentTarget)
 		// 		closeOverlay();
-		// }
-		function closeOverlay(){
+			// alert(1);
+			close.style.display = 'none';
+		}
+		// function closeOverlay(){
 			// close.style.display = 'none';
-			alert(112);
-		};
+			// alert(112);
+		// };
 	</script>
 </body>
 </html>
