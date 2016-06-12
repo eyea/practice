@@ -88,14 +88,14 @@
 		close.onclick = function(ev){ 
 			var ev = ev || event;
 			if(ev.target == ev.currentTarget)
-		// 		closeOverlay();
+				closeOverlay();
 			// alert(1);
-			close.style.display = 'none';
-		}
-		// function closeOverlay(){
 			// close.style.display = 'none';
+		}
+		function closeOverlay(){
+			close.style.display = 'none';
 			// alert(112);
-		// };
+		};
 	</script>
 </body>
 </html>
