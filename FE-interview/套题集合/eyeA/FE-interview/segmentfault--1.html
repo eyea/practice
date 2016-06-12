@@ -3,12 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>segmentfault---1</title>
+	<style>
+		#overlay{
+			position: fixed; 
+			/*代替absolute 解释区别即使在滚动的时侯，也能始终让遮罩始盖住整个窗口*/
+			left: 0;right: 0;bottom: 0;top: 0;
+			background: rgba(0,0,0,.8);
+		}
+		#overlay article{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -200px 0 0 -200px;
+			width: 400px;
+			height: 400px;
+			color: red;
+			border: 1px solid green;
+			border-radius: 10px;
+		}
+	</style>
 </head>
 <body>
 	<h1>第一部分：Object Prototypes (对象原型)</h1>
-	<h1>第二部分：参数 arguments</h1>
+	<h1>第二部分：参数 arguments  自定义的log方法</h1>
 	<h1>第三部分：上下文</h1>
 	<h1>第四部分：弹出窗口（Overlay library</h1>
+
+	<div id="overlay">
+		<article>
+			1.遮罩中最好使用position中的fixed代替absolute属性，这样即使在滚动的时侯，也能始终让遮罩始盖住整个窗口。当侯选人忽略时我会提示他们这一点，并让他们解释fixed和absolute定位的区别。<br>
+			2.他们如何让里面的内容居中也是需要考察的一点。一些侯选人会选择CSS和绝对定位，如果内容有固定的宽、高这是可行的。否则就要使用JavaScript.<br>
+			3.我也会让侯选人确保当遮罩被点击时要自动关闭，这会很好地考查事件冒泡机制的机会。通常侯选人会在overlay上面直接绑定一个点击关闭的方法。<br>
+			4.这是个方法，不过直到你认识到点击窗口里面的东西也会关闭overlay的时侯——这明显是个BUG。解决方法是检查事件的触发对象和绑定对象是否一致，从而确定事件不是从子元素里面冒上来的，就像这样:			
+		</article>
+	</div>
 	<script>
 		// 自定义个打印方法
 		function log(msg){
@@ -19,13 +47,52 @@
 		// 定义一个方法，传入一个string类型的参数，然后将string的每个字符间加个空格返回
 		// spacify('hello world') // => 'h e l l o  w o r l d' 
 		var str1 =  'hello world';
-		function spacify(str){
+		function spacify1(str){
 			//return str.split('');  //["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
 			return str.split('').join(' ');
-			//split-->把str化成数组，然后join把数组化成str
+			//split-->把str化成数组，然后join把数组化成str   用一个循环fangfa 
 		};
-		
-		log(spacify(str1));
+		log('spacify1(str1)-->' + spacify1(str1));
+		// 把这个方法放入String对象上面 例如 'hello world'.spacify();
+		String.prototype.spacify2 = function(){
+			return this.split('').join(' ');
+		};
+		log('str1.spacify2()-->' + str1.spacify2());
+
+		// 上下文
+		var User = {
+			count : 1,
+			getCount: function(){
+				return this.count;
+			}
+		};
+		log(User.getCount());   //  1
+		var func = User.getCount;
+		log('func()--->' + func());  //undefined--->func是在winodw的上下文中被执行的，所以会访问不到count属性
+		// 那么如何访问到呢?  fanhui  1?
+		var func1 = User.getCount.bind(User);
+		log('func1()--->' + func1());
+		// 但是这个方法对老版本的浏览器不起作用 怎么解决呢??---->apply和call
+		Function.prototype.bind = Function.prototype.bind || function(context){
+			var self = this;
+
+			return function(){
+				return self.apply(context,arguments);
+			};
+		};
+
+
+		//   弹出窗口（Overlay library） dianji关闭 考察冒泡机制
+		var close = document.getElementById('overlay');
+		close.click(closeOverlay());
+		// close.click = function(e){
+		// 	if(e.target == e.currentTarget)
+		// 		closeOverlay();
+		// }
+		function closeOverlay(){
+			// close.style.display = 'none';
+			alert(112);
+		};
 	</script>
 </body>
 </html>
