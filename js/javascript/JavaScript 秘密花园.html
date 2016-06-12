@@ -7,7 +7,124 @@
 <body>
 
 <script>
-	
+	// 惯例
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(eyea)');
+		console.log.apply(console,args);
+	};
+// JavaScript 中所有变量都可以当作对象使用，除了两个例外 null 和 undefined。
+	log('false.toString()==>' + false.toString());  //false
+	log('[1,2,3].toString()==>' + [1,2,3].toString());  // 1,2,3
+	function foo1(){};
+	foo1.bar = 1;
+	log('foo1.bar===>' + foo1.bar);  //1
+	//一个常见的误解是数字的字面值（literal）不能当作对象使用。这是因为 JavaScript 解析器的一个错误， 它试图将点操作符解析为浮点数字面值的一部分。
+
+	//  log('2.toString()==>'+ 2.toString())  //出错
+	log('2..toString()==>' + 2..toString()); // 第二个点号可以正常解析
+	log('2 .toString()==>' + 2 .toString()); // 注意点号前面的空格
+	log('(2).toString()==>'+ (2).toString()); // 2先被计算	
+
+	//有两种方式来访问对象的属性，点操作符或者中括号操作符。
+	var foo2 = {'name':'keiitn'};
+	log('foo2.name==>'+ foo2.name);   //(eyea) foo2.name==>keiitn
+	log('foo2[\'name\']==>' + foo2['name']);
+
+// 删除属性的唯一方法是使用 delete 操作符；设置属性为 undefined 或者 null 并不能真正的删除属性， 而仅仅是移除了属性和值的关联。
+	var obj1 = {
+	    bar: 1,
+	    foo: 2,
+	    baz: 3,
+	    test:'guss',
+    	'case': 'I am a keyword so I must be notated as a string',
+    	delete: 'I am a keyword too so me' // 出错：ECMAScript 5 之前会抛出 SyntaxError 的错误。	    
+	};
+	obj1.bar = undefined;
+	obj1.foo = null;
+	delete obj1.baz;
+
+	for(var i in obj1){
+		if(obj1.hasOwnProperty(i)){
+			log(i+'==>'+obj1[i]);  //(eyea) bar==>undefined (eyea) foo==>null  (eyea) test==>guss.....
+		}
+	};
+// hasOwnProperty 函数
+// 为了判断一个对象是否包含自定义属性而不是原型链上的属性， 我们需要使用继承自 Object.prototype 的 hasOwnProperty 方法。
+// 注意: 通过判断一个属性是否 undefined 是不够的。 因为一个属性可能确实存在，只不过它的值被设置为 undefined。
+// hasOwnProperty 是 JavaScript 中唯一一个处理属性但是不查找原型链的函数
+
+	//修改 Object.prototype
+	Object.prototype.bar3 = 1;
+	var foo3 = {goo:undefined};
+	log('foo3.bar==>' + foo3.bar3);  // 1
+	log("'bar3' in foo3==>" + ('bar3' in foo3)); // true
+	log('foo3.hasOwnProperty(\'bar\')==>' + foo3.hasOwnProperty('bar'));  //false
+	log('foo3.hasOwnProperty(\'goo\')==>' + foo3.hasOwnProperty('goo'));  //true
+
+// for-in 循环
+	Object.prototype.bar = 1;
+	var forin1 = {moo:'hello'};
+	for(var i in forin1){
+		//  log('i===>' + i);  // 不考虑上面的应该有两个输出 moo和bar
+		if(forin1.hasOwnProperty(i)){
+			log('当前i==>' + i);  // moo
+		}
+	};
+	//推荐总是使用 hasOwnProperty。不要对代码运行的环境做任何假设，不要假设原生对象是否已经被扩展了。
+	// 函数声明
+	function hi(){};
+	var hi = function(){};
+
+	// THIS  this  this  this
+	// 当使用 Function.prototype 上的 call 或者 apply 方法时，函数内的 this 将会被 显式设置为函数调用的第一个参数。
+	//函数调用的规则在下例中已经不适用了，在foo 函数内 this 被设置成了 bar。
+	function foo5(a,b,c){};
+	function foo6(a,b,c){};
+	var bar5 = {};
+	foo5.apply(bar5,[1,2,3]);
+	foo6.call(bar5,3,2,1);
+	log('foo5==>' + foo5);
+	log('foo6==>' + foo6);
+
+// 闭包和引用
+	function Counter(start) {
+	    var count = start;
+	    return {
+	        increment: function() {
+	           count++;
+	        },
+
+	        get: function() {
+	            return count;
+	        }
+	    }
+	}
+
+	var foobi = Counter(4);
+	log('foobi.increment()==>' + foobi.increment());  //undefined
+	log('foobi.get()===>' + foobi.get()); // 5	
+// 循环中的闭包
+	for(var i = 0;i<6;i++){
+		// var that  = this;
+		//  var j = i ; //下面输出9  如果没有 就是10
+		(function(e){  // 这样就可以 0到 9 了
+			setTimeout(function(){
+				log(e);
+			},1000);			
+		})(i);
+		//外部的匿名函数会立即执行，并把 i 作为它的参数，此时函数内 e 变量就拥有了 i 的一个拷贝。
+		//为了正确的获得循环序号，最好使用 匿名包装器（译者注：其实就是我们通常说的自执行匿名函数）。
+		//当传递给 setTimeout 的匿名函数执行时，它就拥有了对 e 的引用，而这个值是不会被循环改变的。
+	};
+// 还有一个方法同上功能
+	for(var i =6;i>0;i--){
+		setTimeout((function(e){
+			return function(){
+				log(e);
+			}
+		})(i),1000);
+	};
 </script>
 
 
