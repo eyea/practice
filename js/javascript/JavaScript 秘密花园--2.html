@@ -19,7 +19,24 @@
 		log({}==={});  // false
 		log({}=={});  //  false
 
-
+// 消除数组重复的元素
+		var arr1 = [1,2,2,2,3,3,3,4,5,6];
+		for(var i=0,len = arr1.length;i<len;i++){
+			for(var j=i+1;j<arr1.length;j++){ 
+				if(arr1[j] == arr1[i]){}
+					arr1.splice(j,1);
+					j--;
+			}
+		};
+		// log('arr1===>' + arr1);
+		var arr2 = [1,2,2,2,3,3,3,4,5,6],
+			arr3 = [];
+			for(var i=0,len = arr2.length;i<len;i++){
+				if(arr3.indexOf(arr2[i]) < 0){
+					arr3.push(arr2[i]);
+				}
+			};	
+		log(arr3);  //   (wxd) [1, 2, 3, 4, 5, 6]
 	</script>
 </body>
 </html>
