@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三角边</title>
+	<style>
+		#div1{
+			width: 0;height: 0;border: 1px solid red;
+			border-top-width:80px;border-right-color: white;
+			border-right-width: 80px;border-top-color: white;
+			border-bottom-width: 80px;border-bottom-color: pink;
+			border-left-width:80px;border-left-color: white;
+		}
+		p:before{
+			content: 'eyea:  ';
+		}
+		#div2{
+			width:80px;height: 80px;background-color: pink;
+			position: relative;
+		}
+		#div2:before{
+			content: '';
+			position: absolute;
+			top: -20px;
+			left: 10px;
+			width: 0;height: 0;border: 1px solid red;
+			border-top-width:10px;border-right-color: white;
+			border-right-width:10px;border-top-color: white;
+			border-bottom-width: 10px;border-bottom-color: pink;
+			border-left-width:10px;border-left-color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<p>come  on</p>
+	<div id="div2"></div>
+</body>
+</html>
