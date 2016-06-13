@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript 秘密花园 ---2</title>
+</head>
+<body>
+	<script>
+// 定义log方法：
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(wxd)');
+			console.log.apply(console,args);
+		}; 
+		// log('hello ' + 'dong');   -->ok
+		log([1,2,3]);   //  (wxd) [1, 2, 3]
+		log(new Array(1,2,3));   //  (wxd) [1, 2, 3]
+		log(new Array(3));   // (wxd) []  length==3
+		log({}==={});  // false
+		log({}=={});  //  false
+
+
+	</script>
+</body>
+</html>
