@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h3>log 和alert 是不一样的输出
+console.log是同步的，alert涉及到暂停浏览器进程可能会比较复杂</h3>
+	<script>
+	// practice 
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(wxd)');
+		console.log.apply(console,args);
+	};
+//  1
+		var len=4;
+		//while(len--){
+		   //setTimeout(function(){
+		    //   console.log('里面'+len);  // -1 4次
+		   // },0);
+		   // console.log('外面'+len);  //3  2  1 0 setTimeOut是异步的，即使是0也会在最后执行，结果输出应该为3，2，1，0，-1，-1，-1，-1
+		//};
+
+		while(len--){
+		    (function(i){
+		        setTimeout(function(){
+		            log('里面'+i);
+		        },0);
+		    })(len);
+		    log('外面'+len);
+		}				
+	</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>魅族前端面试题</title>
+	<style>
+		#div1,#div2{width: 50px; height: 50px;background-color: #eee;border-radius: 6px;position: absolute;top: 250px;margin-bottom: 20px;color: red}
+		#div2{top: 320px;transition: all 2s ease-in-out}
+		#div3{width: 100px;height: 100px;margin: auto;position: absolute;top: 0;right: 0;left: 0;bottom: 0;background-color: orange;z-index: 1}
+.container > div {
+  height: 200px;
+}
+.container {
+  padding: 0 200px;
+}
+.main,
+.left,
+.right {
+  position: relative;
+  float: left;
+}
+.left,
+.right {
+  width: 200px;
+}
+.main {
+  width: 100%;
+  background-color: yellow;
+}
+.left {
+  background-color: blue;
+  margin-left: -100%;
+  left: -200px;
+}
+.right {
+  background-color: green;
+  margin-left: -200px;
+  left: 200px;
+}
+	</style>
+</head>
+<body>
+<script>
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd_');
+		console.log.apply(console,args);
+	}
+</script>
+<h3>1、列举3个HTML5标签，3个CSS3新特性，3个ECMAScript 5新API</h3>
+	3个html标签： <header></header>  <main></main>  <footer></footer>  <br>
+	3个css3新特性：border-radius;  @keyframes;  @media query  <br>
+	3个ecmascript5新API: String.prototype.trim(); Array.prototype.foEach();Array.prototype.isArray();<br>
+	 <hr>
+<h3>2、2种方式，实现某DIV元素以50px每秒的速度左移100px。</h3>
+<div id="div1">js实现</div>
+<div id="div2">css实现</div>
+<script>
+	window.onload = function(){
+		var aDiv1 = document.getElementById('div1');
+		var aDiv2 = document.getElementById('div2');
+
+		//aDiv1.animate({'left':100},2000);  //这是用jq方法
+		aDiv2.onclick = function(){
+			aDiv2.style.left = (aDiv2.offsetLeft + 100) + 'px';
+		} // zheshi css 方法
+	}
+</script>
+<hr>
+
+<h3>3、用css分别实现某个DIV元素上下居中和左右居中</h3>
+<div id="div3">上下左右居中</div>
+<hr>
+
+<h3>4、用DIV+CSS实现三栏布局（左右固定200px，中间自适应）</h3>
+<div class="container">
+  <div class="main">
+    <h2>这是主要内容啊啊这是主要内容啊啊</h2>
+  </div>
+  <div class="left">
+    左边
+  </div>
+  <div class="right">
+    右边
+  </div>
+</div>
+<hr>
+
+<h3>5、按顺序写出log内容。</h3>
+<script>
+	var name = "The Window";
+	var object = {
+	    name : "My Object",
+	    getNameFunc : function(){
+				        log('1.' + this.name);   //My Object  个人解释zhixiang object 内部如果没有往上  undefined
+				        return function(){
+				            return this.name;
+	        };
+	    }
+	};
+	var func = object.getNameFunc();
+	log('2.' + func());		// The Window  个人解释 全局var func this指向 全局
+	log('3.' + func.call(object)); //  3.My Object
+	log('4.' + func.apply(object));	  //  4.My Object
+</script>
+<hr>
+
+<h3>6、列出三个常见的不同浏览器JS的兼容性问题。</h3>
+1.Dom Leval 2事件绑定兼容性问题：<br>
+ie8以下的浏览器不支持addEventListener来绑定事件，通过attachevent可以解决。<br>
+2.stopPropagation兼容性问题：<br>
+ie8以下的浏览器不支持e.stopPropagation()来阻止事件传播，通过e.returnValue = false可以解决。<br>
+3.关于鼠标滚轮事件兼容性问题：<br>
+<a href="http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/">鼠标滚轮事件兼容性问题</a>
+<hr>
+
+<h3>7、用JS写一个实现继承的方法。</h3>
+<script>
+//临时构造器继承??? 看不懂
+	var inherit = (function(){
+		var F = function() {} ;
+		return function(C,P){
+			F.prototype = P.prototype;
+			C.prototype = new F();
+			C.uber = P.prototype;
+			C.prototype.constructor = C;
+		}
+	})
+</script>
+<hr>
+
+<h3>8、用JS实现一个数组合并的方法（要求去重）。</h3>
+<script>
+	var arr1 = ['a'];
+	var arr2 = ['b','c'];
+	var arr3 = ['c',['d'],'e',undefined,null];
+
+
+</script>
+<script>
+	// var a = 0,i=1;
+	// setInterval(()=>{
+	//     a = a+i;
+	//     console.log('hhhhh---' + a)
+	//     if(a==5){
+	//         i = -1;
+	//     }else if(a==0){
+	//         i = 1
+	//     }
+	// },1000)	;
+	
+	var a=0,i=1;
+	setInterval(()=>{
+		a += i;
+		log(a);
+		if(a==5){
+			i=-1;
+		}else if(a==0){
+			i=1
+		}
+	},1000); 
+// 自己写
+	// setInterval(function(){
+	// 	for(var i=0;i<=5;i++){
+	// 		var j =0;
+	// 		j +=i;
+	// 		log(j);
+	// 		if(j==5){
+	// 			i=-1;
+	// 		}else if(j==0){
+	// 			i=0;
+	// 		}
+	// 	}
+	// },2000);   //  这样浏览器会崩溃的。。。
+</script>
+</body>
+</html>
