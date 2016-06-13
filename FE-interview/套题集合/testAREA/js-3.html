@@ -26,8 +26,19 @@
 			// 	},1000);
 			// })(i);  // 这个时间长点 大概 3s  ？？
 		}
+// =========================
+// 每个函数都有返回值，如果使用了return语句，则返回return后跟的值，如果没有使用return，则默认返回undefined.
+// 特别的，如果这个函数是构造函数，则默认返回this对象，如果构造函数内使用了return语句，并且return后跟的是一个对象，则这个构造函数返回的是这个对象，否则返回this.
+// 所以1题中的p = {name: 'jack'}，而2题中的p = {name: 'peter'}.
 
-// 2
+// a.info ＝ a.__proto__.info = b.info = b.__proto__.info = fun.prototype.info = {name: 'peter', age: 25}
+// js里面，一个实例(以下都用p)的[[proto]]属性指向这个类(以下用fun)的原型，如果用等号表示指向的话就是
+// p.[[proto]] = fun.prototype
+// 然后另一条规则就是，当访问一个对象a的属性时，会先检查a是否有这个属性，如果有，则返回这个属性的值，如果没有则检查a的[[proto]]是否有该属性，有则返回，无则继续检查a的[[proto]]的[[proto]]直到检查到或者[[proto]]为null为止。
+// ========================
+
+
+// 2.0
 		var fun0 = function(){
 			this.name = 'peter';
 			return {
@@ -46,19 +57,7 @@
 		    };
 		var p = new fun1();
 		log(p.name);  // 'peter'
-// =========================
-// 每个函数都有返回值，如果使用了return语句，则返回return后跟的值，如果没有使用return，则默认返回undefined.
-// 特别的，如果这个函数是构造函数，则默认返回this对象，如果构造函数内使用了return语句，并且return后跟的是一个对象，则这个构造函数返回的是这个对象，否则返回this.
-// 所以1题中的p = {name: 'jack'}，而2题中的p = {name: 'peter'}.
-// ==========================
 
-
-// ========================
-// a.info ＝ a.__proto__.info = b.info = b.__proto__.info = fun.prototype.info = {name: 'peter', age: 25}
-// js里面，一个实例(以下都用p)的[[proto]]属性指向这个类(以下用fun)的原型，如果用等号表示指向的话就是
-// p.[[proto]] = fun.prototype
-// 然后另一条规则就是，当访问一个对象a的属性时，会先检查a是否有这个属性，如果有，则返回这个属性的值，如果没有则检查a的[[proto]]是否有该属性，有则返回，无则继续检查a的[[proto]]的[[proto]]直到检查到或者[[proto]]为null为止。
-// ========================
 //  2.2
 		var fun3 = function(){}
 
@@ -91,7 +90,8 @@
 		var b = new fun4();
 
 		a.info.name = 'jack';
-		b.info.name = 'tom';		
+		b.info.name = 'tom';	
+			
 		log('a.info.name444---'+ b.info.name);  // tom
 		log('a.info.name444---'+ b.info.name);  // tom
 //  2.4

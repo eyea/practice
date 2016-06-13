@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 惯例
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('eyea');
+			console.log.apply(console,args);
+		};
+// http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
+	var url1 = 'http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e';
+	function strToJson(url){
+		var result = {};
+		url = url.split('?')[1];
+		var map = url.split('&');
+		// alert(map);
+		for(var i=0,len=map.length;i<len;i++){
+			result[map[i].split('=')[0]] = map[i].split('=')[1];
+		};
+		return result;
+	};
+
+	log(strToJson(url1));
+
+function getParas( url ) {
+    /** 拿到 GET 参数的另一种方法 **/
+    var anchor = document.createElement("a");
+    anchor.href = url;
+    var search = anchor.search.substring(1);
+
+    return search.split("&").reduce(function(res, p){
+        var r = p.split("=").map(function(o){ return decodeURIComponent(o) });
+        res[r[0]] = r[1] || "";
+        return res;
+    }, {})
+}
+
+	log(getParas( "http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e" ));
+
+// self  to  write again
+	var url2 = 'http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e';
+	function selfw(url){
+		var json1 = {};
+		url = url.split('?')[1];
+		// alert(typeof url);  // string  如果没有上面的【1】 类型是object
+		var map = url.split('&');
+		// log(map)
+		for(var i=0,len = map.length;i<len;i++){
+			json1[map[i].split('=')[0]] = map[i].split('=')[1];
+		};
+		return json1;
+	};
+	log(selfw(url2));
+	</script>
+</body>
+</html>
