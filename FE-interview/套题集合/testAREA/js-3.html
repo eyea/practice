@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-3</title>
+</head>
+<body>
+	<script>
+		// 老规矩
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(wxd)');
+			console.log.apply(console,args);
+		};
+//  1
+		for(var i=0;i<3;i++){
+			// setTimeout((function(e){
+			// 	log(e);
+			// })(i),5000);
+
+			// log(i);// 这个和上面是等同的  都是马上打印....
+
+			// (function(a){
+			// 	setTimeout(function(){
+			// 		log(a);
+			// 	},1000);
+			// })(i);  // 这个时间长点 大概 3s  ？？
+		}
+
+// 2
+		var fun0 = function(){
+			this.name = 'peter';
+			return {
+				'name' : 'jack'
+			};
+		};
+		var p = new fun0();
+		log('p.name--->' + p.name);  //  'jack'
+		log('window.name==>' + window.name) ; // kong 
+
+
+// 2.1
+		var fun1 = function(){
+		    this.name = 'peter';
+		    return 'jack';    
+		    };
+		var p = new fun1();
+		log(p.name);  // 'peter'
+// =========================
+// 每个函数都有返回值，如果使用了return语句，则返回return后跟的值，如果没有使用return，则默认返回undefined.
+// 特别的，如果这个函数是构造函数，则默认返回this对象，如果构造函数内使用了return语句，并且return后跟的是一个对象，则这个构造函数返回的是这个对象，否则返回this.
+// 所以1题中的p = {name: 'jack'}，而2题中的p = {name: 'peter'}.
+// ==========================
+
+
+// ========================
+// a.info ＝ a.__proto__.info = b.info = b.__proto__.info = fun.prototype.info = {name: 'peter', age: 25}
+// js里面，一个实例(以下都用p)的[[proto]]属性指向这个类(以下用fun)的原型，如果用等号表示指向的话就是
+// p.[[proto]] = fun.prototype
+// 然后另一条规则就是，当访问一个对象a的属性时，会先检查a是否有这个属性，如果有，则返回这个属性的值，如果没有则检查a的[[proto]]是否有该属性，有则返回，无则继续检查a的[[proto]]的[[proto]]直到检查到或者[[proto]]为null为止。
+// ========================
+//  2.2
+		var fun3 = function(){}
+
+		fun3.prototype = {
+		    info : {
+		    	'name' : 'peter',
+		    	'age' : 25
+		    }
+		}
+
+		var a = new fun3();
+		var b = new fun3();
+
+		a.info.name = 'tom';
+		b.info.name = 'jack';
+
+		log('a.info.name---'+ a.info.name);   //jack
+		log('b.info.name---'+ b.info.name);   // jack
+
+//  2.3
+		var fun4 = function(){
+		    this.info = {
+		    	name : 'peter',
+		    	age : 25
+		    },
+		    name = 'eye'   // 这一行没什么作用
+		}
+
+		var a = new fun4();
+		var b = new fun4();
+
+		a.info.name = 'jack';
+		b.info.name = 'tom';		
+		log('a.info.name444---'+ b.info.name);  // tom
+		log('a.info.name444---'+ b.info.name);  // tom
+//  2.4
+		var fun5 = function(){}
+		fun5.prototype = {    
+		    name : 'peter',    
+		    age : 25    
+		}
+		var a = new fun5();
+		var b = new fun5();
+
+		a.name = 'jack';
+		b.name = 'tom';
+		log('555aaa.name---' + a.name);  // jack
+		log('555bbb.name---' + b.name);  //tom
+
+//   2.5
+		var fun = function(){
+		    this.info = {
+		    	name : 'peter',
+		    	age : 25
+		    }
+		}
+
+		fun.prototype = {
+		    info : {
+		   		 name : 'peter',
+		    	 age : 25
+		    }
+		}
+
+		var a = new fun();
+		var b = new fun();
+
+		a.info.name = 'jack';
+		b.info.name = 'tom';
+
+		log('last--a.info.name---' + a.info.name);	 // 'jack'
+		log('last--b.info.name---' + b.info.name);  // 'tom'
+	</script>
+<div>
+关于 "Javascript事件处理器在线程空闲之前不会运行" 这句话的意思我说一下吧。因为 JS 是单线程的，而 setTimeout 注册事件是队列的，setTimeout 放到队列之后，因为之前的 for 循环并没有执行完，所以不会立即执行 setTimeout 的。这也就是为什么说 JS 时间处理在线程空闲之前不会运行 的原因了。实际上 for 循环是这么走的：
+
+循环开始 i=0
+定义了一个 setTimeout 1 并放到队列中
+上一个循环结束 i=1
+定义了一个 setTimeout 2并放到队列中
+上一个循环结束 i=2
+定义了一个 setTimeout 3并放到队列中
+上一个循环结束 i=3
+定义了一个 setTimeout 4并放到队列中
+执行 setTimeout 1
+执行 setTimeout 2
+执行 setTimeout 3
+执行 setTimeout 4
+</div>
+</body>
+</html>
