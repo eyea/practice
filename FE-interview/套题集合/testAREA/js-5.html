@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h3>一个页面上存储了10^n个按钮，请实现功能：点击按钮时，显示这是页面上的第几个按钮（alert即可）</h3>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+	<button>5</button>
+
+<script>
+// 老规矩
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(apple)');
+		console.log.apply(console,args);
+	};
+// 
+	window.onload=function(){
+	  var buttons=document.getElementsByTagName("button");
+	  for(var i=0;i<buttons.length;i++){
+	   buttons[i].index=i+1;
+	  }
+	  this.addEventListener('click',function(e){
+	     if(e.target.nodeType==1&&e.target.nodeName.toUpperCase()=="BUTTON")
+	       log(e.target.index);
+	   },false);
+	};
+// self write	
+    window.onload = function(){
+    	var oBtns = document.getElementsByTagName('button');
+    	for(var i=0,len = oBtns.length;i<len;i++){
+    		oBtns[i].index = i+1;
+    	};
+    	this.addEventListener('click',function(e){
+    		if(e.target.nodeType == 1 && e.target.nodeName.toUpperCase()=='BUTTON'){
+    			log('self--' + e.target.index);
+    		}
+    	},false)
+    }	
+</script>
+</body>
+</html>
