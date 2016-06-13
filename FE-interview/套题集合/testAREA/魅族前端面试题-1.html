@@ -148,17 +148,29 @@ ie8以下的浏览器不支持e.stopPropagation()来阻止事件传播，通过e
 	//         i = 1
 	//     }
 	// },1000)	;
-	
+
+	// var a=0,i=1;
+	// setInterval(()=>{
+	// 	a += i;
+	// 	log(a);
+	// 	if(a==5){
+	// 		i=-1;
+	// 	}else if(a==0){
+	// 		i=1
+	// 	}
+	// },1000);
+
 	var a=0,i=1;
-	setInterval(()=>{
+	setInterval(function(){
+		// a=0,i=1;
 		a += i;
 		log(a);
 		if(a==5){
-			i=-1;
+			i=-1
 		}else if(a==0){
 			i=1
 		}
-	},1000); 
+	},1000);  // 1 一直执行到无数次.....
 // 自己写
 	// setInterval(function(){
 	// 	for(var i=0;i<=5;i++){
