@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// log
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd)');
+		console.log.apply(console,args);
+	};
+//  截取字符串abcdefg的efg
+	var str1 = 'abcdefg' ;
+	log('abcdefg.substring(4)--'+str1.substring(4));
+
+// 判断一个字符串中出现次数最多的字符，统计这个次数
+		var str1 = 'abcdefgaaaaaadddaa';
+		var obj = {};
+		var arr = [];
+		var letter;
+		for(var i = 0,len = str1.length;i<len;i++){
+			letter = str1[i];
+			if(!obj[letter]){
+				obj[letter] = 1;
+			}else{
+				obj[letter]++;
+			}
+		};
+
+		var max_key,max_num=0;
+		for(key in obj){
+			if(max_num <obj[key]){
+				max_num = obj[key];
+				max_key = key;
+			}
+		};
+	console.log('字母：'+max_key+'　次数：'+max_num+'次');
+//	 判断一个字符串中出现次数最多的字符，统计这个次数
+	var str2 = 'asdfssaaasasasasaa';
+	var arrstr2 = [];
+	for(var i=0,len=str2.length;i<len;i++){
+
+	}
+</script>
+</body>
+</html>
