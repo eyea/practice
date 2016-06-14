@@ -40,6 +40,293 @@
 	console.log('字母：'+max_key+'　次数：'+max_num+'次');
 //	 判断一个字符串中出现次数最多的字符，统计这个次数
 //  ???
+
+//	IE与FF脚本兼容性问题
+	// obj.addEventListener(sEv, fn, false);
+	// obj.attachEvent('on'+sEv,fn);
+	// detachevet
+	// removeEventListener
+	// DOMContentLoaded
+	// onreadystatechange  complete
+	// DOMMouseScroll FF
+	// onmousewheel   非FF
+	// event.wheelDelta 上滚120 下-120
+	// event.detail     上滚-3   下3  
+	// obj.getCurrentStyle[attr]
+	// getComputedStyle(obj,false)[attr]
+	// XMLHttpRequest
+	// ActiveXObject('Mircorsoft.XMLHttp')
+	// FF本地能设置读取cookie 其他不行
+	// event  ev
+	// 事件源
+	// srcElement||target
+	// toElement||relatedTarget
+	// obj.setCapture();只有ie认
+	// obj.releaseCapture();
+
+// 规避javascript多人开发函数重名问题
+// 命名空间
+// 封闭空间
+// js模块化mvc（数据层、表现层、控制层）
+// seajs
+// 变量转换成对象的属性
+// 对象化
+
+// javascript面向对象中继承实现
+	function Person(name){
+	        this.name = name;
+	}
+
+	Person.prototype.showName = function(){
+	        log(this.name);
+	}
+
+	function Worker(name, job){
+	        Person.apply(this,arguments)
+	        this.job = job;
+	}
+	for(var i in Person.prototype){
+	        Worker.prototype = Person.prototype;
+	}
+	new Worker('eyea', 'coders').showName();  // (xd) eyea
+	// self
+	function Hi(name){
+		this.name = name;
+	}
+	Hi.prototype.show = function(){
+		log(this.name);
+	}
+	function Miss(name,age){
+		Hi.apply(this,arguments);
+		this.age = age;
+	}
+	for(var i in Hi.prototype){
+		Miss.prototype = Hi.prototype;
+	}
+	new Miss('lili',18).show(); //  (xd) lili
+//  FF下面实现outerHTML
+
+	// var oDiv = document.createElement('div');
+	// var oDiv1 = document.getElementById('div1');
+	// var oWrap = document.getElementById('wrap');
+
+	// oWrap.insertBefore(oDiv,oDiv1);
+	// oDiv.appendChild(oDiv1);
+	// var sOut = oDiv.innerHTML;
+	// oWrap.insertBefore(oDiv1,oDiv);
+	// oWrap.removeChild(oDiv);
+	// log(sOut);
+
+// 编写一个方法 求一个字符串的字节长度;  假设一个中文占两个字节
+	var strlen = '222你好' ;
+	log(getStrlen(strlen));  //  8
+	function getStrlen(str){
+		var json = {'len':0};
+		var reg = /[u4e00-\u9fa5]/g;
+		for(var i=0;i<str.length;i++){
+			if(reg.test(str.charAt(i))){
+				json['len'] ++;
+			}
+		};
+		return json['len'] + str.length;  //  去掉这个是 5 json['len'] +
+	}
+
+// 编写一个方法 去掉一个数组的重复元素  这个方法ng
+var arrre = [1,2,3,1,43,12,12,1];
+var jsonre = {};
+var arr2re = [];
+for (var i = 0; i < arrre.length; i++) {
+        if(!jsonre[arrre[i]]){
+                jsonre[arrre[i]] = true;
+        }else{
+                jsonre[arrre[i]] = false;
+        }
+
+        if(jsonre[arrre[i]]){
+                arr2re.push(arrre[i]);
+        }
+};
+
+for (var i = 0; i < arrre.length; i++) {
+        if(!aa(arrre[i], arr2re)){
+                arr2re.push(arrre[i])
+        }
+};
+function aa(obj, arr){
+        for (var i = 0; i < arr.length; i++) {
+                if(arr[i] == obj) 
+                	return true;
+                else 
+                	return false;
+        };
+}
+log('arr2re==>>' + arr2re);  //	arr2re==>>1,2,3,43,12,1,2,3,43,12,12
+
+//10，写出3个使用this的典型应用
+
+	// 事件： 如onclick this->发生事件的对象
+	// 构造函数 this->new 出来的object
+	// call/apply 改变this
+
+//11、如何深度克隆
+var arrclone = [1,2,43];
+var jsonclone = {a:6,b:4,c:[1,2,3]};
+var strclone = 'sdfsdf';
+
+var json2clone = clone(jsonclone);
+//  log(json2clone)  // 
+log(jsonclone['c']);
+function clone(obj){
+        var oNew = new obj.constructor(obj.valueOf());
+        if(obj.constructor == Object){
+                for(var i in obj){
+                        oNew[i] = obj[i];
+                        if(typeof(oNew[i]) == 'object'){
+                                clone(oNew[i]);
+                        }
+                }
+        }
+        return oNew;
+}
+
+// JavaScript中如何检测一个变量是一个String类型？请写出函数实现
+typeof(obj) == 'string';
+obj.constructor == String;
+
+// 网页中实现一个计算当年还剩多少时间的倒数计时程序，要求网页上实时动态显示“××年还剩××天××时××分××秒”
+
+	// var oDate = new Date();
+	// var oYear = oDate.getFullYear();
+
+	// var oNewDate = new Date();
+	// oNewDate.setFullYear(oYear, 11, 31, 23, 59, 59);
+	// var iTime = oNewDate.getTime()-oDate.getTime();
+
+	// var iS = iTime/1000;
+	// var iM = oNewDate.getMonth()-oDate.getMonth();
+	// var iDate =iS
+
+
 </script>
+<div id="wrap">
+	<div id="div1" style="background-color:gray;color:white">你好div1</div>
+</div>
+<pre style="font-size:20px;">
+//2.你能描述一下你制作一个网页的工作流程吗？
+
+//3.你能描述一下渐进增强和优雅降级之间的不同吗?
+
+//4. 请解释一下什么是语义化的HTML。
+//内容使用特定标签，通过标签就能大概了解整体页面的布局分布
+
+//6. 你如何对网站的文件和资源进行优化？
+
+//7. 为什么利用多个域名来存储网站资源会更有效？
+//确保用户在不同地区能用最快的速度打开网站，其中某个域名崩溃用户也能通过其他郁闷访问网站
+
+//8.请说出三种减低页面加载时间的方法
+1、压缩css、js文件
+2、合并js、css文件，减少http请求
+3、外部js、css文件放在最底下
+4、减少dom操作，尽可能用变量替代不必要的dom操作
+
+//9.什么是FOUC？你如何来避免FOUC？
+由于css引入使用了@import 或者存在多个style标签以及css文件在页面底部引入使得css文件加载在html之后导致页面闪烁、花屏
+用link加载css文件，放在head标签里面
+
+//10.文档类型的作用是什么？你知道多少种文档类型？
+！文档类型，一个文档类型标记是一种标准通用标记语言的文档类型声明，它的目的是要告诉标准通用标记语言解析器，它应该使用什么样的文档类型定义（DTD）来解析文档。
+影响浏览器对html代码的编译渲染
+
+html2.0
+xHtml
+html5
+
+//11.浏览器标准模式和怪异模式之间的区别是什么？
+盒模型解释不同
+（由于火狐的始终表现的很一致，不种我们操心。所以这里我们重点说IE浏览器）
+IE6,7,8浏览器的标准模式还是怪异模式 盒子模型的 差异
+标准盒子盒型 width=width
+IE盒子模型 width=width+padding+border
+2）可以设置行内元素的高宽
+在Standards模式下，给span等行内元素设置wdith和height都不会生效，而在quirks模式下，则会生效。
+3）可设置百分比的高度
+在standards模式下，一个元素的高度是由其包含的内容来决定的，如果父元素没有设置高度，子元素设置一个百分比的高度是无效的。
+4）用margin:0 auto设置水平居中在IE下会失效
+使用margin:0 auto在standards模式下可以使元素水平居中，但在quirks模式下却会失效,quirk模式下的解决办法，用text-align属性:
+body{text-align:center};#content{text-align:left}
+5）quirk模式下设置图片的padding会失效
+6）quirk模式下Table中的字体属性不能继承上层的设置
+7）quirk模式下white-space:pre会失效
+
+http://blog.csdn.net/freshlover/article/details/11616563
+http://elf8848.iteye.com/blog/563999
+
+//2.哈希表
+具有散列（映射）特性的数据模型
+
+//3.闭包
+子函数能被外部调用到，则该作用连上的所有变量都会被保存下来。
+
+//4.请解释什么是Javascript的模块模式，并举出实用实例。
+js模块化mvc（数据层、表现层、控制层）
+seajs
+命名空间
+
+//5.你如何组织自己的代码？是使用模块模式，还是使用经典继承的方法？
+对内：模块模式
+对外：继承
+
+//9* 你如何优化自己的代码？
+代码重用
+避免全局变量（命名空间，封闭空间，模块化mvc..）
+拆分函数避免函数过于臃肿
+注释
+
+//10.你能解释一下JavaScript中的继承是如何工作的吗？
+/子构造函数中执行父构造函数，并用call\apply改变this
+克隆父构造函数原型上的方法/
+
+//11.useraget.nav
+
+//12.请尽可能详尽的解释AJAX的工作原理。
+创建ajax对象（XMLHttpRequest/ActiveXObject(Microsoft.XMLHttp)）
+判断数据传输方式(GET/POST)
+打开链接 open()
+发送 send()
+当ajax对象完成第四步（onreadystatechange）数据接收完成，判断http响应状态（status）200-300之间或者304（缓存）执行回调函数
+
+全选复制放进笔记var xmlHttp;  
+function createXMLHttpRequest() {  
+    if (window.ActiveXObject) {  
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");  
+    }  
+    else if (window.XMLHttpRequest) {  
+        xmlHttp = new XMLHttpRequest();  
+    }  
+}  
+var okFunc = function(){  
+    if(xmlHttp.readyState == 4) {  
+        if(xmlHttp.status == 200) {  
+            $("#msg").html(xmlHttp.responseText);  
+        }  
+    }  
+}  
+var startAjax = function(){  
+    $("#msg").html("Loading...");  
+    createXMLHttpRequest();  
+    if( !xmlHttp){  
+        return alert('create failed');  
+    }  
+    xmlHttp.open("POST", "Test", true);  
+    xmlHttp.onreadystatechange = okFunc;  
+    xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  
+    xmlHttp.send(document);  
+}  
+$(document).ready(function(){  
+    $("#start").click(startAjax);  
+    $.post("Test",{'name':'Hello','age':22});  
+});	
+</pre>
 </body>
 </html>
