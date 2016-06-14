@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>q</title>
+</head>
+<body>
+<script>
+// log
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(eyeA)');
+		console.log.apply(console,args);
+	};
+
+//   9、使用正则表达式给所有string对象添加trim方法。
+	String.prototype.trim = function(){
+		return this.replace(/(^\s*)|(\s*$)/g,'');
+	};
+// 10、用js实现一个电话号码提取的方法。
+	var str=" 1852145998 020-888-999845 测试 021  -  85421987, 19865754";
+	var reg = /(1\d+)|(0[0-9\s\-]+)/g;
+	log('js提取电话号码>\n' + str.match(reg)); 
+	// 1852145998,020-888-999845 ,021  -  85421987,19865754
+
+//   闭包 事件  原型链
+
+</script>
+</body>
+</html>

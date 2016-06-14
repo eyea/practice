@@ -131,11 +131,28 @@ ie8以下的浏览器不支持e.stopPropagation()来阻止事件传播，通过e
 
 <h3>8、用JS实现一个数组合并的方法（要求去重）。</h3>
 <script>
-	var arr1 = ['a'];
-	var arr2 = ['b','c'];
-	var arr3 = ['c',['d'],'e',undefined,null];
+		var arr1 = ['a'];
+		var arr2 = ['b', 'c'];
+		var arr3 = ['c', ['d'], 'e', undefined, null];
 
-
+		var concat = (function(){
+		  // concat arr1 and arr2 without duplication.
+		  var concat_ = function(arr1, arr2) {
+		    for (var i=arr2.length-1;i>=0;i--) {
+		      arr1.indexOf(arr2[i]) === -1 ? arr1.push(arr2[i]) : 0;
+		    }
+		  };
+		  // concat arbitrary arrays.
+		  // Instead of alter supplied arrays, return a new one.
+		  return function(arr) {
+		    var result = arr.slice();
+		    for (var i=arguments.length-1;i>=1;i--) {
+		      concat_(result, arguments[i]);
+		    }
+		    return result;
+		  };
+		}());
+	log('ddd++' + concat(arr1,arr2,arr3));
 </script>
 <script>
 	// var a = 0,i=1;
