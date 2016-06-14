@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{font-size: 20px;}
+		#p1{background-color: gray;}
+		#p2{background-color: green;color:white;}
+	</style>
+</head>
+<body>
+	<a href="http://www.zhihu.com/question/19886806">css来自知乎的一个回答</a>  <br>
+<p id="p1">
+CSS Lint现有的一些规则：
+
+修复解析错误（Parsing errors should be fixed）
+避免使用多类选择符（Don't use adjoining classes）
+IE6以及更古老的浏览器对类似.foo.bar的多类选择符解析不正确，参考IE6下的多类选择符一文。
+移除空的css规则（Remove empty rules）
+这个规则不包含任何属性，类似：
+.foo { }
+空规则的产生原因一般来说是为了预留样式。去除这些空规则无疑能减少css文档体积。
+正确使用display的属性（Use correct properties for a display）
+由于display的作用，某些样式组合会无效，徒增样式体积的同时也影响解析性能。CSS Lint会检查一下几点：
+display:inline后不应该再使用width、height、margin、padding以及float。
+display:inline-block后不应该再使用float。
+display:block后不应该再使用vertical-align。
+display:table-*后不应该再使用margin或者float。
+不滥用浮动（Don't use too many floats）
+虽然浮动不可避免，但不可否认很多css bug是由于浮动而引起。CSS Lint一旦检测出样式文件中有超过10次的浮动便会提示警告。
+不滥用web字体（Don't use too many web fonts）
+对于中文网站来说Web Fonts可能很陌生，国外却很流行。web fonts通常体积庞大，而且一些浏览器在下载web fonts时会阻塞页面渲染损伤性能。
+不声明过多的font-size（Don't use too may font-size declarations）
+这是设计层面的问题，设计精良的页面不会有过多的font-size声明。
+不在选择符中使用ID标识符（Don't use IDs in selectors）
+主要考虑到样式重用性以及与页面的耦合性。
+不给h1~h6元素定义过多的样式（Don't qualify headings）
+全站统一定义一遍heading元素即可，若需额外定制样式，可使用其他选择符作为代替。
+不重复定义h1~h6元素（Heading styles should only be defined once）
+值为0时不需要任何单位（Zero values don't need units）
+标准化各种浏览器前缀（Vendor prefixed properties should also have the standard）
+通常将浏览器前缀置于前面，将标准样式属性置于最后，类似：
+.foo {-moz-border-radius: 5px;border-radius: 5px; }
+使用CSS渐变等高级特性，需指定所有浏览器的前缀（CSS gradients require all browser prefixes）
+避免让选择符看起来像正则表达式（Avoid selectors that look like regular expressions）
+CSS3添加了一些类似~=等复杂属性，也不是所有浏览器都支持，需谨慎使用。
+遵守盒模型规则（Beware of broken box models）
+
+上述某些规则也许不是最佳实践，可根据项目需求自行添加修改，这也符合CSS Lint pluggable的宗旨。Zakas还给出了CSS Lint for Node.js的检测工具，于是我将Zakas的demo.css在本地试跑了一下，给出的提示简洁明了：
+
+关注CSS Lint - 昌里大金猪 - Nomospace	
+</p>
+<p id="p2">
+作者：赵望野
+链接：http://www.zhihu.com/question/19886806/answer/50285495
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+CSS 优化主要是四个方面：
+加载性能
+这个方面相关的 best practice 太多了，网上随便找一找就是一堆资料，比如不要用 import 啊，压缩啊等等，主要是从减少文件体积、减少阻塞加载、提高并发方面入手的，任何 hint 都逃不出这几个大方向。
+选择器性能
+可以参考 GitHub 的这个分享 https://speakerdeck.com/jonrohan/githubs-css-performance，但 selector 的对整体性能的影响可以忽略不计了，selector 的考察更多是规范化和可维护性、健壮性方面，很少有人在实际工作当中会把选择器性能作为重点关注对象的，但也像 GitHub 这个分享里面说的一样——知道总比不知道好。
+渲染性能
+渲染性能是 CSS 优化最重要的关注对象。页面渲染 junky 过多？看看是不是大量使用了 text-shadow？是不是开了字体抗锯齿？CSS 动画怎么实现的？合理利用 GPU 加速了吗？什么你用了 Flexible Box Model？有没有测试换个 layout 策略对 render performance 的影响？这个方面搜索一下 CSS render performance 或者 CSS animation performance 也会有一堆一堆的资料可供参考。
+可维护性、健壮性
+命名合理吗？结构层次设计是否足够健壮？对样式进行抽象复用了吗？优雅的 CSS 不仅仅会影响后期的维护成本，也会对加载性能等方面产生影响。这方面可以多找一些 OOCSS（不是说就要用 OOCSS，而是说多了解一下）等等不同 CSS Strategy 的信息，取长补短。	
+</p>
+<p id="p3">
+作者：徐尤熙
+链接：http://www.zhihu.com/question/19886806/answer/80432295
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+CSS代码重构的目的
+　　我们写CSS代码时，不仅仅只是完成页面设计的效果，还应该让CSS代码易于管理，维护。我们对CSS代码重构主要有两个目的：
+　　1、提高代码性能
+　　2、提高代码的可维护性
+
+　提高代码性能
+　　提高CSS代码性能主要有两个点：
+　　1、提高页面的加载性能
+　　提高页面的加载性能，简单说就是减小CSS文件的大小，提高页面的加载速度，尽可以的利用http缓存
+　　2、提高CSS代码性能
+　　不同的CSS代码，浏览器对其解析的速度也是不一样的，如何提高浏览器解析CSS代码的速度也是我们要考虑的
+
+　提高代码的可维护性
+　　提高CSS代码可维护性主要是体现在下面几点：
+　　1、可重用性
+　　一般来说，一个项目的整体设计风格是一致的，页面中肯定有几个风格一致但有些许不同的模块，如何在尽可能多地重用CSS代码，尽可能少地增加新代码，这是CSS代码中非常重要的一点。如果CSS代码的重用性高，我们可能只需要写一些不一样的地方，对页面性能和可维护性、提高开发效率都有很大的帮助。
+　　2、可扩展性
+　　如果产品增加了某个功能，我们应该保证新增加的CSS代码不会影响到旧的CSS代码和页面，并且尽可能少地增加新代码而重用旧代码。
+　　3、可修改性
+　　如果某个模块产品经理觉得要修改样式，或者要删掉它，如果没有规划好相应的CSS代码，过了一段时间之后，开发人员可能已经不记得这段代码作用了几个地方，不敢修改或删除它，这样下去CSS代码也就越来越多，影响了页面的性能，还造成了代码的复杂度。
+
+　CSS代码重构的基本方法
+　　前面说到CSS代码重构的目的，现在来说一些如何达到这些目的的基本方法，这些方法都是易于理解，容易实施的一些手段，大家平时可能也不知不觉地在使用它。
+
+　提高CSS性能的手段
+　　首先说说如何提高CSS性能，根据页面的加载性能和CSS代码性能，主要总结有下面几点：
+　　1、尽量将样式写在单独的css文件里面，在head元素中引用
+　　有时候为了图方便或者快速搞定功能，我们可能会直接将样式写在页面的style标签或者直接内联在元素上，这样虽然简单方便，但是非常不利于日后的维护。将代码写成单独的css文件有几点好处：
+　　(1)内容和样式分离，易于管理和维护
+　　(2)减少页面体积
+　　(3)css文件可以被缓存、重用，维护成本降低
+　　2、不使用@import
+　　这条手段已经是众所周知，这里简单提一下，@import影响css文件的加载速度
+　　3、避免使用复杂的选择器，层级越少越好
+　　有时候项目的模块越来越多，功能越来越复杂，我们写的CSS选择器会内套多层，越来越复杂。
+　　建议选择器的嵌套最好不要超过三层，比如：
+.header .logo .text{}
+　　可以优化成
+.haeder .logo-text{}
+　　简洁的选择器不仅可以减少css文件大小，提高页面的加载性能，浏览器解析时也会更加高效，也会提高开发人员的开发效率，降低了维护成本。
+
+　　4、精简页面的样式文件，去掉不用的样式
+　　很多时候，我们会把所有的样式文件合并成一个文件，但是这样有一个问题：很多其他页面的CSS同时引用到当前页面中，而当前页面并没有用到它们，这种情况会造成两个问题：
+　　(1)样式文件偏大，影响加载速度
+　　(2)浏览器会进行多余的样式匹配，影响渲染时间。
+　　正确的处理方法是根据当前页面需要的css去合并那些当前页面用到的CSS文件。
+
+　　PS：合并成一个文件有一个优点：样式文件会被浏览器缓存，进入到其他页面样式文件不用再去下载。这条规则应根据场景来区别对待，如果是大项目，应该合并成不同的样式文件，如果是简单的项目，建议合并成一个文件即可。如果无法确认项目规模，建议分开成不同的样式文件，日后要合并也比较方便。
+　　5、利用CSS继承减少代码量
+　　我们知道有一部分CSS代码是可以继承的，如果父元素已经设置了该样式，子元素就不需要去设置该样式，这个也是提高性能的行之有效的方法。
+　　常见的可以继承的属性比如：
+　　color，font-size，font-family等等
+　　不可继承的比如：
+　　position，display，float等
+　　提高可维护性的方法
+　　提高CSS代码的可维护性，简单说就是要让开发人员易于理解CSS代码，容易去修改它，不会破坏原有功能。下面说说一些常用手段。
+　　1、命名与备注
+　　命名是提高代码可读性的第一步，也是及其重要的一步。很多人都有这样的体会：命名是写代码中最让程序员头疼的事情之一，尤其是对母语非英语的开发人员来说，要找一个合适贴切的名字并不容易。提高自己命名的能力，可以多看看别人的代码。下面是CSS中的一些命名相关的建议：
+
+　　头：header
+　　内容：content/container
+　　尾：footer
+　　导航：nav
+　　侧栏：sidebar
+　　栏目：column
+　　页面外围控制整体佈局宽度：wrapper
+　　左右中：left right center
+　　登录条：loginbar
+　　标志：logo
+　　广告：banner
+　　页面主体：main
+　　热点：hot
+　　新闻：news
+　　下载：download
+　　子导航：subnav
+　　菜单：menu
+　　子菜单：submenu
+　　搜索：search
+　　友情链接：friendlink
+　　页脚：footer
+　　版权：copyright
+　　滚动：scroll
+　　内容：content
+　　标签：tags
+　　文章列表：list
+　　提示信息：msg
+　　小技巧：tips
+　　栏目标题：title
+　　加入：joinus
+　　指南：guide
+　　服务：service
+　　注册：regsiter
+　　状态：status
+　　投票：vote
+　　合作伙伴：partner
+　　导航：nav
+　　主导航：mainnav
+　　子导航：subnav
+　　顶导航：topnav
+　　边导航：sidebar
+　　左导航：leftsidebar
+　　右导航：rightsidebar
+　　菜单：menu
+　　子菜单：submenu
+　　标题: title
+　　摘要: summary
+　　2、提取重复样式
+　　这一个方法很容易理解，简单说就是提取相同的样式成为一个单独的类再引用，这样不仅可以精简CSS文件大小，而且CSS代码变少，更易于重用和维护。例如下面的例子：
+　　原来的代码是这样：
+
+　　.about-title{
+　　margin: 0 auto 6rem; color: #333; text-align: center; letter-spacing: 4px; font-size: 2rem;
+　　}
+　　.achieve-title{
+　　margin: 0 auto 6rem; color: #fff; text-align: center; letter-spacing: 4px; font-size: 2rem;
+　　}
+
+　　这两个样式的区别在于文字颜色的不同，我们可以将其公共的样式提取出来，然后再分别设置其不同的样式
+
+　　.column-title{
+　　margin: 0 auto 6rem; text-align: center; letter-spacing: 4px; font-size: 2rem;
+　　}
+　　.about{
+　　color: #333;
+　　}
+　　.achieve{
+　　color:#fff;
+　　}
+
+　　提取公用的部分，然后在页面上分别引用column-title和about等，这样代码更简洁，维护起来也更方便了。这个例子非常简单，实际上项目中可能有更复杂的情况，总之就要要尽可能的DRY，尽可能的提取重复的东西。
+　　3、书写顺序
+　　这个书写顺序指的是各个样式的书写顺序，下面是推荐的CSS书写顺序
+　　(1)位置属性(position, top, right, z-index, display, float等)
+　　(2)大小(width, height, padding, margin)
+　　(3)文字系列(font, line-height, letter-spacing, color- text-align等)
+　　(4)背景(background, border等)
+　　(5)其他(animation, transition等)
+　　书写顺序不一定非得按照上面的推荐来进行，而是根据你自己的习惯，但是最好能保证前后的习惯一致的，或者团队应该有一个共同的代码规范去遵守，这样后期维护起来也会方便许多。
+　　以上是我个人总结的一些简单的写好和重构CSS代码的方法，大家当然不必拘泥于此，有不同的意见和建议欢迎进行交流!
+　CSS方法论
+　　什么是CSS方法论呢?简单地说就是一些同行为了提高CSS可维护性、提出的一些编写CSS代码的规范和方法。他们提出了一些概念，这些概念可能听起来很高大上，但是实际你平时可能不知不觉也会用到这些所谓的CSS方法论。下面我简单地介绍下几个比较常见的CSS方法论。
+
+　OOCSS
+　　OOCSS是(Object Oriented CSS)，顾名思义就是面向对象的CSS。
+
+　　OOCSS主要有两个原则：
+　　1、结构和样式分离
+　　我们平时一定遇到过这种情况，比如一个页面存在着多个不同功能的按钮，这些按钮的形状大小都差不多，但是根据不同的功能会有不同的颜色或背景来加以区分。如果不进行结构和样式分离，我们的CSS代码可能是这样的
+
+　　.btn-primary{
+　　width:100px;
+　　height:50px;
+　　padding:5px 3px;
+　　background:#ccc;
+　　color:#000;
+　　}
+　　.btn-delete{
+　　width:100px;
+　　height:50px;
+　　padding:5px 3px;
+　　background:red;
+　　color:#fff;
+　　}
+
+　　这两个或者可能更多的按钮拥有一些不同的样式，但是它们同时拥有相同的大小样式等，我们将其抽象的部分提取出来，结果如下：
+　　.btn{
+　　width:100px;
+　　height:50px;
+　　padding:5px 3px;
+　　}
+　　.primary{
+　　background:red;
+　　color:#fff;
+　　}
+　　.delete{
+　　background:red;
+　　color:#fff;
+　　}
+　　这样提取公用的样式出来，然后按钮同时引用btn和primary等。这种做法除了减少重复的代码精简CSS之外，还有一个好处是复用性，如果需要增加其他额外的按钮，只需要编写不同的样式，和btn配合使用即可。
+　　(2)容器和内容分离
+　　我们平时写代码一定写过这样代码
+　　.content h3{
+　　font-size:20px;
+　　color:#333;
+　　}
+　　这样的代码就是内容依赖于容器，没有分离的代码，也就是说h3的样式依赖于.content容器，如果其他地方要用到相同的样式，但是它的容器却不是.content，那你可能就是要再写一遍.something h3。
+
+　　所以OOCSS推荐分离容器和内容，可以修改成：
+　　.title{
+　　font-size:20px;
+　　color:#333;
+　　}
+
+　　关于这一点，我个人建议要分情况来看，像前面这个例子，它适合样式和容器分离。但是比如下面这种情况：
+　　.menu li{
+　　font-size:12px;
+　　}
+
+　　这种ul，li列表的样式，我觉的就按照我们原先的做法就可以，不一定非得给一个类给li来设定样式，即
+　　.menu-item{
+　　font-size:12px;
+　　}
+
+　　这样页面的li标签需要引用menu-item类。
+　　当然采用哪一种方式更好我也不却确定，我自己比较喜欢.menu li的写法，大家自行思考。
+　　这就是OOCSS的两个基本原则，这里只是简单介绍OOCSS，各位如果有兴趣的话请自行Google查找相关资料。
+
+　　SMACSS
+　　SMACSS是什么呢，它的全称是Scalable and Modular Architecture for CSS。简单说就是可扩展和模块化的CSS架构。
+
+　　SMACSS将样式分成5种类型：Base，Layout，Module，State，Theme，我们简单来说说每一种类型分别指什么。
+
+　　1、Base
+　　基础样式表，定义了基本的样式，我们平时写CSS比如reset.css就是属于基础样式表，另外我认为清除浮动，一些动画也可以归类为基础样式。
+　　2、Layout
+　　布局样式，用于实现网页的基本布局，搭起整个网页的基本骨架。
+　　3、Module
+　　网页中不同的区域有这个不同的功能，这些功能是相对独立的，我们可以称其为模块。模块是独立的，可重用的组件，它们不依赖于布局组件，可以安全的删除修改而不影响其他模块。
+　　4、State
+　　状态样式，通常和js一起配合使用，表示某个组件或功能不同的状态，比如菜单选中状态，按钮不可用状态等。
+　　关于状态样式，我个人觉得要分情况进行讨论：
+　　(1)不同组件的同一状态的样式是一样的，比如头部的导航菜单的选中状态样式和侧栏的菜单选中状态样式是一样的，我认为这部分状态样式可以归类为State
+　　(2)不同组件的统一状态的样式是不一样的，即两个地方的菜单虽然都是选中状态，但是他们却又不同的选中样式，这部分样式不应该被认为是State类型，而是应该放在其组件对应的Module中。
+　　5、Theme
+　　皮肤样式，对于可更换皮肤的站点来说，这个是很有必要的，分离了结构和皮肤，根据不同的皮肤应用不同的样式文件。
+
+　　BEM
+　　BEM是Block，Element，Modifier的缩写。下面分别来介绍一下这三个概念：
+　　(1)Block：在BEM的理论中，一个网页是由block组成的，比如头部是个block，内容是block，logo也是block，一个block可能由几个子block组成。
+　　(2)Element：element是block的一部分，具有某种功能，element依赖于block，比如在logo中，img是logo的一个element，在菜单中，菜单项是菜单的一个element
+　　(3)Modifier：modifier是用来修饰block或者element的，它表示block或者element在外观或行为上的改变
+　　我们通过BEM命名法写样式如下：
+　　.block{}
+　　.block-element{}
+　　.block-modifier{}
+　　.block-element-modifier{}
+　　BEM将页面解析为block和element，然后根据不同的状态使用modifier来设置样式。
+　　我对BEM的思想理解可能不到位，对BEM的看法主要是由两点：
+　　(1)页面CSS模块化，每个block就是一个模块，模块间相互独立
+　　(2)多级的class命名，避免选择器的嵌套结构
+
+　关于CSS方法论
+　　上面提到的这些CSS方法论，大家看了就会发现，它们其实有很多思想是相同的，比如：
+　　1、选择器的嵌套的优化
+　　2、CSS代码模块化
+　　3、抽象CSS代码
+　　…
+　　这些方法论，我们学习的时候，最重要的是去理解其思想，不一定非得照搬它的实现形式，多种方法结合使用。
+
+　我自己总结的方法
+　　谈了这么多，下面来说说我自己总结的写CSS代码的一些关键点。
+　　1、写代码之前：从PSD文件出发
+　　当我们拿到设计师给的PSD时，首先不要急于写CSS代码，首先对整个页面进行分析，主要关注点是下面几个：
+　　(1)页面分成了几个模块，哪些模块是公用的，常见的比如头部和底部，还有一些菜单栏等等
+　　(2)分析每一个模块都有什么样式，提取出公用的样式，注意公用样式是全局公用(整个页面公用)还是局部公用(模块内公用)，公用样式包括公用的状态样式，比如公用的选中状态，禁用状态等等。
+　　2、开始写代码
+　　根据对PSD文件的分析，我们就可以开始着手写代码，我比较推荐SMACSS将样式分成不同类型的做法：
+　　(1)第一步是搭好页面的骨架，也就是base样式，layout样式。
+　　(2)第二步就是依次实现不同的模块，在这里我推荐BEM的命名思想，但是可以嵌套一到两层的选择器结构
+　　3、优化代码
+　　我相信当我们完成基本的页面效果后，还是会存在着一些重复的或者不够简洁的代码，这时候就是要去优化这些代码，主要是在提取重复代码，尽可能地精简代码。	
+</p>
+</body>
+</html>
