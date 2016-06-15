@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>箭头函数-1</title>
+</head>
+<body>
+<script>
+	// log
+	function log(msg){
+		var ar = Array.prototype.slice.call(arguments);
+		ar.unshift('(xd)');
+		console.log.apply(console,ar);
+	};
+
+	var a = 10;
+	function F(){
+		this.a = 5;
+		setTimeout(()=>log(this.a),0);
+	}
+	var f = F(); //  (xd) 5
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+</head>
+<body>
+<script>
+// log
+	function log(){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd)');
+		console.log.apply(console,args);
+	}
+
+	function foo1(x) {
+	    var tmp = 3;
+	    function bar1(y) {
+	        log(x + y + (++tmp));  //16
+	        log(tmp);  //4 
+	    }
+	    bar1(10);
+	}
+	foo1(2)	//  这不是闭包，但当retu的是内部function收，就是一个闭包
+
+	function foo2(x){
+		var tmp = 3;
+		return function (y){
+			log(x+y+(++tmp));
+		}
+	}
+	var bar = foo2(2);  //bar 现在是个闭包
+	bar(10);  //16
+//  ===================================================================================
+var db = (function() {
+		// 创建一个隐藏的object, 这个object持有一些数据
+		// 从外部是不能访问这个object的
+var data = {};
+		// 创建一个函数, 这个函数提供一些访问data的数据的方法
+return function(key, val) {
+	
+		    if (val === undefined) { 
+		    	return data[key] }     // get
+		    else {
+		    	return data[key] = val }     // set
+		    }
+				// 我们可以调用这个匿名方法
+				// 返回这个内部函数，它是一个闭包
+})();
+
+log(db('x')); 		// 返回 undefined
+log(db('x', 1));		 // 设置data['x']为1
+log(db('x'));		 // 返回 1
+		// 我们不可能访问data这个object本身
+		// 但是我们可以设置它的成员
+</script>
+</body>
+</html>
