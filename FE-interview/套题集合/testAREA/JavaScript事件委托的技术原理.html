@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript事件委托的技术原理-1</title>
+</head>
+<body>
+<ul id="parent-list">
+	<li id="post-1">Item 1</li>
+	<li id="post-2">Item 2</li>
+	<li id="post-3">Item 3</li>
+	<li id="post-4">Item 4</li>
+	<li id="post-5">Item 5</li>
+	<li id="post-6">Item 6</li>
+</ul>
+<pre style="background-color:#eee;font-size:20px;">
+如今的JavaScript技术界里最火热的一项技术应该是‘事件委托(event delegation)’了。使用事件委托技术能让你避免对特定的每个节点添加事件监听器；相反，事件监听器是被添加到它们的父元素上。事件监听器会分析从子元素冒泡上来的事件，找到是哪个子元素的事件。
+
+
+</pre>
+<script>
+// log方法
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd)');
+		console.log.apply(console,args);
+	}
+
+
+
+
+// 找到父元素，添加监听器...
+// document.getElementById("parent-list").addEventListener("click",function(e) {
+// 	// e.target是被点击的元素!
+// 	// 如果被点击的是li元素
+// 	if(e.target && e.target.nodeName == "LI") {
+// 		// 找到目标，输出ID!
+// 		log("List item ",e.target.id.replace("post-")," was clicked!");
+// 	}
+// });	
+// self
+document.getElementById('parent-list').addEventListener('click',function(e){
+	if(e.target && e.target.nodeName.toUpperCase() == 'LI'){
+		console.log('List item ',e.target.id.replace('post-'),'was clicked just now')
+	}
+})
+</script>	
+</body>
+</html>
