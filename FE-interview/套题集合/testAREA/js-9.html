@@ -242,8 +242,503 @@ View Code
 把接受多个参数的函数转换为接受单一参数的函数，且函数可以持续接收参数
 将一个复杂的问题片段化，使之进行简化
 
+======================22222222222222222222222222222222222222222222222=============================
 3. 数组和对象有哪些原生方法，列举一下，分别是什么含义，比如链接两个数组用哪个方法，删除数组的指定项。
+javascript之Array类：
+创建js数组两种方式：
+var arr = [];  或
+var arr = new Array();
+()里可以指定长度，也可以不指定，指不指定都无所谓，
+因为js里的数组长度是可变的
+ 
+concat(arr1,arr2,arr3......arrx):js数组合并,返回合并后的新数组,至少需要传递一个数组，也可以传递多个数组
+                var arr1 = new Array(3); 
+arr1[0] = "George"; 
+arr1[1] = "John"; 
+arr1[2] = "Thomas"; 
+arr1[3] = "Jeery"; 
+  
+var arr2 = new Array(3); 
+arr2[0] = "James"; 
+arr2[1] = "Adrew"; 
+arr2[2] = "Martin"; 
+  
+var arr3 = new Array(3); 
+arr3[0] = "Java"; 
+arr3[1] = "C#"; 
+arr3[2] = "PHP"; 
+  
+var arr4 = arr1.concat(arr2,arr3); 
+                alert(arr4); 
 
+ 
+join():将数组元素按指定的分隔符拼接成一字符串返回，默认分隔符为英文逗号
+var arr = new Array(3) 
+arr[0] = "George"; 
+arr[1] = "John"; 
+arr[2] = "Thomas"; 
+arr[3] = "Jeery"; 
+arr.join("."); 
+  
+
+ 
+sort(fn):数组排序,默认是按英文字母的ASC码升序排列，比如apple排在orange前面，其实
+       sort还可以接收一个参数，该参数function类型，有点类似于java里的比较器的意思，
+       就是说如果不想按默认的比较规则来排序，就必须提供一比较函数，该函数有两个参数a、b,
+       如果返回值小于0，则a排在b前面
+       如果返回值大于0，则b排在a前面
+       如果返回值等于0，则a、b位置不变
+var arr = new Array(6); 
+arr[0] = 5; 
+arr[1] = 23; 
+arr[2] = 4; 
+arr[3] = 18; 
+arr[4] = 88; 
+arr[5] = 10; 
+arr.sort(sortNumber); 
+  
+function sortNumber(a, b) 
+{ 
+    return a - b; 
+} 
+
+ 
+pop()：删除数组的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。
+      如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。
+    
+         var arr = new Array(6); 
+   arr[0] = 5; 
+   arr[1] = 23; 
+   arr[2] = 4; 
+   arr[3] = 18; 
+   arr[4] = 88; 
+   arr[5] = 10; 
+  
+   var a = arr.pop(); 
+            alert(a); 
+            for(var x in arr){ 
+alert(arr[x]); 
+   } 
+
+ 
+ 
+push(n1,n2,n3,....nx):向数组末尾添加一个或多个元素，并返回添加后数组的长度，
+       注意，此方法操作的是原数组对象，不会创建副本。此方法可以接收多个参数，
+       至少要传递一个参数
+var arr = new Array(6); 
+arr[0] = 5; 
+arr[1] = 23; 
+arr[2] = 4; 
+arr[3] = 18; 
+arr[4] = 88; 
+arr[5] = 10; 
+  
+var len = arr.push(44,80); 
+alert(len); 
+for(var x in arr){ 
+   alert(arr[x]); 
+} 
+
+ 
+ 
+reverse():颠倒数组中元素的顺序,即如果原来数组元素是1,2,3,4,5,调用reverse()后，
+          元素顺序为5,4,3,2,1,注意，此方法直接操作的是原数组对象，不会创建副本。
+var arr = [3,5,11,6,90,0]; 
+arr.reverse(); 
+for(var x in arr){ 
+    alert(arr[x]); 
+} 
+
+shift():删除数组的第一个元素，并返回它删除的那个元素
+        如果数组已经为空，则 shift() 不改变数组，并返回 undefined 值
+注意，此方法直接操作的是原数组，不会创建副本对象
+var arr = [3,5,11,6,90,0]; 
+var a = arr.shift(); 
+alert(a); 
+for(var x in arr){ 
+    alert(arr[x]); 
+} 
+  
+
+ 
+slice(start,end):用于截取start和end之间的数组元素并存入新数组返回
+                 注意，此方法不会修改原数组，会创建数组副本对象。
+如果end未指定，则表示直接从start直到数组末尾，
+如果start或end为负数，表示从后面开始算起，比如
+-1，表示从倒数第一个元素算起，以此类推。
+截取的区间范围是[start,end),前闭后开区间,且start必须小于end
+如果没找到一个元素，则返回一个空数组即数组的长度为0
+ 
+var arr = [3,5,11,6,90,0]; 
+var a = arr.slice(2,4); 
+alert(a.join()); 
+  
+  
+splice(index,howmany,element1,.....,elementX): 
+
+         用于删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或
+         多个值来替换那些被删除的元素，并返回刚刚删除的元素组成的新数组。
+         注意：此方法是直接操作的原数组对象，不会创建对象副本
+ 
+         第一个参数：表示从index位置开始删除，index从零开始计算
+         第二个参数：表示从index位置开始，往后连续删除几个元素，前两个参数是必需的，后面的参数是可选的。
+         后面的参数是用添加的元素，添加的元素从index处开始添加，如果后面添加的元素个数大于
+         实际删除的元素个数，多出几个，后面的元素就往后移动几位。比如你实际删除了4个元素，
+         而实际你后面添加了6个元素，那最终会从index处开始添加6个元素，由于前面只删除4个元素，
+         位置不够，所以后面的元素会自动往后移动2位。
+var arr = [3,5,11,6,90,0,15,57,70,20]; 
+var a = arr.splice(0,4,1,2,3,4,5,6); 
+alert(a); 
+for(var x in arr){ 
+    alert(arr[x]); 
+} 
+
+ 
+ 
+unshift(element1,.....,element):
+          向数组开头添加一个或多个元素，并返回添加后的数组长度。至少要传一个参数。
+          注意此方法是直接操作原数组，最后添加的元素index=0,以此类推。
+var arr = [3,5,11,6,90,0,15,57,70,20]; 
+arr.unshift(22,23,24); 
+alert(arr.toString()); 
+alert(arr.length); 
+
+ 
+扩展Array的函数：
+Array.prototype.indexOf = function(o){ 
+    <!-- for(var i = 0,len=this.length; i<len;i++){  -->
+if(this[i]  == o){ 
+   return i; 
+} 
+    } 
+    return -1; 
+} 
+Array.prototype.remove = function(o){ 
+    var index = this.indexOf(o); 
+    if(index != -1){ 
+        this.splice(index,1); 
+    } 
+    return this; 
+} 
+var arr = [3,5,11,6,90,0,15,57,70,20]; 
+arr.remove(90); 
+alert(arr.toString()); 
+alert(arr.length); 
+         
+
+ 
+js中Number类常用方法：
+toFixed():将数字四舍五入为指定小数位数的数字，参数值范围为[0,20],表示四舍五入后保留的小数位数，
+          如果没有传入参数，默认参数值等于0
+var num = 12.5563; 
+alert(num.toFixed()); 
+alert(num.toFixed(2)); 
+
+ 
+toprecision():用于将数字精确到指定长度，方法接收参数一个参数，参数的范围为[0,21]
+              参数表示数字的位数，如果数字总位数大于参数值且数字是小数，那么会进行
+              四舍五入，如果数字总位数小于参数值且数字是小数，那么多出的小数位会自动补零
+              如果数字总位数小于参数值且数字为整数，那么会改用科学计数法表示。
+var num1 = 100009; 
+var num2 = 100; 
+var num3 = 11111111.00009; 
+var num4 = 1.00609; 
+alert(num1.toPrecision(5)); 
+alert(num2.toPrecision(5)); 
+alert(num3.toPrecision(15)); 
+alert(num4.toPrecision(3)); 
+
+ 
+isNaN(num):判断是否为数字，这个方法很有用
+ 
+ 
+ 
+js中String类常用方法：
+charAt(index)：用于返回指定位置的字符，index从0开始计算
+charCodeAt(index):用于返回指定字符的ASCII码
+concat(element1,element2......elementx):用于拼接两个或多个字符串
+indexOf():用于返回指定字符在字符串中第一次出现的索引，从第一个字符开始查找，找到立即返回。
+lastIndexOf():用于返回指定字符在字符串中第一次出现的索引，不过是从最后面一个字符开始查找。
+match():用于检索与指定正则匹配的子串，如果开启了全局检索模式，且有多个符合条件的子串，那么
+        返回的是一个数组。
+var str = "hello world! how are you? what are you doing?"; 
+var arr = str.match(/you/g); 
+alert(arr); 
+var str="1 plus 2 equal 3" 
+alert(str.match(/\d\s/g)); 
+
+ 
+replace()：用于字符串替换操作，接收两个参数。
+           第一个参数：表示待替换的字符串，或者是替换的正则表达式
+           第二个参数：替换文本，也可以是一个function的返回值
+           注意此方法不会改变原字符串对象，而是返回新字符串对象。
+var str = "I like Java,Java is so easy to learning!Let's together for Java"; 
+var test = str.replace(/Java/g,"Javascript"); 
+alert(str); 
+alert(test); 
+  
+var name = "Doe , John"; 
+alert(name.replace(/(\w+)\s*, \s*(\w+)/, "$2 | $1")); 
+  
+var name = "I like java,java is so easy!"; 
+var test = name.replace(/java/g, function(m,i){alert(m);alert(i);return "javascript";}); 
+alert(test); 
+
+用function返回值作为替换文本时，function里有两个参数：
+m表示前面第一个参数即正则匹配到的子串，第二个参数是该子串在原字符串中的索引位置
+ 
+ 
+search():用于返回指定子串或符合指定正则表达式的子串在原字符串中第一次出现的索引,
+         如果没有找到，则返回-1
+var str = "I like javascript.";
+alert(str.search("javascript"));
+ 
+slice(start,end):用于截取start,end指定区间内的字符串并返回，
+                 此方法不会操作原字符串对象数据，而是创建字符串副本保存截取后的字符串数据
+                 如果end未指定，则表示直接从start直到数组末尾，
+如果start或end为负数，表示从后面开始算起，比如
+-1，表示从倒数第一个元素算起，以此类推。
+截取的区间范围是[start,end),前闭后开区间,且start必须小于end
+如果没找到一个元素，则返回一个空字符串
+var str = "hello world!"; 
+var test = str.slice(-2,-1); 
+alert(test); 
+alert(str); 
+
+ 
+split():以指定的分割字符或正则表达式的匹配字符来分割原字符串，返回结果以数组形式表示。
+        此方法还可以接收第二个参数，第二个参数可以限制最终返回的数组元素最大个数。
+var str="How are you doing today?"
+alert(str.split(/\s/));
+ 
+substr():用于字符串截取，方法接收两个参数，
+         第一个参数start,表示从start索引位置开始截取，索引从0开始计算，如果此参数值是负数，
+         则会从字符串结尾开始计算，比如-1表示最后一个字符，-2表示倒数第二个字符，以此类推。
+         第二个参数length,表示截取的字符串长度，此参数为可选，如不指定此参数，
+         则默认会一直截取到字符串结尾。
+         注意：此方法已不建议使用
+var str = "I like javascript!";
+alert(str.substr(7,10));
+ 
+ 
+substring():用于截取start与end索引区间内的字符串，区间范围为[start,end],前闭后开
+            注意:参数start和end必须为非负整数,
+            如start为负数，则默认会将start赋值为0，
+            如end为负数，则默认会将end赋值为0，且截取区间改为[0,start)。
+            如果start大于end，那么会首先交换两个参数值的位置，即区间改为[end,start)
+var str1 = "I like javascript!": 
+alert(str1.substring(7,18)); 
+var str2 = "I like javascript!"; 
+alert(str2.substring(3,-3)); 
+
+ 
+ 
+toLowerCase()：把字符串转换成小写
+ 
+toUpperCase()：把字符串转换成大写
+ 
+ 
+ 
+ 
+ 
+js中Date对象常用方法：
+Date():此方法为Date类的构造函数，此方法接收日期格式字符串，
+       若不给构造函数传参，则默认是取系统当前时间
+       构造函数可以接收一个距1970-01-01的毫秒数来构建Date对象，
+       也可以接收规定格式的日期字符串来构建Date对象
+           //var date = new Date("06 05,1987"); //火狐OK IE不OK
+  //var date = new Date("6 5,1987");   //火狐OK IE不OK
+  //var date = new Date("06 05,1987 23:12:33"); //火狐OK IE不OK
+  //var date = new Date("6 5,1987 23:12:33");   //火狐OK IE不OK
+  //var date = new Date("1987,06 05"); //火狐OK IE不OK
+  //var date = new Date("1987,6 5"); //火狐OK IE不OK
+  //var date = new Date("1987,06,05"); //火狐OK IE不OK
+  //var date = new Date("1987,6,5"); //火狐OK IE不OK
+  //var date = new Date("1987,06 05,23:12:33"); //火狐OK IE不OK
+  //var date = new Date("1987,6 5,23:12:33"); //火狐OK IE不OK
+  //var date = new Date("1987,06,05,23:12:33"); //火狐OK IE不OK
+  //var date = new Date("1987,6,5,23:12:33"); //火狐OK IE不OK
+           //var date = new Date("1987/6/5,23:12:33"); //火狐和IE都OK
+  //var date = new Date("1987/06/05,23:12:33"); //火狐和IE都OK
+  //var date = new Date("06/05/1987,23:12:33"); //火狐和IE都OK
+  //var date = new Date("6/5/1987,23:12:33"); //火狐和IE都OK
+  //var date = new Date("1987/6/5"); //火狐和IE都OK
+  //var date = new Date("1987/06/05"); //火狐和IE都OK
+  //var date = new Date("06/05/1987"); //火狐和IE都OK
+  var date = new Date("6/5/1987"); //火狐和IE都OK
+           //var date = new Date("06-05-1987"); //IE OK，火狐不OK
+  //var date = new Date("6-5-1987"); //IE OK，火狐不OK
+  //var date = new Date("1987-06-05"); //火狐OK,IE不OK
+           alert(date);
+      通过上面这些示例，足以说明，如果Date()构造函数需要接收一个日期格式字符串的话，
+      那么字符串格式应如下给定：
+      yyyy/m/d
+      yyyy/MM/d
+      yyyy/m/d HH:mm:ss
+      yyyy/MM/d HH:mm:ss
+      m/d/yyyy
+      MM/dd/yyyy
+      m/d/yyyy HH:mm:ss
+      MM/dd/yyyy HH:mm:ss
+     
+getDate():返回一个月中的某一天,返回值范围：1-31
+getDay():返回一周中的第几天也就是星期几，返回值范围：0-6，0表示星期天，6表示星期六
+getMonth():返回日期中的月份数字，返回值范围：0-11，0表示1月，11表示12月，这个有点变态
+getFullYear()：返回日期中的年份数字，用4位数字表示而不是2位数字的缩写形式
+getHours()：返回小时数，返回值范围：0-23
+getMinutes():返回分钟数：返回值范围：0 -59
+getSeconds():返回秒数，返回值范围：0-59
+getMilliseconds():返回毫秒数，返回值范围：0-999，这个方法命名我表示不能理解，为何Seconds首字母不大写？
+getTime()：返回指定的日期距1970年1月 1日00：00：00之间的毫秒数。
+parse(): 用于将符合规定的日期字符串转换成日期，并返回该日期至1970-01-01的毫秒数
+         注意：此方法是静态方法，不用能用Date对象调用，而应该使用Date类调用。
+//var date = Date.parse("1987-06-05"); //火狐OK，IE不OK
+//var date = Date.parse("06-05-1987"); //IE OK，火狐不OK
+//var date = Date.parse("06/05/1987"); //IE和火狐都OK
+var date = Date.parse("1987/06/05");   //IE和火狐都OK
+//var date = Date.parse("6/5/1987"); //IE和火狐都OK
+//var date = Date.parse("1987/6/5");   //IE和火狐都OK
+//var date = Date.parse("1987/06/05 23:12:22");   //IE和火狐都OK
+//var date = Date.parse("6/5/1987 23:12:22"); //IE和火狐都OK
+//var date = Date.parse("1987/6/5 23:12:22");   //IE和火狐都OK
+alert(date);
+通过上面的这些示例，不难看出，parse方法接收的日期字符串格式比较兼容的格式为：
+yyyy/MM/dd
+yyyy/m/d
+MM/dd/yyyy
+M/d/yyyy
+yyyy/MM/dd HH:mm:ss
+yyyy/m/d HH:mm:ss
+MM/dd/yyyy HH:mm:ss
+M/d/yyyy HH:mm:ss
+ 
+setDate():设置一个月中的某一天,取值范围：1-31
+setDay():设置一周中的第几天也就是星期几，取值范围：0-6，0表示星期天，6表示星期六
+setMonth():设置日期中的月份数字，取值范围：0-11，0表示1月，11表示12月，这个有点变态
+setFullYear()：设置日期中的年份数字，用4位数字表示而不是2位数字的缩写形式
+setHours()：设置小时数，取值范围：0-23
+setMinutes():设置分钟数：取值范围：0 -59
+setSeconds():设置秒数，取值范围：0-59
+setMilliseconds():设置毫秒数，取值范围：0-999，这个方法命名我表示不能理解，为何Seconds首字母不大写？
+setTime()：设置指定的日期距1970年1月 1日00：00：00之间的毫秒数。
+ 
+toString():将Date对象转换成字符串形式,默认是格林威治标准时间格式即GMT格式
+toTimeString()：将Date对象的时间部分转成字符串形式，GMT格式
+toDateString():将Date对象的日期部分转成字符串形式，GMT格式
+toLocaleString：根据本地语言的日期规则表示，中文下是yyyy年MM月dd日 hh:mm:ss
+Date.UTC(year,month,day,hours,minutes,seconds,ms)：
+             此方法用于根据世界时返回距离1970-01-01的毫秒数，前3个参数是必须的，其余参数是可选的，
+             分别表示年、月、日、小时、分钟、秒、毫秒，
+             此方法返回的毫秒数可以传递给Date()构造函数，
+            
+Date对象的toString方法默认是转换成GMT格式，对于我们来说，不适用，我们往往希望显示为yyyy-MM-dd hh:mm:ss格式，
+Date原生对象没有提供这个功能，只好自己扩展了，
+Date.prototype.format = function(format){ 
+ var o = { 
+  "M+" :  this.getMonth()+1,  //month 月 
+  "d+" :  this.getDate(),     //day 日 
+  "h+" :  this.getHours(),    //hour 时 
+      "m+" :  this.getMinutes(),  //minute 分 
+      "s+" :  this.getSeconds(), //second 秒 
+      "q+" :  Math.floor((this.getMonth()+3)/3),  //quarter季度 
+      "S"  :  this.getMilliseconds() //millisecond毫秒 
+   } 
+  
+   if(/(y+)/.test(format)) { 
+    format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+   } 
+  
+   for(var k in o) { 
+    if(new RegExp("("+ k +")").test(format)) { 
+      format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length)); 
+    } 
+   } 
+ return format; 
+} 
+
+使用示例：
+var date = new Date(); 
+alert(date.format("yyyy-MM-dd hh:mm:ss")); 
+
+ 
+js的原生Date类也没有提供add方法即在原日期基础先添加或减去指定天数，现扩展如下：
+Date.prototype.dateAdd = function(interval,number) 
+{ 
+    var d = this; 
+    var k={'y':'FullYear', 'q':'Month', 'm':'Month', 'w':'Date', 'd':'Date', 'h':'Hours', 'n':'Minutes', 's':'Seconds', 'ms':'MilliSeconds'}; 
+    var n={'q':3, 'w':7}; 
+    eval('d.set'+k[interval]+'(d.get'+k[interval]+'()+'+((n[interval]||1)*number)+')'); 
+    return d; 
+} 
+
+interval参数：
+y       年
+q       季度
+m       月
+d       日
+w       周
+h       小时
+n       分钟
+s       秒
+ms      毫秒
+ 
+number参数：时间间隔，必须为数字，为正数表示获取指定间隔的未来的日期，为负数表示过去的日期
+ 
+//用于计算两个日期之间的时间间隔，
+//使用此方法还能比较两个日期的大小，如果返回值大于0，表示objDate2比较大，
+//如果小于0，表示objDate2比较小
+Date.prototype.dateDiff = function(interval,objDate2)
+{
+    var d=this, i={}, t=d.getTime(), t2=objDate2.getTime();
+    i['y']=objDate2.getFullYear()-d.getFullYear();
+    i['q']=i['y']*4+Math.floor(objDate2.getMonth()/4)-Math.floor(d.getMonth()/4);
+    i['m']=i['y']*12+objDate2.getMonth()-d.getMonth();
+    i['ms']=objDate2.getTime()-d.getTime();
+    i['w']=Math.floor((t2+345600000)/(604800000))-Math.floor((t+345600000)/(604800000));
+    i['d']=Math.floor(t2/86400000)-Math.floor(t/86400000);
+    i['h']=Math.floor(t2/3600000)-Math.floor(t/3600000);
+    i['n']=Math.floor(t2/60000)-Math.floor(t/60000);
+    i['s']=Math.floor(t2/1000)-Math.floor(t/1000);
+    return i[interval];
+}
+interval参数：参照上面dateAdd方法的interval参数说明，
+objDate2：另一个日期对象
+ 
+ 
+ 
+js中的Math类：
+此类是静态类，不能通过构造函数创建实例的，所以提供的方法都是静态方法，直接通过类名调用
+abs():获取数字的绝对值，如果提供的参数是字符串，则会首先尝试将其转换成数字，如果不能
+      转成数字，则直接返回NaN,如果能，则返回其绝对值。
+ceil():对传入的参数进行向上取整计算，如果传入的不是数字，则会尝试将其进行数字转换，
+      不能转换则之间则直接返回NaN
+floor():对传入参数进行向下取整计算，如果传入的不是数字，则会尝试将其进行数字转换，
+      不能转换则之间则直接返回NaN
+max(x1,x2,x3.....xn):返回指定参数中的最大值，如果指定参数中有一个不能转换成数字，则直接
+                     返回NaN,如果没有传入参数，则返回负无穷大
+min(x1,x2,x3.....xn)：返回指定参数中的最小值，如果指定参数中有一个不能转换成数字，则直接
+                     返回NaN,如果没有传入参数，则返回正无穷大
+pow(x,y):返回x 的 y 次幂,如果计算结果是负数，则返回NaN,如果由于计算结果太大，导致浮点溢出，
+         则返回正无穷大
+random():返回0 ~ 1 之间的一个随机数。
+round(x):与 x 最接近的整数。如果x是正数，那么0.5会转成1，如果是-0.5，那么会舍掉，
+         -0.50001才会转成-1
+sqrt(x):返回一个数的平方根,如果 x 小于 0，则返回 NaN,
+        如果传入的不是数字，则会尝试将其进行数字转换，
+        不能转换则之间则直接返回NaN
+ 
+ 
+js的RegExp正则对象：
+创建正则对象两种方式：
+1. /pattern/attributes
+pattern是正则表达式部分，
+attributes：可选参数，包含属性 "g"、"i" 和 "m"等取值
+g:表示全局匹配(查找所有匹配而非在找到第一个匹配后停止)
+i:表示忽略大小写
+m:表示多行匹配
+ 
+2,new RegExp(pattern,attributes),第二个参数可选
+======================22222222222222222222222222222222222222222222222=============================
 原型
 1. 讲一下 prototype 是什么东西，原型链的理解，什么时候用 prototype?
 
@@ -292,7 +787,7 @@ add(2)(5); // 7
 function addto(){
     var length = arguments.length;
     var sum = 0;
-    for(var i = 0;i<length;i++){
+    <!-- for(var i = 0;i<length;i++){ -->
         sum += arguments[i]
     }
     return sum;
@@ -312,7 +807,7 @@ function add(){
 Make this work: duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
      function duplicate(arr){
          var length = arr.length;
-         for(var i=0;i<length;i++)
+         <!-- for(var i=0;i<length;i++) -->
          arr.push(arr[i])
          return arr;
      }
@@ -332,5 +827,36 @@ Make this work: duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 6.If you have var y = 1, x = y = typeof x; What is the value of x?
 Answer: "undefined"
 </pre>
+
+<script>
+
+//Date对象的toString方法默认是转换成GMT格式，对于我们来说，不适用，我们往往希望显示为yyyy-MM-dd hh:mm:ss格式，Date原生对象没有提供这个功能，只好自己扩展了，
+
+Date.prototype.format = function(format){ 
+ var o = { 
+  "M+" :  this.getMonth()+1,  //month 月 
+  "d+" :  this.getDate(),     //day 日 
+  "h+" :  this.getHours(),    //hour 时 
+      "m+" :  this.getMinutes(),  //minute 分 
+      "s+" :  this.getSeconds(), //second 秒 
+      "q+" :  Math.floor((this.getMonth()+3)/3),  //quarter季度 
+      "S"  :  this.getMilliseconds() //millisecond毫秒 
+   } 
+  
+   if(/(y+)/.test(format)) { 
+    format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+   } 
+  
+   for(var k in o) { 
+    if(new RegExp("("+ k +")").test(format)) { 
+      format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length)); 
+    } 
+   } 
+ return format; 
+} 	
+
+var date = new Date(); 
+alert(date.format("yyyy-MM-dd hh:mm:ss")); 
+</script>
 </body>
 </html>
