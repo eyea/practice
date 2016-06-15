@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// log
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd)');
+		console.log.apply(console,args);
+	};
+
+///////////////////////////////////////////////////////
+	
+	// 如何复制一个对象的值
+	function copyObj(obj){
+		var newObj = new Object();
+		for(var i in obj){
+			newObj[i] = obj[i]
+		};
+		return newObj;
+	}
+
+	// 类型识别的几个方法以及各自的特征 js-9.html
+	// bind  call apply 的应用举例
+		//  1、数组之间追加
+	var array1 = [12, "foo", {name: "Joe"}, -2458];
+	var array2 = ["Doe", 555, 100];	
+	// log(Array.prototype.push.apply(array1,array2));  // 7
+	//log(Array.prototype.push.call(array1,array2));  // 8
+	//log(Array.prototype.push.bind(array1,array2)());  // 9
+	// 注意上面三个 分别注释还会有不同的结果的 不仅仅是 7 8 9 
+	// log('array1应该是' + array1);  这一步在上面的log里处理后正确显示
+
+		// 2、获取数组中的最大值和最小值
+	var numbers = [5,458,120,-215];
+	var maxInNumbers = Math.max.apply(Math,numbers);
+	var minInNumbers = Math.min.apply(Math,numbers);
+	log('获取数组最大值==' +maxInNumbers);
+	log('获取数组最小值==' +minInNumbers);
+
+		// 3、验证是否是数组（前提是toString()方法没有被重写过）
+	function isArray(obj){
+		return Object.prototype.toString.call(obj) === '[object Array]'
+	}
+
+		// 4、类（伪）数组使用数组方法
+	var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));
+	// var domNodes = Array.prototype.slice.call(document.getElementByTagNAme('*'));
+
+		// 5、数字求和
+	function sum(){
+		var numberSum = Array.prototype.reduce.apply(arguments,[function(prev,next){
+			return prev + next ;
+		}])
+		log(numberSum);
+	};
+	sum(1,2,3);
+</script>
+</body>
+</html>
