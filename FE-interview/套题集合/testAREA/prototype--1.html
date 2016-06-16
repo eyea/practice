@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// log
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd)');
+		console.log.apply(console,args);
+	};
+
+//
+	var a = {
+		x = 10,
+		calculete: function(z){
+			return this.x + this.y + z;
+		}
+	};
+
+	var b = {
+		y = 20,
+		_proto_:a
+	};
+
+	var c = {
+		y = 30,
+		_proto_:a
+	};
+
+	log(b.calculete(30));  //  60??
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链的理解</title>
+</head>
+<body>
+<pre style="font-size:20px;background-color:#eee">
+
+在JavaScript中,一共有两种类型的值,原始值和对象值.每个对象都有一个内部属性[[prototype]],我们通常称之为原型.原型的值可以是一个对象,也可以是null.如果它的值是一个对象,则这个对象也一定有自己的原型.这样就形成了一条线性的链,我们称之为原型链.
+
+访问一个对象的原型可以使用ES5中的Object.getPrototypeOf方法,或者ES6中的__proto__属性.
+
+原型链的作用是用来实现继承,比如我们新建一个数组,数组的方法就是从数组的原型上继承而来的.
+
+	var arr = [];
+arr.map === Array.n.map    //arr.map是从arr.__proto__上继承下来的,arr.__proto__也就是Array.prototype	
+
+		js中有一个对象，他没有原型，那就是Object.prototype  递归就找到了出口
+
+__proto__默认的也有指向。它指向的是最高级的object.prototype，
+而object.prototype的__proto__为空。 
+</pre>
+</body>
+</html>
