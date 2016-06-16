@@ -50,7 +50,34 @@ function add1(){
 
 log(add1(2)(5));
 
+	// 2.duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
+	function duplicate(arr){
+		for(var i =0,len=arr.length;i<len;i++){
+			arr.push(arr[i]);
+		}
+		return arr
+	}
+	log('=>  ' + duplicate([1,2,3,4,5]));
 
+	// 3.如何获取一个大于等于0且小于等于9的随机整数？
+	function rad(){
+		return Math.floor(Math.random()*10);
+	}
+	log(rad());
+
+	//  4.想要去除一个字符串的第一个字符，有哪些方法可以实现.
+	var str = 'abcddddiight';
+	log(str.slice(1));
+	log(str.substring(1));
+	log(str.replace(/./,''));
+	log(str.replace(str.charAt(0),''));
+
+	// 5.对一个数组（每项都是数值）求和，有哪些方法？
+
+	// 6.var y = 1, x = y = typeof x; What is the value of x?
+	var y = 1,
+		x = y = typeof 1;
+	log('x-> ' + x );  // number
 </script>
 </body>
 </html>
