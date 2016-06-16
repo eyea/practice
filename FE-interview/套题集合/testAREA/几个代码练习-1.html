@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// log
+	function log(msg){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift('(xd)');
+		console.log.apply(console,args);
+	}
+
+	// 1.实现  add(2,5) > 7;    add(2)(5) > 7
+	function addto(){
+		var sum = 0;
+		for(var i=0,len=arguments.length;i<len;i++){
+			sum += arguments[i];
+		}
+		return sum;
+	}
+	log(addto(1,2,3));   // 6
+
+	function add(){
+		var value = addto.apply(add,arguments);
+		var helper = function(next){
+			typeof next == 'number' ? value += next  : value;
+			return helper;
+		}
+		helper.valueOf = function(){
+			return value;
+		}
+		return helper;
+	}
+log('这个计算结果是：'+add(2)(5));   //(xd) 这个计算结果是：7
+
+function add1(){
+    var value = addto.apply(add,arguments);
+    var helper = function(next){
+        typeof next == "number" ? value+=next:value;
+        return helper
+    }
+    helper.valueOf = function(){
+        return value;
+    }
+    return helper;
+}
+
+log(add1(2)(5));
+
+
+</script>
+</body>
+</html>
