@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<pre>
+	1. position 包含哪些属性值，并简单说明一下每个属性值异同。	(static  positive  absolute fixded)
+CSS中position属性值用法
+
+CSS中position属性有4种可选值:static,relative,absolute,fixed,用于定位html元素的位置，并影响元素块生成的方式。这里我们重点看一下position属性的三个取值定义：position:static、absolute、relative。
+
+static:默认值
+
+如果没有指定position属性值，支持position属性的html对象都是默认为static，可以这么理解：把html页面看作一个文档流，源代码中各个标签的先后位置就是它们所对应的对象的呈现次序，所有取值为static的对象都按照你所编写的html标签的顺序依次呈现。
+
+relative:相对定位
+
+此position属性值保持对象所在文档流中的位置，也就是说它具有和static相同的呈现方式，它同样占有在文档流中的固定位置，后面的对象不会侵占或覆盖；与static属性值不同的是，设置了relative的对象，可以通过top,left,right,bottom属性设定自己的新显示位置，这4个属性的取值是相对于文档流的前一个对象的，你可以自由设置这4个属性偏移到新的位置而不对文档流中的其他对象产生任何影响，原来的页面呈现仍然会我行我素.
+
+absolute:绝对定位
+
+和relative不同的是，这个position属性值会将当前对象拖出文档流，后面的对象会占有原来的位置，也就是说，当前对象的呈现是独立显示的，但是它的位置在指定top,left,right,bottom任一属性之前仍是有继承性的，这时的4个属性的取值是相对于浏览器的，和文档流无关了。如果把示例中的B区域设定为absolute而不指定4个位置属性，通过设定margin来改变它的相对位置，用这个方法可以解决前面提到的问题2。
+
+提示:
+
+属性值为absolute对象的z-index属性可以设置层叠显示的次序，它是直接有效的；而属性值为relative对象的z-index属性在设置时要小心，把当前对象的z-index设置为-1是不行的，在firefox中它会无法显示（注意，不是说浏览器有误，而是指如果父对象是根元素body，那么z-index是无效的，任何z-index设置都不会显示在根元素之后，除了IE的解析bug，感谢#19提示），必须设置为0以上，我们如果想让别的对象挡住它，只有将其他对象也设置position为relative，并将z-index属性取一个比它大的值即可。
+</pre>	
+</body>
+</html>
