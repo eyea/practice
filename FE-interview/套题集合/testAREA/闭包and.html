@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// log
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(xd)');
+			console.log.apply(console,args);
+		}
+		// log(9+'lol')
+//  Maddog()
+		
+		function Dog(){
+			this.wow = function(){
+				log('wow');
+			}
+			this.yelp = function(){
+				this.wow();
+			}
+		};
+		var li = new Dog(); // 如果没有这个 Dog.wow()不是一个函数？？？
+		// li.yelp();
+
+		function Maddog(){
+			var _this = this;  // 必须有这个 否则下面找不到this
+			setInterval(function(){
+				_this.yelp();
+			},500);
+		}
+
+		Maddog.prototype = new Dog();
+
+		var again = new Maddog();
+		again.yelp()
+
+	</script>
+</body>
+</html>
