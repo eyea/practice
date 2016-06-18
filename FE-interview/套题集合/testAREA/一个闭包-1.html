@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<pre>
+题目
+
+请写出输出结果。
+
+var name = 'global';
+var obj = {
+    name: 'obj',
+    dose: function() {
+        this.name = 'dose';
+        return function() {
+            return this.name;
+        }
+    }
+}
+alert(obj.dose().call(this));   
+感觉是global，分析：
+obj调用里面的does函数obj.dose()这部分结果是does，但是call改变了他的this指向，此时变成全局window了
+
+===
+解析
+
+obj.dose().call(this)这句表达式有点长，我们可以做个 等价变换 看起来会便于理解。
+
+var xxx = obj.dose();
+xxx.call(this);
+通过 等价变换 后，表达式的解构更下明了。
+首先，要明确obj.dose()返回结果为：
+
+function() {
+    return this.name;
+}
+其次，要明确 call 函数的作用是：改变函数体内部this的指向。
+题目中 call 函数的传参this指代的是window。通过 call 函数将obj.dose()返回函数的运行环境变更为在 window 中。所以，this.name返回的就是window.name，即 'global' 。
+
+================举一反三=================
+对上述题目做一个变换。
+
+var name = 'global';
+var obj = {
+    name: 'obj',
+    dose: function() {
+        this.name = 'dose';
+        return function() {
+            return this.name;
+        }.bind(this)
+    }
+}
+alert(obj.dose().call(this));
+
+解析
+
+由于 obj.dose() 的返回函数使用了bind函数来固定了 this 的指向，那么外部再通过 call 函数来改变 this 指向变会 失效 。obj.dose() 的执行环境仍为 dose 函数内。
+首先，obj 对象中定义了 name 属性为 'obj'；接着在 dose 方法内又改写了 name 属性为 'dose'; 根据作用域链的就近原则，输出结果为 'dose' 。
+</pre>
+	<script>
+		// log
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(xd)');
+			console.log.apply(console,args);
+		};
+		//
+
+	</script>
+</body>
+</html>
