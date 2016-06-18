@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+	请给Array本地对象增加一个原型方法，它的用途是删除数组条目中重复的条目(可能有多个)，返回值是一个被删除的条目的数组。
+	</pre>
+	<script>
+		// log()
+		function log(){
+			var args = Array.prototype.slice.call(arguments);
+			console.log.apply(console,args);
+		}
+
+//   方法1
+Array.prototype.distinct = function() {
+    var ret = [];
+    for (var i = 0, l = this.length; i < l - 1; i++) {
+        for (var j = i + 1; j < l; j++) {
+            if (this[i] == this[j]) {
+                ret.push(this.splice(j, 1)[0]);
+                l = this.length;
+                j--;
+            }
+        }
+    }
+    return ret;
+};
+//   方法2
+Array.prototype.distinct2 = function() {
+    var ret = [],
+        tempArr = {};
+    for (var i = 0; i < this.length; i++) {
+        if (tempArr[this[i] + 1]) {
+            ret.push(this[i]);
+            this.splice(i, 1);
+            i--;
+            continue;
+        }
+        tempArr[this[i] + 1] = true;
+    }
+    tempArr = null;
+    return ret;
+};
+	</script>
+</body>
+</html>
