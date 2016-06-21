@@ -5,6 +5,33 @@
 	<title>XML 文档打开并发送到服务器上的 ASP 页面，分析此请求，然后传回结果</title>
 </head>
 <body>
-	
+	<script>
+	//  1
+		xmlhttp = null;
+		try{
+			xmlhttp = new XMLHttpRequest()
+		}
+		catch(e){
+			try{
+				xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			catch(e){
+				alert('不支持XMLHttp!')
+			}
+		};
+
+		//  2
+		if(xmlhttp != null){
+			xmlhttp.open('GET','note.xml',false);
+			xmlhttp.send(null);
+			xmlDoc = xmlhttp.responseText;
+
+			xmlhttp.open('POST','demo_http.asp',false);
+			xmlhttp.send(xmlDoc);
+			document.write(xmlhttp.responseText)
+		}else{
+			alert('不支持XMLHttp  0.0');
+		}
+	</script>
 </body>
 </html>
