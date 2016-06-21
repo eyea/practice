@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css动画原理--1</title>
+	<style>
+		div{width: 100px; height: 100px;background-color: #eee;margin-bottom: 20px;cursor: pointer}
+		
+		.div1{transition:height 1s linear;}
+		.div1:hover{width: 180px}
+
+		.div2{
+			transform:scale(.5);
+			transition:transform 1s linear;
+		}
+		.div2:hover{
+			transform: scale(1);
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">Nihao</div>
+	<div class="div2">div2根据定义，CSS的transform属性不会改变元素的布局，也不会影响到其周围的元素。它把元素当做一个整体看待——缩放整个元素、旋转整个元素或者移动整个元素。</div>
+</body>
+</html>
