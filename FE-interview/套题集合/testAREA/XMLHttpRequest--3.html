@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+</head>
+<body>
+	<script>
+		// log()
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(xd)');
+			console.log.apply(console,args);
+		}
+
+		// XMLHttpRequest 对象
+
+		var xmlhttp = null;
+
+		try{
+			xmlhttp = new XMLHttpRequest();
+		}
+		catch(e){
+			try{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch(e){
+				alert('Your browser does not support XMLHTTP!');
+				// return;
+			}
+		};
+
+		var url = 'www.baidu.com';
+
+		if(xmlhttp!=null){
+			xmlhttp.onreadystatechange = state_Change;
+			xmlhttp.open('GET',url,true);
+			xmlhttp.send(null);
+		}else{
+			alert("Your browser does not support XMLHTTP.");
+		}
+
+		function state_Change(){
+			if(xmlhttp.readyState == 4){
+				// 4 ='loaded'
+				if(xmlhttp.status == 200){
+					//  2000= ok
+					log('yes ok 200 ');
+				}else{
+					 alert("Problem retrieving XML data");
+				}
+			}
+		}
+
+
+	</script>
+</body>
+</html>
