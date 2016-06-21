@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<pre>
+Cache-control: max-age=5 
+表示当访问此网页后的5秒内再次访问不会去服务器 
+
+Cache-Control: no-cache：这个很容易让人产生误解，使人误以为是响应不被缓存。实际上Cache-Control: no-cache是会被缓存的，只不过每次在向客户端（浏览器）提供响应数据时，缓存都要向服务器评估缓存响应的有效性。 
+
+Cache-Control: no-store：这个才是响应不被缓存的意思。
+
+========================================================
+
+HTTP协议分别在 1.0 / 1.1 两个时代推出了 Expires / Cache-control 两种cache策略，这里我们无需了解全部的细节，无需记住整个RFC内容,但是当我们需要使用HTTP cache策略时，我们需要注意以下细节：
+Expires 是HTTP 1.0 那个时代的东西了，目前来看，可以不使用了，因为HTTP 1.0 的user agent占有率在 0.1% 以下（我们主要面向的web浏览器均默认使用HTTP 1.1）,Cache-control 是 HTTP 1.1 的新特性，也是我们主要做文章使用cache策略的工具.
+Cache策略：
+#1 保鲜期only
+这个是最最基础的一种策略，只需要在响应头中设定：
+Cache-control: max-age=[secs]
+[secs]是cache在客户端存活的秒数，例如 Cache-control: max-age=1800 表明cache的时间是半小时,只使用这样一个声明就可以使浏览器能够将这个HTTP响应的内容写入临时目录做cache.
+这里是简要过程:
+I(1)浏览器第一次请求资源http://test.qq.com/test.cgi
+(2)查询临时文件目录发现无cache存储，遂发出请求到web server
+(3)web server响应资源，并设定Cache-control:max-age=300
+(4)浏览器收到响应将资源呈献给用户的同时，在临时文件目录以"http://test.qq.com/test.cgi"为key缓存这个响应
+---5分钟内---
+II(1)浏览器再一次请求资源http://test.qq.com/test.cgi
+(2)查询临时文件目录发现存在cache存储，检查保鲜期max-age，还未过期，则直接读取之，响应给用户
+---5分钟后---
+III(1)浏览器再一次请求资源http://test.qq.com/test.cgi
+(2)查询临时文件目录发现存在cache存储，检查保鲜期max-age，已经过期，则发请求到web server
+#2 保鲜期 + 最后修改时间验证
+这里的要素是，在给出保鲜期的同时，给出一个资源的验证方式：
+Last-Modified: [UTC time]
+[UTC time]标示这个响应资源的最后修改时间，例如 Last-Modified: Mon, 06 Jul 2009 09:21:48 GMT
+这个响应头只有配合Cache-control的时候才有实际价值，只是声明校验资源的方式，并不能影响资源的保鲜期时长
+利用资源的可校验性，我们可以实现在cache的资源超过保鲜期浏览器再次请求时的304响应，令浏览器再次使用之前的cache
+这里是简要过程：
+I(1)同#1中I (1)
+(2)同#1中I (2)
+(3)web server响应资源，并设定
+Cache-control:max-age=300
+Last-Modified: Mon, 06 Jul 2009 09:21:48 GMT
+(4)同#1中I (4)
+---5分钟内---
+(同#1中II)
+---5分钟后---
+III(1)浏览器再一次请求资源http://test.qq.com/test.cgi
+(2) 查询临时文件目录发现存在cache存储，检查保鲜期max-age，已经过期发现资源具有Last-Modified声明，则为请求带上头 If-Modified-Since: Mon, 06 Jul 2009 09:21:48 GMT 发送请求到web server
+(3)web server收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对,若最后修改时间较新，说明资源又被改动过，则响应整片资源内容，HTTP 200 (需要整块内容写为包体).若最后修改时间较旧，说明资源无新修改，则响应HTTP 304 (无需包体)，告知浏览器继续使用所保存的cache,(这里当然也可以根据自己的需要决定是200还是304，我们的CGI毕竟是一种原始的实现)
+#3 保鲜期 + 自定义标识验证
+这里的要素是，在给出保鲜期的同时，给出另一种资源的验证方式：
+ETag: [custom flag]
+[custom flag]标示这个响应资源的由开发者自己确定的签名验证标识，例如 ETag: "abcdefg",这个响应头只有配合Cache-control的时候才有实际价值，是声明校验资源的方式
+ETag的使用为我们实现304响应提供了更多的灵活性，我们可以抛开必须将验证转化成时间格式的限制
+这里是简要过程：
+I(1)同#1中I (1)
+(2)同#1中I (2)
+(3)web server响应资源，并设定
+Cache-control:max-age=300
+ETag: "abcdefg"
+(4)同#1中I (4)
+---5分钟内---
+(同#1中II)
+---5分钟后---
+III(1)浏览器再一次请求资源http://test.qq.com/test.cgi
+(2)查询临时文件目录发现存在cache存储，检查保鲜期max-age，已经过期发现资源具有ETag声明，则为请求带上头 If-None-Match: "abcdefg",发送请求到web server
+(3)web server收到请求后发现有头If-None-Match 则与被请求资源的相应校验串进行比对,Etag可以是一个版本号，可以是短时间戳，可以是资源校验和(强烈不推荐使用)，或者干脆是一个常量(可以干脆拿来做容错)
+If-None-Match发来的串与我们的自有值比对，根据我们自己的任何策略算法，可以自由决定如何返回浏览器，304或200
+这里有一个使用ETag来做容错的例子(应用列表目前在使用):
+(1)我们的每次正常返回都是200
+Cache-control: max-age=1800
+ETag: "anything"
+这里anything是个常量，我们只用来告诉浏览器，cache过期要发带If-None-Match的请求过来
+(2) 这样来自客户端的一大部分请求基本上都会带上If-None-Match头，我们的CGI据此可以知道这个请求的客户端是否有cache,此时如果 CGI联系server失败，那么可以直接返回304，驱使客户端使用上一次cache的正确结果，且更新保鲜期max-age为300秒,这样我们实现 了一个基于HTTP cache的容错，如果我们的资源还能实现一套时间戳存储的话,那么我们可以在正常情况下也实现校验后的304，从而节省流量
+这里还有一个比较惨的教训，国内www上都没有文献记载，全球业界也只有一点文献可以找到:
+IE6 在资源有gzip压缩同时有ETag头时，cache后再次发请求不会带If-None-Match头！！！
+from  http://blog.csdn.net/YoungerChen/archive/2011/01/04/6116147.aspx
+
+	
+</pre>	
+</body>
+</html>
