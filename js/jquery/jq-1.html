@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src='jquery-2.2.2.min.js'></script>
+
+
+	<script>
+		$(function(){
+			// console.log(12);
+			$('#hidep').click(function(){
+				$('p').hide(600)
+			})
+			$('#showp').click(function(){
+				$('p').show(1000);
+			});
+//2  选择器
+			$('p:first').click(function(){
+				console.log('p:first')
+			});
+			$('[href]').bind('mouseover',function(){
+				console.log('带有href属性')
+			})；
+
+// 3 事件
+			
+
+		})
+	</script>
+
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<a href="www.eyeseau.com">个人网站</a>
+<button id="hidep">点击隐藏P</button>
+<button id="showp">点击显示P</button>
+
+
+</body>
+</html>
