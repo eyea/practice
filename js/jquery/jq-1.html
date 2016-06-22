@@ -3,6 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		p{
+			height: 30px;width: 100px;background-color: #eee;color: red;
+			margin: 10px;text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<script src='jquery-2.2.2.min.js'></script>
@@ -23,20 +29,39 @@
 			});
 			$('[href]').bind('mouseover',function(){
 				console.log('带有href属性')
-			})；
+			});
+			$('#phover').hover(function(){
+				$(this).hide(400,function(){
+					alert('hide()的回调函数')
+				})
+			},function(){
+				$(this).show(600)
+			});
 
 // 3 事件
-			
+			$('#pfocus').focus(function(){
+				$(this).css('background-color','green');
+			}).blur(function(){
+				$(this).css('color','white')
+			});
+			//
+			$('#ptoggle').bind('focus',function(){
+				$(this).toggle(500,function(){
+					alert('toggle的回调哦')
+				})
+			})
 
 		})
 	</script>
 
 <p>1</p>
 <p>2</p>
-<p>3</p>
+<p id="phover">3</p>
 <a href="www.eyeseau.com">个人网站</a>
 <button id="hidep">点击隐藏P</button>
 <button id="showp">点击显示P</button>
+<button id="pfocus">focus</button>
+<button id="ptoggle">toggle-->hide和show</button>
 
 
 </body>
