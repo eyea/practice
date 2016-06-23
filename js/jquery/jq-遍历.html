@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+		1.向上遍历DOM树
+			parent()-->返回被选元素的直接父元素 $('span').parent();
+			parents()-->返回被选元素所有祖先元素，知道根元素(html);
+						也可以过滤比如到-->$('span').parents('ul');
+			parentsUntil()-->返回介于两个给定元素之间的所有祖先元素。
+		2.向下遍历DOM树
+			children()-->返回所有的直接子元素;
+						 也可以这样针对性寻找: $('div').children('p.hello');
+			find()-->一路向下到最后一个后代:$('div').finc('span')-->属于div的所有span元素
+		3.同胞
+			siblings() next() nextAll() nextUntil() 
+		4.过滤
+			first()  last()  eq()从0开始  
+			filter()-->允许您规定一个标准。不匹配这个标准的元素会被从集合中删除，匹配的元素会被返回。
+			not()-->返回不匹配标准的所有元素。
+
+	</pre>
+</body>
+</html>
