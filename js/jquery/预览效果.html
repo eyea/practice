@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<TITLE>直接页面显示器</TITLE>
+<STYLE type="text/css">
+BODY{MARGIN-TOP: 0px;FONT-SIZE: 9pt;MARGIN-LEFT: 4px;MARGIN-RIGHT: 0px;FONT-FAMILY: "微软雅黑"}
+A{FONT-WEIGHT: 400;FONT-SIZE: 13px;COLOR: black;TEXT-DECORATION: none}
+A: hover{FONT-WEIGHT: 400;FONT-SIZE: 13px;COLOR: red;TEXT-DECORATION: underline}
+A: active{CURSOR: hand;COLOR: #ff0033}
+.STYLE1{color: #0000FF;font-size: 40px;}
+.STYLE2{font-weight: bold;font-size: 30px;}
+</STYLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+</HEAD>
+<BODY>
+<CENTER>
+ <span class="STYLE1"><FONT face=隶书>直接页面显示器</FONT></span>
+</CENTER><BR>
+<CENTER>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 border=0 borderlight="green">
+ <TBODY>
+ <TR>
+  <TD align=middle><span class="STYLE2"><FONT color=red>请在下面窗口中输入HTML代码</FONT></span></TD>
+ </TR>
+ <TR>
+  <TD align=middle>
+<SCRIPT language=JavaScript>
+function trestart(){
+  if (script) {
+  clear = confirm("确定要清除吗？",'');
+  if(clear) {
+  document.script.reset();
+  document.script.value = "";
+ }
+ }
+} 
+function test(){
+ {
+ temp = document.script.tester.value;
+ testwin= open("", "testwin","status=no,menubar=yes,toolbar=no");
+ testwin.document.open();
+ testwin.document.write(temp);
+ testwin.document.close();
+ }
+}
+function about(){
+ alert("HTML代码直接显示出页面来")
+}
+function help(){ 
+ OpenWindow=window.open("", "newwin","height=220,width=470,toolbar=no,scrollbars="+scroll+",menubar=no");
+ OpenWindow.document.write("<body bgcolor='white' text='black' alink='blue'vlink='blue' link='blue'><TITLE>帮助信息</TITLE>")
+ OpenWindow.document.write("<center>你只要把你想显示的代码放到上页的输入框中，你自己也可以写代码，按显示键就能显示你的页面内容</center><br>")
+ OpenWindow.document.write("<center><a href='javascript:close()'>关闭本窗口</a></Center>")
+ OpenWindow.document.close()
+ self.name="main"
+}
+</SCRIPT>
+   <FORM name=script><TEXTAREA name=tester rows=8 wrap=off cols=50></TEXTAREA> <BR><INPUT onclick=test() type=button value=显示>   <INPUT onclick=trestart() type=button value=清除>   <INPUT onclick=about() type=button value=关于>   <INPUT onclick=help() type=button value=帮助> 
+</FORM></TD></TR></TBODY></TABLE></CENTER>
+<CENTER>
+<DIV align=center>
+<CENTER>
+<TABLE id=AutoNumber1 style="BORDER-COLLAPSE: collapse" borderColor=#111111 
+cellSpacing=0 cellPadding=0 width=360 border=0>
+ <TBODY>
+ <TR>
+  <TD>
+   <P align=left><SPAN style="FONT-SIZE: 9pt">将下面代码复制到输入框试试<BR><FONT 
+   color=#ff0033><BR><html><BR><head><BR><title>你好</title><BR></head><BR><BR><body><BR>
+      你好，欢迎光临脚本之家网页特效栏目！<BR>
+   </body><BR><BR></html></FONT></SPAN></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+</BODY>
+</HTML>

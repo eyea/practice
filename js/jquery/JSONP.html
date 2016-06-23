@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSONP</title>
+</head>
+<body>
+	<script src='jquery-2.2.2.min.js'></script>
+	<div id="divCustomers"></div>
+	<script>
+	$.getJSON("http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=?", function(data) {
+		
+		var html = '<ul>';
+		for(var i = 0; i < data.length; i++)
+		{
+			html += '<li>' + data[i] + '</li>';
+		}
+		html += '</ul>';
+		
+		$('#divCustomers').html(html); 
+	});
+	</script>	
+	
+</body>
+</html>
