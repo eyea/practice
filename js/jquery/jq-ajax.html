@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	<pre>
+		AJAX是与服务器交换数据的技术，它在不重载全部页面的情况下，实现了对部分网页的更新
+		案例：谷歌地图，腾讯微博，优酷视频，人人网
+		<div id="div1">点击btn前的内容</div>
+		<button id="btn1">AJAX点击</button>
+	</pre>
+
+	<script src='jquery-2.2.2.min.js'></script>
+	<script>
+		$(function(){
+			$('#btn1').bind('click',function(){
+				$('#div1').load('ajax.txt')
+			})
+		})
+	</script>
+</body>
+</html>
