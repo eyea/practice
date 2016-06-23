@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>
+		jQuery get() 和 post() 方法用于通过 HTTP GET 或 POST 请求从服务器请求数据。
+		HTTP 请求：GET vs. POST
+		两种在客户端和服务器端进行请求-响应的常用方法是：GET 和 POST。
+			GET - 从指定的资源请求数据
+			POST - 向指定的资源提交要处理的数据
+			GET 基本上用于从服务器获得（取回）数据。注释：GET 方法可能返回缓存数据。
+			POST 也可用于从服务器获取数据。不过，POST 方法不会缓存数据，并且常用于连同请求一起发送数据。	
+	</pre>
+	<script src='jquery-2.2.2.min.js'></script>
+	<script>
+		$(function(){
+			$('#btn1').get('test.php',function(data,status){
+				alert('Data: ' + data + '\nStatus: ' + status)
+			});
+
+			$('#btn2').post('test2.html',{
+				name:'dong',
+				city:'beijing'
+			},function(data,status){
+				alert('hhh')
+			})
+		})
+	</script>
+</body>
+</html>
