@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery 中如何将数组转化为json字符串，然后再转化回来</title>
+</head>
+<body>
+	<script src='jquery-2.2.2.min.js'></script>
+	<script>
+		// log
+		function log(msg){
+			var args = Array.prototype.slice.call(arguments);
+			args.unshift('(eye)');
+			console.log.apply(console,args);
+		}
+		log(99+'gg');
+		//
+jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
+
+    $.fn.stringifyArray = function(array) {
+        return JSON.stringify(array)
+    }
+
+    $.fn.parseArray = function(array) {
+        return JSON.parse(array)
+    }
+
+    然后调用：
+    $("").stringifyArray(array)	
+    =====================================	
+		//  JSON.stringify()-->数组转成json
+		//  JSON.parse() --> json字符串解析成对象
+	</script>
+</body>
+</html>
