@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript</title>
+</head>
+<body>
+<pre>
+4.1、请解释一下什么是闭包
+
+闭包是一种特殊的对象。它由两部分构成：函数，以及创建该函数的环境。
+
+可以把闭包简单理解成 "定义在一个函数内部的函数"，闭包就是将函数内部和函数外部连接起来的一座桥梁。闭包有如下特性：
+
+a. JavaScript允许你使用在当前函数以外定义的变量
+
+b. 即使外部函数已经返回，当前函数仍然可以引用在外部函数所定义的变量
+
+c. 闭包可以更新外部变量的值
+
+d. 用闭包模拟私有方法
+
+由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题
+
+4.2、call 和 apply 的区别是什么？
+
+call 和 apply 就是为了改变函数体内部 this 的指向。
+
+区别是从第二个参数起，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
+
+当参数明确时用call与apply都行, 当参数不明确时可用apply给合arguments
+
+4.3、如何使用原生 Javascript 代码深度克隆一个对象（注意区分对象类型）
+
+在网上找了个函数，用递归的方式做复制。传入的参数必须得是Array或Object。
+
+并且用到了JSON.stringify和JSON.parse。查看在线代码。参考《JavaScript中的对象克隆》
+
+4.4、 jQuery中 $(′.class′)和$('div.class') 哪个效率更高？
+
+jQuery内部使用Sizzle引擎，处理各种选择器。Sizzle引擎的选择顺序是从右到左，所以这条语句是先选.class，
+
+第二个会直接过滤出div标签，而第一个就不会过滤了，将所有相关标签都列出。参考《jQuery最佳实践》
+
+4.5、实现输出document对象中所有成员的名称和类型
+
+用一个for in方式循环document，然后在将内容console出来，
+
+就是看到篇文章还会判断document.hasOwnProperty，然后再做打印，我测试了下这样的话打印不出来。
+
+查看在线代码。参考《JavaScript要点归档：DOM》
+
+4.6、获得一个DOM元素的绝对位置
+
+offsetTop：返回当前元素相对于其 offsetParent 元素的顶部的距离
+
+offsetLeft：返回当前元素相对于其 offsetParent 元素的左边的距离
+
+getBoundingClientRect()：返回值是一个DOMRect对象，它包含了一组用于描述边框的只读属性——left、top、right和bottom，属性单位为像素
+
+参考《JavaScript中尺寸、坐标》，查看在线代码。
+
+4.7、如何利用JS生成一个table？
+
+首先是用createElement创建一个table，再用setAttribute设置table的属性，
+
+然后用for循环设置tr和td的内容，用appendChild拼接内容，设置td的时候还用到innerHTML和style.padding。
+
+查看在线代码。参考《JavaScript要点归档：DOM表格》《JavaScript要点归档：DOM》
+
+4.8、实现预加载一张图片，加载完成后显示在网页中并设定其高度为50px，宽度为50px
+
+先new Image()获取一个图片对象，然后在图片对象的onload中设置宽度和高度。查看在线代码。
+
+4.9、假设有一个4行tr的table，将table里面tr顺序颠倒
+
+先是通过table.tBodies[0].rows获取到当前tbody中的行，接下来是两种方法处理。获取到的行没有reverse这个方法。
+
+第一种是将这些行push到另外一个数组中
+
+第二种是用Array.prototype.slice.call()将那些行变成数组，
+
+接着用reverse倒叙，table再appendChild。查看在线代码。
+
+这里我有个疑问，就是在appendChild的时候，并不是在最后把列加上，而是做了替换操作？
+
+4.10、模拟一个HashTable类，一个类上注册四个方法：包含有add、remove、contains、length方法
+
+先是在构造函数中定义一个数组，然后用push模拟add，splice模拟remove。
+
+四个方法都放在了prototype上面。查看在线代码。
+
+4.11、Ajax读取一个XML文档并进行解析的实例
+
+a. 初始化一个HTTP请求，IE以ActiveX对象引入。 后来标准浏览器提供了XMLHttpRequest类，它支持ActiveX对象所提供的方法和属性
+
+b. 发送请求，可以调用HTTP请求类的open()和send()方法
+
+c. 处理服务器的响应，通过http_request.onreadystatechange = nameOfTheFunction。来指定函数
+
+参考《AJAX》《开始AJAX》，查看在线代码。
+
+4.12、JS如何实现面向对象和继承机制？
+
+创建对象方法：
+
+a. 利用json创建对象
+
+b. 使用JavaScript中的Object类型
+
+c. 通过创建函数来生成对象
+
+继承机制：
+
+a. 构造函数绑定，使用call或apply方法，将父对象的构造函数绑定在子对象上
+
+b. prototype模式，继承new函数的模式
+
+c. 直接继承函数的prototype属性，对b的一种改进
+
+d. 利用空对象作为中介
+
+e. 在ECMAScript5中定义了一个新方法Object.create()，用于创建一个新方法
+
+f. 拷贝继承，把父对象的所有属性和方法，拷贝进子对象，实现继承。参考《JavaScript中的对象克隆》
+
+参考《Javascript继承机制的设计思想》《构造函数的继承》，查看在线代码。
+
+4.13、JS模块的封装方法，比如怎样实现私有变量，不能直接赋值，只能通过公有方法
+
+a. 通过json生成对象的原始模式，多写几个就会非常麻烦，也不能反映出它们是同一个原型对象的实例
+
+b. 原始模式的改进，可以写一个函数，解决代码重复的问题。同样不能反映出它们是同一个原型对象的实例
+
+c. 构造函数模式，就是一个普通函数，不过内部使用了this变量，但是存在一个浪费内存的问题。
+
+d. Prototype模式，每一个构造函数都有一个prototype属性，指向另一个对象。这个对象的所有属性和方法，都会被构造函数的实例继承，可以把那些不变的属性和方法，直接定义在prototype对象上。Prototype模式的验证方法：isPrototypeOf()、hasOwnProperty()和in运算符。
+
+参考《封装》，查看在线代码。
+
+4.14、对this指针的理解，可以列举几种使用情况？
+
+this指的是：调用函数的那个对象。
+
+a. 纯粹的函数调用，属于全局性调用，因此this就代表全局对象Global。
+
+b. 作为对象方法的调用，这时this就指这个上级对象。
+
+c. 作为构造函数调用，就是通过这个函数new一个新对象（object）。这时，this就指这个新对象。
+
+d. apply与call的调用，它们的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。
+
+参考《Javascript的this用法》，查看在线代码。
+
+4.15、在JavaScript中，常用的绑定事件的方法有哪些？
+
+a. 在DOM元素中直接绑定，DOM元素，可以理解为HTML标签，onXXX="JavaScript Code"，查看事件列表。
+
+b. 在JavaScript代码中绑定，elementObject.onXXX=function(){}，通称为DOM0事件系统。
+
+c. 绑定事件监听函数，标准浏览器使用 addEventListener() ，IE11以下版本attachEvent() 来绑定事件监听函数，通称为DOM2事件系统。
+
+参考《JavaScript绑定事件的方法》
+
+4.16、解释下javascript的冒泡和捕获
+
+<div id="click1">
+  <div id="click2">
+     <div id="click3">事件</div>
+  </div>
+</div>
+a. Netscape主张元素1的事件首先发生，这种事件发生顺序被称为捕获型
+
+b. 微软则保持元素3具有优先权，这种事件顺序被称为冒泡型
+
+c. W3C选择了一个择中的方案。任何发生在w3c事件模型中的事件，首是进入捕获阶段，直到达到目标元素，再进入冒泡阶段
+
+事件监听函数addEventListener()的第三个参数就是控制方法是捕获还是冒泡
+
+参考《事件》、《javascript的冒泡和捕获》，查看在线代码。
+
+4.17、jQuery的特点
+
+a. 一款轻量级的js库
+
+b. 丰富快速的DOM选择器
+
+c. 链式表达式
+
+d. 事件、样式、动画等特效支持
+
+e. Ajax操作封装，支持跨域
+
+f. 跨浏览器兼容
+
+g. 插件扩展开发
+
+参考《JQuery特点、优缺点及其常用操作》
+
+4.18、Ajax有哪些好处和弊端？
+
+优点：
+
+a. 无刷新更新数据
+
+b. 异步与服务器通信
+
+c. 前端和后端负载平衡
+
+d. 基于标准被广泛支持
+
+e. 界面与应用分离
+
+缺点：
+
+a. AJAX干掉了Back和History功能，即对浏览器机制的破坏
+
+b. AJAX的安全问题
+
+c. 对搜索引擎支持较弱
+
+d. 违背URL和资源定位的初衷
+
+参考《AJAX工作原理及其优缺点》
+
+4.19、null和undefined的区别？
+
+null：
+
+a. null是一个表示"无"的对象，转为数值时为0
+
+b. null表示"没有对象"，即该处不应该有值。
+
+undefined：
+
+a. undefined是一个表示"无"的原始值，转为数值时为NaN。
+
+b. undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义。
+
+参考《undefined与null的区别》
+
+4.20、new操作符具体干了什么呢?
+
+a. 一个新对象被创建。它继承自函数原型
+
+b. 构造函数被执行。执行的时候，相应的传参会被传入
+
+c. 上下文(this)会被指定为这个新实例
+
+d. 如果构造函数返回了一个“对象”，那么这个对象会取代整个new出来的结果
+
+参考《new运算符》
+
+4.21、js延迟加载的方式有哪些？
+
+a. 将script节点放置在最后之前
+
+b. 使用script标签的defer和async属性，defer属性为延迟加载，是在页面渲染完成之后再进行加载的，而async属性则是和文档并行加载
+
+c. 通过监听onload事件，动态添加script节点
+
+d. 通过ajax下载js脚本，动态添加script节点
+
+参考《javascript延迟加载方式》
+
+4.22、如何解决跨域问题?
+
+a. JSONP（JSON with Padding），填充式JSON
+
+b. iframe跨域
+
+c. HTML5的window.postMessage方法跨域
+
+d. 通过设置img的src属性，进行跨域请求
+
+e. 跨域资源共享（CORS），服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求
+
+4.23、documen.write和 innerHTML的区别
+
+write：
+
+a. 改变 HTML 输出流
+
+b. 当在文档加载之后使用 document.write()，这会覆盖该文档。例如onload事件中
+
+c. 输入css的style标签能改变样式，例如document.write("*b{color:red;font-weight:bold;}*");
+
+innerHTML：
+
+a. 改变 HTML 内容
+
+b. 输入css的style标签不能改变样式
+
+参考《JavaScript HTML DOM - 改变 HTML》
+
+4.24、哪些操作会造成内存泄漏？
+
+a. 当页面中元素被移除或替换时，若元素绑定的事件仍没被移除，在IE中不会作出恰当处理，此时要先手工移除事件，不然会存在内存泄露。
+
+b. 在IE中，如果循环引用中的任何对象是 DOM 节点或者 ActiveX 对象，垃圾收集系统则不会处理。
+
+c. 闭包可以维持函数内局部变量，使其得不到释放。
+
+d. 在销毁对象的时候，要遍历属性中属性，依次删除，否则会泄漏。
+
+参考《js内存泄漏的几种情况》、《JavaScript内存分析》
+
+4.25、JavaScript中的变量声明提升？
+
+函数声明和变量声明总是被JavaScript解释器隐式地提升到包含他们的作用域的最顶端。
+
+函数表达式中只会提升名称，函数体只有在执行到赋值语句时才会被赋值。
+
+function foo() {
+    bar();
+    var x = 1;
+}
+function foo() {//等同于
+    var x;
+    bar();
+    x = 1;
+}
+function test() {
+    foo(); // TypeError "foo is not a function"
+    bar(); // "this will run!"
+    var foo = function () { }// 函数表达式被赋值给变量'foo'
+    function bar() { }// 名为'bar'的函数声明
+}
+4.26、如何判断当前脚本运行在浏览器还是node环境中？
+
+通过判断Global对象是否为window，如果是window，当前脚本运行在浏览器中
+
+4.27、什么是 "use strict"
+
+ECMAscript 5添加了第二种运行模式："严格模式"（strict mode）
+
+设立"严格模式"的目的，主要有以下几个：
+
+a. 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+
+b. 消除代码运行的一些不安全之处，保证代码运行的安全；
+
+c. 提高编译器效率，增加运行速度；
+
+d. 为未来新版本的Javascript做好铺垫。
+
+注：经过测试IE6,7,8,9均不支持严格模式
+
+参考《Javascript 严格模式详解》
+
+4.28、eval是做什么的？
+
+eval()函数可计算某个字符串，并执行其中的的 JavaScript 代码。
+
+eval()是一个顶级函数并且跟任何对象无关。
+
+如果字符串表示了一个表达式，eval()会对表达式求值。如果参数表示了一个或多个JavaScript声明， 那么eval()会执行声明。
+
+4.29、JavaScript原型，原型链 ?
+
+原型：
+
+a. 原型是一个对象，其他对象可以通过它实现属性继承。
+
+b. 一个对象的真正原型是被对象内部的[[Prototype]]属性(property)所持有。浏览器支持非标准的访问器proto。
+
+c. 在javascript中，一个对象就是任何无序键值对的集合，如果它不是一个主数据类型(undefined，null，boolean，number，string)，那它就是一个对象。
+
+原型链：
+
+a. 因为每个对象和原型都有一个原型(注:原型也是一个对象)，对象的原型指向对象的父，而父的原型又指向父的父，我们把这种通过原型层层连接起来的关系撑为原型链。
+
+b. 这条链的末端一般总是默认的对象原型。
+
+a.__proto__ = b; 
+b.__proto__ = c; 
+c.__proto__ = {}; //default object 
+{}.__proto__.__proto__; //null
+参考《理解JavaScript原型》
+
+4.30、画出此对象的内存图
+
+查看在线代码。
+
+4.31、JQuery与jQuery UI 有啥区别？
+
+jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
+
+jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
+
+4.32、jQuery的源码看过吗？能不能简单说一下它的实现原理？
+
+jQuery给我们带来了一个简洁方便的编码模型(1>创建jQuery对象;2>直接使用jQuery对象的属性/方法/事件),
+
+一个强悍的dom元素查找器($)，插件式编程接口(jQuery.fn)，以及插件初始化的”配置”对象思想
+
+参考《jQuery工作原理解析以及源代码示例》
+
+4.33、jQuery 中如何将数组转化为json字符串
+
+在jQuery1.8.3中有个方法“parseJSON”，在这个方法中会做从string转换为json。
+
+如果当前浏览器支持window.JSON，那就直接调用这个对象中的方法。
+
+如果没有就使用( new Function( "return " + data ) )();执行代码返回。
+
+eval和new Function是有区别的。
+
+4.34、请写出console.log中的内容
+
+var msg = 'hello';//顶级作用域window下有个变量msg
+function great(name, attr) {
+ var name = 'david';
+ var greating = msg + name + '!';
+ var msg = '你好';
+ for (var i = 0; i < 10; i++) {
+     var next = msg + '你的id是' + i * 2 + i;
+ }
+ console.log(arguments[0]);
+ console.log(arguments[1]);
+ console.log(greating);
+ console.log(next);
+}
+great('Tom')
+查看在线代码。
+
+a. arguments[0]被覆盖了
+
+b. msg出现了声明提升，可以查看4.25的例子
+
+c. next中出现了隐式的类型转换
+
+4.35、请说明下下面代码的执行过程
+
+var t=true;
+window.setTimeout(function(){
+     t=false;
+},1000);
+while(t){
+  console.log(1);
+}
+alert('end');
+查看在线代码。
+
+a. JavaScript引擎是单线程运行的，浏览器无论在什么时候都只且只有一个线程在运行JavaScript程序
+
+b. setTimeout是异步线程，需要等待js引擎处理完同步代码（while语句）之后才会执行，while语句直接是个死循环，js引擎没有空闲，不会执行下面的alert，也不会插入setTimeout。我在chrome中执行在线代码，最后浏览器是终止死循环执行alert。
+
+c. JavaScript的工作机制是：当线程中没有执行任何同步代码的前提下才会执行异步代码，setTimeout是异步代码，所以setTimeout只能等js空闲才会执行，但死循环是永远不会空闲的，所以setTimeout也永远不会执行。
+
+4.36、输出今天的日期，以YYYY-MM-DD的方式，比如今天是2014年9月26日，则输出2014-09-26
+
+参考《JavaScript Date 对象》
+
+4.37、Javascript中callee和caller的作用？
+
+arguments.callee属性包含当前正在执行的函数。
+
+Function.caller返回一个对函数的引用，该函数调用了当前函数。	
+</pre>
+<a href="http://www.kancloud.cn/digest/front-interview/86835">参考资料来源</a>	
+</body>
+</html>
