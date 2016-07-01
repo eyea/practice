@@ -6,10 +6,22 @@
 </head>
 <body>
 <script>
-	var son ;
-	for(son in document){
-		console.log(son)
-	}
+// 1
+
+	// var son ;
+	// for(son in document){
+	// 	console.log(son)
+	// }
+
+
+//  2 -->输出  'Document.defaultCharset' is deprecated and will be removed in M50, around April 2016. See https://www.chromestatus.com/features/6217124578066432 for more details.
+for (var i in document){
+    var item = document[i],
+        type = Object.prototype.toString.call(item);
+    if(document.hasOwnProperty(item)){
+        console.log(item + ":" + type);
+    }    
+}	
 </script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>坐标计算</title>
+	<style>
+.coordinate_out {
+  position: relative;
+  top: 100px;
+  left: 100px;
+  width: 500px;
+}
+
+#coordinate {
+  left: 100px;
+  top: 250px;
+  height: 30px;
+  background: #9ACD32;
+  position: absolute;
+  border: 2px solid red;
+}	
+	</style>
+</head>
+<body>
+
+<div class="coordinate_out">
+  <div id="coordinate">内部</div>
+</div>	
+
+<script>
+//方法一
+function offsetSum(node) {
+    var top=0, left=0
+    while(node) {
+        top = top + parseInt(node.offsetTop);
+    left = left + parseInt(node.offsetLeft);
+    node = node.offsetParent;    
+    }
+    return {top: top, left: left}
+}
+//方法二
+function offsetSum2(node) {
+  return node.getBoundingClientRect();
+}
+node = document.getElementById('coordinate');
+rect = offsetSum(node);
+rect2 = offsetSum2(node);
+console.log(rect);
+console.log(rect2);
+	
+</script>
+</body>
+</html>
