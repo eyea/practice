@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<pre>
+为什么要使用CSS预处理器。
+（下面未指明的预编译预言都是LESS）
+
+1# CSS无法递归式定义
+CSS语法不支持递归定义的表达式，所以你没有办法用一个语句定义一个启发式的规则。
+
+比如这样的需求：“.w后面跟着一个数字，这个数字代表着width为百分之多少”（bootstrap的栅格系统就包含12种相对父级宽度的类定义）。
+尽管完全是一个规则里定义出的，但你只能这样写CSS：
+
+.w1 { width: 1% }
+.w2 { width: 2% }
+/**
+.w3
+...
+...
+.w99
+**/
+.w100 { width: 100% }
+这样将造成很大的冗余，修改费时费力。但如果预编译CSS，就非常简单了：
+
+@maxnumber : 100 ;
+.makeWidthRules(@number) when(@number <= @maxnumber ){
+  .w@{number}{
+    width: 1% * @number ;
+  }
+  .makeWidthRules(@number + 1) ;
+}
+.makeWidthRules(1) ;
+2# CSS的mixin式复用性支持不够
+使用纯CSS，我们可以抽象出一些常用的布局CSS属性组合，通过CSS的类组合来达成常见的mixin式复用。
+比如这样：
+
+<style>
+    .tc { text-align: center; }
+    .m { margin-left: auto; margin-right: auto; }
+    .w50p { width: 50%; }
+    .db { display: block; }
+</style>
+<div class="tc m w50p">
+    <img class="db">
+</div>
+这种方案有几个问题：
+
+页面重构时，需要频繁修改class name；
+这个问题在后端人员掌握着视图层的时候格外突出，前后端耗费很多沟通成本。
+要约束上下文的时候非常无力
+比如“只有在ul下面的img.db允许是display:block”的规则，写成ul img.db { display: block; }就完全跑偏了——它违背了你创建这个.db类时的本意，造成了代码的可读性和可维护性下降。如果你要改动规则，需要同时修改HTML和CSS，也可能造成新的样式问题。
+如果我们想要建立一种代码风格，只允许CSS Class代表UI模块的抽象——改动样式时不至于通知后端改模板——我们就要将上面这个例子的tc m w50p换用一个有实际语义的类名如headwrap，然后在CSS内部实现mixin。
+——而这正是CSS的短板，CSS体系内的用法只有复制粘贴。
+
+至于如何用预编译语言做mixin，一个非常好的SASS示例由 @nightire 在这个回答里给出，容我摘录一小段：
+
+.btn-standout {
+    @extend .btn;
+    @extend .btn-block;
+
+    @media (max-width: $screen-xs-max) {
+        @include button-size(
+            $padding-large-vertical,
+            $padding-large-horizontal,
+            $font-size-large,
+            $line-height-large,
+            $border-radius-large
+        );
+    }
+
+    &.sell {
+        @extend .btn-primary;
+    }
+}
+3# 预编译可缓解多浏览器兼容造成的冗余
+进入CSS3的时代，旧式CSS hack如filter，新式兼容前缀如-webkit-等，都是冗余，修改的时候也需要修改多处，不容易维护。
+
+比如对rgba背景的兼容：
+
+.bg {
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#ccff825b,endcolorstr=#ccff825b);
+}
+:root .bg {
+    -ms-filter: none;
+    background: rgba(255,130,91,0.8)
+}
+在LESS里面，写个函数就能解决，多次复用也不需要看到如此之多的hack：
+
+.rgbaBG(@c , @a){
+    @rgba : rgba(red(@c),green(@c),blue(@c),@a);
+    @shim : argb(@rgba) ;
+    filter: ~"progid:DXImageTransform.Microsoft.gradient(startcolorstr=@{shim},endcolorstr=@{shim})" ;
+    :root & {
+        -ms-filter: none ;
+        background: @rgba ;
+    }
+}
+.bg {
+    .rgbaBG(#ff825b, 0.8) ;
+}
+此外，使用LESS时，可以很方便地使用base64 data uri的方案。不需要直接面临在CSS中一大坨字符：
+
+.bg { background: data-uri('../data/image.jpg'); }
+SASS的类似方案见评论。
+
+N# 预编译不是万金油
+预编译不是万金油，CSS的好处在于简便、随时随地被使用和调试。预编译CSS步骤的加入，让我们开发工作流中多了一个环节，调试也变得更麻烦了。
+
+举个例子：原先我们只需要在chrome/firebug里面找到相应的选择器，如.popup .popup-wrap .head，源文件里面ctrl+F查找.popup .popup-wrap .head就可以快速定位语句。现在我们无法直接在预编译文件中查找，而需要寻找上下文，因为它在LESS中通常是这样被定义的:
+
+.popup {
+    .popup-wrap {
+        .head { }
+    }
+}
+更大的问题在于，预编译很容易造成后代选择器的滥用。
+曾经有一个观点是预编译可以解决样式覆写的问题，而我觉得，正是预编译语言模糊了样式覆写的问题，而导致要解决样式相互覆写的问题时，问题已经变得规模庞大而难以解决。
+
+举个极端的例子：
+
+.popup {
+    font-size: 12px;
+    a { font-size: 13px; }
+    .head { font-size: 18px; }
+}
+.informative {
+    font-size: 14px;
+    .head { font-size: 16px; }
+}
+如果我有这么一个文档结构.popup.informative > .head > a，需要a的font-size为17px，你能快速想明白怎么改吗？叠罗汉式地再叠一层？还是再糊一层墙皮，加一行样式？还是干脆用!important轰炸一番？
+
+因此，实际项目中衡量预编译方案时，还是得想想，比起带来的额外维护开销，预编译有没有解决更大的麻烦。
+2015年02月01日回答 · 2015年02月01日更新  1 评论
+
+Humphry
+12.4k 声望
++1
+说一下 Sass 处理 Base64 的问题。
+
+最开始的 Ruby-Sass 没有内置这个函数，不过 Compass 有，大多数 Sass 用户都是结合 Compass 用的，所以这不是问题。
+
+但是比较“高端大气上档次”的 Sass 用户渐渐不喜欢用 Compass 了（嫌大／慢之类的）怎么办呢？其实扩展 Sass 倒也不难。比如说这个功能可以写一个简单的 Ruby 脚本：
+
+require 'sass'
+require 'base64'
+
+module sass::script::functions
+    def base64encode(string)
+        assert_type string, :string
+        sass::script::string.new(base64.encode64(string.value))
+    end
+    declare :base64encode, :args => [:string]
+end
+然后用 Sass 的时候 require 这个脚本就好了（Grunt 之类的插件可以配置 Sass 的 require）。上例是我处理 SVG 用过的，而我现在写前端项目几乎没有用到小图片的地方（尽可能用 webfonts／SVG 来代替）所以这个功能的需求倒不是特别大。想知道处理图片的写法可以参见：https://github.com/Integralist/Sass-Base64-Extension/blob/master/sass/url64.rb
+
+libsass （好像）已经内置了 Base64 的编码函数，不会 Ruby 的可以选择它试试。	
+</pre>	
+</body>
+</html>
