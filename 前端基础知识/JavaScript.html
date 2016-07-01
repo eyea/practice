@@ -34,13 +34,13 @@ call 和 apply 就是为了改变函数体内部 this 的指向。
 
 在网上找了个函数，用递归的方式做复制。传入的参数必须得是Array或Object。
 
-并且用到了JSON.stringify和JSON.parse。查看在线代码。参考《JavaScript中的对象克隆》
+并且用到了JSON.stringify和JSON.parse。<a href="http://codepen.io/strick/pen/rORKWp">查看在线代码</a>。
 
 4.4、 jQuery中 $(′.class′)和$('div.class') 哪个效率更高？
 
 jQuery内部使用Sizzle引擎，处理各种选择器。Sizzle引擎的选择顺序是从右到左，所以这条语句是先选.class，
 
-第二个会直接过滤出div标签，而第一个就不会过滤了，将所有相关标签都列出。参考《jQuery最佳实践》
+第二个会直接过滤出div标签，而第一个就不会过滤了，将所有相关标签都列出。<a href="http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html">参考《jQuery最佳实践》</a>
 
 4.5、实现输出document对象中所有成员的名称和类型
 
