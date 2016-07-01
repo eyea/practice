@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HashTable</title>
+</head>
+<body>
+<script>
+function HashTable() {
+    this.value = [];
+}
+HashTable.prototype.add = function(val) {
+    this.value.push(val);
+}
+HashTable.prototype.remove = function(index) {
+    this.value.splice(index, 1);
+}
+HashTable.prototype.contains = function(val) {
+    var aValue = this.value;
+    for (var i = 0; i < aValue.length; i++) {
+        if (val == aValue[i]) {
+            return true;
+
+        }
+    }
+    return false;
+}
+
+HashTable.prototype.length = function() {
+    return this.value.length;
+}
+
+hash = new HashTable();
+hash.add(1);
+hash.add(2);
+console.log(hash.length());
+console.log(hash.contains(1));
+hash.remove(1);
+console.log(hash.length());
+console.log(hash.contains(2));	
+</script>	
+</body>
+</html>

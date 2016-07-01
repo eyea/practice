@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>制作table</title>
+</head>
+<body>
+	<div id="first">你好</div>
+
+	<script>
+var row;
+var cell;
+table = document.createElement("table");
+table.setAttribute("border", 1);
+for (var i = 0; i < 10; i++) {
+    row = document.createElement("tr");
+    table.appendChild(row);
+    for (var j = 0; j < 10; j++) {
+        cell = document.createElement("td");
+        cell.style.padding = "10px";
+        cell.innerHTML = "单元格内容";
+        row.appendChild(cell);
+    }
+}
+
+table.appendChild(row);
+//first = document.getElementById('first');
+//document.body.insertBefore(table,first);//测试insertBefore方法
+document.body.appendChild(table);
+		
+	</script>
+</body>
+</html>
