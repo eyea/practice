@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>前端面试江湖</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 4
+		console.log('www.qdjhu.com'.substr(4,5));
+		//5 
+		var reg1 = /^(a-zA-Z){1}\w{4,19}/;
+		//6  求字符串给的长度 写方法
+		function getLength(str){
+			return str.length;
+		};
+		// 7  
+		var str1 = 'adfkjkfkjdgnignnfdfjkdjkgkgn';
+		var goal1 = 'ni';
+		var start = str1.indexOf(goal1);
+		console.log(str1.substring(start,start+goal1.length));
+		// 8
+		//****************************************8buhui **************
+		//9
+		function leftTrim(str){
+			return str.replace(/^\s*/g,'');
+		}
+		//10 数据类型 ：undefined  Boolean string number  object  function 
+		// 11 输出结果  typeof(null,undefined,NaN,NaN==undefined)==>object undefined  number boolean
+		//  13 函数实现字符串法装
+		function revStr(str){
+			var tmpstr = '';
+			for(var l = str.length-1;l>=0;l--){
+				tmpstr+=str.charAt(l)
+			}
+			return tmpstr;
+		}
+		var  str2  ="1fkdfkjk2";
+		console.log(revStr(str2));
+		// 14
+		// 18
+		var str3  = 'hello world';
+		function isStr(str){
+			if(typeof str == "string"|| str.construnctor == "String"){
+				return true;
+			}
+		};
+		console.log('Math.PI++ 系统对象的属性是只读的==》'+Math.PI++);
+		// 20
+		var str4 = 'abcd-eff-gr3';
+		var arr1 = str4.split('-');
+		console.log(arr1.reverse().join('&'))
+	</script>
+</body>
+</html>
