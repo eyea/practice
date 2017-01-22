@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .pet_head{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    position: relative;
+    background: linear-gradient(45deg,#095469,#095469,#0EAFD9,#0EAFD9,#0EAFD9,#0EB7E2,#0BBCE8, #82DEF7,#82DEF7)
+  }
+  .pet_head::after{
+    position: absolute;
+    bottom: 6px;
+    left: 25px;
+    width: 250px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    content: '';
+    background: #fff;
+  }
+  .pet_head .left_eye,.pet_head .right_eye{
+    width: 60px;
+    height: 78px;
+    position: absolute;
+    top: 40px;
+    z-index: 1;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 46%;
+  }
+  .pet_head .left_eye{
+    left: 84px;
+  }
+  .pet_head .left_eye::before,
+  .pet_head .right_eye::before{
+    content: '';
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    bottom: 18px;
+    background: #000;
+    border-radius: 50%;
+  }
+  .pet_head .left_eye::before{
+    right: 10px;
+  }
+  .pet_head .right_eye{
+    right: 90px;
+  }
+  .pet_head .right_eye::before{
+    left: 10px;
+  }
+  .pet_head .left_eye::after{
+    content: '';
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 68px;
+    left: 46px;
+    background: red;
+    border: 2px solid #000;
+    border-radius: 50%;
+  }
+  .pet_head .left_mustache,.pet_head .right_mustache{
+    position: absolute;
+    bottom: 130px;
+    width: 60px;
+    height: 2px;
+    background: #000;
+    z-index: 1;
+  }
+  .pet_head .left_mustache{
+    left: 58px;
+  }
+  .pet_head .left_mustache::before,
+  .pet_head .left_mustache::after,
+  .pet_head .right_mustache::before,
+  .pet_head .right_mustache::after{
+    content: '';
+    width: 60px;
+    height: 2px;
+    position: absolute;
+    left: 0px;
+    background: #000;
+    z-index: 1;
+  }
+  .pet_head .left_mustache::before{
+    bottom: 10px;
+    transform-origin: right;
+    transform: rotate(30deg);/*顺时针*/
+  }
+  .pet_head .left_mustache::after{
+    bottom: -10px;
+    transform-origin: right;
+    transform: rotate(-30deg);
+  }
+  .pet_head .right_mustache{
+    right: 58px;
+  }
+  .pet_head .right_mustache::before{
+    top: 10px;
+    transform-origin: left;
+    transform: rotate(30deg);
+  }
+  .pet_head .right_mustache::after{
+    top: -10px;
+    transform-origin: left;
+    transform: rotate(-30deg);
+  }
+  .pet_head .mouth{
+    width: 2px;
+    height: 118px;
+    background: #000;
+    position: absolute;
+    bottom: 45px;
+    left: 146px;
+    z-index: 1;
+  }
+  .pet_head .mouth::after{
+    content: '';
+    width: 150px;
+    height: 80px;
+    position: absolute;
+    bottom: -2px;
+    left: -75px;
+    z-index: 1;
+    border-bottom: 2px solid #000;
+    border-radius: 50%;
+  }
+  .pet_collar{
+        position: relative;
+        width: 280px;
+        height: 24px;
+        background: red;
+        margin: -28px  auto 0px auto;
+        border: 2px solid #000;
+        border-radius: 10px;
+        z-index: 5;
+  }
+  .pet_bell{
+        position: absolute;
+        top: 15px;
+        left: 120px;
+        width: 40px;
+        height: 40px;
+        background: #CBC10A;
+        border-radius: 50%;
+        border: 2px solid #000;
+  }
+  .pet_bell::before,.pet_bell::after{
+        content: '';
+        background: #000;
+        width: 38px;
+        height: 2px;
+        position: absolute;
+        top: 10px;
+  }
+  .pet_bell::after{
+        width: 40px;
+        top: 14px;
+  }
+  .pet_bell_wig{
+        position: absolute;
+        bottom: 8px;
+        left: 12px;
+        background: #000;
+        width: 16px;
+        height: 12px;
+        border-radius: 50%;
+  }
+  .pet_bell_wig::after{
+        content: '';
+        background: #000;
+        width: 4px;
+        height: 10px;
+        position: absolute;
+        bottom: -8px;
+        left: 6px;
+  }
+  .pet_body{
+    position: relative;
+    width: 240px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  .pet_belly{
+        width: 240px;
+        height: 180px;
+        background: #fff;
+        margin: 0 auto;
+        border: 2px solid #000;
+        border-radius: 48%;
+        position: absolute;
+        top: -10px;
+        z-index: 4;
+  }
+  /*使用before after*/
+  .pet_belly::before{
+        content: '';
+        width: 130px;
+        height: 130px;
+        border: 2px solid #000;
+        border-radius: 50%;
+        position: absolute;
+        top: 10px;
+        left: 55px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        transform: rotate(-45deg);
+  }
+  .pet_belly::after{
+        content: '';
+        width: 134px;
+        height: 2px;
+        background: #000;
+        position: absolute;
+        top: 76px;
+        left: 55px;
+  }
+  .pet_arms{
+        position: absolute;
+        top: 0;
+        left: -20px;
+        background: linear-gradient(85deg,#0C90B3,#0C90B3,#0EAFD9,#0DBAE5,#0DBAE5);
+        width: 280px;
+        height: 60px;
+  }
+  .left_arm,.right_arm{
+        width: 100px;
+        height: 50px;
+        background: #0C90B3;
+        position: absolute;
+        border: 2px solid #000;
+        z-index: 1;
+  }
+  .left_arm{
+        left: -60px;
+        top: 20px;
+        border-right: none;
+        transform: rotate(-45deg);
+  }
+  .right_arm{
+        right: -60px;
+        top: 20px;
+        background: #0DBAE5;
+        border-left: none;
+        transform: rotate(45deg);
+  }
+  .right_arm::before{
+        left: 84px;
+        bottom: -14px;
+  }
+  .left_arm::before,.right_arm::before{
+        content: '';
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid #000;
+        background: #fff;
+        position: absolute;
+  }
+  .left_arm::before{
+        right: 84px;
+        bottom: -14px;
+  }
+  .pet_waist{
+        position: absolute;
+        top: 45px;
+        height: 180px;
+        width: 276px;
+        margin-left: -20px;
+        background: linear-gradient(45deg,#0C90B3,#0C90B3,#0C90B3,#0EAFD9,#0EB7E2,#0BBCE8);
+        border-left: 2px solid #000;
+        border-right: 2px solid #000;
+        border-bottom: 2px solid #000;
+        z-index: 3;
+  }
+  .pet_footer{
+        position: relative;
+        top: 22px;
+        width: 300px;
+        margin: 0 auto;
+        z-index: 5;
+  }
+  .left_foot,.right_foot{
+        width: 146px;
+        height: 40px;
+        background: #fff;
+        border: 2px solid #000;
+        border-radius: 40px;
+        position: absolute;
+  }
+  .right_foot{
+        left: 146px;
+        margin-left: 10px;
+  }
+  .pet_waist::after{
+        content: '';
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border: 2px solid #000;
+        border-radius: 50%;
+        border-top: none;
+        border-right: none;
+        transform: rotate(135deg);
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        margin-left: -15px;
+  }
+  .pet_waist::before{
+        content: '<button>ff</button>';
+        width: 30px;
+        height: 30px;
+        background: red;
+        border: 2px solid #000;
+        border-radius: 50%;
+        border-top: none;
+        border-right: none;
+        transform: rotate(135deg);
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        margin-left: -15px;
+        z-index: 99;
+  }
+  </style>
+</head>
+<body>
+  <!-- test -->
+
+  <!-- end -->
+
+
+    <div class="fat_pet" id="fat_pet">
+      <!-- head part -->
+      <header class="pet_head">
+        <!-- eyes -->
+        <div class="left_eye"></div>
+        <div class="right_eye"></div>
+        <!-- mustache -->
+        <div class="left_mustache"></div>
+        <div class="right_mustache"></div>
+        <!-- mouth -->
+        <div class="mouth"></div>
+      </header>
+
+      <!-- pet_collar -->
+      <div class="pet_collar">
+        <div class="pet_bell">
+          <div class="pet_bell_wig"></div>
+        </div>
+      </div>
+
+      <!-- pet_body -->
+      <section class="pet_body">
+        <!-- pet_belly -->
+        <div class="pet_belly"></div>
+        <!-- pet_waist -->
+        <div class="pet_waist"></div>
+        <!-- pet_arms -->
+        <div class="pet_arms">
+          <div class="left_arm"></div>
+          <div class="right_arm"></div>
+        </div>
+      </section>
+
+      <!-- pet_footer -->
+      <div class="pet_footer">
+        <div class="left_foot"></div>
+        <div class="right_foot"></div>
+      </div>
+    </div>
+
+</body>
+</html>
