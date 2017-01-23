@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第一章</title>
+</head>
+<body>
+  调用一个函数就可以实现 JavaScript 文件的动态加载。下面的函数封装了标准实现和 IE 实现所需的功能：
+  Internet Explorer 支持另一种实现方式，
+  它发出一个 readystatechange 事件。
+  script 元素有一个 readyState 属性，它的值随着下载外部文件的过程而改变。readyState 有五种取值：
+
+    “uninitialized”：默认状态
+    “loading”：下载开始
+    “loaded”：下载完成
+    “interactive”：下载完成但尚不可用
+    “complete”：所有数据已经准备好
+
+微软文档上说，在 script 元素的生命周期中，readyState 的这些取值不一定全部出现，但并没有指出哪些取值总会被用到。
+实践中，我们最感兴趣的是“loaded”和“complete”状态。
+Internet Explorer 对这两个 readyState 值所表示的最终状态并不一致，
+有时 script 元素会得到“loader”却从不出现“complete”，
+但另外一些情况下出现“complete”而用不到“loaded”。
+最安全的办法就是在 readystatechange 事件中检查这两种状态，并且当其中一种状态出现时，
+删除 readystatechange 事件句柄（保证事件不会被处理两次）：
+  <script>
+      function loadScript(url,callback){
+        var script = document.createElement('script');
+        script.type = 'text/script';
+
+        if(script.readyState){  // IE
+            script.onreadystatechange = function(){
+              if(script.readystate == 'loaded' || script.readystate == 'complete'){
+                script.onreadystatechange = null; //保证事件不会被处理两次
+                callback();
+              }
+            }
+        }else{
+          script.onload = function(){
+            callback();
+          }
+        };
+
+        script.url = url;
+        document.getElementsByClassName('head')[0].appendChild(script);
+      }
+  </script>
+  <!-- 函数使用方法  -->
+  JavaScript 文件的 URL，和一个当 JavaScript 接收完成时触发的回调函数。属性检查用于决定监视哪种事件。
+  最后一步，设置 src 属性，并将 script 元素添加至页面。此 loadScript() 函数使用方法如下：
+  loadScript("script1.js", function(){
+    loadScript("script2.js", function(){
+        loadScript("script3.js", function(){
+            alert("All files are loaded!");
+        });
+    });
+});
+此代码等待 script1.js 可用之后才开始加载 script2.js，
+等 script2.js 可用之后才开始加载 script3.js。
+虽然此方法可行，但如果要下载和执行的文件很多，还是有些麻烦。
+如果多个文件的次序十分重要，更好的办法是将这些文件按照正确的次序连接成一个文件。
+独立文件可以一次性下载所有代码（由于这是异步进行的，使用一个大文件并没有什么损失）。
+
+动态脚本加载是非阻塞 JavaScript 下载中最常用的模式，因为它可以跨浏览器，而且简单易用。
+</body>
+</html>
