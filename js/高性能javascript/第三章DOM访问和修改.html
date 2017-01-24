@@ -5,8 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DOM的访问和修改</title>
+  <style>
+    div{
+      width: 300px;
+      height: 200px;
+      overflow: auto;
+      border: 1px solid red;
+    }
+  </style>
 </head>
 <body>
+  <h2>减少DOM的访问次数，把运算留在JS处理</h2>
+  <div id="here"></div>
+  <div id="there"></div>
+  <pre>===========</pre>
+  HTML集合是包含DOM节点引用的类数组对象，返回的是集合：
+  document.getElementsByName();
+  document.getElementsByTagName();
+  document.getElementByClassName();
+
+  document.images
+  document.links;
+  document.forms;
+
+  var elements = document.querySelectorAll('#menu a'); --> CSS选择器作为参数并返回一个Nodelist--包含
+  匹配节点的类数组对象，这个方法不会返回HTML集合，因此返回的节点不会对应实时的文档结构。
   
+  <script>
+    function innerHTMLLoop(){
+      for(var count = 0;count<10000;count++){
+        document.getElementById('here').innerHTML += 'a';
+        // 每次迭代循环，该元素都会被访问两次，一次读取innerHTML属性值，一次是重写
+      }
+    };
+    // innerHTMLLoop();
+    function innerHTMLLoop2(){
+      var content = '';
+      for(var count = 0;count<10000;count++){
+        content += 'b'
+      };
+      document.getElementById('there').innerHTML += content;
+    };
+    // innerHTMLLoop2();
+
+  </script>
 </body>
 </html>
