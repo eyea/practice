@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>算法和流程控制</title>
+</head>
+<body>
+  四种循环：for do-while  while  for-in
+  1.for 四部分：初始化 前测条件 后执行体 循环体；
+  2.while： 前测循环 先测条件为真 执行循环体；
+  3.do-while： 唯一一种后测循环 最少执行一遍,
+  4.for-in: 可以枚举任何对象的属性名
+
+  5、达夫设备--> 限制循环迭代次数
+  6.基于函数的迭代  原生数组的方法--> forEach()
+  <script type="text/javascript">
+    var arr = [1,1,1],
+        items = [];
+    var process = function(){
+      return false;
+    }
+    for(var i=0;i<arr.length;i++){
+      process(items[i]);
+    };
+
+    for(var i=0,len=arr.length;i<len;i++){
+      process(items[i]);
+    };
+// 颠倒数组的顺序来提高循环性能
+    for(var i=arr.length;i--;){
+      process(items[i]);
+    };
+
+//  合并排序算法是最常见的用递归实现的算法:
+    function merge(left,right){
+      var result = [];
+      while(left.length>0 && right.length>0){
+        if(left[0]<right[0]){
+          result.push(left.shift());
+        }else{
+          result.push(right.shift());
+        }
+      };
+      // return result.concat(left).concat(right);
+      console.log(result.concat(left).concat(right));
+    }
+    merge([9],[7]);
+
+    // Memoization 处理递归 利用缓存
+    var vb = 0;
+function b(n){
+  vb++;
+  console.log(vb);
+  if(!b.cache){
+    b.cache = {
+     '0':1,
+     '1':1
+   }
+  };
+  if(!b.cache.hasOwnProperty(n)){
+    b.cache[n] = n*b(n-1)
+  };
+  return b.cache[n];
+}
+b(4);b(5);b(6);  // 8次
+
+
+  var i=0;
+function a(n){
+  i++;
+  console.log(i)
+  if(n==0){
+     return 1;
+  }else{
+     return n*a(n-1);
+  };
+};
+a(6);
+a(5);
+a(4);  // 18次
+  </script>
+
+</body>
+</html>
