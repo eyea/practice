@@ -30,7 +30,20 @@
 
   var elements = document.querySelectorAll('#menu a'); --> CSS选择器作为参数并返回一个Nodelist--包含
   匹配节点的类数组对象，这个方法不会返回HTML集合，因此返回的节点不会对应实时的文档结构。
-  
+  <br>
+  ===========第二天=========<br>
+
+   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createDocumentFragment">document.createDocumentFragment()</a>
+
+   批量修改DOM document.createDocumentFragment(); <br>
+   缓存布局信息 <br>
+   让元素脱离动画流 避免重排<br>
+   少用css::hover  <br>
+   事件委托--> 基于：事件是逐层冒泡并能够被父级元素捕获,使用事件代理，只需给外层元素绑定一个处理器，就可以处理在其子元素上触发的所有事件 <br>
+   
+
+
+
   <script>
     function innerHTMLLoop(){
       for(var count = 0;count<10000;count++){
@@ -47,7 +60,6 @@
       document.getElementById('there').innerHTML += content;
     };
     // innerHTMLLoop2();
-
   </script>
 </body>
 </html>
