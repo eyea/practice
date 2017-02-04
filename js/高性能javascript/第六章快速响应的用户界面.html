@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>快速相应的UI界面</title>
+  <style media="screen">
+    p{
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <button onclick='handleClick()' style='padding:20px;font-size:20px;'>点击输入</button>
+  <p>
+    当按钮点击的时候，它会触发UI线程来创建两个任务并添加到队列中，第一个任务是更新按钮的UI，它需要改变外观已指示它被点击了，
+    第二个任务是执行JavaScript，
+    在JavaScript运行过程中，一个新的UI更新任务被添加在队列中，在JavaScript运行完之后，UI还会再更新一次。
+  </p>
+  <p>
+    客户端JavaScript的限制:
+    处于安全的考虑，客户端的js运行会受到种种限制，
+    浏览器限制了JavaScript任务的运行时间。这种限制是有必要的，它确保某些恶意代码不能通过永不停止的密集操作锁住用户的浏览器或计算机。
+
+    此类限制分为两种
+    调用栈大小限制
+    长时间运行脚本限制
+
+    单个JavaScript操作花费的总时间(最大值)不应该超过100毫秒。这个数字源自Robert Miller于1968年的研究。Nielsen指出如果界面在100毫秒内响应用户输入，用户会认为自己在“直接操纵界面中的对象”。超过100毫秒意味着用户会感到自己与界面失去的联系。
+    建议是在50ms内
+
+    浏览器不支持的功能
+    JavaScript没有权限写入或删除客户计算机上的任意文件或列出任意目录
+    意味着JavaScript程序不能删除数据或植入病毒。
+    客户端JavaScript没有任何通用的网络能力。
+    虽然客户端JavaScript程序可以对HTTP协议编程，此外还有WebSockets，但是这些API都不允许对于范围更广的网络进行直接访问。
+  </p>
+  <p>
+    无论发生何种情况，穿甲一个定时器会造成UI线程暂停，如同它从一个任务切换到下一个任务。因此，定时器代码会重置所有相关的浏览器限制，包括长时间运行脚本定时器。
+    此外，调用栈也在定时器的代码中重置为0；
+    这一特性，使得定时器成为长时间运行JavaScript代码理想的跨浏览器解决方案。
+  </p>
+  <p>
+    P120--> 高性能JavaScript
+    Worker 没有绑定UI线程，这也意味着他们不能访问浏览器的许多资源。
+    JavaScript和UI共享同一进程的部分原因是他们之间互相访问频繁.
+    var worker = new Worker('code.js')；
+    与worker通信，通过事件接口进行通信：
+    网页代码可以通过 postMessage()方法给worker传递数据，他接受一个参数，即需要传递给worker的数据
+    此外worker还有一个用来接收信息的 onmessage 事件处理器：
+    var worker = new Worker('code.js')；
+    worker.onmessage = function(event){
+      alert(event.data);
+    };
+    worker.postMessage('Nicholas');
+    code.js的内部代码：
+    self.onmessage = funtion(){
+      self.postMessage('Hello' + event.data + '!')
+    }  <br>
+    <h3>
+      web worker 适用于那些处理纯数据，或者与浏览器UI无关的长时间运行脚本。例子：
+    </h3>
+    <p>
+      解析一个很大的JSON字符串，假设数据量足够大，至少需要500ms才能完成解析，超出了客户端允许JavaScript运行的时间，它会干扰用户体验；p123;<br>
+      其他可能受益的任务如下： <br>
+      1.编码、解码大字符串；
+      2.复杂数学运算（包括图像或者视频处理）；
+      3.大数组排序
+      任何超过 100ms 的处理过程，都应当考虑worker方案是不是比基于定时器方案更为合适。当然，前提是浏览器支持 web worker
+    </p>
+
+  </p>
+
+  <script type="text/javascript">
+    function handleClick(){
+      var odiv = document.createElement('div');
+      odiv.innerHTML = 'Click';
+      document.body.appendChild(odiv);
+    };
+    // 定时器让出UI线程的控制权 setTimeout()   setInterval()
+    function greeting(){
+      console.log('Hello World')
+    };
+    setTimeout(greeting,250);
+    console.log('验证定时器的精度不准代码分割线');
+    // 定时器精度
+    var begin = (new Date()).getTime(),
+        i=0;
+    setInterval(function(){
+      ++i;
+      var now = (new Date()).getTime(),
+          intvals = ((now-begin)/1000).toFixed(3),
+          str = 'num:' + i + ';use time:' + intvals;
+      // console.log(str);
+    },1000);
+    for(var i = 0;i!=100;++i){
+            // console.log(i);
+    };
+
+    // worker
+
+    if(typeof(Worker) !== 'undefined'){
+      console.log('支持Worker');
+      var worker = new Worker('./demoworker.js'); //在chrome不支持会抛出错误 在Firefox控制台是ok的  Chrome doesn't let you load web workers when running scripts from a local file. Note: Firefox won't work either. Try Safari. :)
+      worker.onmessage = function(event){
+        console.log(event.data);
+      };
+      worker.postMessage(' Worker')
+    }else{
+      console.log('不支持Worker')
+    }
+
+
+
+  </script>
+</body>
+</html>
