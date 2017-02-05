@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>编程实践</title>
+</head>
+<body>
+  <p>
+    在JavaScript中创建对象和数组的方法有很多种，但使用 对象 和 数组直接量 是最快的方式，直接量有助于节省代码量，减少文件的尺寸:
+    // 创建一个对象
+    var myObject = {
+      name: 'wdd',
+      count: 50,
+      flag: true
+    };
+
+    // 创建一个数组
+    var myArray = ['wdd',50,true]
+
+    上面两段代码结果相同，但是后者在浏览器里运行更快
+    <h3>
+      无论代码如何优化，都永远比不上JavaScript引擎提供的原生方法更快。道理是：
+      JavaScript 的原生部分在写代码之前就已经存在浏览器中了，并且都是用低级语言写的，比如C++，
+      这意味着这些方法会编译成机器码，成为浏览器的一部分，
+    </h3>
+    <p>
+      当进行复杂数学运算时，应先查看 Math 对象
+      另外一个例子是选择器API。它允许使用CSS 选择器来查找 DOM 节点。
+      原生的 querySelector() 和 querySelectorAll()
+    </p>
+  </p>
+</body>
+</html>
