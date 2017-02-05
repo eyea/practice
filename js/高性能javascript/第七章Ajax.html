@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax</title>
+  <style media="screen">
+    p{
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h3>
+    Ajax 是一种与服务器通信而无需重载页面的方法；数据可以从服务器获取或者发送给服务器。
+  </h3>
+  <p>
+    常用三种技术：XHR、动态脚本注入和multipart XHR;
+    1.XHR 允许异步发送和接受数据 GET POST
+
+    2.动态脚本注入：克服XHR最大限制：他能跨域请求数据 这是一个Hack，不需要实例化一个专用对象，可直接使用JavaScript创建一个新的
+    脚本标签，并设置它的src属性为不同域的URL： <br>
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://www.baidu.com/lib.js';
+    document.getElementByTagName('head')[0].appendChild(scriptElement);
+
+    3.MXHR  <a href="http://www.cnblogs.com/catprayer/archive/2012/01/07/2315783.html">MXHR开源节流详解</a>
+    <a href="http://techfoolery.com/mxhr/">测试的链接地址：</a>
+  </p>
+  <p>
+    当使用XHR发送数据到服务器时，GET方式会更快： 对于少量数据而言，一个GET请求往服务器只发送一个数据包；
+    而一个POST请求，至少要发送两个数据包，一个装载头信息，另一个装载POST正文；
+  </p>
+  <p>
+    JSON是一种使用JavaScript对象和数组直接编写的轻量级且易于解析的数据格式：
+
+    1.标准JSON：
+    [
+      {
+        'id':1,
+        'name':'alice'
+      },{
+        'id':2,
+        'name':'wxd'
+      }
+    ];
+
+    2.简化的JSON：(属性名缩短)
+    [
+      {'i':1,'n':'alice'},
+      {'i':2,'n':'wxd'}
+    ]
+
+    3.数组JSON：(可读性更差，更脆弱，但是文件尺寸最小，平均下载速度最快，平均解析速度也是最快)
+    [
+      [1,'alice'],
+      [2,'wxd']
+    ]
+    要想成功解析必须保持数据的顺序：
+    <code>
+      function parseJSON(responseText){
+        var users = [],
+            usersArray = eval('(' + responseText + ')');
+        for(var i=0,len = usersArray.length;i<len;i++){
+          users[i] = {
+            id: usersArray[i][0],
+            username: usersArray[i][1]
+          }
+        };
+        return users;
+      }
+    </code>
+    尽可能的不适用eval来解析JSON字符串，使用JSON.parse()方法来解析字符串本身；
+
+    当使用 XHR 时，JSON数据被当成 字符串 返回，该字符串紧接着被 eval() 转换成原生对象；
+    当使用动态脚本注入时，JSON 数据被当成一个 JavaScript 文件并作为原生代码执行，为实现这一点，这些数据必须封装在一个回调函数里，这就是所谓的
+    JSON 填充（JSON with padding）-- jsonp
+  </p>
+  <p>
+    HTML 是一种臃肿的数据格式，甚至比 XML 更复杂。
+    数据格式总结：
+    通常来说数据格式越轻量越好，JSON和字符分割的自定义格式是最好的。如果数据集很大并且对解析时间有要求，那么：
+    1.JSON-P数据，使用动态脚本注入获取。它把数据当做可执行的JavaScript而不是字符串，解析速度极快，它能跨域使用，但涉及敏感数据时不应该使用；
+    2.字符分隔的自定义格式，使用 XHR 或动态脚本注入获取，用 split() 解析；
+  </p>
+  <p>
+    避免发送不必要的请求：
+    1.在服务端，设置 HTTP 头信息以确保你的响应会被浏览器缓存
+    HTTP头信息Expires（过期时间） 属性是HTTP控制缓存的基本手段，告诉浏览器缓存保存的时间。过了这个时间，缓存器就会向源服务器发送请求，检查文档是否被修改。
+    适用于设置静态图片文件等等，而且对于控制有规律改变的网页也很有用，比如设置间隔固定的时间去更新等等；如果使用了Expires文件头，当页面内容改变时就必须改变内容的文件名。
+    比如Yahoo经常使用这样的步骤：在内容的文件名中加上版本号，如yahoo_2.0.6.js，从而能够主动进行更新。
+
+    使用expires: 如果你使用的是Apache服务器，可以使用ExpiresDefault来设定相对当前日期的过期时间，使用mod_expires，在httpd.conf或者.htaccess中加上
+    <FilesMatch "\\.(ico|gif|jpg|html)$">ExpiresDefault "access plus 10 years"</FileMatch>
+
+  2.Cache-Control
+  各个消息中的指令含义如下：
+  1.Public指示响应可被任何缓存区缓存；
+  2.Private指示对于单个用户的整个或部分响应消息，不能被共享缓存处理。这允许服务器仅仅描述当用户的部分响应消息，此响应消息对于其他用户的请求无效。
+  3.no-cache指示请求或响应消息不能缓存;
+  4.no-store用于防止重要的信息被无意的发布。在请求消息中发送将使得请求和响应消息都不使用缓存;
+  5.max-age指示客户机可以接收生存期不大于指定时间（以秒为单位）的响应。
+  6.min-fresh指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
+  7.max-stale指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可以接收超出超时期指定值之内的响应消息;
+  3.Last-Modified/If-Modified-Since
+一问一答的模式，这边问你更新了没有，那边回答，很容易理解；
+4.配置ETag
+Entity tags（ETags）（实体标签）是web服务器和浏览器用于判断浏览器缓存中的内容和服务器中的原始内容是否匹配的一种机制（“实体”就是所说的“内 容”，包括图片、脚本、样式表等）。增加ETag为实体的验证提供了一个比使用“last-modified date（上次编辑时间）”更加灵活的机制。Etag是一个识别内容版本号的唯一字符串。
+唯一的格式限制就是它必须包含在双引号内。原始服务器通过含有 ETag文件头的响应指定页面内容的ETag
+<h3>优先级 no-cache > Expires > Last-Modified </h3>
+  </p>
+</body>
+</html>
