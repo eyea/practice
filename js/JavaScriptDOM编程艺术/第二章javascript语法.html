@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>javascript语法</title>
+  <style media="screen">
+    p{
+      margin-bottom: 10px;
+    }
+    span{
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <p>
+     提前声明变量；
+     字面量就是可以在JavaScript代码中直接写出来的数据 比如 var mood = 'happy' 中的happy单词；
+
+     JavaScript几种数据类型: 字符串  数值 布尔值  --> 这三个都是标量(它在任意时刻就只能有一个值)，
+     如果想用一个变量来存储一组值，使用数组 array 使用[]和下标来获取元素  []
+     对象 Object 使用 .点 来获取属性  {}
+
+     单个等号 = 是用于完成赋值操作的
+     !=   ==   ===   !==
+     比较操作符  逻辑操作符  && || !
+
+     函数就是一组允许在代码里随时调用的语句，每个函数实际上就是一个短小的脚本。
+     函数不仅能够以参数的形式接受数据，还能够返回数据(数值，字符串，数组，布尔值等)--> return;
+     我们可以把函数当做一种 <span>数据类型</span> 来使用,这意味着可以把函数的调用结果赋给一个变量；
+  </p>
+  <p>
+    可以用 var 关键字明确地为函数变量设定作用域；
+    在定义一个函数时，一定要把它内部的变量全部明确地声明为局部变量。
+  </p>
+  <p>
+    对象，就是由一些属性和方法组合在一起而构成的数据实体。
+    访问：Object.prototype  Object.method();
+    为了使用对象来描述一个特定的，需要创建一个对象的实例 ： var wdd = new Person;
+  </p>
+  <p>
+    提供了预先定义好的对象，称为 <span>内建对象</span>;
+    内建对象: Array  Math Date等
+    控制台查看 window.Date  window.Array  等
+    
+  </p>
+</body>
+</html>
