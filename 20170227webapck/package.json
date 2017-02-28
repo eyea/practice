@@ -1,0 +1,25 @@
+{
+  "name": "20170227webapck",
+  "version": "1.0.0",
+  "description": "eyea to use webpack",
+  "main": "bundle.js",
+  "dependencies": {
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.2",
+    "jsx-loader": "^0.13.2",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eyea"
+  ],
+  "author": "eyea",
+  "license": "ISC"
+}
