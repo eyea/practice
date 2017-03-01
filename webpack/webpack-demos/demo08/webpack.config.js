@@ -1,3 +1,21 @@
+// var HtmlwebpackPlugin = require('html-webpack-plugin');
+// var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
+// module.exports = {
+//   entry: './main.js',
+//   output: {
+//     filename: 'bundle.js'
+//   },
+//   plugins: [
+//     new HtmlwebpackPlugin({
+//       title: 'Webpack-demos'
+//     }),
+//     new OpenBrowserPlugin({
+//       url: 'http://localhost:8080'
+//     })
+//   ]
+// };
+
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
@@ -8,10 +26,13 @@ module.exports = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'Webpack-demos'
+      title: 'webpack-demos',
+      filename: 'index.html'
     }),
     new OpenBrowserPlugin({
       url: 'http://localhost:8080'
     })
   ]
 };
+
+

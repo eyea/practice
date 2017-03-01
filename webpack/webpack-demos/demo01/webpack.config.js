@@ -1,6 +1,13 @@
+// module.exports = {
+//   entry: './main.js',
+//   output: {
+//     filename: 'bundle.js'
+//   }
+// };
+
 module.exports = {
-  entry: './main.js',
-  output: {
-    filename: 'bundle.js'
-  }
+	entry: './main.js',
+	output: {
+		filename: 'bundle.js'
+	}
 };
