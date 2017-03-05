@@ -27,5 +27,31 @@ ReactDOM.render(
   document.getElementById('example')
 );
     </script>
+
+
+<div id="test"></div>
+<script type="text/babel">
+  var Com = React.createClass({
+    handleClick: function(){
+      this.refs.Input.focus();
+    },
+    render: function(){
+      return (
+      <!-- 注意这里必须只有一个父级容器 否则一定会发生错误的 -->
+        <div>   
+          <input type="text" ref='Input' placeholder="hi" />
+          <input type="button" value='Focus input' onClick={this.handleClick} />
+        </div>
+      )
+    }
+  });
+  ReactDOM.render(
+    <Com />,
+    document.getElementById('test')
+  );
+</script>
+
+
+
   </body>
 </html>

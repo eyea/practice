@@ -30,6 +30,56 @@
         document.getElementById('example')
       );
     </script>
+
+    <div id="test"></div>
+    <script type="text/babel">
+      var Lists = React.createClass({
+        render: function(){
+          return (
+            <ul>
+              {
+                React.Children.map(this.props.children, function(child){
+                  return <li>{child}</li>;
+                })
+              }
+            </ul>
+          )
+        }
+      });
+      
+      ReactDOM.render(
+        <Lists>
+          <span>smile</span>
+          <span>everyday</span>
+        </Lists>,
+        document.getElementById('test')
+      );
+    </script>
+
+      <div id="demo"></div>
+      <script type="text/babel">
+        var Demo = React.createClass({
+          render: function(){
+              return (
+                <ul>
+                  {
+                    React.Children.map(this.props.children, function(child){
+                      return <li>{child}</li>
+                    })
+                  }
+                </ul>
+              )
+          }
+        });
+        ReactDOM.render(
+          <Demo>
+            <h1>Title</h1>
+            <p>China</p>
+          </Demo>,
+          document.getElementById('demo')
+        );
+      </script>
+    
   </body>
 </html>
 

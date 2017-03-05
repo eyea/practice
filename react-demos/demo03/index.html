@@ -17,5 +17,20 @@
         document.getElementById('example')
       );
     </script>
+
+    <div id="test"></div>
+    <script type="text/babel">
+      var arr2 = [
+        <h1>React</h1>,
+        <h2>JS</h2>
+      ];
+      ReactDOM.render(
+        <div>
+          {arr2}
+        </div>,
+        document.getElementById('test')
+      );
+    </script>
+
   </body>
 </html>

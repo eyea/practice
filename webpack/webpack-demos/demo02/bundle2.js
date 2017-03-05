@@ -71,7 +71,11 @@
 /* 1 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 document.write('<h2>Hello Webpack from bundle2</h2>');
+=======
+document.write('<h2>Hello Webpack</h2>');
+>>>>>>> dev
 
 
 /***/ })

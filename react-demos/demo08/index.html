@@ -30,6 +30,48 @@ ReactDOM.render(
   document.getElementById('example')
 );
     </script>
+
+
+
+<div id="test"></div>
+<script type="text/babel">
+  var Toggle = React.createClass({
+    getInitialState: function(){
+      return {liked: false};
+    },
+    handleClick: function(event){
+      this.setState({
+          liked: !this.state.liked
+      });
+    },
+    render: function(){
+      var text = this.state.liked ? 'Love' : 'Hate';
+      return (
+        <p onClick={this.handleClick}>
+          you {text} this. Click to toggle.
+        </p>
+      )
+    }
+  });
+  ReactDOM.render(
+    <Toggle />,
+    document.getElementById('test')
+  );
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   </body>
 </html>
 
