@@ -4,6 +4,11 @@
     <script src="../build/react.js"></script>
     <script src="../build/react-dom.js"></script>
     <script src="../build/browser.min.js"></script>
+    <style type="text/css">
+      .show{
+        color: gray;
+      }
+    </style>
   </head>
   <body>
     <div id="example"></div>
@@ -17,6 +22,19 @@
       ReactDOM.render(
         <HelloMessage name="John" />,
         document.getElementById('example')
+      );
+    </script>
+
+    <div id="test"></div>
+    <script type="text/babel">
+      var ByeMessage = React.createClass({
+        render: function(){
+          return <h1 className='show'> good {this.props.message} </h1>;
+        }
+      });
+      ReactDOM.render(
+        <ByeMessage message='--bye' />,
+        document.getElementById('test')
       );
     </script>
   </body>

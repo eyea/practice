@@ -43,5 +43,42 @@ ReactDOM.render(
   document.getElementById('example')
 );
     </script>
+
+
+<div id="test"></div>
+<script type="text/babel">
+  var Gist = React.createClass({
+  getInitialState: function(){
+    return {
+      username: '',
+      lastGistUrl: ''
+    };
+  },
+  componentDidMount: function(){
+    $.get(this.props.source, function(result){
+        if(this.inMounted()){
+            this.setState({
+              username: lastGist.owner.login,
+              lastGistUrl: lastGist.html_url
+            })
+        }
+    }.bind(this));
+  },
+  render: function(){
+    return (
+      <div>
+        {this.state.username}'s last gist is <a href={this.state.lastGistUrl}>这里</a>
+      </div>
+    )
+  }
+});
+
+ReactDOM.render(
+  <Gist source='https://api.github.com/users/octocat/gists' />,
+  document.getElementById('test')
+)
+</script>
+
+
   </body>
 </html>

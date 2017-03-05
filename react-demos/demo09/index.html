@@ -28,5 +28,34 @@
 
       ReactDOM.render(<Input/>, document.getElementById('example'));
     </script>
+  
+
+    <div id="test"></div>
+    <script type="text/babel">
+      var Test = React.createClass({
+        getInitialState: function(){
+          return {value: 'React'}
+        },
+        handleChange: function(event){
+          this.setState({
+              value: event.target.value
+          })
+        },
+        render: function(){
+          var value = this.state.value;
+          return (
+            <div>
+              <input type="text" value={value} onChange={this.handleChange} />
+              <p>{value}</p>
+            </div>
+          )
+        }
+      });
+      ReactDOM.render(
+        <Test />,
+        document.getElementById('test')
+      )
+    </script>
+
   </body>
 </html>

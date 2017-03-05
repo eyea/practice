@@ -21,5 +21,21 @@
         document.getElementById('example')
       );
     </script>
+
+
+    <div id="test"></div>
+    <script type="text/babel">
+      var arr = ['china','usa'];
+      ReactDOM.render(
+        <div>
+          {
+            arr.map(function(name){
+              return <div>国家是:{name}</div>
+            })
+          }
+        </div>,
+        document.getElementById('test')
+      )
+    </script>
   </body>
 </html>
