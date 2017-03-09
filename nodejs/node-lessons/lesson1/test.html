@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="label" for="name">name</p>
+	<input id="input" type="text" name='name' />
+	<div id="div">
+		jijinin
+	</div>
+	<script type="text/javascript">
+		window.onload  = function(){
+			var $p = document.getElementById('label'),
+				$input = document.getElementById('input'),
+				$div   = document.getElementById('div');
+
+			$p.onclick = function(){
+				$input.value = null;
+				$div.style.display = 'none';
+			}
+
+
+
+		}
+	</script>
+</body>
+</html>
