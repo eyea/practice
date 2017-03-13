@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h2>
+	可用  健壮  可靠 宽容  精益求精
+</h2>
+	<script type="text/javascript">
+		// 编写一个javscript函数 fn，该函数有一个参数 n（数字类型），其返回值是一个数组，该数组内是 n 个随机且不重复的整数，且整数取值范围是 [2, 32]。
+		function fn(n){
+			var arr = [];
+			if(typeof n == 'number'){
+				if(n <= 0){
+					return false;
+				}else{
+					for(var i=0;i<n;i++){
+						arr.push(2+Math.floor(Math.random()*30));
+					};
+				};
+				return arr;				
+			}else{
+				return false;
+			}
+		};
+		fn(3);
+
+		// 2
+		function fn2(n){
+			// n 是否为空 是否是数字进行验证 n必须是1到31之间的整数。。。
+			// 返回的数组arr不重复  取值范围是[2,32]
+			var arr = [];
+			if(n!= '' || typeof n != 'number' || parseInt(n) <=0 | parseInt(n) >= 33){
+				// return false;
+				console.log('n 不合法');
+			}else{
+				var count = 0;
+				for(var i=0;i<n;i++){
+					arr.push(2+Math.floor(Math.random()*30));
+				};
+				// 对arr内的元素进行重复性和范围校验
+				arr.map(function(idx, ele){
+					var _this = idx;
+					if(ele<2 || ele > 32){
+						count ++
+					}
+				});
+				// 数组去重
+				for(var i=0,len=arr.length;i<len;i++){
+					for(var j=0;j<len;j++){
+						if(arr[i]===arr[j]){
+							count ++;
+							arr.pop(arr[j]);
+						}
+					}
+				};
+
+				for(var i=0;i<count;i++){
+					arr.push(2+Math.floor(Math.random()*30));
+				};
+				return arr;
+
+			}
+		};
+		fn2(3);
+
+//  3
+		function fn3(n, min, max){
+			var arr = [];
+			// 传入参数校验程序
+			fn3CheckInput(n, min, max);
+
+			// 随机数组生成函数
+			randomArr();
+
+			// 新数组校验程序
+			arrCheck();
+
+		};
+		function fn3CheckInput(n, min, max){
+			// 对 n 检
+			var input_flag = false;
+			if(typeof n == 'number' && parseInt(n) <= 31 && parseInt(n) >= 1){
+				input_flag = true;
+			};
+			// 后期对条件的限制判
+			
+			return input_flag;
+		};
+		// 随机生成数组
+		function randomArr(n, min, max){
+			var arr = [];
+			for(var i=0;i<n;i++){
+				arr.push(min+Math.floor(Math.random()*(max-min)));
+			}
+			return arr;
+		};
+		// 数组去重
+		function arrCheck(arr){
+			var unique = [];
+			for(var i=0;i<arr.length;i++){
+				if(unique.indexOf(arr[i])== -1){
+					unique.push(arr[i])
+				}
+			};
+			return unique;
+		};
+
+// 4 整合第三个
+		function fn4(n, min, max){
+			if(fn3CheckInput(n, min, max)){
+				randomArr(n, min, max);
+				arrCheck(arr);
+			};
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
