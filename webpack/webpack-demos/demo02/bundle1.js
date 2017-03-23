@@ -70,11 +70,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-document.write('<h1>Hello World form bundle1</h1>');
-=======
 document.write('<h1>Hello World</h1>');
->>>>>>> dev
 
 
 /***/ })

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type='text/javascript' src='../dist/template.js'></script>
+</head>
+<body>
+  <div id="content"></div>
+  <script id='show' type='text/html'>
+    {{if yes}}
+      <h2>{{title}}</h2>
+      <ul>
+        {{each list as value i}}
+         <li>
+           第 {{ i+1 }}个国家是： {{ value }}
+         </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </script>
+
+  <script type='text/javascript'>
+      var data = {
+        yes: true,
+        title: '战士啊',
+        list: ['中国','美国','英国']
+      };
+      var html = template('show',data);
+      document.getElementById('content').innerHTML = html;
+  </script>
+</body>
+</html>
