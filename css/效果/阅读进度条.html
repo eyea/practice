@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>阅读进度条</title>
+<!-- 	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body { margin: 0 auto; padding: 0 12%; }
+		header { position: fixed; top: 0; left: 0; width: 100%; line-height: 84px; padding: 0 12%; background: #fff; }
+		article { margin: 85px 0; line-height: 1.8; }
+		article p { margin-bottom: 10px; }
+		
+		/*核心代CSS*/
+		@supports(height:100vh) {
+			body {
+				background: linear-gradient(to right top, #0089f2 50%, #ddd 50%) no-repeat left 84px;
+				background-size: 100% calc(100% - 100vh + 1px);
+			}
+			body:before {
+				content: '';
+				position: fixed;
+				top: 85px;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				z-index: -1;
+			}
+		}
+	</style> -->
+<!-- 	<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				margin: 0 auto;
+				padding: 0 12%;
+			}
+			header{
+				height: 80px;
+				line-height: 80px;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding:0 12%;
+				background: #fff;
+			}
+			article{
+				margin-top: 80px 0;
+			}
+			/* key code */
+			@supports(height:100vh){  /*fdfffd*/
+				body{
+					background: linear-gradient(to right top,  #0089f2 50%, #ddd 50%) no-repeat left 80px;
+					background-size: 100% calc(100% - 100vh + 1px);
+				}
+				body:before{
+					content: '';
+					position: fixed;
+					background: #fff;
+					top: 81px;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: -1;
+				}			
+			}
+	</style> -->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 0 auto;
+			padding: 0 12%;
+		}
+		header{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 80px;
+			line-height: 80px;
+			padding: 0 12%;
+			width: 100%;
+			background-color: #fff;
+		}
+		article{
+			margin: 80px 0;
+		}
+
+		@supports(height: 100vh){
+			body{
+				background: linear-gradient(to right top, blue 50%, #eee 50%) no-repeat left 80px;
+				background-size: 100% calc(100% - 100vh + 1px);
+			}
+			body:before{
+				content: '';
+				position: fixed;
+				top: 82px;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+				background: #fff;
+			}
+		}
+	</style>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 0 auto;
+			padding: 0 12%;
+		}
+		header{
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 80px;
+			line-height: 80px;
+			width: 100%;
+			padding: 0 12%;
+			background: #fff;
+		}
+		article{
+			margin: 80px 0;
+		}
+
+		@supports(height: 100vh){
+			body{
+				background: line-gradient(to right top, blue 50%, #eee 50%) no-repeat left 80pxs;
+				background-size: 100% calc(100%-100vh +1px);
+			}
+			body:before{
+				content: '';
+				position: fixed;
+				top: 81px;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background: #fff;
+				z-index: -1;
+			}
+		}
+	</style>	
+</head>
+<body>
+	<header>
+		<h2>阅读进度条</h2>
+	</header>
+	<article>
+		<h2>css3特性</h2>
+		<small>引用介绍</small>
+		<h3>边框</h3>
+		<p>border-color:控制边框颜色，并且有了更大的灵活性，可以产生渐变效果</p>
+		<p>border-color:控制边框颜色，并且有了更大的灵活性，可以产生渐变效果</p>
+		<p>border-radius:能产生类似圆角矩形的效果</p>
+		<h3>动画属性</h3>
+		<p>变形(transform)、转换(transition)和动画(animation)</p>
+		<p>transform: rotate | scale | skew | translate |matrix;</p>
+		<p>旋转rotate、扭曲skew、缩放scale和移动translate以及矩阵变形matrix。</p>
+		<p>transition主要包含四个属性值：执行变换的属性：transition-property,变换延续的时间：transition-duration,在延续时间段，变换的速率变化transition-timing-function,变换延迟时间transition-delay。下面分别来看这四个属性值</p>
+		<p>在开始介绍Animation之前我们有必要先来了解一个特殊的东西，那就是"Keyframes",我们把他叫做“关键帧”，玩过flash的朋友可能对这个东西并不会陌生。下面我们就一起来看看这个“Keyframes”是什么东西。前面我们在使用transition制作一个简单的transition效果时，我们包括了初始属性和最终属性，一个开始执行动作时间和一个延续动作时间以及动作的变换速率，其实这些值都是一个中间值，如果我们要控制的更细一些，比如说我要第一个时间段执行什么动作，第二个时间段执行什么动作（换到flash中说，就是第一帧我要执行什么动作，第二帧我要执行什么动作），这样我们用Transition就很难实现了，此时我们也需要这样的一个“关键帧”来控制。那么CSS3的Animation就是由“keyframes”这个属性来实现这样的效果。下面我们一起先来看看Keyframes:</p>
+		<p>Keyframes具有其自己的语法规则，他的命名是由"@keyframes"开头，后面紧接着是这个“动画的名称”加上一对花括号“{}”，括号中就是一些不同时间段样式规则，有点像我们css的样式写法一样。对于一个"@keyframes"中的样式规则是由多个百分比构成的，如“0%”到"100%"之间，我们可以在这个规则中创建多个百分比，我们分别给每一个百分比中给需要有动画效果的元素加上不同的属性，从而让元素达到一种在不断变化的效果，比如说移动，改变元素颜色，位置，大小，形状等，不过有一点需要注意的是，我们可以使用“fromt”“to”来代表一个动画是从哪开始，到哪结束，也就是说这个 "from"就相当于"0%"而"to"相当于"100%",值得一说的是，其中"0%"不能像别的属性取值一样把百分比符号省略，我们在这里必须加上百分符号（“%”）如果没有加上的话，我们这个keyframes是无效的，不起任何作用。因为keyframes的单位只接受百分比值。</p>
+		<h3>文字效果</h3>
+		<p>text-shadow:文字投影，可能是因为MAC OSX的Safari浏览器开始支持投影才特意增加的。</p>
+		<p>text -overflow:当文字溢出时，用“…”提示。包括ellipsis、clip、ellipsis-word、inherit，前两个CSS2就有了，还是部分支持，但有趣的是IE6居然也支持。ellipsis-word可以省略掉最后一个单词，对中文意义不大，inherit可以继承父级元素。</p>
+		<p>变形(transform)、转换(transition)和动画(animation)</p>
+		<p>transform: rotate | scale | skew | translate |matrix;</p>
+		<p>旋转rotate、扭曲skew、缩放scale和移动translate以及矩阵变形matrix。</p>
+		<p>transition主要包含四个属性值：执行变换的属性：transition-property,变换延续的时间：transition-duration,在延续时间段，变换的速率变化transition-timing-function,变换延迟时间transition-delay。下面分别来看这四个属性值</p>
+		<p>在开始介绍Animation之前我们有必要先来了解一个特殊的东西，那就是"Keyframes",我们把他叫做“关键帧”，玩过flash的朋友可能对这个东西并不会陌生。下面我们就一起来看看这个“Keyframes”是什么东西。前面我们在使用transition制作一个简单的transition效果时，我们包括了初始属性和最终属性，一个开始执行动作时间和一个延续动作时间以及动作的变换速率，其实这些值都是一个中间值，如果我们要控制的更细一些，比如说我要第一个时间段执行什么动作，第二个时间段执行什么动作（换到flash中说，就是第一帧我要执行什么动作，第二帧我要执行什么动作），这样我们用Transition就很难实现了，此时我们也需要这样的一个“关键帧”来控制。那么CSS3的Animation就是由“keyframes”这个属性来实现这样的效果。下面我们一起先来看看Keyframes:</p>
+		<p>Keyframes具有其自己的语法规则，他的命名是由"@keyframes"开头，后面紧接着是这个“动画的名称”加上一对花括号“{}”，括号中就是一些不同时间段样式规则，有点像我们css的样式写法一样。对于一个"@keyframes"中的样式规则是由多个百分比构成的，如“0%”到"100%"之间，我们可以在这个规则中创建多个百分比，我们分别给每一个百分比中给需要有动画效果的元素加上不同的属性，从而让元素达到一种在不断变化的效果，比如说移动，改变元素颜色，位置，大小，形状等，不过有一点需要注意的是，我们可以使用“fromt”“to”来代表一个动画是从哪开始，到哪结束，也就是说这个 "from"就相当于"0%"而"to"相当于"100%",值得一说的是，其中"0%"不能像别的属性取值一样把百分比符号省略，我们在这里必须加上百分符号（“%”）如果没有加上的话，我们这个keyframes是无效的，不起任何作用。因为keyframes的单位只接受百分比值。</p>
+		<h3>文字效果</h3>
+		<p>text-shadow:文字投影，可能是因为MAC OSX的Safari浏览器开始支持投影才特意增加的。</p>
+		<p>text -overflow:当文字溢出时，用“…”提示。包括ellipsis、clip、ellipsis-word、inherit，前两个CSS2就有了，还是部分支持，但有趣的是IE6居然也支持。ellipsis-word可以省略掉最后一个单词，对中文意义不大，inherit可以继承父级元素。</p>
+
+
+	</article>
+</body>
+</html>
