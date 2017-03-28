@@ -1,0 +1,102 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  background: #ccc;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+/* common */
+.box{
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border-radius: 4px;
+  padding: 6px;
+  margin: 15px;
+  display: flex;
+  display: -webkit-flex;
+}
+.item{
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+}
+
+/* single demo */
+.first{
+  justify-content: center;  /* flex-start-->默认  center */
+  align-items: center;
+}
+
+/* 两个item */
+.second{
+  /*justify-content: space-between;*/
+  flex-direction: column; /*center是水平方向 colume是垂直方向*/
+  justify-content: space-between;
+  align-items: flex-end;  /*center是垂直*/
+}
+
+/*third */
+.third{
+  justify-content: space-between;  /*这个结合align-self center*/
+}
+.third .item:nth-child(2){
+  align-self: flex-end;/*center居中 flex-end是中间底部*/
+}
+
+/*三个items*/
+.forth .item:nth-child(2){
+  align-self: center;
+}
+.forth .item:nth-child(3){
+  align-self: flex-end;;
+}
+
+/*四个items*/
+.fifth{
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: space-between;
+}
+
+.fifth2{
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.fifth2 .column{
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*六个items*/
+.sixth{
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.sixth2{
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  align-content: space-between;
+  flex-direction: column;
+}
+
+.sixth3{
+  flex-wrap: wrap;
+}
+.sixth3 .row{
+  flex-basis: 100%;
+  display: flex;
+}
+.sixth3 .row:nth-child(2){
+  justify-content: center;
+}
+.sixth3 .row:nth-child(3){
+  justify-content: space-between;
+}
