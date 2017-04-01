@@ -1,0 +1,11 @@
+
+<view class="mobileInfo">
+  <text class="mbinfo-text">手机型号:{{mobileInfo.model}}</text>
+  <text class="mbinfo-text">设备像素比:{{mobileInfo.pixelRatio}}</text>
+  <text class="mbinfo-text">屏幕宽度:{{mobileInfo.screenWidth}}</text>
+  <text class="mbinfo-text">屏幕高度:{{mobileInfo.screenHeight}}</text>
+  <text class="mbinfo-text">微信设置的语言:{{mobileInfo.language}}</text>
+  <text class="mbinfo-text">微信版本号:{{mobileInfo.version}}</text>
+  <text class="mbinfo-text">操作系统版本:{{mobileInfo.system}}</text>
+  <text class="mbinfo-text">客户端平台:{{mobileInfo.platform}}</text>
+</view>

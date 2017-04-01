@@ -1,0 +1,5 @@
+.mbinfo-text{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10rpx;
+}

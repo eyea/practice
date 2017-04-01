@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text class="usermotto">{{motto}}</text>
+  </view>
+  <view class="btnFunction">
+    <view class="toMusic" bindtap="bindViewMusic">
+      <button class="primary common-text-intro">{{listen}}</button>
+    </view>
+    <view class="scanCode" bindtap="bindViewScanCode">
+      <button class="primary scanBtn">{{scanEntryText}}</button>
+    </view>
+    <view class="getMobileData" bindtap="bindViewMobileData">
+      <button class="primary mobileData">{{getMobileDate}}</button>
+    </view>
+  </view>
+  <view class="footer">
+    <text>@eyea 版权所有</text>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+
+<view class="scanCodeInfo">
+  <text class="scinfo-text">类型:{{scanCodeInfo.scanType}}</text>
+  <text class="scinfo-text">字符集:{{scanCodeInfo.charSet}}</text>
+  <text class="scinfo-text">二维码携带的path:{{scanCodeInfo.path}}</text>
+  <text class="scinfo-text">内容:{{scanCodeInfo.result}}</text>
+</view>

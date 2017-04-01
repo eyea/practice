@@ -1,0 +1,9 @@
+audio{
+	display: flex;
+	margin: 20rpx auto;
+}
+
+button{
+	margin-top: 20rpx;
+	width: 80%;
+}
