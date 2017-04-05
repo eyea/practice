@@ -1,0 +1,1 @@
+document.write('油漆味儿，戴口罩上班');
