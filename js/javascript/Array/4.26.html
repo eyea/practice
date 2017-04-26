@@ -1,0 +1,46 @@
+1.找出数组重复的元素
+function duplication(arr){
+  var newarr=[];
+  arr.forEach(function(ele){
+    if(arr.indexOf(ele)!=arr.lastIndexOf(ele)&&newarr.indexOf(ele)!==-1){
+      newarr.push(ele)
+    }
+  });
+  return newarr;
+}
+
+2.修复给定的 js 代码中，函数定义存在的问题 
+function functions(flag) {
+    if (flag) {
+      function getValue() { return 'a'; }
+    } else {
+      function getValue() { return 'b'; }
+    }
+
+    return getValue();
+}
+问题是if else语句里重写了getValue ,在高版本chrome里没有问题，但是最好是把getValue函数赋给一个变量
+
+3.打点计时器
+function count(start, end) {
+  console.log(start)
+  var timer=setInterval(function(){
+      if(start<end){
+          console.log(++start)
+      }
+  },100);
+  return {
+      cancel: function(){
+          clearInterval(timer)
+      }
+  }
+}
+
+4.数组 arr 中的元素作为调用函数 fn 的参数 
+function args(fn,arr){
+  return fn.apply(this,arr)
+}
+// 调用函数可以使用call或者apply这两个方法，区别在于call需要将传递给函数的参数明确写出来，是多少参数就需要写多少参数。而apply则将传递给函数的参数放入一个数组中，传入参数数组即可。
+
+5.
+
