@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scroll  Example</title>
+</head>
+<body>
+  <div class='outerScroller'>
+    <ul class='scroll'>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+  <script>
+    var scroll = document.querySelector('.scroll'),
+        outerScroller = document.querySelector('.outerScroller'),
+        touchstart = 0,
+        touchDis=0;
+
+    outerScroller.addEventListener('touchstart',function(event){
+      var touch = event.targetTouches[0];
+      touchstart = touch.pageY;
+      console.log('开始触碰');
+    },false);
+
+    outerScroller.addEventListener('touchmove',function(event){
+      // console.log(event);
+      var touch = event.targetTouches[0];
+      touchDis = touch.pageY - touchstart;
+      // console.log(touchDis);
+    },false);
+
+    outerScroller.addEventListener('touchend',function(event){
+      console.log('触碰结束'+touchDis);
+      var top = scroll.scrollTop;
+      if(touchDis>50)  refresh();
+    },false);
+
+    function refresh(){
+      for(var i=5;i>0;i--){
+        var li_node = document.createElement('li');
+        li_node.innerHTML = 'NEW_node_'+i;
+        scroll.insertBefore(li_node, scroll.firstChild);
+      };
+    };
+    
+  </script>
+</body>
+</html>

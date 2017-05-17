@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax</title>
+</head>
+<body>
+  <input type="button" onclick="ajax()" value="Ajax提交">
+  <div id='resText'></div> 
+</body>
+<script>
+  function Ajax(){
+    var xmlHttpReq = null;
+    function createXHR(){
+      if(window.ActiveObject){
+        xmlHttpReq = new ActiveXObject('Microsoft.XMLHTTP');
+      }else if(window.XMLHttpRequest){
+        xmlHttpReq = new XMLHttpRequest()
+      };
+      return xmlHttpReq;
+    };
+    createXHR();
+    if(xmlHttpReq != null){
+      xmlHttpReq.open('GET','test.php',true);
+      xmlHttpReq.onreadystatechange = RequestCallback;
+      xmlHttpReq.send(ull);
+    };
+    function RequestCallBack(){
+      if(xmlHttpReq.readyState == 4){
+        if(xmlHttpReq.status == 200){
+          document.getElementById("resText").innerHTML = xmlHttpReq.responseText;
+        }
+      }
+    }   
+  }
+</script>
+</html>
