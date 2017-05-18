@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prototype</title>
+</head>
+<body>
+  <script>
+    // 1.利用空函数实现继承
+    function Person(name,age){
+      this.name = name;
+      this.age  = age;
+    };
+    Person.prototype = {
+      constructor: Person,
+      sayHi: function(){
+        console.log('hi');
+      }
+    };
+
+    function Student(name, age, grade){
+      Person.call(this, name, age);
+      this.grade = grade;
+    };
+
+        // 声明一个空函数
+   function Empty(){};
+   Empty.prototype = Person.prototype;
+
+   Student.prototype = new Empty();
+   Student.prototype.constructor = Student;
+
+   var p1 = new Person('xiaoming', 20);
+   var s1 = new Student('xiaohong',9,3);
+
+   console.log(p1);
+   console.log(s1);
+   console.log(p1.constructor);
+   console.log(s1.constructor);
+
+
+// 2.利用循环遍历深、浅拷贝的方法来实现继承
+
+  </script>
+</body>
+</html>
