@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+function loadScript(url, func) {
+  var head = document.head || document.getElementByTagName('head')[0];
+  var script = document.createElement('script');
+  script.src = url;
+
+  script.onload = script.onreadystatechange = function(){
+    if(!this.readyState || this.readyState=='loaded' || this.readyState=='complete'){
+      func();
+      script.onload = script.onreadystatechange = null;
+    }
+  };
+
+  head.insertBefore(script, 0);
+}
+window.baidu = {
+  sug: function(data){
+    console.log(data);
+  }
+}
+loadScript('http://suggestion.baidu.com/su?wd=w',function(){console.log('loaded')});
+//我们请求的内容在哪里？
+//我们可以在chorme调试面板的source中看到script引入的内容    
+  </script>
+</body>
+</html>
